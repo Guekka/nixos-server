@@ -29,15 +29,17 @@
 
   time.timeZone = "Europe/Amsterdam";
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  # users.users.alice = {
-  #   isNormalUser = true;
-  #   extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-  #   packages = with pkgs; [
-  #     firefox
-  #     thunderbird
-  #   ];
-  # };
+  users.mutableUsers = false;
+  users.users.user = {
+    isNormalUser = true;
+    extraGroups = [ "wheel" ];
+
+    openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICWVNch9BcjkMqS/Xwep+GN4HwqyRIjr3Cuw7mHpqsKr nixos" ]
+;
+
+    # passwordFile needs to be in a volume marked with `neededForBoot = true`
+    passwordFile = "/persist/passwords/user";
+  };
  
   # List services that you want to enable:
 
