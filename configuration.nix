@@ -15,21 +15,21 @@ in
     ];
 
   # filesystems
-  fileSystems."/".options = ["compress=zstd" "noatime" ];
-  fileSystems."/home".options = ["compress=zstd" "noatime" ];
-  fileSystems."/nix".options = ["compress=zstd" "noatime" ];
-  fileSystems."/persist".options = ["compress=zstd" "noatime" ];
+  fileSystems."/".options = [ "compress=zstd" "noatime" ];
+  fileSystems."/home".options = [ "compress=zstd" "noatime" ];
+  fileSystems."/nix".options = [ "compress=zstd" "noatime" ];
+  fileSystems."/persist".options = [ "compress=zstd" "noatime" ];
   fileSystems."/persist".neededForBoot = true;
-  
-  fileSystems."/var/log".options = ["compress=zstd" "noatime" ];
+
+  fileSystems."/var/log".options = [ "compress=zstd" "noatime" ];
   fileSystems."/var/log".neededForBoot = true;
 
   # reset / at each boot
   boot.initrd = {
-      enable = true;
-      supportedFilesystems = [ "btrfs" ];
+    enable = true;
+    supportedFilesystems = [ "btrfs" ];
 
-      systemd.services.restore-root = {
+    systemd.services.restore-root = {
       description = "Rollback btrfs rootfs";
       wantedBy = [ "initrd.target" ];
       requires = [
@@ -82,7 +82,7 @@ in
       '';
     };
   };
-  
+
   # configure impermanence
   environment.persistence."/persist" = {
     directories = [
