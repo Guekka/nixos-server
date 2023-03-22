@@ -111,6 +111,11 @@ in
 
   time.timeZone = "Europe/Amsterdam";
 
+  environment.systemPackages = with pkgs; [
+    git
+    vim
+  ];
+
   users.mutableUsers = false;
   users.users.user = {
     isNormalUser = true;
