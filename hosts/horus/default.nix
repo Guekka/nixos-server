@@ -8,9 +8,11 @@
   imports =
     [
       ../common
+      ../../modules/sops.nix
       impermanence.nixosModule
       ./hardware-configuration.nix
-      ../../modules/sops.nix
+      ./nginx.nix
+      ./web-server.nix
     ];
 
   # filesystems

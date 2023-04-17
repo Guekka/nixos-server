@@ -7,6 +7,7 @@
 {
   imports =
     [
+      ./acme.nix
       ./tailscale.nix
     ];
 }
