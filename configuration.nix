@@ -2,15 +2,12 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, impermanence, ... }:
 
-let
-  impermanence = builtins.fetchTarball "https://github.com/nix-community/impermanence/archive/master.tar.gz";
-in
 {
   imports =
     [
-      "${impermanence}/nixos.nix"
+      impermanence.nixosModule
       ./hardware-configuration.nix
     ];
 
@@ -129,8 +126,6 @@ in
     allowedTCPPorts = [ 22 ];
     allowedUDPPorts = [ ];
   };
-
-  system.copySystemConfiguration = true;
 
   # Read the doc before updating
   system.stateVersion = "22.11";
