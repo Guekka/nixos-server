@@ -1,0 +1,11 @@
+keys:
+  - &horus age1dt24qetqhy2ng53fyj69yq9hg8rdsg4ep0lvvhdg69xw9v4l0asqj6xzkh
+creation_rules:
+  - path_regex: hosts/horus/secrets.yaml$
+    key_groups:
+    - age:
+      - *horus
+  - path_regex: hosts/common/secrets.yaml$
+    key_groups:
+    - age:
+      - *horus
