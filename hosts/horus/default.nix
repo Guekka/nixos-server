@@ -2,13 +2,14 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, impermanence, ... }:
+{ config, pkgs, impermanence, sops-nix, ... }:
 
 {
   imports =
     [
       impermanence.nixosModule
       ./hardware-configuration.nix
+      ../../modules/sops.nix
     ];
 
   # filesystems
@@ -130,5 +131,8 @@
   # Read the doc before updating
   system.stateVersion = "22.11";
 
+  sops.secrets.tailscale_key = {
+    sopsFile = ./secrets.yaml;
+  };
 }
 
