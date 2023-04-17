@@ -1,4 +1,4 @@
-DISK=/dev/vda
+DISK=/dev/sda
 
 parted "$DISK" -- mklabel gpt
 parted "$DISK" -- mkpart ESP fat32 1MiB 1GiB
