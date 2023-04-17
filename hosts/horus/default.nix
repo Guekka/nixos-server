@@ -7,6 +7,7 @@
 {
   imports =
     [
+      ../common
       impermanence.nixosModule
       ./hardware-configuration.nix
       ../../modules/sops.nix
@@ -130,9 +131,5 @@
 
   # Read the doc before updating
   system.stateVersion = "22.11";
-
-  sops.secrets.tailscale_key = {
-    sopsFile = ./secrets.yaml;
-  };
 }
 
