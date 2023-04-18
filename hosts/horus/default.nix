@@ -11,6 +11,7 @@
       ../common
       ./hardware-configuration.nix
       ./nginx.nix
+      ./podman.nix
       ./users.nix
       ./web-server.nix
     ];
