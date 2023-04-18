@@ -12,6 +12,7 @@
       impermanence.nixosModule
       ./hardware-configuration.nix
       ./nginx.nix
+      ./users.nix
       ./web-server.nix
     ];
 
@@ -98,17 +99,6 @@
     git
     vim
   ];
-
-  users.mutableUsers = false;
-  users.users.user = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" ];
-
-    openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICWVNch9BcjkMqS/Xwep+GN4HwqyRIjr3Cuw7mHpqsKr nixos" ];
-
-    # passwordFile needs to be in a volume marked with `neededForBoot = true`
-    passwordFile = "/persist/passwords/user";
-  };
 
   services.openssh = {
     enable = true;
