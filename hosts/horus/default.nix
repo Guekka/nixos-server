@@ -2,14 +2,13 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, impermanence, sops-nix, ... }:
+{ config, pkgs, impermanence, ... }:
 
 {
   imports =
     [
-      ../common
-      ../../modules/sops.nix
       impermanence.nixosModule
+      ../common
       ./hardware-configuration.nix
       ./nginx.nix
       ./users.nix
