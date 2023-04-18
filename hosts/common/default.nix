@@ -8,6 +8,7 @@
   imports =
     [
       ./acme.nix
+      ./sops.nix
       ./tailscale.nix
     ];
 }
