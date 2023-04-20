@@ -7,5 +7,5 @@
     recommendedOptimisation = true;
     clientMaxBodySize = "300m";
   };
-  networking.firewall.allowedTCPPorts = [ 80 443 ];
+  networking.firewall.allowedTCPPorts = [80 443];
 }
