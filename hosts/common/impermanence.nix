@@ -1,18 +1,21 @@
-{ config, pkgs, impermanence, ... }:
 {
-  imports =
-    [
-      impermanence.nixosModule
-    ];
+  config,
+  pkgs,
+  impermanence,
+  ...
+}: {
+  imports = [
+    impermanence.nixosModule
+  ];
 
   # filesystems
-  fileSystems."/".options = ["compress=zstd" "noatime" ];
-  fileSystems."/home".options = ["compress=zstd" "noatime" ];
-  fileSystems."/nix".options = ["compress=zstd" "noatime" ];
-  fileSystems."/persist".options = ["compress=zstd" "noatime" ];
+  fileSystems."/".options = ["compress=zstd" "noatime"];
+  fileSystems."/home".options = ["compress=zstd" "noatime"];
+  fileSystems."/nix".options = ["compress=zstd" "noatime"];
+  fileSystems."/persist".options = ["compress=zstd" "noatime"];
   fileSystems."/persist".neededForBoot = true;
 
-  fileSystems."/var/log".options = ["compress=zstd" "noatime" ];
+  fileSystems."/var/log".options = ["compress=zstd" "noatime"];
   fileSystems."/var/log".neededForBoot = true;
 
   # source: https://mt-caret.github.io/blog/posts/2020-06-29-optin-state.html
@@ -55,4 +58,3 @@
     Defaults lecture = never
   '';
 }
-
