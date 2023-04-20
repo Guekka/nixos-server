@@ -15,8 +15,10 @@
     ./web-server.nix
   ];
 
-  networking.hostName = "horus";
-  networking.networkmanager.enable = true;
+  networking = {
+    hostName = "horus";
+    interfaces.enp6s18.useDHCP = true;
+  };
 
   time.timeZone = "Europe/Amsterdam";
 
