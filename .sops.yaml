@@ -1,10 +1,11 @@
 keys:
-  - &admin_e age1ggkhafvwmqddvvffp7lccj6lqp93jhvlr3v5xqjdcyukqpfe3qvq4rf3sc
-  - &server_e age1dt24qetqhy2ng53fyj69yq9hg8rdsg4ep0lvvhdg69xw9v4l0asqj6xzkh
+  - &horus age1dt24qetqhy2ng53fyj69yq9hg8rdsg4ep0lvvhdg69xw9v4l0asqj6xzkh
 creation_rules:
-  - path_regex: secrets/[^/]+\.yaml$
+  - path_regex: hosts/horus/secrets.yaml$
     key_groups:
     - age:
-      - *admin_e
-      - *server_e
-
+      - *horus
+  - path_regex: hosts/common/secrets.yaml$
+    key_groups:
+    - age:
+      - *horus
