@@ -12,7 +12,7 @@
   # what will be produced (i.e. the build)
   outputs = {nixpkgs, ...} @ inputs: {
     nixosConfigurations = {
-      server = nixpkgs.lib.nixosSystem {
+      horus = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = inputs;
         modules = [
