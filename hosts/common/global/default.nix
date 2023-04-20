@@ -11,6 +11,7 @@
     ./impermanence.nix
     ./openssh.nix
     ./sops.nix
+    ./systemd-boot.nix
     ./tailscale.nix
   ];
 }
