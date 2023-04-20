@@ -7,7 +7,7 @@
   ...
 }: {
   imports = [
-    ../common
+    ../common/global
     ./hardware-configuration.nix
     ./nginx.nix
     ./podman.nix
