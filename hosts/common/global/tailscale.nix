@@ -51,7 +51,7 @@
   boot.kernel.sysctl."net.ipv6.conf.all.forwarding" = 1;
 
   sops.secrets.tailscale_key = {
-    sopsFile = ./secrets.yaml;
+    sopsFile = ../secrets.yaml;
   };
 
   environment.persistence = {
