@@ -9,6 +9,7 @@
   imports = [
     ./acme.nix
     ./impermanence.nix
+    ./openssh.nix
     ./sops.nix
     ./tailscale.nix
   ];

@@ -29,27 +29,6 @@
     vim
   ];
 
-  services.openssh = {
-    enable = true;
-    passwordAuthentication = false;
-    allowSFTP = false; # Don't set this if you need sftp
-    kbdInteractiveAuthentication = false;
-    extraConfig = ''
-      AllowTcpForwarding yes
-      X11Forwarding no
-      AllowAgentForwarding no
-      AllowStreamLocalForwarding no
-      AuthenticationMethods publickey
-    '';
-  };
-
-  # Open ports in the firewall.
-  networking.firewall = {
-    enable = true;
-    allowedTCPPorts = [22];
-    allowedUDPPorts = [];
-  };
-
   # Read the doc before updating
   system.stateVersion = "22.11";
 }
