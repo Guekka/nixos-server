@@ -8,6 +8,7 @@
   imports =
     [
       ./acme.nix
+      ./impermanence.nix
       ./sops.nix
       ./tailscale.nix
     ];
