@@ -1,5 +1,8 @@
-{ config, pkgs, ... }:
 {
+  config,
+  pkgs,
+  ...
+}: {
   # enable the tailscale service
   services.tailscale.enable = true;
 
@@ -8,9 +11,9 @@
     description = "Automatic connection to Tailscale";
 
     # make sure tailscale is running before trying to connect to tailscale
-    after = [ "network-pre.target" "tailscale.service" ];
-    wants = [ "network-pre.target" "tailscale.service" ];
-    wantedBy = [ "multi-user.target" ];
+    after = ["network-pre.target" "tailscale.service"];
+    wants = ["network-pre.target" "tailscale.service"];
+    wantedBy = ["multi-user.target"];
 
     serviceConfig.Type = "oneshot";
 
@@ -36,9 +39,9 @@
   # Open ports in the firewall.
   networking.firewall = {
     # always allow traffic from your Tailscale network
-    trustedInterfaces = [ "tailscale0" ];
+    trustedInterfaces = ["tailscale0"];
 
-    allowedUDPPorts = [ config.services.tailscale.port ];
+    allowedUDPPorts = [config.services.tailscale.port];
 
     checkReversePath = "loose";
   };
@@ -52,7 +55,6 @@
   };
 
   environment.persistence = {
-    "/persist".directories = [ "/var/lib/tailscale" ];
+    "/persist".directories = ["/var/lib/tailscale"];
   };
 }
-
