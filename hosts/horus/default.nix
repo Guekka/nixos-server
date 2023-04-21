@@ -8,6 +8,7 @@
 }: {
   imports = [
     ../common/global
+    ../common/optional/impermanence.nix
     ./hardware-configuration.nix
     ./nginx.nix
     ./podman.nix
