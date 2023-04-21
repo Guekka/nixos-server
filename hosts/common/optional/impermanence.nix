@@ -3,26 +3,54 @@
   pkgs,
   impermanence,
   ...
-}: {
+}: let
+  hostname = config.networking.hostName;
+  disk = "/dev/disk/by-label/${hostname}";
+in {
   imports = [
     impermanence.nixosModule
   ];
 
-  # filesystems
-  fileSystems."/".options = ["compress=zstd" "noatime"];
-  fileSystems."/home".options = ["compress=zstd" "noatime"];
-  fileSystems."/nix".options = ["compress=zstd" "noatime"];
-  fileSystems."/persist".options = ["compress=zstd" "noatime"];
-  fileSystems."/persist".neededForBoot = true;
+  # We're making the assumption the disk has a label
+  fileSystems = {
+    "/" = {
+      device = disk;
+      fsType = "btrfs";
+      options = ["subvol=root" "compress=zstd"];
+    };
 
-  fileSystems."/var/log".options = ["compress=zstd" "noatime"];
-  fileSystems."/var/log".neededForBoot = true;
+    "/home" = {
+      device = disk;
+      fsType = "btrfs";
+      options = ["subvol=home" "compress=zstd"];
+    };
+
+    "/nix" = {
+      device = disk;
+      fsType = "btrfs";
+      options = ["subvol=nix" "noatime" "compress=zstd"];
+    };
+
+    "/persist" = {
+      device = disk;
+      fsType = "btrfs";
+      options = ["subvol=persist" "compress=zstd"];
+      neededForBoot = true;
+    };
+
+    "/var/log" = {
+      device = disk;
+      fsType = "btrfs";
+      options = ["subvol=log" "compress=zstd"];
+      neededForBoot = true;
+    };
+  };
 
   # source: https://mt-caret.github.io/blog/posts/2020-06-29-optin-state.html
   boot.initrd.postDeviceCommands = pkgs.lib.mkBefore ''
     mkdir -p /mnt
 
-    mount -o subvol=/ /dev/sda3 /mnt
+    mount -o subvol=/ ${disk} /mnt
 
     btrfs subvolume list -o /mnt/root |
     cut -f9 -d' ' |

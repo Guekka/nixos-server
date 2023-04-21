@@ -8,7 +8,6 @@
 }: {
   imports = [
     ./acme.nix
-    ./impermanence.nix
     ./openssh.nix
     ./sops.nix
     ./systemd-boot.nix
