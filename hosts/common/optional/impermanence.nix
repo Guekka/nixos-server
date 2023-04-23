@@ -1,5 +1,6 @@
 {
   config,
+  lib,
   pkgs,
   impermanence,
   ...
@@ -19,7 +20,7 @@ in {
       options = ["subvol=root" "compress=zstd"];
     };
 
-    "/home" = {
+    "/home" = lib.mkDefault {
       device = disk;
       fsType = "btrfs";
       options = ["subvol=home" "compress=zstd"];
