@@ -13,6 +13,8 @@
 
   # what will be produced (i.e. the build)
   outputs = {nixpkgs, ...} @ inputs: {
+    formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
+
     nixosConfigurations = {
       horus = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
