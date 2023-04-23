@@ -7,6 +7,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.nixpkgs-stable.follows = "nixpkgs";
     };
+
+    hardware.url = "github:nixos/nixos-hardware";
   };
 
   # what will be produced (i.e. the build)
@@ -17,6 +19,14 @@
         specialArgs = inputs;
         modules = [
           ./hosts/horus
+        ];
+      };
+
+      hestia = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = inputs;
+        modules = [
+          ./hosts/hestia
         ];
       };
     };
