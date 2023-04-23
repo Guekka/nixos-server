@@ -7,6 +7,7 @@
   imports = [
     ../common/global
     ../common/optional/impermanence.nix
+    ../common/optional/pipewire.nix
     ./hardware-configuration.nix
   ];
 
