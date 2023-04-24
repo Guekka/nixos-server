@@ -1,8 +1,13 @@
-{hardware, ...}: {
+{
+  hardware,
+  nixpkgs,
+  ...
+}: {
   imports = [
     hardware.nixosModules.common-cpu-amd
     hardware.nixosModules.common-gpu-amd
     hardware.nixosModules.common-pc-ssd
+    nixpkgs.nixosModules.notDetected
   ];
 
   boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod"];
