@@ -1,11 +1,17 @@
 keys:
   - &horus age1dt24qetqhy2ng53fyj69yq9hg8rdsg4ep0lvvhdg69xw9v4l0asqj6xzkh
+  - &hestia age1anhvzwlgkpe985jkk863v0p8tv6rrweeg7k6k6kfwz708j3tte5suvphdn
 creation_rules:
   - path_regex: hosts/horus/secrets.yaml$
     key_groups:
     - age:
       - *horus
+  - path_regex: hosts/hestia/secrets.yaml$
+    key_groups:
+    - age:
+      - *hestia
   - path_regex: hosts/common/secrets.yaml$
     key_groups:
     - age:
       - *horus
+      - *hestia
