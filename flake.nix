@@ -34,7 +34,7 @@
     nixosConfigurations = {
       horus = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = inputs;
+        specialArgs = inputs // self.outputs;
         modules = [
           ./hosts/horus
         ];
