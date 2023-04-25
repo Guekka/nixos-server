@@ -8,6 +8,7 @@
 }: {
   imports = [
     ./acme.nix
+    ./mosh.nix
     ./nix.nix
     ./nixpkgs.nix
     ./openssh.nix
