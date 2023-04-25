@@ -51,6 +51,7 @@
   boot.kernel.sysctl."net.ipv6.conf.all.forwarding" = 1;
 
   sops.secrets.tailscale_key = {
+    restartUnits = ["tailscale-autoconnect.service"];
     sopsFile = ../secrets.yaml;
   };
 
