@@ -9,6 +9,7 @@
     ../common/optional/gnome.nix
     ../common/optional/impermanence.nix
     ../common/optional/pipewire.nix
+    ./amdgpu-fix-sleep.nix
     ./hardware-configuration.nix
   ];
 
