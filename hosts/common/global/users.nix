@@ -1,4 +1,8 @@
-{pkgs}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   users = {
     mutableUsers = false;
     users = {
@@ -11,4 +15,6 @@
       };
     };
   };
+
+  home-manager.users.edgar = import home/${config.networking.hostName}.nix;
 }
