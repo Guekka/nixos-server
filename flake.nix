@@ -10,6 +10,11 @@
       inputs.nixpkgs-stable.follows = "nixpkgs";
     };
 
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     hardware.url = "github:nixos/nixos-hardware";
   };
 
@@ -17,6 +22,7 @@
   outputs = {
     self,
     nixpkgs,
+    home-manager,
     ...
   } @ inputs: {
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
@@ -45,6 +51,16 @@
         specialArgs = inputs // self.outputs;
         modules = [
           ./hosts/hestia
+        ];
+      };
+    };
+
+    homeConfigurations = {
+      "edgar@horus" = home-manager.lib.homeManagerConfiguration {
+        system = "x86_64-linux";
+        extraSpecialArgs = inputs // self.outputs;
+        modules = [
+          ./home/edgar/horus.nix
         ];
       };
     };

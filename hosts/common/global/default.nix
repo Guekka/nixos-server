@@ -8,6 +8,7 @@
 }: {
   imports = [
     ./acme.nix
+    ./home-manager.nix
     ./mosh.nix
     ./nix.nix
     ./nixpkgs.nix
