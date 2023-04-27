@@ -65,7 +65,7 @@
 
     homeConfigurations = {
       "edgar@horus" = home-manager.lib.homeManagerConfiguration {
-        system = "x86_64-linux";
+	pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = inputs // self.outputs;
         modules = [
           ./home/edgar/horus.nix
@@ -73,7 +73,7 @@
       };
 
       "edgar@deimos" = home-manager.lib.homeManagerConfiguration {
-        system = "x86_64-linux";
+	pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = inputs // self.outputs;
         modules = [
           ./home/edgar/deimos.nix
