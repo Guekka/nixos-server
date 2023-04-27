@@ -9,6 +9,7 @@
     ./direnv.nix
     ./exa.nix
     ./firefox.nix
+    ./fish.nix
     ./fzf.nix
     ./git.nix
     ./helix.nix
