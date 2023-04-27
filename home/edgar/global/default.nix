@@ -47,6 +47,7 @@
     keepassxc
     kondo
     libsForQt5.ark
+    lutris
     maven
     obsidian
     python3
