@@ -1,3 +1,6 @@
 {
-  imports = [./global];
+  imports = [
+    ./global
+    ./optional/gnome.nix
+  ];
 }
