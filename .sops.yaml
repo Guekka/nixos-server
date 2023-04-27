@@ -1,7 +1,12 @@
 keys:
+  - &deimos age12w7dnjwattke7lq37y68s6q98kxavf4lflczptpd0jvmusdwugjqmhnu59
   - &horus age1dt24qetqhy2ng53fyj69yq9hg8rdsg4ep0lvvhdg69xw9v4l0asqj6xzkh
   - &hestia age1anhvzwlgkpe985jkk863v0p8tv6rrweeg7k6k6kfwz708j3tte5suvphdn
 creation_rules:
+  - path_regex: hosts/deimos/secrets.yaml$
+    key_groups:
+    - age:
+      - *deimos
   - path_regex: hosts/horus/secrets.yaml$
     key_groups:
     - age:
@@ -13,5 +18,6 @@ creation_rules:
   - path_regex: hosts/common/secrets.yaml$
     key_groups:
     - age:
+      - *deimos
       - *horus
       - *hestia
