@@ -2,6 +2,7 @@
   services = {
     xserver = {
       enable = true;
+      layout = "fr";
       desktopManager.gnome = {
         enable = true;
       };
