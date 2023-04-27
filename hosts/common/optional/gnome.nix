@@ -1,4 +1,4 @@
-{
+{pkgs, ...}: {
   services = {
     xserver = {
       enable = true;
@@ -10,4 +10,10 @@
       };
     };
   };
+
+  environment.systemPackages = with pkgs; [
+    unstable.pop-launcher # not yet stabilized
+    gnomeExtensions.pop-shell
+    gnomeExtensions.pop-launcher-super-key
+  ];
 }
