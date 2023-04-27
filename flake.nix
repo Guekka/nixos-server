@@ -53,6 +53,14 @@
           ./hosts/hestia
         ];
       };
+
+      deimos = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = inputs // self.outputs;
+        modules = [
+          ./hosts/deimos
+        ];
+      };
     };
 
     homeConfigurations = {
@@ -61,6 +69,14 @@
         extraSpecialArgs = inputs // self.outputs;
         modules = [
           ./home/edgar/horus.nix
+        ];
+      };
+
+      "edgar@deimos" = home-manager.lib.homeManagerConfiguration {
+        system = "x86_64-linux";
+        extraSpecialArgs = inputs // self.outputs;
+        modules = [
+          ./home/edgar/deimos.nix
         ];
       };
     };
