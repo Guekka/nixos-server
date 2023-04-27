@@ -19,4 +19,9 @@
     ./tailscale.nix
     ./users.nix
   ];
+
+  # azerty
+  console = {
+    keyMap = "fr";
+  };
 }
