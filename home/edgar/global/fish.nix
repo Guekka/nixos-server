@@ -12,8 +12,7 @@
           if [ "$argv[1]" = "dl" ]
             set argv[1] "$HOME/Downloads"
           end
-          set files (fd . $argv -tf -x stat -c '%X %n')
-          echo (files | sort -nr | head -n 1 | cut -f 2- -d ' ')
+          echo (fd . $argv -tf -x stat -c '%X %n' | sort -nr | head -n 1 | cut -f 2- -d ' ')
         '';
       };
     };
