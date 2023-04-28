@@ -27,6 +27,24 @@
   } @ inputs: let
     forEachSystem = nixpkgs.lib.genAttrs ["x86_64-linux"];
     forEachPkgs = f: forEachSystem (sys: f nixpkgs.legacyPackages.${sys});
+
+    mkNixos = host:
+      nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = inputs // self.outputs;
+        modules = [
+          ./hosts/${host}
+        ];
+      };
+
+    mkHome = host:
+      home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        extraSpecialArgs = inputs // self.outputs;
+        modules = [
+          ./home/edgar/${host}.nix
+        ];
+      };
   in {
     formatter = forEachPkgs (pkgs: pkgs.alejandra);
 
@@ -35,47 +53,15 @@
     overlays = import ./overlays {inherit (inputs) nixpkgs-unstable packages;};
 
     nixosConfigurations = {
-      horus = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = inputs // self.outputs;
-        modules = [
-          ./hosts/horus
-        ];
-      };
-
-      hestia = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = inputs // self.outputs;
-        modules = [
-          ./hosts/hestia
-        ];
-      };
-
-      deimos = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = inputs // self.outputs;
-        modules = [
-          ./hosts/deimos
-        ];
-      };
+      horus = mkNixos "horus";
+      hestia = mkNixos "hestia";
+      deimos = mkNixos "deimos";
     };
 
     homeConfigurations = {
-      "edgar@horus" = home-manager.lib.homeManagerConfiguration {
-	pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        extraSpecialArgs = inputs // self.outputs;
-        modules = [
-          ./home/edgar/horus.nix
-        ];
-      };
-
-      "edgar@deimos" = home-manager.lib.homeManagerConfiguration {
-	pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        extraSpecialArgs = inputs // self.outputs;
-        modules = [
-          ./home/edgar/deimos.nix
-        ];
-      };
+      "edgar@horus" = mkHome "horus";
+      "edgar@hestia" = mkHome "hestia";
+      "edgar@deimos" = mkHome "deimos";
     };
   };
 }
