@@ -31,7 +31,7 @@
     mkNixos = host:
       nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = inputs // self.outputs;
+        specialArgs = {inherit (self) inputs outputs;};
         modules = [
           ./hosts/${host}
         ];
@@ -40,7 +40,7 @@
     mkHome = host:
       home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        extraSpecialArgs = inputs // self.outputs;
+        extraSpecialArgs = {inherit (self) inputs outputs;};
         modules = [
           ./home/edgar/${host}.nix
         ];
