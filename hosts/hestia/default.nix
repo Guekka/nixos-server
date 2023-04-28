@@ -15,7 +15,10 @@
 
   networking = {
     hostName = "hestia";
-    interfaces.enp42s0.useDHCP = true;
+    interfaces.enp42s0 = {
+      useDHCP = true;
+      wakeOnLan.enable = true;
+    };
   };
 
   time.timeZone = "Europe/Amsterdam";
