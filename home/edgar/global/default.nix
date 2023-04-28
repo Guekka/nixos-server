@@ -55,6 +55,7 @@
     p7zip
     qbittorrent
     qrcp
+    ripgrep
     vlc
     vscode
     wezterm
