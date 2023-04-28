@@ -13,6 +13,7 @@
     ./nix.nix
     ./nixpkgs.nix
     ./ntfs.nix
+    ./oomd.nix
     ./openssh.nix
     ./sops.nix
     ./systemd-boot.nix
