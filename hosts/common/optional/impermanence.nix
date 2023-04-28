@@ -2,14 +2,14 @@
   config,
   lib,
   pkgs,
-  impermanence,
+  inputs,
   ...
 }: let
   hostname = config.networking.hostName;
   disk = "/dev/disk/by-label/${hostname}";
 in {
   imports = [
-    impermanence.nixosModule
+    inputs.impermanence.nixosModule
   ];
 
   # We're making the assumption the disk has a label
