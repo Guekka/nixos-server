@@ -1,4 +1,4 @@
-{lib, ...} @ inputs: let
+{inputs, lib, ...}: let
   flakes = lib.filterAttrs (name: value: value ? outputs) inputs;
   nixRegistry = lib.mapAttrs (name: v: {flake = v;}) flakes;
 in {

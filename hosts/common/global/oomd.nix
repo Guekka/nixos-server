@@ -4,7 +4,7 @@
     enableUserServices = true;
     enableRootSlice = true;
     extraConfig = {
-      DefaultMemoryPressureDurationSec="10s";
+      DefaultMemoryPressureDurationSec = "10s";
     };
   };
 }

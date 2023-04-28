@@ -1,11 +1,10 @@
 {
-  hardware,
-  nixpkgs,
+  inputs,
   ...
 }: {
   imports = [
-    hardware.nixosModules.lenovo-ideapad-15arh05
-    nixpkgs.nixosModules.notDetected
+    inputs.hardware.nixosModules.lenovo-ideapad-15arh05
+    inputs.nixpkgs.nixosModules.notDetected
   ];
 
   boot.initrd.availableKernelModules = ["nvme" "xhci_pci" "ahci"];

@@ -1,6 +1,6 @@
-{overlays, ...}: {
+{outputs, ...}: {
   nixpkgs = {
-    overlays = builtins.attrValues overlays;
+    overlays = builtins.attrValues outputs.overlays;
     config = {
       allowUnfree = true;
     };
