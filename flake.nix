@@ -24,19 +24,16 @@
     nixpkgs,
     home-manager,
     ...
-  } @ inputs: {
-    formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
+  } @ inputs: let
+    forEachSystem = nixpkgs.lib.genAttrs ["x86_64-linux"];
+    forEachPkgs = f: forEachSystem (sys: f nixpkgs.legacyPackages.${sys});
+  in {
+    formatter = forEachPkgs (pkgs: pkgs.alejandra);
 
-    overlays = let
-      unstable-packages = final: _prev: {
-        unstable = import inputs.nixpkgs-unstable {
-          system = final.system;
-          config.allowUnfree = true;
-        };
-      };
-    in [
-      unstable-packages
-    ];
+    packages = forEachPkgs (pkgs: import ./pkgs {inherit pkgs;});
+
+    overlays = import ./overlays {inherit (inputs) nixpkgs-unstable packages;};
+
     nixosConfigurations = {
       horus = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
