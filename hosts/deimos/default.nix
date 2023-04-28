@@ -7,6 +7,7 @@
     ../common/global
     ../common/optional/gnome.nix
     ../common/optional/impermanence.nix
+    ../common/optional/noisetorch.nix
     ../common/optional/pipewire.nix
     ./hardware-configuration.nix
   ];
