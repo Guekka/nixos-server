@@ -1,6 +1,10 @@
-{inputs, lib, ...}: let
-  flakes = lib.filterAttrs (name: value: value ? outputs) inputs;
-  nixRegistry = lib.mapAttrs (name: v: {flake = v;}) flakes;
+{
+  inputs,
+  lib,
+  ...
+}: let
+  flakes = lib.filterAttrs (_name: value: value ? outputs) inputs;
+  nixRegistry = lib.mapAttrs (_name: v: {flake = v;}) flakes;
 in {
   nix = {
     settings = {
