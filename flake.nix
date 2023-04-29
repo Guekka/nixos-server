@@ -16,11 +16,17 @@
     };
 
     hardware.url = "github:nixos/nixos-hardware";
+
+    devenv = {
+      url = "github:cachix/devenv";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   # what will be produced (i.e. the build)
   outputs = {
     self,
+    devenv,
     nixpkgs,
     home-manager,
     ...
@@ -51,6 +57,8 @@
     packages = forEachPkgs (pkgs: import ./pkgs {inherit pkgs;});
 
     overlays = import ./overlays {inherit (inputs) nixpkgs-unstable packages;};
+
+    devShells = forEachPkgs (pkgs: import ./shell.nix {inherit pkgs devenv inputs;});
 
     nixosConfigurations = {
       horus = mkNixos "horus";
