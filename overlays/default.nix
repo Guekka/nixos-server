@@ -1,12 +1,8 @@
-{
-  nixpkgs-unstable,
-  packages,
-  ...
-}: {
+{nixpkgs-unstable, ...}: {
   # my packages
-  additions = final: prev: import ../pkgs {pkgs = final;};
+  additions = final: _prev: import ../pkgs {pkgs = final;};
 
-  modifications = final: prev: {
+  modifications = final: _prev: {
     unstable = import nixpkgs-unstable {
       system = final.system;
       config.allowUnfree = true;

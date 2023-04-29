@@ -1,7 +1,4 @@
-{
-  inputs,
-  ...
-}: {
+{inputs, ...}: {
   imports = [
     inputs.hardware.nixosModules.lenovo-ideapad-15arh05
     inputs.nixpkgs.nixosModules.notDetected
