@@ -22,6 +22,9 @@ in {
           (types.mkTuple ["xkb" "fr+oss_latin9"])
         ];
       };
+      "org/gnome/desktop/wm/keybindings" = {
+        minimize = [ "<Super>c" ];
+      };
       "org/gnome/desktop/wm/preferences" = {
         button-layout = "appmenu:minimize,maximize,close";
       };
