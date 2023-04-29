@@ -14,6 +14,7 @@
     ./git.nix
     ./helix.nix
     ./jq.nix
+    ./kitty.nix
     ./nix-index.nix
     ./nvim.nix
     ./starship.nix
