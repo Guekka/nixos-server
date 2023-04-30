@@ -23,7 +23,7 @@ in {
         ];
       };
       "org/gnome/desktop/wm/keybindings" = {
-        minimize = [ "<Super>c" ];
+        minimize = ["<Super>c"];
       };
       "org/gnome/desktop/wm/preferences" = {
         button-layout = "appmenu:minimize,maximize,close";
