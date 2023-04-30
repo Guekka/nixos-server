@@ -5,7 +5,6 @@
     ../common/optional/impermanence.nix
     ../common/optional/noisetorch.nix
     ../common/optional/pipewire.nix
-    ../common/optional/wireless.nix
     ./hardware-configuration.nix
   ];
 
