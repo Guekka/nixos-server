@@ -5,6 +5,7 @@
     ../common/optional/impermanence.nix
     ../common/optional/noisetorch.nix
     ../common/optional/pipewire.nix
+    ../common/optional/steam.nix
     ./amdgpu-fix-sleep.nix
     ./hardware-configuration.nix
   ];
