@@ -1,4 +1,8 @@
-{nixpkgs-unstable, ...}: {
+{
+  nixpkgs-unstable,
+  jetbrains-updater,
+  ...
+}: {
   # my packages
   additions = final: _prev: import ../pkgs {pkgs = final;};
 
@@ -6,6 +10,7 @@
     unstable = import nixpkgs-unstable {
       system = final.system;
       config.allowUnfree = true;
+      overlays = [jetbrains-updater.overlay];
     };
   };
 }
