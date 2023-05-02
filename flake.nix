@@ -21,6 +21,11 @@
       url = "github:cachix/devenv";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    jetbrains-updater = {
+      url = "gitlab:genericnerdyusername/jetbrains-updater";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
   };
 
   # what will be produced (i.e. the build)
@@ -56,7 +61,7 @@
 
     packages = forEachPkgs (pkgs: import ./pkgs {inherit pkgs;});
 
-    overlays = import ./overlays {inherit (inputs) nixpkgs-unstable packages;};
+    overlays = import ./overlays {inherit (inputs) nixpkgs-unstable packages jetbrains-updater;};
 
     devShells = forEachPkgs (pkgs: import ./shell.nix {inherit pkgs devenv inputs;});
 
