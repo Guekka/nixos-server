@@ -26,6 +26,8 @@
       url = "gitlab:genericnerdyusername/jetbrains-updater";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+
+    nix-colors.url = "github:misterio77/nix-colors";
   };
 
   # what will be produced (i.e. the build)
