@@ -4,6 +4,7 @@
     ../common/optional/gnome.nix
     ../common/optional/impermanence.nix
     ../common/optional/ledger.nix
+    ../common/optional/nextcloud-webdav.nix
     ../common/optional/noisetorch.nix
     ../common/optional/pipewire.nix
     ../common/optional/wireless.nix
