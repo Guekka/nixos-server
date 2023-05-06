@@ -3,7 +3,7 @@
     enable = true;
     extraConfig = ''
       return {
-        color_scheme = "Solarized Light (base16)",
+        color_scheme = 'Solarized (light) (terminal.sexy)',
       }
     '';
   };
