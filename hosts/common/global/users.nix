@@ -18,4 +18,18 @@
   };
 
   home-manager.users.edgar = import home/${config.networking.hostName}.nix;
+
+  # Home secrets. I guess the proper way would be to use the home manager module
+  # But it seems too tedious
+  sops.secrets.atuin_key = {
+    sopsFile = ../secrets.yaml;
+    path = "/home/edgar/secrets/atuin_key";
+    owner = "edgar";
+  };
+
+  sops.secrets.atuin_session = {
+    sopsFile = ../secrets.yaml;
+    path = "/home/edgar/secrets/atuin_session";
+    owner = "edgar";
+  };
 }
