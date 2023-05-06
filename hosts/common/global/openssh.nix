@@ -1,12 +1,14 @@
 {
   services.openssh = {
     enable = true;
-    passwordAuthentication = false;
     allowSFTP = true;
-    kbdInteractiveAuthentication = false;
+    settings = {
+      KbdInteractiveAuthentication = false;
+      PasswordAuthentication = false;
+      X11Forwarding = false;
+    };
     extraConfig = ''
       AllowTcpForwarding yes
-      X11Forwarding no
       AllowAgentForwarding no
       AllowStreamLocalForwarding no
       AuthenticationMethods publickey

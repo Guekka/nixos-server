@@ -58,7 +58,7 @@
     qrcp
     ripgrep
     vlc
-    unstable.vscode
+    vscode
     wezterm
     wireguard-tools
     wget

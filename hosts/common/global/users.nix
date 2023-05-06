@@ -3,6 +3,7 @@
   config,
   ...
 }: {
+  programs.fish.enable = true;
   users = {
     mutableUsers = false;
     users = {
