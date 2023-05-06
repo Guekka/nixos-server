@@ -40,7 +40,8 @@
     gnomeExtensions.appindicator # tray icons
     gnomeExtensions.pop-shell
     gnomeExtensions.pop-launcher-super-key
-    unstable.pop-launcher # not yet stabilized
+
+    pop-launcher
   ];
 
   # tray icons

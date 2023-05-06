@@ -1,17 +1,17 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-22.11";
 
     impermanence.url = "github:nix-community/impermanence";
     sops-nix = {
       url = "github:mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.nixpkgs-stable.follows = "nixpkgs";
+      inputs.nixpkgs-stable.follows = "nixpkgs-stable";
     };
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-22.11";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -24,7 +24,7 @@
 
     jetbrains-updater = {
       url = "gitlab:genericnerdyusername/jetbrains-updater";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
@@ -61,7 +61,7 @@
 
     packages = forEachPkgs (pkgs: import ./pkgs {inherit pkgs;});
 
-    overlays = import ./overlays {inherit (inputs) nixpkgs-unstable packages jetbrains-updater;};
+    overlays = import ./overlays {inherit inputs;};
 
     devShells = forEachPkgs (pkgs: import ./shell.nix {inherit pkgs devenv inputs;});
 
