@@ -44,6 +44,7 @@
     duf
     du-dust
     fd
+    ffmpeg
     gcc
     gnumake
     hexyl
