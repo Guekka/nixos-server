@@ -59,6 +59,7 @@
     qbittorrent
     qrcp
     ripgrep
+    rnr
     vlc
     vscode
     wezterm
