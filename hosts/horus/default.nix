@@ -5,10 +5,10 @@
   imports = [
     ../common/global
     ../common/optional/impermanence.nix
+    ../common/optional/podman.nix
     ./hardware-configuration.nix
     ./nextcloud.nix
     ./nginx.nix
-    ./podman.nix
     ./postgresql.nix
     ./users.nix
     ./web-server.nix

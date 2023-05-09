@@ -7,6 +7,7 @@
     ../common/optional/nextcloud-webdav.nix
     ../common/optional/noisetorch.nix
     ../common/optional/pipewire.nix
+    ../common/optional/podman.nix
     ../common/optional/wireless.nix
     ./hardware-configuration.nix
   ];
