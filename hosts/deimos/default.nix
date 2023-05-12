@@ -17,6 +17,12 @@
     interfaces.eno1.useDHCP = true;
   };
 
+  services.tailscaleAutoconnect = {
+    advertiseExitNode = false;
+    exitNode = "horus";
+    exitNodeAllowLanAccess = true;
+  };
+
   time.timeZone = "Europe/Amsterdam";
 
   # Read the doc before updating
