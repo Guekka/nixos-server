@@ -4,13 +4,15 @@
     impermanence.url = "github:nix-community/impermanence";
     sops-nix = {
       url = "github:mic92/sops-nix";
-      inputs.nixpkgs.follows ="nixpkgs";
-      inputs.nixpkgs-stable.follows ="nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs-stable.follows = "nixpkgs";
     };
   };
 
   # what will be produced (i.e. the build)
-  outputs = { nixpkgs, ... }@inputs: {
+  outputs = {nixpkgs, ...} @ inputs: {
+    nixosModules = import ./modules/nixos;
+
     nixosConfigurations = {
       server = nixpkgs.lib.nixosSystem {
         packages = nixpkgs.legacyPackages.x86_64-linux;
