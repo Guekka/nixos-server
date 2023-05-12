@@ -16,5 +16,13 @@
 
   hardware.cpu.amd.updateMicrocode = true;
 
+  hardware.nvidia = {
+    powerManagement = {
+      enable = true;
+      finegrained = true;
+    };
+    prime.reverseSync.enable = true;
+  };
+
   nixpkgs.hostPlatform = "x86_64-linux";
 }
