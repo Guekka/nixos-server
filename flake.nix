@@ -61,7 +61,7 @@
 
     packages = forEachPkgs (pkgs: import ./pkgs {inherit pkgs;});
 
-    nixosModules = import ./modules/nixos {inherit inputs;};
+    nixosModules = import ./modules/nixos;
 
     overlays = import ./overlays {inherit inputs;};
 
