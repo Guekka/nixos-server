@@ -20,6 +20,12 @@
     };
   };
 
+  services.tailscaleAutoconnect = {
+    advertiseExitNode = false;
+    exitNode = "horus";
+    exitNodeAllowLanAccess = true;
+  };
+
   time.timeZone = "Europe/Amsterdam";
 
   # Read the doc before updating
