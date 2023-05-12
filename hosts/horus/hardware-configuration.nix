@@ -1,4 +1,9 @@
-{pkgs,inputs,modulesPath, ...}: {
+{
+  pkgs,
+  inputs,
+  modulesPath,
+  ...
+}: {
   imports = [
     (modulesPath + "/profiles/qemu-guest.nix")
     inputs.hardware.nixosModules.common-gpu-amd
@@ -19,12 +24,12 @@
   hardware.cpu.amd.updateMicrocode = true;
 
   hardware.enableAllFirmware = true;
-    hardware.opengl = {
+  hardware.opengl = {
     driSupport = true;
     enable = true;
     extraPackages = with pkgs; [
       intel-media-driver # LIBVA_DRIVER_NAME=iHD
-      vaapiIntel         # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
+      vaapiIntel # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
       vaapiVdpau
       libvdpau-va-gl
       amdvlk
