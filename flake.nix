@@ -61,6 +61,8 @@
 
     packages = forEachPkgs (pkgs: import ./pkgs {inherit pkgs;});
 
+    nixosModules = import ./modules/nixos {inherit inputs;};
+
     overlays = import ./overlays {inherit inputs;};
 
     devShells = forEachPkgs (pkgs: import ./shell.nix {inherit pkgs devenv inputs;});
