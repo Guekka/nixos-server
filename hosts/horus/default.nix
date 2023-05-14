@@ -8,6 +8,7 @@
     ../common/optional/podman.nix
     ./hardware-configuration.nix
     ./nextcloud.nix
+    ./nfs.nix
     ./nginx.nix
     ./postgresql.nix
     ./users.nix
