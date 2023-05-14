@@ -11,9 +11,15 @@
 
   boot.initrd.availableKernelModules = ["uhci_hcd" "ehci_pci" "ahci" "sd_mod" "sr_mod"];
 
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/9D4E-2BFF";
-    fsType = "vfat";
+  fileSystems = {
+    "/shared" = {
+      device = "/dev/disk/by-id/scsi-0QEMU_QEMU_HARDDISK_drive-scsi2";
+      fsType = "btrfs";
+    };
+    "/boot" = {
+      device = "/dev/disk/by-uuid/9D4E-2BFF";
+      fsType = "vfat";
+    };
   };
 
   swapDevices = [
