@@ -6,6 +6,7 @@
     ./acme.nix
     ./home-manager.nix
     ./mosh.nix
+    ./nfs.nix
     ./nix.nix
     ./nixpkgs.nix
     ./ntfs.nix
