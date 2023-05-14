@@ -4,7 +4,7 @@
   services.rpcbind.enable = true;
 
   networking.firewall = let
-    ports = [4000 4001 4002];
+    ports = [2049 4000 4001 4002];
   in {
     allowedTCPPorts = ports;
     allowedUDPPorts = ports;
