@@ -1,3 +1,3 @@
-{pkgs, ...}: {
-  activitywatch = pkgs.callPackage ./activitywatch {};
+# deadnix: skip
+{pkgs}: {
 }
