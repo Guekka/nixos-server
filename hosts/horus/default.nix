@@ -7,6 +7,7 @@
     ../common/optional/impermanence.nix
     ../common/optional/podman.nix
     ./hardware-configuration.nix
+    ./navidrome.nix
     ./nextcloud.nix
     ./nfs.nix
     ./nginx.nix
