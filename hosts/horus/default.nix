@@ -11,6 +11,7 @@
     ./nextcloud.nix
     ./nfs.nix
     ./nginx.nix
+    ./plausible.nix
     ./postgresql.nix
     ./users.nix
     ./web-server.nix
