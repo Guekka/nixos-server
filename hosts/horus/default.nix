@@ -13,6 +13,7 @@
     ./nfs.nix
     ./nginx.nix
     ./plausible.nix
+    ./photoprism.nix
     ./postgresql.nix
     ./users.nix
     ./web-server.nix
