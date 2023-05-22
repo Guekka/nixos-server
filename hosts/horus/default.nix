@@ -15,6 +15,7 @@
     ./plausible.nix
     ./photoprism.nix
     ./postgresql.nix
+    ./qbittorrent.nix
     ./users.nix
     ./web-server.nix
   ];
