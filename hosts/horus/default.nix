@@ -6,6 +6,10 @@
     ../common/global
     ../common/optional/impermanence.nix
     ../common/optional/podman.nix
+    ./arr/lidarr.nix
+    ./arr/radarr.nix
+    ./arr/prowlarr.nix
+    ./arr/sonarr.nix
     ./hardware-configuration.nix
     ./microbin.nix
     ./navidrome.nix
