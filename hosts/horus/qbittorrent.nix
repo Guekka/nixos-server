@@ -5,7 +5,7 @@ in {
   virtualisation.oci-containers.containers.qbittorrent = {
     image = "dyonr/qbittorrentvpn";
     ports = ["127.0.0.1:8080:8080"];
-    extraOptions = ["--privileged"];
+    extraOptions = ["--cap-add=NET_ADMIN"];
     volumes = [
       "/etc/wireguard/:/config/wireguard/"
       "/var/lib/qbittorrent:/config"
@@ -18,6 +18,7 @@ in {
       ENABLE_SSL = "no";
       PUID = toString uid;
       PGID = toString gid;
+      RESTART_CONTAINER = "no";
     };
   };
 
