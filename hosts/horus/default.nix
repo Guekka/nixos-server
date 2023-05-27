@@ -6,6 +6,7 @@
     ../common/global
     ../common/optional/impermanence.nix
     ../common/optional/podman.nix
+    ./arr/bazarr.nix
     ./arr/lidarr.nix
     ./arr/radarr.nix
     ./arr/prowlarr.nix
