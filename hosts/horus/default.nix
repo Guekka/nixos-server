@@ -18,6 +18,7 @@
     ./nfs.nix
     ./nginx.nix
     ./plausible.nix
+    ./plex.nix
     ./photoprism.nix
     ./postgresql.nix
     ./qbittorrent.nix
