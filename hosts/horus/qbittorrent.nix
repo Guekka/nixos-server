@@ -4,7 +4,7 @@ let
 in {
   virtualisation.oci-containers.containers.qbittorrent = {
     image = "dyonr/qbittorrentvpn";
-    ports = ["127.0.0.1:8080:8080"];
+    ports = ["127.0.0.1:8081:8080"];
     extraOptions = ["--cap-add=NET_ADMIN"];
     volumes = [
       "/etc/wireguard/:/config/wireguard/"
@@ -26,7 +26,7 @@ in {
     enableACME = true;
     forceSSL = true;
     locations."^~ /" = {
-      proxyPass = "http://localhost:8080";
+      proxyPass = "http://localhost:8081";
     };
   };
 
