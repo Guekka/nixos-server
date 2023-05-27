@@ -23,6 +23,7 @@
     ./postgresql.nix
     ./qbittorrent.nix
     ./users.nix
+    ./uptime-kuma.nix
     ./web-server.nix
   ];
 
