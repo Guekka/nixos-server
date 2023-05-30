@@ -2,8 +2,8 @@
   systemd = {
     mounts = [
       {
-        type = "nfs";
-        what = "192.168.1.58:/shared";
+        type = "nfs4";
+        what = "horus:/shared";
         where = "/shared";
       }
     ];
