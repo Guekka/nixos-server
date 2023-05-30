@@ -10,6 +10,10 @@
     sopsFile = ./secrets.yaml;
   };
 
+  systemd.services.photoprism.environment = {
+    PHOTOPRISM_SPONSOR = "true";
+  };
+
   services.nginx.virtualHosts."photo.bizel.fr" = {
     enableACME = true;
     forceSSL = true;
