@@ -25,8 +25,6 @@
 
       mkdir = "mkdir -p";
       which = "type -a"; # https://unix.stackexchange.com/a/85250
-
-      l = "exa -lag --git --header --icons";
     };
   };
 }
