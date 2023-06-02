@@ -13,6 +13,7 @@
     ./arr/prowlarr.nix
     ./arr/sonarr.nix
     ./calibre-server.nix
+    ./grocy.nix
     ./hardware-configuration.nix
     ./microbin.nix
     ./navidrome.nix
@@ -43,4 +44,5 @@
 
   # Read the doc before updating
   system.stateVersion = "22.11";
+  nixpkgs.config.allowBroken = true;
 }
