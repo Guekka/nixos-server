@@ -7,6 +7,7 @@
     ../common/optional/nfs-client.nix
     ../common/optional/noisetorch.nix
     ../common/optional/pipewire.nix
+    ../common/optional/podman.nix
     ../common/optional/steam.nix
     ./amdgpu-fix-sleep.nix
     ./hardware-configuration.nix
