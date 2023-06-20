@@ -1,8 +1,4 @@
-{
-  lib,
-  pkgs,
-  ...
-}: let
+{lib, ...}: let
   types = lib.hm.gvariant;
 in {
   dconf = {
@@ -38,14 +34,6 @@ in {
         gap-inner = types.mkUint32 0;
         active-hint-border-radius = 0;
       };
-    };
-  };
-
-  gtk = {
-    enable = true;
-    theme = {
-      name = "SolArc";
-      package = pkgs.solarc-gtk-theme;
     };
   };
 }
