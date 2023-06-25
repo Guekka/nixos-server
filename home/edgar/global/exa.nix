@@ -4,7 +4,8 @@
     enableAliases = true;
     git = true;
     extraOptions = [
-      "-lag"
+      "-lg"
+      "--all"
       "--header"
       "--icons"
       "--group-directories-first"
