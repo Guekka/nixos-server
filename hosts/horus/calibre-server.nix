@@ -11,7 +11,7 @@ in {
       libraries = [library];
     };
     calibre-web = {
-      # TODO enable = true; build failure
+      enable = true;
       options = {
         enableBookUploading = true;
         enableBookConversion = true;
@@ -24,7 +24,7 @@ in {
     enableACME = true;
     forceSSL = true;
     locations."^~ /" = {
-      proxyPass = "http://127.0.0.1:8080"; # TODO change to 8083 once web enabled
+      proxyPass = "http://[::1]:8083";
     };
   };
 
