@@ -15,6 +15,7 @@
     ./calibre-server.nix
     ./grocy.nix
     ./hardware-configuration.nix
+    ./mattermost.nix
     ./microbin.nix
     ./navidrome.nix
     ./nextcloud.nix
