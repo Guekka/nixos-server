@@ -18,6 +18,7 @@
     ./mattermost.nix
     ./microbin.nix
     ./navidrome.nix
+    ./netdata.nix
     ./nextcloud.nix
     ./nfs.nix
     ./nginx.nix
