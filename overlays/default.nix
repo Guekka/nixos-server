@@ -11,6 +11,12 @@
     keepassxc = prev.keepassxc.overrideAttrs (_old: {
       postFixup = ''wrapProgram $out/bin/keepassxc --set QT_QPA_PLATFORM wayland'';
     });
+    steam = prev.steam.override {
+      extraPkgs = pkgs:
+        with pkgs; [
+          dotnet-runtime
+        ];
+    };
   };
 
   jetbrains = inputs.jetbrains-updater.overlay;
