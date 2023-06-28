@@ -73,12 +73,31 @@
     };
   };
 
+  services.tautulli = {
+    enable = true;
+    port = 8907;
+  };
+
+  services.nginx.virtualHosts."tautulli.bizel.fr" = {
+    enableACME = true;
+    forceSSL = true;
+
+    locations."^~ /" = {
+      proxyPass = "http://127.0.0.1:8907";
+    };
+  };
+
   environment.persistence."/persist" = {
     directories = [
       {
         directory = "/var/lib/plex";
         user = "plex";
         group = "plex";
+        mode = "0755";
+      }
+      {
+        directory = "/var/lib/plexpy";
+        user = "plexpy";
         mode = "0755";
       }
     ];
