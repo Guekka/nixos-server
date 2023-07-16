@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   inputs,
   ...
 }: let
@@ -48,25 +47,45 @@ in {
   };
 
   # source: https://mt-caret.github.io/blog/posts/2020-06-29-optin-state.html
-  boot.initrd.postDeviceCommands = pkgs.lib.mkBefore ''
-    mkdir -p /mnt
+  # and: https://discourse.nixos.org/t/impermanence-vs-systemd-initrd-w-tpm-unlocking/25167/3
+  boot.initrd.systemd.enable = lib.mkDefault true;
+  boot.initrd.systemd.services.rollback = {
+    wantedBy = [
+      "initrd.target"
+    ];
+    requires = [
+      # wait for device to be found
+      "dev-disk-by\\x2dlabel-${hostname}.device"
+    ];
+    after = [
+      "dev-disk-by\\x2dlabel-${hostname}.device"
+      "systemd-cryptsetup@enc.service"
+    ];
+    before = [
+      "sysroot.mount"
+    ];
+    unitConfig.DefaultDependencies = "no";
+    serviceConfig.Type = "oneshot";
+    script = ''
+      mkdir -p /mnt
 
-    mount -o subvol=/ ${disk} /mnt
+      mount -o subvol=/ ${disk} /mnt
 
-    btrfs subvolume list -o /mnt/root |
-    cut -f9 -d' ' |
-    while read subvolume; do
-      echo "deleting /$subvolume subvolume..."
-      btrfs subvolume delete "/mnt/$subvolume"
-    done &&
-    echo "deleting /root subvolume..." &&
-    btrfs subvolume delete /mnt/root
+      btrfs subvolume list -o /mnt/root |
+      cut -f9 -d' ' |
+      while read subvolume; do
+        echo "deleting /$subvolume subvolume..."
+        btrfs subvolume delete "/mnt/$subvolume"
+      done &&
+      echo "deleting /root subvolume..." &&
+      btrfs subvolume delete /mnt/root
 
-    echo "restoring blank /root subvolume..."
-    btrfs subvolume snapshot /mnt/root-blank /mnt/root
+      echo "restoring blank /root subvolume..."
+      btrfs subvolume snapshot /mnt/root-blank /mnt/root
 
-    umount /mnt
-  '';
+      umount /mnt
+    '';
+  };
 
   # always persist these
   environment.persistence."/persist" = {
