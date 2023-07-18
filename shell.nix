@@ -7,7 +7,7 @@
     inherit pkgs inputs;
     modules = [
       {
-        packages = with pkgs; [nix home-manager git sops];
+        packages = with pkgs; [home-manager git sops];
         pre-commit.hooks = {
           shellcheck.enable = true; # shell static analysis
           alejandra.enable = true; # nix format
