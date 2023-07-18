@@ -35,6 +35,7 @@
   home.packages = with pkgs; [
     alejandra
     comma
+    csvlens
     duf
     du-dust
     fd
