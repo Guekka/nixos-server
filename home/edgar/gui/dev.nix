@@ -4,5 +4,7 @@ in {
   home.packages = with pkgs.jetbrains; [
     (pluginify clion)
     (pluginify idea-ultimate)
+
+    pkgs.qtcreator
   ];
 }
