@@ -32,7 +32,6 @@
       yelp # Help view
       gnome-contacts
       gnome-initial-setup
-
     ]);
 
   environment.systemPackages = with pkgs; [

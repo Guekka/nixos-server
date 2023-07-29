@@ -7,6 +7,7 @@
     ./image-sieve.nix
     ./kitty.nix
     ./ledger.nix
+    ./nemo.nix
     ./wezterm.nix
   ];
 
@@ -14,7 +15,6 @@
     anytype
     discord
     keepassxc
-    nemo-with-extensions
     obsidian
     qbittorrent
     vlc
