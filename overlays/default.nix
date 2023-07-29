@@ -18,6 +18,4 @@
         ];
     };
   };
-
-  jetbrains = inputs.jetbrains-updater.overlay;
 }
