@@ -19,5 +19,6 @@
     qbittorrent
     vlc
     vscode
+    wl-clipboard
   ];
 }
