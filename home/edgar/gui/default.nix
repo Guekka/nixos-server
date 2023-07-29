@@ -8,7 +8,6 @@
     ./kitty.nix
     ./ledger.nix
     ./nemo.nix
-    ./wezterm.nix
   ];
 
   home.packages = with pkgs; [
