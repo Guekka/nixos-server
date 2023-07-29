@@ -1,10 +1,10 @@
 {pkgs, ...}: {
   imports = [
     ./activitywatch.nix
+    ./dev.nix
     ./firefox.nix
     ./gnome.nix
     ./image-sieve.nix
-    ./jetbrains.nix
     ./kitty.nix
     ./ledger.nix
     ./wezterm.nix
