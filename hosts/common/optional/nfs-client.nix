@@ -1,4 +1,6 @@
 {
+  /*
+   FIXME: disabled while horus is down
   systemd = {
     mounts = [
       {
@@ -14,4 +16,5 @@
       }
     ];
   };
+  */
 }
