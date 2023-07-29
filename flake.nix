@@ -21,11 +21,6 @@
       url = "github:cachix/devenv";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    jetbrains-updater = {
-      url = "gitlab:genericnerdyusername/jetbrains-updater";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   # what will be produced (i.e. the build)
