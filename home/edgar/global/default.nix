@@ -44,5 +44,6 @@
     p7zip
     ripgrep
     rnr
+    tcount
   ];
 }
