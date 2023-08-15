@@ -41,6 +41,7 @@
     fd
     ffmpeg
     hexyl
+    nix-init
     p7zip
     ripgrep
     rnr
