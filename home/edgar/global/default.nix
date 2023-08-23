@@ -43,6 +43,7 @@
     hexyl
     nix-init
     p7zip
+    plex-media-player
     ripgrep
     rnr
     tcount
