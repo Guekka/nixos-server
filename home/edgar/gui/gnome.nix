@@ -10,6 +10,8 @@ in {
 
         # `gnome-extensions list` for a list
         enabled-extensions = [
+          "appindicatorsupport@rgcjonas.gmail.com"
+          "gsconnect@andyholmes.github.io"
           "pop-launcher-super-key@ManeLippert"
           "pop-shell@system76.com"
         ];
