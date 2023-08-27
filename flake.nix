@@ -57,6 +57,7 @@
     packages = forEachPkgs (pkgs: import ./pkgs {inherit pkgs;});
 
     nixosModules = import ./modules/nixos;
+    homeManagerModules = import ./modules/home-manager;
 
     overlays = import ./overlays {inherit inputs;};
 

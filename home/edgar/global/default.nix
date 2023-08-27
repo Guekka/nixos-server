@@ -1,25 +1,28 @@
 {
   config,
   pkgs,
+  outputs,
   ...
 }: {
-  imports = [
-    ./atuin.nix
-    ./bat.nix
-    ./bottom.nix
-    ./direnv.nix
-    ./exa.nix
-    ./fish.nix
-    ./fzf.nix
-    ./git.nix
-    ./helix.nix
-    ./jq.nix
-    ./nix-index.nix
-    ./nvim.nix
-    ./starship.nix
-    ./topgrade.nix
-    ./zoxide.nix
-  ];
+  imports =
+    [
+      ./atuin.nix
+      ./bat.nix
+      ./bottom.nix
+      ./direnv.nix
+      ./exa.nix
+      ./fish.nix
+      ./fzf.nix
+      ./git.nix
+      ./helix.nix
+      ./jq.nix
+      ./nix-index.nix
+      ./nvim.nix
+      ./starship.nix
+      ./topgrade.nix
+      ./zoxide.nix
+    ]
+    ++ (builtins.attrValues outputs.homeManagerModules);
 
   home = {
     username = "edgar";
