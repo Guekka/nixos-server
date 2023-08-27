@@ -8,6 +8,7 @@
     ./kitty.nix
     ./ledger.nix
     ./nemo.nix
+    ./vscode.nix
   ];
 
   home.packages = with pkgs; [
@@ -17,7 +18,6 @@
     obsidian
     qbittorrent
     vlc
-    vscode
     wl-clipboard
   ];
 }
