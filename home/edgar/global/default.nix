@@ -1,11 +1,14 @@
 {
   config,
+  inputs,
   pkgs,
   outputs,
   ...
 }: {
   imports =
     [
+      inputs.nix-colors.homeManagerModules.default
+
       ./atuin.nix
       ./bat.nix
       ./bottom.nix
@@ -23,6 +26,8 @@
       ./zoxide.nix
     ]
     ++ (builtins.attrValues outputs.homeManagerModules);
+
+  colorScheme = inputs.nix-colors.colorSchemes.solarized-light;
 
   home = {
     username = "edgar";
