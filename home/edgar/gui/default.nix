@@ -4,6 +4,7 @@
     ./dev.nix
     ./firefox.nix
     ./gnome.nix
+    ./gtk.nix
     ./image-sieve.nix
     ./kitty.nix
     ./ledger.nix
