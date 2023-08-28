@@ -2,6 +2,7 @@
   imports = [
     ./activitywatch.nix
     ./dev.nix
+    ./discord.nix
     ./firefox.nix
     ./gtk.nix
     ./hyprland
@@ -14,7 +15,6 @@
 
   home.packages = with pkgs; [
     anytype
-    discord
     keepassxc
     obsidian
     qbittorrent
