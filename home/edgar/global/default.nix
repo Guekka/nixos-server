@@ -15,6 +15,7 @@
       ./direnv.nix
       ./exa.nix
       ./fish.nix
+      ./font.nix
       ./fzf.nix
       ./git.nix
       ./helix.nix
