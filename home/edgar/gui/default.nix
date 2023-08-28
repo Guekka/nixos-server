@@ -3,8 +3,8 @@
     ./activitywatch.nix
     ./dev.nix
     ./firefox.nix
-    ./gnome.nix
     ./gtk.nix
+    ./hyprland
     ./image-sieve.nix
     ./kitty.nix
     ./ledger.nix
