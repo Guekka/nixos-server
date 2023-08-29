@@ -1,6 +1,7 @@
 {...}: {
   imports = [
     ../common/global
+    ../common/optional/ddcutil.nix
     ../common/optional/hyprland.nix
     ../common/optional/impermanence.nix
     ../common/optional/ledger.nix
