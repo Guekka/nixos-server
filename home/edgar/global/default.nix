@@ -50,6 +50,7 @@
     ffmpeg
     hexyl
     nix-init
+    kondo
     p7zip
     plex-media-player
     ripgrep
