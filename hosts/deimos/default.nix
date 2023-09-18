@@ -8,6 +8,7 @@
     ../common/optional/noisetorch.nix
     ../common/optional/pipewire.nix
     ../common/optional/podman.nix
+    ../common/optional/steam.nix
     ../common/optional/wireless.nix
     ./hardware-configuration.nix
   ];
@@ -27,4 +28,8 @@
 
   # Read the doc before updating
   system.stateVersion = "22.11";
+
+  virtualisation.virtualbox = {
+    host.enable = true;
+  };
 }

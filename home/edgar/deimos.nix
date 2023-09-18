@@ -1,5 +1,6 @@
 {
   imports = [
+    ./gaming
     ./global
     ./gui
   ];
