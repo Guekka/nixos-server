@@ -11,13 +11,17 @@
     ./kitty.nix
     ./ledger.nix
     ./nemo.nix
+    ./qt.nix
     ./vscode.nix
   ];
 
   home.packages = with pkgs; [
     anytype
+    calibre
+    clight-gui
     keepassxc
     obsidian
+    #plex-desktop
     qbittorrent
     vlc
     wl-clipboard
