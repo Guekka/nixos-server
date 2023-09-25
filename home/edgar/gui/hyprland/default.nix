@@ -82,6 +82,15 @@
         # TODO "${pkgs.swaybg}/bin/swaybg -i ${config.wallpaper} --mode fill"
       ];
 
+      exec-once = [
+        "${pkgs.libsForQt5.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1"
+      ];
+
+      windowrule = [
+        # League of legends
+        "float,title:League of Legends"
+      ];
+
       bind = let
         swaylock = "${config.programs.swaylock.package}/bin/swaylock";
         playerctl = "${config.services.playerctld.package}/bin/playerctl";
