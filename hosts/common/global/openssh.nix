@@ -27,4 +27,11 @@
   networking.firewall = {
     allowedTCPPorts = [22];
   };
+
+  programs.ssh = {
+    startAgent = true;
+    extraConfig = ''
+      AddKeysToAgent yes
+    '';
+  };
 }

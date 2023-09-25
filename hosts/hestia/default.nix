@@ -1,7 +1,8 @@
 {...}: {
   imports = [
     ../common/global
-    ../common/optional/ddcutil.nix
+    ../common/optional/brightness.nix
+    ../common/optional/gamescope.nix
     ../common/optional/hyprland.nix
     ../common/optional/impermanence.nix
     ../common/optional/ledger.nix
@@ -11,6 +12,7 @@
     ../common/optional/pipewire.nix
     ../common/optional/podman.nix
     ../common/optional/steam.nix
+    ../common/optional/thunar.nix
     ./hardware-configuration.nix
   ];
 
