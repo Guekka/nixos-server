@@ -20,7 +20,7 @@
         gaps_in = 5;
         gaps_out = 10;
         border_size = 2.7;
-        cursor_inactive_timeout = 4;
+        cursor_inactive_timeout = 30;
         "col.active_border" = "0xff${config.colorscheme.colors.base0C}";
         "col.inactive_border" = "0xff${config.colorscheme.colors.base02}";
         "col.group_border_active" = "0xff${config.colorscheme.colors.base0B}";
@@ -29,7 +29,10 @@
       };
       input = {
         kb_layout = "fr,us";
-        touchpad.disable_while_typing = false;
+        touchpad = {
+          disable_while_typing = false;
+          natural_scroll = true;
+        };
       };
       dwindle = {
         split_width_multiplier = 1.35;
