@@ -13,7 +13,7 @@
       ./bat.nix
       ./bottom.nix
       ./direnv.nix
-      ./exa.nix
+      ./eza.nix
       ./fish.nix
       ./font.nix
       ./fzf.nix
