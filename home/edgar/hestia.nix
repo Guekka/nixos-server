@@ -10,7 +10,6 @@
       name = "HDMI-A-1";
       width = 2560;
       height = 1440;
-      noBar = true;
       x = 0;
       workspace = "2";
     }
