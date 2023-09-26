@@ -1,6 +1,7 @@
 {
   outputs,
   config,
+  lib,
   pkgs,
   ...
 }: let
@@ -55,34 +56,26 @@ in {
     });
     systemd.enable = true;
     settings = {
-      secondary = {
-        mode = "hide";
-        layer = "top";
-        height = 32;
-        width = 100;
-        margin = "6";
-        position = "bottom";
-        modules-center = [
-          "wlr/workspaces"
-        ];
-
-        "wlr/workspaces" = {
-          on-click = "activate";
-        };
-      };
-
       primary = {
         mode = "dock";
         layer = "top";
         height = 40;
         margin = "6";
         position = "top";
-        output = builtins.map (m: m.name) (builtins.filter (m: ! m.noBar) config.monitors);
-        modules-left = [
-          "custom/menu"
-          "custom/currentplayer"
-          "custom/player"
-        ];
+        modules-left =
+          [
+            "custom/menu"
+            "custom/currentplayer"
+            "custom/player"
+          ]
+          ++ (lib.optionals config.wayland.windowManager.sway.enable [
+            "sway/workspaces"
+            "sway/mode"
+          ])
+          ++ (lib.optionals config.wayland.windowManager.hyprland.enable [
+            "hyprland/workspaces"
+            "hyprland/submap"
+          ]);
         modules-center = [
           "cpu"
           "custom/gpu"
