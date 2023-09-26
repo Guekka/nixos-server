@@ -8,6 +8,9 @@
       [
         arrterian.nix-env-selector
         jnoortheen.nix-ide
+        ms-python.python
+        ms-python.vscode-pylance
+        ms-toolsai.jupyter
         ms-vscode.cpptools
         github.copilot
       ]
