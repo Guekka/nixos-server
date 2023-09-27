@@ -32,6 +32,9 @@
     lidSwitchExternalPower = "suspend";
   };
 
+  # brightness control
+  programs.light.enable = true;
+
   # Read the doc before updating
   system.stateVersion = "22.11";
 
