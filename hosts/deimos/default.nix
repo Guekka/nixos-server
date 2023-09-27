@@ -26,6 +26,12 @@
 
   time.timeZone = "Europe/Amsterdam";
 
+  # Lid settings
+  services.logind = {
+    lidSwitch = "suspend";
+    lidSwitchExternalPower = "suspend";
+  };
+
   # Read the doc before updating
   system.stateVersion = "22.11";
 

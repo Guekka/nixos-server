@@ -19,6 +19,8 @@
 
   home-manager.users.edgar = import home/${config.networking.hostName}.nix;
 
+  security.pam.services.swaylock = {};
+
   # Home secrets. I guess the proper way would be to use the home manager module
   # But it seems too tedious
   sops.secrets.atuin_key = {

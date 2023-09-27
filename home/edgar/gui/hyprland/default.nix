@@ -158,9 +158,9 @@
         ++
         # Screen lock
         (lib.optionals config.programs.swaylock.enable [
-          ",XF86Launch5,exec,${swaylock} -i ${config.wallpaper}"
-          ",XF86Launch4,exec,${swaylock} -i ${config.wallpaper}"
-          "SUPER,backspace,exec,${swaylock} -i ${config.wallpaper}"
+          ",XF86Launch5,exec,${swaylock}"
+          ",XF86Launch4,exec,${swaylock}"
+          "SUPER,backspace,exec,${swaylock}"
         ])
         ++
         # Notification manager
