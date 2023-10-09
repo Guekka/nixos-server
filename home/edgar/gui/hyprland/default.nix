@@ -95,6 +95,7 @@
       ];
 
       bind = let
+        brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
         swaylock = "${config.programs.swaylock.package}/bin/swaylock";
         playerctl = "${config.services.playerctld.package}/bin/playerctl";
         playerctld = "${config.services.playerctld.package}/bin/playerctld";
@@ -124,9 +125,8 @@
           "SUPER,e,exec,${editor}"
           "SUPER,v,exec,${editor}"
           "SUPER,b,exec,${browser}"
-          # Brightness control (only works if the system has lightd)
-          ",XF86MonBrightnessUp,exec,light -A 10"
-          ",XF86MonBrightnessDown,exec,light -U 10"
+          ",XF86MonBrightnessUp,exec,${brightnessctl} set +5%"
+          ",XF86MonBrightnessDown,exec,${brightnessctl} set 5%-"
           # Volume
           ",XF86AudioRaiseVolume,exec,${pactl} set-sink-volume @DEFAULT_SINK@ +5%"
           ",XF86AudioLowerVolume,exec,${pactl} set-sink-volume @DEFAULT_SINK@ -5%"
