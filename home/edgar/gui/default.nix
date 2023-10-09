@@ -20,6 +20,7 @@
     calibre
     clight-gui
     keepassxc
+    libsForQt5.ark
     obsidian
     #plex-desktop
     qbittorrent
