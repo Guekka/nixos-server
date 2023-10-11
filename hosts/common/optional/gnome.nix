@@ -43,12 +43,6 @@
     pop-launcher
   ];
 
-  # gs connect (kde connect)
-  programs.kdeconnect = {
-    enable = true;
-    package = pkgs.gnomeExtensions.gsconnect;
-  };
-
   # tray icons
   services.udev.packages = with pkgs; [gnome.gnome-settings-daemon];
 
