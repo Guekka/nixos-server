@@ -57,5 +57,6 @@
     ripgrep
     rnr
     tcount
+    unsilence
   ];
 }
