@@ -70,6 +70,7 @@
         colorTheme = "Solarized Light";
         iconTheme = "ayu";
       };
+
       nix = {
         enableLanguageServer = true;
         serverPath = "${pkgs.nil}/bin/nil";
@@ -78,6 +79,12 @@
           nil = {
             formatting = {command = ["alejandra"];};
           };
+        };
+      };
+
+      python = {
+        analysis = {
+          typeCheckingMode = "strict";
         };
       };
     };
