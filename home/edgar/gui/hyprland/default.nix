@@ -9,7 +9,6 @@
 
     ./tty-init.nix
     ./basic-binds.nix
-    ./systemd-fixes.nix
   ];
 
   wayland.windowManager.hyprland = {
