@@ -11,6 +11,8 @@
     ./basic-binds.nix
   ];
 
+  # TODO: checkout wl-clipboard-history
+
   wayland.windowManager.hyprland = {
     enable = true;
 
@@ -28,16 +30,29 @@
       };
       input = {
         kb_layout = "fr,us";
+        numlock_by_default = true;
         touchpad = {
           disable_while_typing = false;
           natural_scroll = true;
         };
       };
+
+      gestures = {
+        workspace_swipe = true;
+        workspace_swipe_fingers = 3;
+      };
+
       dwindle = {
         split_width_multiplier = 1.35;
         no_gaps_when_only = 1;
       };
-      misc.vfr = "on";
+
+      misc = {
+        mouse_move_enables_dpms = true;
+        enable_swallow = true;
+        swallow_regex = "^(kitty)$";
+        vfr = "on";
+      };
 
       decoration = {
         active_opacity = 0.99;
@@ -80,10 +95,6 @@
         ];
       };
 
-      exec = [
-        # TODO "${pkgs.swaybg}/bin/swaybg -i ${config.wallpaper} --mode fill"
-      ];
-
       exec-once = [
         "${pkgs.libsForQt5.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1"
       ];
@@ -91,6 +102,10 @@
       windowrule = [
         # League of legends
         "float,title:League of Legends"
+      ];
+
+      windowrulev2 = [
+        "workspace 3, class:^(org.keepassxc.KeePassXC)$"
       ];
 
       bind = let
@@ -104,7 +119,7 @@
           pass = config.programs.password-store.package;
         }}/bin/pass-wofi";
 
-        # TODO grimblast = "${pkgs.inputs.hyprwm-contrib.grimblast}/bin/grimblast";
+        grimblast = "${pkgs.grimblast}/bin/grimblast";
         pactl = "${pkgs.pulseaudio}/bin/pactl";
         # TODO tly = "${pkgs.tly}/bin/tly";
         # gtk-play = "${pkgs.libcanberra-gtk3}/bin/canberra-gtk-play";
@@ -133,11 +148,11 @@
           "SHIFT,XF86AudioMute,exec,${pactl} set-source-mute @DEFAULT_SOURCE@ toggle"
           ",XF86AudioMicMute,exec,${pactl} set-source-mute @DEFAULT_SOURCE@ toggle"
           # Screenshotting
-          # TODO ",Print,exec,${grimblast} --notify copy output"
-          # TODO "SHIFT,Print,exec,${grimblast} --notify copy active"
-          # TODO "CONTROL,Print,exec,${grimblast} --notify copy screen"
-          # TODO "SUPER,Print,exec,${grimblast} --notify copy window"
-          # TODO "ALT,Print,exec,${grimblast} --notify copy area"
+          ",Print,exec,${grimblast} --notify copy area"
+          "SHIFT,Print,exec,${grimblast} --notify copy active"
+          "CONTROL,Print,exec,${grimblast} --notify copy screen"
+          "SUPER,Print,exec,${grimblast} --notify copy window"
+          "ALT,Print,exec,${grimblast} --notify copy output"
           # Tally counter
           # TODO "SUPER,z,exec,${notify-send} -t 1000 $(${tly} time) && ${tly} add && ${gtk-play} -i dialog-information" # Add new entry
           # TODO "SUPERCONTROL,z,exec,${notify-send} -t 1000 $(${tly} time) && ${tly} undo && ${gtk-play} -i dialog-warning" # Undo last entry
