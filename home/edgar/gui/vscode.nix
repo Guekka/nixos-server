@@ -7,12 +7,13 @@
     extensions = with pkgs.vscode-extensions;
       [
         arrterian.nix-env-selector
+        github.copilot
         jnoortheen.nix-ide
         ms-python.python
         ms-python.vscode-pylance
         ms-toolsai.jupyter
         ms-vscode.cpptools
-        github.copilot
+        rust-lang.rust-analyzer
       ]
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
@@ -86,6 +87,11 @@
         analysis = {
           typeCheckingMode = "strict";
         };
+      };
+
+      rust-analyzer = {
+        check.command = "clippy";
+        checkOnSave.command = "clippy";
       };
     };
   };
