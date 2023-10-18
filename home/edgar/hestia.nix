@@ -1,5 +1,7 @@
 {
   imports = [
+    ./optional/activitywatch.nix
+
     ./gaming
     ./global
     ./gui
