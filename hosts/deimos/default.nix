@@ -1,6 +1,7 @@
 {...}: {
   imports = [
     ../common/global
+    ../common/optional/bluetooth.nix
     ../common/optional/hyprland.nix
     ../common/optional/impermanence.nix
     ../common/optional/ledger.nix
