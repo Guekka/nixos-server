@@ -2,6 +2,7 @@
   imports = [
     ../common/global
     ../common/optional/android-connect.nix
+    ../common/optional/bluetooth.nix
     ../common/optional/brightness.nix
     ../common/optional/gamescope.nix
     ../common/optional/hyprland.nix
