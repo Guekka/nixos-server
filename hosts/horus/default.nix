@@ -4,7 +4,7 @@
 {pkgs, ...}: {
   imports = [
     ../common/global
-    ../common/optional/impermanence.nix
+    ../common/optional/impermanence-disko.nix
     ../common/optional/podman.nix
     ./arr/bazarr.nix
     ./arr/lidarr.nix
