@@ -41,18 +41,18 @@
     forEachSystem = nixpkgs.lib.genAttrs ["x86_64-linux"];
     forEachPkgs = f: forEachSystem (sys: f nixpkgs.legacyPackages.${sys});
 
-    mkNixos = host:
+    mkNixos = host: system:
       nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
+        inherit system;
         specialArgs = {inherit (self) inputs outputs;};
         modules = [
           ./hosts/${host}
         ];
       };
 
-    mkHome = host:
+    mkHome = host: system:
       home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        pkgs = nixpkgs.legacyPackages.${system};
         extraSpecialArgs = {inherit (self) inputs outputs;};
         modules = [
           ./home/edgar/${host}.nix
@@ -71,15 +71,15 @@
     devShells = forEachPkgs (pkgs: import ./shell.nix {inherit pkgs devenv inputs;});
 
     nixosConfigurations = {
-      horus = mkNixos "horus";
-      hestia = mkNixos "hestia";
-      deimos = mkNixos "deimos";
+      horus = mkNixos "horus" "aarch64-linux";
+      hestia = mkNixos "hestia" "x86_64-linux";
+      deimos = mkNixos "deimos" "x86_64-linux";
     };
 
     homeConfigurations = {
-      "edgar@horus" = mkHome "horus";
-      "edgar@hestia" = mkHome "hestia";
-      "edgar@deimos" = mkHome "deimos";
+      "edgar@horus" = mkHome "horus" "aarch64-linux";
+      "edgar@hestia" = mkHome "hestia" "x86_64-linux";
+      "edgar@deimos" = mkHome "deimos" "x86_64-linux";
     };
   };
 }
