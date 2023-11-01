@@ -1,4 +1,4 @@
-{
+{pkgs, ...}: {
   imports = [
     ./optional/activitywatch.nix
 
@@ -24,5 +24,9 @@
       workspace = "1";
       primary = true;
     }
+  ];
+
+  home.packages = [
+    pkgs.lan-mouse
   ];
 }
