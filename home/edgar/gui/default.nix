@@ -22,7 +22,7 @@
     keepassxc
     libsForQt5.ark
     obsidian
-    #plex-desktop
+    plex-media-player
     qbittorrent
     vlc
     wl-clipboard
