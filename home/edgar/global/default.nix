@@ -53,7 +53,6 @@
     nix-init
     kondo
     p7zip
-    plex-media-player
     rclone
     ripgrep
     rnr
