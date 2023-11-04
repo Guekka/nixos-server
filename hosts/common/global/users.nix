@@ -14,6 +14,8 @@ in {
         shell = pkgs.fish;
         extraGroups = ["wheel"];
         openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFQ4dwdR5kG7RApFSuqiy11IoRG0pECnMLbiLLfttpwJ beelink"];
+
+        initialHashedPassword = "$6$HKQ5ZEb2wSnYtBGo$/Y4Fh7xHbeQ9p9VL6zyXkk1CCyN/XADveDddYtWr8KHP5vF/bWT9/Xs4cBBhrstp8s6Q.ak5GbOPd2yni/pYJ0";
         hashedPasswordFile = passwordFile;
       };
     };
