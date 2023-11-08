@@ -21,6 +21,7 @@
       l = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'";
 
       pf = "push  --force-with-lease";
+      rb = "rebase";
       s = "status";
       st = "stash --include-untracked";
       sw = "switch";
@@ -40,23 +41,6 @@
 
       help = {
         autocorrect = 3; # tenths of second before running
-      };
-
-      pull = {
-        rebase = true;
-      };
-
-      push = {
-        autoSetupRemote = true;
-        followTags = true;
-      };
-
-      rebase = {
-        instructionFormat = "%s%nexec GIT_COMMITTER_DATE=\"%cI\" GIT_COMMITTER_NAME=\"%cN\" GIT_COMMITTER_EMAIL=\"%cE\" git commit --amend --no-edit --allow-empty --allow-empty-message%n";
-      };
-
-      help = {
-        autocorrect = true;
       };
 
       pull = {
