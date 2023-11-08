@@ -1,21 +1,12 @@
 {
-  virtualisation.oci-containers.containers.microbin = {
-    image = "danielszabo99/microbin";
-    ports = ["9345:8080"];
-    volumes = [
-      "/var/lib/microbin:/app/pasta_data"
-    ];
-    cmd = [
-      "--editable"
-      "--enable-burn-after"
-      "--private"
-      "--qr"
-      "--highlightsyntax"
-      "--default-expiry"
-      "24hour"
-      "--public-path"
-      "https://sp.bizel.fr"
-    ];
+  services.microbin = {
+    enable = true;
+    settings = {
+      MICROBIN_PORT = 9345;
+      MICROBIN_ENABLE_BURN_AFTER = true;
+      MICROBIN_QR = true;
+      MICROBIN_PUBLIC_PATH = "https://sp.bizel.fr";
+    };
   };
 
   services.nginx.virtualHosts."sp.bizel.fr" = {
@@ -29,8 +20,10 @@
   environment.persistence."/persist" = {
     directories = [
       {
-        directory = "/var/lib/microbin";
+        directory = "/var/lib/private/microbin";
         mode = "0700";
+        user = "microbin";
+        group = "microbin";
       }
     ];
   };
