@@ -1,5 +1,5 @@
 {config, ...}: {
-  services.nginx.virtualHosts."e1.oze.li" = {
+  services.nginx.virtualHosts."files.bizel.fr" = {
     addSSL = true;
     enableACME = true;
     root = "/var/www/files";
