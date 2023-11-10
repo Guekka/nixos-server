@@ -106,6 +106,16 @@
 
       windowrulev2 = [
         "workspace 3, class:^(org.keepassxc.KeePassXC)$"
+
+        # jetbrains
+        "windowdance,class:^(jetbrains-.*)$"
+        # jetbrains search dialog
+        "dimaround,class:^(jetbrains-.*)$,floating:1,title:^(?!win)"
+        "center,class:^(jetbrains-.*)$,floating:1,title:^(?!win)"
+        # jetbrains autocomplete & menus
+        "noanim,class:^(jetbrains-.*)$,title:^(win.*)$"
+        "noinitialfocus,class:^(jetbrains-.*)$,title:^(win.*)$"
+        "rounding 0,class:^(jetbrains-.*)$,title:^(win.*)$"
       ];
 
       bind = let
