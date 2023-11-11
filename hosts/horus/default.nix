@@ -27,7 +27,7 @@
     ./photoprism.nix
     ./postgresql.nix
     ./qbittorrent.nix
-    ./users.nix
+    ./tandoor.nix
     ./uptime-kuma.nix
     ./web-server.nix
   ];
