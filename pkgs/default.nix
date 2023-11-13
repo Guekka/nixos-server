@@ -2,6 +2,7 @@
 {pkgs}: {
   clight-gui = pkgs.callPackage ./clight-gui {};
   csvlens = pkgs.callPackage ./csvlens {};
+  goatcounter = pkgs.callPackage ./goatcounter {};
   image-sieve = pkgs.callPackage ./image-sieve {};
   kondo = pkgs.callPackage ./kondo {};
   lan-mouse = pkgs.callPackage ./lan-mouse {};
