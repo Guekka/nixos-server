@@ -13,6 +13,7 @@
     ./arr/prowlarr.nix
     ./arr/sonarr.nix
     ./calibre-server.nix
+    ./goatcounter.nix
     ./grocy.nix
     ./hardware-configuration.nix
     ./mattermost.nix
@@ -22,7 +23,6 @@
     ./nextcloud.nix
     ./nfs.nix
     ./nginx.nix
-    ./plausible.nix
     ./plex.nix
     ./photoprism.nix
     ./postgresql.nix
