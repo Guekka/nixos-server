@@ -8,7 +8,6 @@
     ./gtk.nix
     ./hyprland
     ./image-sieve.nix
-    ./kitty.nix
     ./ledger.nix
     ./nemo.nix
     ./qt.nix
