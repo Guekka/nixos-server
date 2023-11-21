@@ -5,11 +5,6 @@
 
   hardware.i2c.enable = true;
 
-  # fix https://github.com/NixOS/nixpkgs/issues/210856
-  services.udev.extraRules =
-    builtins.readFile
-    "${pkgs.ddcutil}/share/ddcutil/data/45-ddcutil-i2c.rules";
-
   services.clight = {
     enable = false;
     settings = {
