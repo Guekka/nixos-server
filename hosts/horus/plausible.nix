@@ -2,8 +2,6 @@
   services.plausible = {
     enable = true;
 
-    releaseCookiePath = config.sops.secrets.plausibleCookiePath.path;
-
     server = {
       baseUrl = "https://plausible.bizel.fr";
       port = 4004;
