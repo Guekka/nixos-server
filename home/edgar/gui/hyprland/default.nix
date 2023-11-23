@@ -24,8 +24,6 @@
         cursor_inactive_timeout = 30;
         "col.active_border" = "0xff${config.colorscheme.colors.base0C}";
         "col.inactive_border" = "0xff${config.colorscheme.colors.base02}";
-        "col.group_border_active" = "0xff${config.colorscheme.colors.base0B}";
-        "col.group_border" = "0xff${config.colorscheme.colors.base04}";
         layout = "dwindle";
       };
       input = {
@@ -40,6 +38,11 @@
       gestures = {
         workspace_swipe = true;
         workspace_swipe_fingers = 3;
+      };
+
+      group = {
+        "col.border_active" = "0xff${config.colorscheme.colors.base0B}";
+        "col.border_inactive" = "0xff${config.colorscheme.colors.base04}";
       };
 
       dwindle = {
