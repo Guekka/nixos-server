@@ -6,12 +6,12 @@
     ../common/global
     ../common/optional/impermanence-disko.nix
     ../common/optional/podman.nix
-    ./arr/bazarr.nix
-    ./arr/lidarr.nix
-    ./arr/radarr.nix
-    ./arr/readarr.nix
-    ./arr/prowlarr.nix
-    ./arr/sonarr.nix
+    # ./arr/bazarr.nix
+    # ./arr/lidarr.nix
+    # ./arr/radarr.nix
+    # ./arr/readarr.nix
+    # ./arr/prowlarr.nix
+    # ./arr/sonarr.nix
     ./calibre-server.nix
     ./goatcounter.nix
     ./grocy.nix
@@ -23,10 +23,11 @@
     ./nextcloud.nix
     ./nfs.nix
     ./nginx.nix
-    ./plex.nix
+    ./plausible.nix
+    # ./plex.nix
     ./photoprism.nix
     ./postgresql.nix
-    ./qbittorrent.nix
+    # ./qbittorrent.nix # needs to change the docker image to aarm64
     ./tandoor.nix
     ./uptime-kuma.nix
     ./web-server.nix
