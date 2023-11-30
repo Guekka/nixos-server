@@ -1,6 +1,10 @@
 {inputs, ...}: {
   # my packages
-  additions = final: _prev: import ../pkgs {pkgs = final;};
+  additions = final: prev:
+    import ../pkgs {pkgs = final;}
+    // {
+      vimPlugins = prev.vimPlugins // final.callPackage ../pkgs/vim-plugins {};
+    };
 
   modifications = final: prev: {
     stable = import inputs.nixpkgs-stable {
