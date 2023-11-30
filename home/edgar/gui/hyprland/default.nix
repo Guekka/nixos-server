@@ -110,15 +110,21 @@
       windowrulev2 = [
         "workspace 3, class:^(org.keepassxc.KeePassXC)$"
 
-        # jetbrains
-        "windowdance,class:^(jetbrains-.*)$"
-        # jetbrains search dialog
-        "dimaround,class:^(jetbrains-.*)$,floating:1,title:^(?!win)"
-        "center,class:^(jetbrains-.*)$,floating:1,title:^(?!win)"
-        # jetbrains autocomplete & menus
-        "noanim,class:^(jetbrains-.*)$,title:^(win.*)$"
-        "noinitialfocus,class:^(jetbrains-.*)$,title:^(win.*)$"
-        "rounding 0,class:^(jetbrains-.*)$,title:^(win.*)$"
+        # jetbrains. See https://github.com/hyprwm/Hyprland/issues/3450
+        # -- Fix odd behaviors in IntelliJ IDEs --
+        #! Fix focus issues when dialogs are opened or closed
+        "windowdance,class:^(jetbrains-.*)$,floating:1"
+        #! Fix splash screen showing in weird places and prevent annoying focus takeovers
+        "center,class:^(jetbrains-.*)$,title:^(splash)$,floating:1"
+        "nofocus,class:^(jetbrains-.*)$,title:^(splash)$,floating:1"
+        "noborder,class:^(jetbrains-.*)$,title:^(splash)$,floating:1"
+
+        #! Center popups/find windows
+        "center,class:^(jetbrains-.*)$,title:^( )$,floating:1"
+        "stayfocused,class:^(jetbrains-.*)$,title:^( )$,floating:1"
+        "noborder,class:^(jetbrains-.*)$,title:^( )$,floating:1"
+        #! Disable window flicker when autocomplete or tooltips appear
+        "nofocus,class:^(jetbrains-.*)$,title:^(win.*)$,floating:1"
       ];
 
       bind = let
