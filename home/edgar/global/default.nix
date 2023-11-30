@@ -28,7 +28,7 @@
     ]
     ++ (builtins.attrValues outputs.homeManagerModules);
 
-  colorScheme = inputs.nix-colors.colorSchemes.solarized-light;
+  colorScheme = inputs.nix-colors.colorSchemes.selenized-light;
 
   home = {
     username = "edgar";
