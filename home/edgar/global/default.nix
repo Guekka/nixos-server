@@ -21,7 +21,7 @@
       ./helix.nix
       ./jq.nix
       ./nix-index.nix
-      ./nvim.nix
+      ./nvim
       ./starship.nix
       ./topgrade.nix
       ./zoxide.nix

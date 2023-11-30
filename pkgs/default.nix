@@ -1,4 +1,3 @@
-# deadnix: skip
 {pkgs}: {
   clight-gui = pkgs.callPackage ./clight-gui {};
   csvlens = pkgs.callPackage ./csvlens {};
