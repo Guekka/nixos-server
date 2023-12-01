@@ -12,6 +12,7 @@
       ./atuin.nix
       ./bat.nix
       ./bottom.nix
+      ./calendar.nix
       ./direnv.nix
       ./eza.nix
       ./fish.nix
