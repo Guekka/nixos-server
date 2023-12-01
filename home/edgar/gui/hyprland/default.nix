@@ -212,16 +212,18 @@
             "SUPER,semicolon,exec,pass-wofi"
           ]));
 
-      monitor = map (
-        m: let
-          resolution = "${toString m.width}x${toString m.height}@${toString m.refreshRate}";
-          position = "${toString m.x}x${toString m.y}";
-        in "${m.name},${
-          if m.enabled
-          then "${resolution},${position},1"
-          else "disable"
-        }"
-      ) (config.monitors);
+      monitor =
+        map (
+          m: let
+            resolution = "${toString m.width}x${toString m.height}@${toString m.refreshRate}";
+            position = "${toString m.x}x${toString m.y}";
+          in "${m.name},${
+            if m.enabled
+            then "${resolution},${position},1"
+            else "disable"
+          }"
+        ) (config.monitors)
+        ++ [",preferred,auto,1"];
 
       workspace = map (
         m: "${m.name},${m.workspace}"
