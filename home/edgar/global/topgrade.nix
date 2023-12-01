@@ -1,5 +1,0 @@
-{
-  programs.topgrade = {
-    enable = true;
-  };
-}
