@@ -13,7 +13,6 @@
     # ./arr/prowlarr.nix
     # ./arr/sonarr.nix
     ./calibre-server.nix
-    ./goatcounter.nix
     ./grocy.nix
     ./hardware-configuration.nix
     ./mattermost.nix
