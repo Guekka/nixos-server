@@ -51,4 +51,10 @@ in {
     path = "/home/edgar/secrets/atuin_session";
     owner = "edgar";
   };
+
+  sops.secrets.nextcloud_pass = {
+    sopsFile = ../secrets.yaml;
+    path = "/home/edgar/secrets/nextcloud_pass";
+    owner = "edgar";
+  };
 }
