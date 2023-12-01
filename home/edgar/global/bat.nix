@@ -1,6 +1,6 @@
 {
   programs.bat = {
     enable = true;
-    config.theme = "Solarized (light)";
+    config.theme = "base16";
   };
 }
