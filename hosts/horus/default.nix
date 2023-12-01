@@ -31,6 +31,7 @@
     ./tandoor.nix
     ./uptime-kuma.nix
     ./web-server.nix
+    ./wiki-js.nix
   ];
 
   networking = {
