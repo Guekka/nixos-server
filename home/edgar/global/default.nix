@@ -22,6 +22,7 @@
       ./helix.nix
       ./jq.nix
       ./kitty.nix
+      ./mime.nix
       ./nix-index.nix
       ./nvim
       ./starship.nix
