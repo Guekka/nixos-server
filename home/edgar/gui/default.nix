@@ -4,12 +4,12 @@
     ./cursor.nix
     ./dev.nix
     ./discord.nix
+    ./file-manager.nix
     ./firefox.nix
     ./gtk.nix
     ./hyprland
     ./image-sieve.nix
     ./ledger.nix
-    ./nemo.nix
     ./qt.nix
     ./vscode.nix
   ];
