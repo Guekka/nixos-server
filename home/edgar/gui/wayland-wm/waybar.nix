@@ -92,10 +92,10 @@ in {
           # "custom/gpg-agent"
         ];
         modules-right = [
-          "custom/gamemode"
           "network"
           # TODO: check if the following modules are useful to me
           # "custom/tailscale-ping"
+          # "custom/gamemode"
           "battery"
           "tray"
           "custom/hostname"
