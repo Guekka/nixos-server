@@ -1,5 +1,6 @@
 {pkgs}: {
   clight-gui = pkgs.callPackage ./clight-gui {};
+  cozy-stack = pkgs.callPackage ./cozy-stack {};
   csvlens = pkgs.callPackage ./csvlens {};
   goatcounter = pkgs.callPackage ./goatcounter {};
   image-sieve = pkgs.callPackage ./image-sieve {};
