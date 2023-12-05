@@ -23,7 +23,7 @@ in {
   };
 
   services.nginx.virtualHosts."torrent.bizel.fr" = {
-    enableACME = true;
+    useACMEHost = "bizel.fr";
     forceSSL = true;
     locations."^~ /" = {
       proxyPass = "http://localhost:8081";

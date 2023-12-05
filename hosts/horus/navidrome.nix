@@ -7,7 +7,7 @@
   };
 
   services.nginx.virtualHosts."navidrome.bizel.fr" = {
-    enableACME = true;
+    useACMEHost = "bizel.fr";
     forceSSL = true;
     locations."^~ /" = {
       proxyPass = "http://${config.services.navidrome.settings.Address}:${toString config.services.navidrome.settings.Port}";

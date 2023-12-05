@@ -21,7 +21,7 @@ in {
   };
 
   services.nginx.virtualHosts."calibre.bizel.fr" = {
-    enableACME = true;
+    useACMEHost = "bizel.fr";
     forceSSL = true;
     locations."^~ /" = {
       proxyPass = "http://[::1]:8083";

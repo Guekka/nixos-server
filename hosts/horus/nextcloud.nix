@@ -59,7 +59,7 @@ in {
 
   services.nginx.virtualHosts.${config.services.nextcloud.hostName} = {
     forceSSL = true;
-    enableACME = true;
+    useACMEHost = "bizel.fr";
   };
 
   environment.persistence."/persist" = {

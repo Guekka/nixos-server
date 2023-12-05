@@ -3,7 +3,6 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 {pkgs, ...}: {
   imports = [
-    ./acme.nix
     ./home-manager.nix
     ./mosh.nix
     ./nfs.nix

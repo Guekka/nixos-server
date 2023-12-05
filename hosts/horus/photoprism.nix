@@ -15,7 +15,7 @@
   };
 
   services.nginx.virtualHosts."photo.bizel.fr" = {
-    enableACME = true;
+    useACMEHost = "bizel.fr";
     forceSSL = true;
     locations."^~ /" = {
       proxyPass = "http://${config.services.photoprism.address}:${toString config.services.photoprism.port}";
