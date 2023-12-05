@@ -10,7 +10,7 @@
   };
 
   services.nginx.virtualHosts."sp.bizel.fr" = {
-    enableACME = true;
+    useACMEHost = "bizel.fr";
     forceSSL = true;
     locations."^~ /" = {
       proxyPass = "http://127.0.0.1:9345";

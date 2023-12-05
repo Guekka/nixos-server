@@ -5,7 +5,7 @@
 
   # From the wiki
   services.nginx.virtualHosts."plex.bizel.fr" = {
-    enableACME = true;
+    useACMEHost = "bizel.fr";
     forceSSL = true;
 
     # http2 can more performant for streaming: https://blog.cloudflare.com/introducing-http2/
@@ -79,7 +79,7 @@
   };
 
   services.nginx.virtualHosts."tautulli.bizel.fr" = {
-    enableACME = true;
+    useACMEHost = "bizel.fr";
     forceSSL = true;
 
     locations."^~ /" = {
