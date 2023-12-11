@@ -33,13 +33,11 @@
     ensureUsers = [
       {
         name = "wiki-js";
-        ensurePermissions = {
-          "DATABASE wiki" = "ALL PRIVILEGES";
-        };
+        ensureDBOwnership = true;
       }
     ];
     ensureDatabases = [
-      "wiki"
+      "wiki-js"
     ];
   };
 }
