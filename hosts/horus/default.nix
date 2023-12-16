@@ -14,6 +14,7 @@
     # ./arr/prowlarr.nix
     # ./arr/sonarr.nix
     ./calibre-server.nix
+    ./cozy-cloud.nix
     ./grocy.nix
     ./hardware-configuration.nix
     ./mattermost.nix
