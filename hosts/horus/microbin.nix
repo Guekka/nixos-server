@@ -6,6 +6,7 @@
       MICROBIN_ENABLE_BURN_AFTER = true;
       MICROBIN_QR = true;
       MICROBIN_PUBLIC_PATH = "https://sp.bizel.fr";
+      MICROBIN_EDITABLE = true;
     };
   };
 
