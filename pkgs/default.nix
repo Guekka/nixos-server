@@ -1,4 +1,6 @@
-{pkgs}: {
+{pkgs}: let
+  gfm = pkgs.callPackage ./gfm {};
+in {
   clight-gui = pkgs.callPackage ./clight-gui {};
   cozy-stack = pkgs.callPackage ./cozy-stack {};
   csvlens = pkgs.callPackage ./csvlens {};
@@ -10,4 +12,5 @@
   qt6gtk2 = pkgs.qt6Packages.callPackage ./qt6gtk2 {};
   unsilence = pkgs.callPackage ./unsilence {};
   tcount = pkgs.callPackage ./tcount {};
+  tilp = pkgs.callPackage ./tilp {inherit gfm;};
 }
