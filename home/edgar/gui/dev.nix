@@ -7,5 +7,6 @@ in {
 
     pkgs.qtcreator
     pkgs.ida-free
+    pkgs.staruml
   ];
 }
