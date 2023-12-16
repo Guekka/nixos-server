@@ -24,9 +24,12 @@
       mv = "mv -i";
 
       mkdir = "mkdir -p";
-      which = "type -a"; # https://unix.stackexchange.com/a/85250
 
       rebuild = "sudo nixos-rebuild switch --flake ~/nixos#$(hostname)";
+    };
+
+    shellAliases = {
+      which = "readlink -f (type -p $argv)";
     };
 
     interactiveShellInit = ''
