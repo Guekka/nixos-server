@@ -11,6 +11,14 @@
       system = final.system;
       config.allowUnfree = true;
     };
+
+    ida-free =
+      (import inputs.nixpkgs-ida {
+        system = final.system;
+        config.allowUnfree = true;
+      })
+      .ida-free;
+
     # fixes an issue with drag and drop
     keepassxc = prev.keepassxc.overrideAttrs (_old: {
       postFixup = ''wrapProgram $out/bin/keepassxc --set QT_QPA_PLATFORM wayland'';
