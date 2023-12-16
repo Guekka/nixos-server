@@ -6,5 +6,6 @@ in {
     (pluginify idea-ultimate)
 
     pkgs.qtcreator
+    pkgs.ida-free
   ];
 }

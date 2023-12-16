@@ -240,6 +240,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-ida": {
+      "locked": {
+        "lastModified": 1677172271,
+        "narHash": "sha256-MfuXzqwi+a5gawnZ6sfqoAbIINoNNeusVqoOXbKB7x8=",
+        "owner": "lourkeur",
+        "repo": "nixpkgs",
+        "rev": "dc39c67665c0b0572f952d216b7c33f5876d7717",
+        "type": "github"
+      },
+      "original": {
+        "owner": "lourkeur",
+        "ref": "idafree",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-lib": {
       "locked": {
         "lastModified": 1694911725,
@@ -340,6 +356,7 @@
         "impermanence": "impermanence",
         "nix-colors": "nix-colors",
         "nixpkgs": "nixpkgs",
+        "nixpkgs-ida": "nixpkgs-ida",
         "nixpkgs-stable": "nixpkgs-stable_2",
         "sops-nix": "sops-nix"
       }
