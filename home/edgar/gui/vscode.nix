@@ -14,6 +14,7 @@
         ms-toolsai.jupyter
         ms-vscode.cpptools
         rust-lang.rust-analyzer
+        pkief.material-icon-theme
       ]
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
@@ -25,74 +26,57 @@
       ];
 
     userSettings = {
-      cmake = {
-        configureOnOpen = true;
-      };
-      editor = {
-        formatOnSave = true;
+      "cmake.configureOnOpen" = true;
 
-        # Indent
-        detectIndentation = false;
-        indent_style = "space";
-        indentSize = 4;
-        insertSpaces = true;
-        tabSize = 4;
+      "editor.formatOnSave" = true;
 
-        inlineSuggest.enabled = true;
+      # Indent
+      "editor.detectIndentation" = false;
+      "editor.indentSize" = 4;
+      "editor.insertSpaces" = true;
+      "editor.tabSize" = 4;
 
-        # Font
-        fontLigatures = true;
-        fontFamily = "Fira Code";
+      "editor.inlineSuggest.enabled" = true;
 
-        unicodeHighlight.nonBasicASCII = false;
+      # Font
+      "editor.fontLigatures" = true;
+      "editor.fontFamily" = "Fira Code";
+
+      "editor.unicodeHighlight.nonBasicASCII" = false;
+
+      "explorer.confirmDragAndDrop" = false;
+
+      "files.eol" = "\n";
+      "files.exclude" = {
+        "**/.devenv" = true;
+        "**/.direnv" = true;
       };
-      explorer = {
-        confirmDragAndDrop = false;
-      };
-      files = {
-        eol = "\n";
-        exclude = {
-          "**/.devenv" = true;
-          "**/.direnv" = true;
-        };
-        insertFinalNewLine = true;
-        trimTrailingWhitespace = true;
-      };
-      git = {
-        autofetch = true;
-        confirmSync = false;
-      };
-      github = {
-        copilot.enable = {
-          "*" = true;
-        };
-      };
-      workbench = {
-        colorTheme = "Solarized Light";
-        iconTheme = "ayu";
+      "files.insertFinalNewline" = true;
+      "files.trimTrailingWhitespace" = true;
+
+      "git.autofetch" = true;
+      "git.confirmSync" = false;
+
+      "github.copilot.enable" = {
+        "*" = true;
+        "plaintext" = true;
+        "markdown" = true;
       };
 
-      nix = {
-        enableLanguageServer = true;
-        serverPath = "${pkgs.nil}/bin/nil";
-        formatterPath = "${pkgs.alejandra}/bin/alejandra";
-        serverSettings = {
-          nil = {
-            formatting = {command = ["alejandra"];};
-          };
-        };
+      "workbench.colorTheme" = "Solarized Light";
+      "workbench.iconTheme" = "material-icon-theme";
+
+      "nix.enableLanguageServer" = true;
+      "nix.serverPath" = "${pkgs.nil}/bin/nil";
+      "nix.formatterPath" = "${pkgs.alejandra}/bin/alejandra";
+      "nix.serverSettings" = {
+        "nil.formatting.command" = ["${pkgs.alejandra}/bin/alejandra"];
       };
 
-      python = {
-        analysis = {
-          typeCheckingMode = "strict";
-        };
-      };
+      "python.analysis.typeCheckingMode" = "strict";
 
-      rust-analyzer = {
-        check.command = "clippy";
-        checkOnSave.command = "clippy";
-      };
+      "rust-analyzer.check.command" = "clippy";
+      "rust-analyzer.checkOnSave" = true;
     };
   };
 }
