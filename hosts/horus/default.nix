@@ -17,6 +17,7 @@
     ./cozy-cloud.nix
     ./grocy.nix
     ./hardware-configuration.nix
+    ./linkding.nix
     ./mattermost.nix
     ./microbin.nix
     ./navidrome.nix
