@@ -1,7 +1,7 @@
 {
   systemd.oomd = {
     enable = true;
-    enableUserServices = true;
+    enableUserSlices = true;
     enableRootSlice = true;
     extraConfig = {
       DefaultMemoryPressureDurationSec = "10s";

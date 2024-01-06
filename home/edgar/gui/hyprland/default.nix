@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  inputs,
   pkgs,
   ...
 }: {
@@ -15,6 +16,7 @@
 
   wayland.windowManager.hyprland = {
     enable = true;
+    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
 
     settings = {
       general = {
@@ -55,6 +57,7 @@
         enable_swallow = true;
         swallow_regex = "^(kitty)$";
         vfr = "on";
+        focus_on_activate = true;
       };
 
       decoration = {
