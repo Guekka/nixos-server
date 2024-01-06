@@ -19,6 +19,11 @@
 
     hardware.url = "github:nixos/nixos-hardware";
 
+    hyprland = {
+      url = "github:hyprwm/Hyprland/v0.34.0";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     devenv = {
       url = "github:cachix/devenv";
       inputs.nixpkgs.follows = "nixpkgs";
