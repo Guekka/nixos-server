@@ -30,6 +30,7 @@
     ./photoprism.nix
     ./postgresql.nix
     # ./qbittorrent.nix # needs to change the docker image to aarm64
+    ./rss.nix
     ./tandoor.nix
     ./uptime-kuma.nix
     ./web-server.nix
