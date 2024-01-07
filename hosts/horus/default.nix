@@ -33,6 +33,7 @@
     ./rss.nix
     ./tandoor.nix
     ./uptime-kuma.nix
+    ./wallabag.nix
     ./web-server.nix
     ./wiki-js.nix
   ];
