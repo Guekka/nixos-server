@@ -7,7 +7,7 @@
 in {
   services.nextcloud = {
     enable = true;
-    package = pkgs.nextcloud27;
+    package = pkgs.nextcloud28;
 
     hostName = "nc.bizel.fr";
     home = appDir;
@@ -15,14 +15,11 @@ in {
     https = true;
 
     extraAppsEnable = true;
-    extraApps = with pkgs.nextcloud26Packages.apps; {
-      inherit calendar contacts;
+    extraApps = with pkgs.nextcloud28Packages.apps; {
+      inherit bookmarks calendar contacts cospend forms polls tasks;
     };
 
     config = {
-      # Further forces Nextcloud to use HTTPS
-      overwriteProtocol = "https";
-
       # Nextcloud PostegreSQL database configuration, recommended over using SQLite
       dbtype = "pgsql";
       dbuser = "nextcloud";
@@ -31,6 +28,11 @@ in {
 
       adminuser = "admin";
       adminpassFile = config.sops.secrets.nextcloud-pass.path;
+    };
+
+    extraOptions = {
+      # Further forces Nextcloud to use HTTPS
+      overwriteProtocol = "https";
     };
   };
 
