@@ -24,6 +24,7 @@
     ./nextcloud.nix
     ./nfs.nix
     ./nginx.nix
+    ./paperless.nix
     ./plausible.nix
     # ./plex.nix
     ./photoprism.nix
