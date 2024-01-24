@@ -1,13 +1,8 @@
-{
-  config,
-  pkgs,
-  ...
-}: let
+{config, ...}: let
   inherit (config.colorscheme) colors;
 in {
   programs.swaylock = {
     enable = true;
-    package = pkgs.swaylock-effects;
     settings = {
       screenshots = true;
       clock = true;
