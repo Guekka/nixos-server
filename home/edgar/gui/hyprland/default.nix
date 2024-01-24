@@ -50,6 +50,7 @@
       dwindle = {
         split_width_multiplier = 1.35;
         no_gaps_when_only = 1;
+        special_scale_factor = 0.9;
       };
 
       misc = {
