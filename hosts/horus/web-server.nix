@@ -1,6 +1,6 @@
 {config, ...}: {
   services.nginx.virtualHosts."files.bizel.fr" = {
-    addSSL = true;
+    forceSSL = true;
     useACMEHost = "bizel.fr";
     root = "/var/www/files";
 
