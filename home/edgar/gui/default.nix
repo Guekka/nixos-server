@@ -10,6 +10,7 @@
     ./hyprland
     ./image-sieve.nix
     ./ledger.nix
+    ./nextcloud-client.nix
     ./qt.nix
     ./vscode.nix
   ];
