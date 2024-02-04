@@ -8,7 +8,7 @@
     ./firefox.nix
     ./gtk.nix
     ./hyprland
-    ./image-sieve.nix
+    # currently broken    ./image-sieve.nix
     ./ledger.nix
     ./nextcloud-client.nix
     ./qt.nix
