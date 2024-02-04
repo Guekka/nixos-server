@@ -2,14 +2,9 @@
   config,
   pkgs,
   ...
-}: let
-  discord = pkgs.discord.override {
-    withOpenASAR = true;
-    withVencord = true;
-  };
-in {
+}: {
   home.packages = [
-    discord
+    pkgs.vesktop
   ];
 
   # based on <https://github.com/Marcus-Arcadius/nixdots/blob/main/modules/home/programs/discocss/default.nix>
