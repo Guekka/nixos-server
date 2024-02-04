@@ -9,10 +9,10 @@ python3.pkgs.buildPythonApplication rec {
   pyproject = true;
 
   src = fetchFromGitHub {
-    owner = "lagmoellertim";
+    owner = "dimon58";
     repo = "unsilence";
-    rev = version;
-    hash = "sha256-M4Ek1JZwtr7vIg14aTa8h4otIZnPQfKNH4pZE4GpiBQ=";
+    rev = "5346296c2323a0eebbd8184eadb8b9324ae75e08";
+    hash = "sha256-A/OTcwk735vZI9BCUBcGf/FicMxkR545DsmoOBruHH0=";
   };
 
   nativeBuildInputs = [
