@@ -26,6 +26,7 @@
       ./nix-index.nix
       ./nvim
       ./starship.nix
+      ./xdg.nix
       ./zoxide.nix
     ]
     ++ (builtins.attrValues outputs.homeManagerModules);
