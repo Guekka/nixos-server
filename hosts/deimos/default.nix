@@ -12,6 +12,7 @@
     ../common/optional/steam.nix
     ../common/optional/wireless.nix
     ./hardware-configuration.nix
+    ./openocd.nix
   ];
 
   networking = {
