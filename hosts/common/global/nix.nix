@@ -12,14 +12,17 @@ in {
       auto-optimise-store = lib.mkDefault true;
       experimental-features = ["nix-command" "flakes" "repl-flake"];
       warn-dirty = false;
+      builders-use-substitutes = true;
 
       substituters = [
         "https://nix-community.cachix.org"
         "https://cuda-maintainers.cachix.org"
+        "https://anyrun.cachix.org"
       ];
       trusted-public-keys = [
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
         "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
+        "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
       ];
     };
     gc = {
