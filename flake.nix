@@ -5,6 +5,11 @@
 
     nixpkgs-ida.url = "github:lourkeur/nixpkgs/idafree";
 
+    anyrun = {
+      url = "github:Kirottu/anyrun";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     impermanence.url = "github:nix-community/impermanence";
     sops-nix = {
       url = "github:mic92/sops-nix";
