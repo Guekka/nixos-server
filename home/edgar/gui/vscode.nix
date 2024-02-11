@@ -4,6 +4,8 @@
     package = pkgs.vscodium;
     enableExtensionUpdateCheck = false;
     enableUpdateCheck = false;
+    # i love immutability, but sometimes I want a one-time extension
+    mutableExtensionsDir = true;
     extensions = with pkgs.vscode-extensions;
       [
         arrterian.nix-env-selector
@@ -13,6 +15,7 @@
         ms-python.vscode-pylance
         ms-toolsai.jupyter
         ms-vscode.cpptools
+        ms-vscode.makefile-tools
         rust-lang.rust-analyzer
         pkief.material-icon-theme
       ]
@@ -22,6 +25,12 @@
           publisher = "activitywatch";
           version = "0.5.0";
           sha256 = "sha256-OrdIhgNXpEbLXYVJAx/jpt2c6Qa5jf8FNxqrbu5FfFs=";
+        }
+        {
+          name = "vscode-xml";
+          publisher = "redhat";
+          version = "0.26.0";
+          sha256 = "sha256-QAy+h3SS5DIuPwyoqt80TL1M3bQNxg2+/uacUzdlp/U=";
         }
       ];
 
