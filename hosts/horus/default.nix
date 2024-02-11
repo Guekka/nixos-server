@@ -50,6 +50,8 @@
     vim
   ];
 
+  sops.secrets.horus-borgbackup-passphrase.sopsFile = ./secrets.yaml;
+
   # Read the doc before updating
   system.stateVersion = "22.11";
   nixpkgs.config.allowBroken = true;

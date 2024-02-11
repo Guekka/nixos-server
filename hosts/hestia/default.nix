@@ -34,6 +34,8 @@
 
   time.timeZone = "Europe/Amsterdam";
 
+  sops.secrets.hestia-borgbackup-passphrase.sopsFile = ./secrets.yaml;
+
   # Read the doc before updating
   system.stateVersion = "22.11";
 }
