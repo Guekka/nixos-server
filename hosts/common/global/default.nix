@@ -36,4 +36,7 @@
       ${pkgs.nix}/bin/nix store diff-closures /run/current-system "$systemConfig"
     fi
   '';
+
+  # Latest Linux kernel
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 }
