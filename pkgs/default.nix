@@ -1,6 +1,7 @@
 {pkgs}: let
   gfm = pkgs.callPackage ./gfm {};
 in {
+  awatcher = pkgs.callPackage ./awatcher {};
   clight-gui = pkgs.callPackage ./clight-gui {};
   cozy-stack = pkgs.callPackage ./cozy-stack {};
   csvlens = pkgs.callPackage ./csvlens {};

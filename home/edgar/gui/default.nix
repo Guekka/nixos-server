@@ -1,6 +1,5 @@
 {pkgs, ...}: {
   imports = [
-    ./activitywatch.nix
     ./cursor.nix
     ./dev.nix
     ./discord.nix
