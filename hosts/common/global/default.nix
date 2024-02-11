@@ -3,6 +3,7 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 {pkgs, ...}: {
   imports = [
+    ./backup.nix
     ./home-manager.nix
     ./mosh.nix
     ./nfs.nix
@@ -36,6 +37,8 @@
       ${pkgs.nix}/bin/nix store diff-closures /run/current-system "$systemConfig"
     fi
   '';
+
+  sops.secrets.shared-borgbackup-passphrase.sopsFile = ../secrets.yaml;
 
   # Latest Linux kernel
   boot.kernelPackages = pkgs.linuxPackages_latest;

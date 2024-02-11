@@ -40,6 +40,8 @@
   # Read the doc before updating
   system.stateVersion = "22.11";
 
+  sops.secrets.deimos-borgbackup-passphrase.sopsFile = ./secrets.yaml;
+
   virtualisation.virtualbox = {
     host.enable = true;
   };
