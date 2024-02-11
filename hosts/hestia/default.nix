@@ -4,11 +4,11 @@
     ../common/optional/android-connect.nix
     ../common/optional/bluetooth.nix
     ../common/optional/brightness.nix
+    ../common/optional/fileshare-client.nix
     ../common/optional/gamescope.nix
     ../common/optional/hyprland.nix
     ../common/optional/impermanence.nix
     ../common/optional/ledger.nix
-    ../common/optional/nfs-client.nix
     ../common/optional/noisetorch.nix
     ../common/optional/obs-virtual-camera.nix
     ../common/optional/pipewire.nix

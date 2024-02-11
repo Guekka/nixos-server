@@ -3,10 +3,10 @@
     ../common/global
     ../common/optional/bluetooth.nix
     ../common/optional/docker.nix
+    ../common/optional/fileshare-client.nix
     ../common/optional/hyprland.nix
     ../common/optional/impermanence.nix
     ../common/optional/ledger.nix
-    ../common/optional/nfs-client.nix
     ../common/optional/noisetorch.nix
     ../common/optional/pipewire.nix
     ../common/optional/steam.nix
