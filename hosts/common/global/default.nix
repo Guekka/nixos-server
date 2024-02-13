@@ -42,4 +42,11 @@
 
   # Latest Linux kernel
   boot.kernelPackages = pkgs.linuxPackages_latest;
+
+  # Easy access to my nodes
+  networking.extraHosts = ''
+    horus.bizel.fr horus
+    192.168.1.44 hestia
+    192.168.1.72 deimos
+  '';
 }
