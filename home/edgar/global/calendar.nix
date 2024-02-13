@@ -22,8 +22,8 @@
 
       remote = {
         type = "caldav";
-        url = "https://domino.zdimension.fr/nextcloud/remote.php/dav";
-        userName = "guekka";
+        url = "https://nc.bizel.fr/remote.php/dav";
+        userName = "edgar";
         passwordCommand = ["${pkgs.bat}/bin/bat" "-p" "/home/edgar/secrets/nextcloud_pass"];
       };
     };
