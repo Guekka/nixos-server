@@ -79,7 +79,17 @@
       "nix.serverPath" = "${pkgs.nil}/bin/nil";
       "nix.formatterPath" = "${pkgs.alejandra}/bin/alejandra";
       "nix.serverSettings" = {
-        "nil.formatting.command" = ["${pkgs.alejandra}/bin/alejandra"];
+        nil = {
+          formatting = {
+            command = ["${pkgs.alejandra}/bin/alejandra"];
+          };
+          nix = {
+            maxMemoryMB = 4096;
+            flake = {
+              autoEvalInputs = true;
+            };
+          };
+        };
       };
 
       "python.analysis.typeCheckingMode" = "strict";
