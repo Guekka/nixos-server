@@ -6,6 +6,7 @@
     ../common/global
     ../common/optional/impermanence-disko.nix
     ../common/optional/podman.nix
+    ../common/optional/samba-client.nix
     ./acme.nix
     # ./arr/bazarr.nix
     # ./arr/lidarr.nix
