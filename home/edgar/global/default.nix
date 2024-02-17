@@ -25,6 +25,7 @@
       ./mime.nix
       ./nix-index.nix
       ./nvim
+      ./rclone.nix
       ./starship.nix
       ./xdg.nix
       ./yazi.nix
@@ -57,9 +58,9 @@
     nix-init
     kondo
     p7zip
-    rclone
     ripgrep
     rnr
+    sshfs
     tcount
     unsilence
   ];
