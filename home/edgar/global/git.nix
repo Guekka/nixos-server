@@ -75,6 +75,7 @@
 
         autoStash = true;
         autoSquash = true;
+        updateRefs = true;
       };
 
       rerere = {
