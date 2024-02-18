@@ -3,17 +3,7 @@
   config,
   lib,
   ...
-}: let
-  nvim-treesitter = pkgs.vimPlugins.nvim-treesitter.withAllGrammars.overrideAttrs (_oldAttrs: {
-    postPatch = "";
-    src = pkgs.fetchFromGitHub {
-      owner = "nvim-treesitter";
-      repo = "nvim-treesitter";
-      rev = "49e71322db582147ce8f4df1853d9dab08da0826";
-      hash = "sha256-i7/YKin/AuUgzKvGgAzNTEGXlrejtucJacFXh8t/uFs=";
-    };
-  });
-in {
+}: {
   programs.neovim = {
     extraConfig =
       lib.mkAfter
@@ -64,7 +54,7 @@ in {
 
       # Tree sitter
       {
-        plugin = nvim-treesitter;
+        plugin = nvim-treesitter.withAllGrammars;
         type = "lua";
         config =
           /*

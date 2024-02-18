@@ -53,12 +53,12 @@
               dashboard.button( "n", "󰈔 New file" , ":enew<CR>"),
               dashboard.button( "e", " Explore", ":Explore<CR>"),
               dashboard.button( "g", " Git summary", ":Git | :only<CR>"),
-              dashboard.button( "c", "  Nix config flake" , ":cd ~/nixos | :e flake.nix<CR>"),
-              dashboard.button( "q", "󰅙  Quit nvim", ":qa<CR>"),
+              dashboard.button( "s", " Notes", ":e ~/Documents/Notes<CR>"),
+              dashboard.button( "c", "  Nix config flake" , ":e ~/nixos/flake.nix<CR>"),
           }
 
           alpha.setup(dashboard.opts)
-          vim.keymap.set("n", "<space>a", ":Alpha<CR>", { desc = "Open alpha dashboard" })
+          vim.keymap.set("n", "<space>h", ":Alpha<CR>", { desc = "Open home dashboard" })
         '';
     }
     {
