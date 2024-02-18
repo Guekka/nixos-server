@@ -7,7 +7,7 @@
 
     aliases = {
       a = "add";
-      br = "branch";
+      b = "branch";
 
       # Show the current branch name (useful for shell prompts)
       brname = "!git branch | grep '^*' | awk '{ print $2 }'";
@@ -20,19 +20,22 @@
       # more compact log
       l = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'";
 
+      p = "push";
       pf = "push  --force-with-lease";
       rb = "rebase";
       s = "status";
       st = "stash --include-untracked";
+      sp = "stash pop";
       sw = "switch";
     };
 
+    # some come from https://jvns.ca/blog/2024/02/16/popular-git-config-options/
     extraConfig = {
-      feature.manyFiles = true;
-      # see https://github.com/tummychow/git-absorb/issues/81
-      index.skipHash = false;
+      diff = {
+        algorithm = "histogram";
+      };
 
-      init.defaultBranch = "main";
+      feature.manyFiles = true;
 
       fetch = {
         prune = true;
@@ -40,6 +43,15 @@
 
       help = {
         autocorrect = 3; # tenths of second before running
+      };
+
+      # see https://github.com/tummychow/git-absorb/issues/81
+      index.skipHash = false;
+      init.defaultBranch = "main";
+
+      merge = {
+        # https://ductile.systems/zdiff3/
+        conflictStyle = "zdiff3";
       };
 
       pull = {
@@ -59,6 +71,7 @@
 
         autoStash = true;
         autoSquash = true;
+        updateRefs = true;
       };
 
       rerere = {
@@ -68,6 +81,13 @@
 
       status = {
         showUntrackedFiles = "all";
+      };
+
+      url = {
+        "https://github.com/".insteadOf = "gh:";
+        "ssh://git@github.com".pushInsteadOf = "gh:";
+        "https://gitlab.com/".insteadOf = "gl:";
+        "ssh://git@gitlab.com".pushInsteadOf = "gl:";
       };
     };
 
