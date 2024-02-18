@@ -41,6 +41,10 @@
         prune = true;
       };
 
+      gpg = {
+        format = "ssh";
+      };
+
       help = {
         autocorrect = 3; # tenths of second before running
       };
@@ -94,6 +98,11 @@
 
     difftastic = {
       enable = true;
+    };
+
+    signing = {
+      key = "key::ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAuFlK3yFkBbd1o5UKajdGLUYnERF0YFpVOIUfYvlesy id_commit_signing";
+      signByDefault = true;
     };
   };
 
