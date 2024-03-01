@@ -6,6 +6,11 @@ in {
     enable = true;
     extraConfig = {
       PAPERLESS_OCR_LANGUAGE = "fra+eng";
+      PAPERLESS_OCR_USER_ARGS = ''
+        {
+          "invalidate_digital_signatures": true
+        }
+      '';
       PAPERLESS_DBENGINE = "postgresql";
       PAPERLESS_DBHOST = "/run/postgresql";
       PAPERLESS_DBPORT = "5432";
