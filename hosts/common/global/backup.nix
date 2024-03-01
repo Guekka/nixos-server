@@ -1,4 +1,8 @@
-{config, ...}: let
+{
+  config,
+  lib,
+  ...
+}: let
   baseJob = {
     exclude = [
       "*.pyc"
@@ -62,4 +66,8 @@ in {
         };
       };
   };
+  # from wiki
+  # this actually forces backup after boot in case laptop was powered off during scheduled event
+  # for example, if you scheduled backups daily, your laptop should be powered on at 00:00
+  systemd.timers."borgbackup-job-${config.networking.hostName}".timerConfig.Persistent = lib.mkForce true;
 }
