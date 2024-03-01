@@ -11,6 +11,7 @@
     ../common/optional/nfs-client.nix
     ../common/optional/noisetorch.nix
     ../common/optional/obs-virtual-camera.nix
+    ../common/optional/openocd.nix
     ../common/optional/pipewire.nix
     ../common/optional/podman.nix
     ../common/optional/samba-client.nix
