@@ -25,7 +25,7 @@
     hardware.url = "github:nixos/nixos-hardware";
 
     hyprland = {
-      url = "github:hyprwm/Hyprland/v0.34.0";
+      url = "github:hyprwm/Hyprland/v0.36.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

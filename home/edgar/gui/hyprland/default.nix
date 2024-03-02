@@ -22,7 +22,7 @@
       general = {
         gaps_in = 5;
         gaps_out = 10;
-        border_size = 2.7;
+        border_size = 3;
         cursor_inactive_timeout = 30;
         "col.active_border" = "0xff${config.colorscheme.colors.base0C}";
         "col.inactive_border" = "0xff${config.colorscheme.colors.base02}";
