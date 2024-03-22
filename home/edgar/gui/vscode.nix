@@ -11,7 +11,7 @@
         arrterian.nix-env-selector
         github.copilot
         jnoortheen.nix-ide
-        ms-python.python
+        # vscode-extensions.ms-python.python not working currently
         ms-python.vscode-pylance
         ms-toolsai.jupyter
         ms-vscode.cpptools

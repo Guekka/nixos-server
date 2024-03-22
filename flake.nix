@@ -1,7 +1,7 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-23.05";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-23.11";
 
     nixpkgs-ida.url = "github:lourkeur/nixpkgs/idafree";
 
@@ -25,7 +25,7 @@
     hardware.url = "github:nixos/nixos-hardware";
 
     hyprland = {
-      url = "github:hyprwm/Hyprland/v0.36.0";
+      url = "github:hyprwm/Hyprland/v0.37.1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

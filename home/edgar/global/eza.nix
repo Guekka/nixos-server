@@ -1,7 +1,8 @@
 {
   programs.eza = {
     enable = true;
-    enableAliases = true;
+    enableBashIntegration = true;
+    enableFishIntegration = true;
     git = true;
     extraOptions = [
       "-lg"
