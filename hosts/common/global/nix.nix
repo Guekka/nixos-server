@@ -7,6 +7,7 @@
   nixRegistry = lib.mapAttrs (_name: v: {flake = v;}) flakes;
 in {
   nix = {
+    daemonCPUSchedPolicy = "idle";
     settings = {
       trusted-users = ["root" "@wheel"];
       auto-optimise-store = lib.mkDefault true;
