@@ -15,6 +15,10 @@
       cm = "commit -m";
       cma = "commit --amend --no-edit";
 
+      # preserve original committer when rebasing. See <https://stackoverflow.com/a/76325489/10796945>
+      rebase-preserving = ''
+        !git -c rebase.instructionFormat='%s%nexec GIT_COMMITTER_DATE="%cD" GIT_COMMITTER_NAME="%cn" GIT_COMMITTER_EMAIL="%ce" GIT_AUTHOR_NAME="%cn" GIT_AUTHOR_EMAIL="%ce" git commit --amend --no-edit --reset-author --date="%cD"' rebase -i $@'';
+
       dfs = "diff --staged";
 
       makeIgnore = "!gi() { curl -sL https://www.toptal.com/developers/gitignore/api/$@ ;}; gi";
@@ -70,11 +74,6 @@
       };
 
       rebase = {
-        # preserve original committer when rebasing. See <https://stackoverflow.com/a/76325489/10796945>
-        # disabled because it is too tedious most of the time, but it is useful to have it here
-        # TODO: maybe enable it by default and add an alias to disable it
-        # instructionFormat = "%s%nexec GIT_COMMITTER_DATE=\"%cI\" GIT_COMMITTER_NAME=\"%cN\" GIT_COMMITTER_EMAIL=\"%cE\" git commit --amend --no-edit --allow-empty --allow-empty-message%n";
-
         autoStash = true;
         autoSquash = true;
         updateRefs = true;
