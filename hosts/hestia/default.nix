@@ -4,6 +4,7 @@
     ../common/optional/android-connect.nix
     ../common/optional/bluetooth.nix
     ../common/optional/brightness.nix
+    ../common/optional/docker.nix
     ../common/optional/gamescope.nix
     ../common/optional/hyprland.nix
     ../common/optional/impermanence.nix
@@ -13,7 +14,6 @@
     ../common/optional/obs-virtual-camera.nix
     ../common/optional/openocd.nix
     ../common/optional/pipewire.nix
-    ../common/optional/podman.nix
     ../common/optional/samba-client.nix
     ../common/optional/steam.nix
     ../common/optional/thunar.nix
@@ -26,6 +26,7 @@
       useDHCP = true;
       wakeOnLan.enable = true;
     };
+    firewall.allowedTCPPorts = [5900];
   };
 
   services.tailscaleAutoconnect = {
@@ -40,4 +41,6 @@
 
   # Read the doc before updating
   system.stateVersion = "22.11";
+  hardware.openrazer.enable = true;
+  hardware.openrazer.users = ["edgar"];
 }
