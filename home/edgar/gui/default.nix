@@ -15,13 +15,12 @@
     ./zathura.nix
   ];
 
-  home.packages = with pkgs; [
+  home.packages = with pkgs.stable; [
     anytype
     calibre
-    clight-gui
     keepassxc
     libsForQt5.ark
-    obsidian
+    pkgs.obsidian # TODO: move to stable when 24.05 releases
     plex-media-player
     qbittorrent
     vlc

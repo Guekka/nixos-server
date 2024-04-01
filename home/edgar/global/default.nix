@@ -46,10 +46,10 @@
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 
-  home.packages = with pkgs; [
+  home.packages = with pkgs.stable; [
     alejandra
     comma
-    csvlens
+    pkgs.csvlens # TODO: move to stable after NixOS 24.05
     duf
     du-dust
     fd
@@ -61,7 +61,7 @@
     ripgrep
     rnr
     sshfs
-    tcount
+    pkgs.tcount
     unsilence
   ];
 }
