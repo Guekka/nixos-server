@@ -145,7 +145,7 @@
         ",XF86AudioMicMute,exec,${pactl} set-source-mute @DEFAULT_SOURCE@ toggle"
       ];
       bind = let
-        swaylock = "${config.programs.swaylock.package}/bin/swaylock";
+        hyprlock = lib.getExe config.programs.hyprlock.package;
         playerctl = "${config.services.playerctld.package}/bin/playerctl";
         playerctld = "${config.services.playerctld.package}/bin/playerctld";
         makoctl = "${config.services.mako.package}/bin/makoctl";
@@ -197,10 +197,10 @@
         ])
         ++
         # Screen lock
-        (lib.optionals config.programs.swaylock.enable [
-          ",XF86Launch5,exec,${swaylock}"
-          ",XF86Launch4,exec,${swaylock}"
-          "SUPER,backspace,exec,${swaylock}"
+        (lib.optionals config.programs.hyprlock.enable [
+          ",XF86Launch5,exec,${hyprlock}"
+          ",XF86Launch4,exec,${hyprlock}"
+          "SUPER,backspace,exec,${hyprlock}"
         ])
         ++
         # Notification manager

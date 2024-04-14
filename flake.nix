@@ -29,6 +29,18 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    hypridle = {
+      url = "github:hyprwm/Hypridle/v0.1.1";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.hyprlang.follows = "hyprland";
+    };
+
+    hyprlock = {
+      url = "github:hyprwm/Hyprlock/v0.3.0";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.hyprlang.follows = "hyprland";
+    };
+
     devenv = {
       url = "github:cachix/devenv";
       inputs.nixpkgs.follows = "nixpkgs";

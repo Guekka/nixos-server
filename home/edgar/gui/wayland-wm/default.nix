@@ -1,10 +1,9 @@
 {
   imports = [
     ./anyrun
+    ./hypridle.nix
+    ./hyprlock.nix
     ./mako.nix
-    #./ssh-agent.nix
-    ./swayidle.nix
-    ./swaylock.nix
     ./waybar.nix
   ];
 }
