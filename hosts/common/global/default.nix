@@ -3,6 +3,7 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 {pkgs, ...}: {
   imports = [
+    ./android.nix
     ./backup.nix
     ./home-manager.nix
     ./mosh.nix
