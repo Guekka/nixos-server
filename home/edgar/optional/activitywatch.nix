@@ -11,12 +11,13 @@
   };
   systemd.user.services = let
     baseSettings = {
-      Restart = "on-failure";
+      Restart = "always";
 
       # Some sandboxing.
       LockPersonality = true;
       NoNewPrivileges = true;
       RestrictNamespaces = true;
+      RuntimeMaxSec = "10m"; # very unstable
     };
   in {
     activitywatch = {
