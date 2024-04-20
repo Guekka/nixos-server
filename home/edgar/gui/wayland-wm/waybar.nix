@@ -64,7 +64,6 @@ in {
         position = "top";
         modules-left =
           [
-            "custom/menu"
             "custom/currentplayer"
             "custom/player"
           ]
@@ -97,7 +96,8 @@ in {
           # "custom/gamemode"
           "battery"
           "tray"
-          "custom/hostname"
+          "privacy"
+          "idle_inhibitor"
         ];
 
         clock = {
@@ -188,17 +188,6 @@ in {
             };
           format = "{}";
           on-click = "";
-        };
-        "custom/menu" = {
-          return-type = "json";
-          exec = jsonOutput "menu" {
-            text = "";
-            tooltip = ''$(${cat} /etc/os-release | ${grep} PRETTY_NAME | ${cut} -d '"' -f2)'';
-          };
-          on-click = "${wofi} -S drun -x 10 -y 10 -W 25% -H 60%";
-        };
-        "custom/hostname" = {
-          exec = "echo $USER@$HOSTNAME";
         };
         "custom/unread-mail" = {
           interval = 5;
