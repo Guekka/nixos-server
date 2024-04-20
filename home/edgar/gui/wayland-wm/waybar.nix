@@ -27,7 +27,6 @@
   playerctl = "${pkgs.playerctl}/bin/playerctl";
   playerctld = "${pkgs.playerctl}/bin/playerctld";
   pavucontrol = "${pkgs.pavucontrol}/bin/pavucontrol";
-  wofi = "${pkgs.wofi}/bin/wofi";
   khal = "${pkgs.khal}/bin/khal";
   python = "${pkgs.python3}/bin/python3";
 

@@ -1,6 +1,6 @@
 {
   imports = [
-    ./anyrun
+    ./rofi
     ./hypridle.nix
     ./hyprlock.nix
     ./mako.nix

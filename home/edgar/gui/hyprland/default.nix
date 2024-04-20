@@ -149,7 +149,7 @@
         playerctl = "${config.services.playerctld.package}/bin/playerctl";
         playerctld = "${config.services.playerctld.package}/bin/playerctld";
         makoctl = "${config.services.mako.package}/bin/makoctl";
-        anyrun = "${config.programs.anyrun.package}/bin/anyrun";
+        rofi = lib.getExe config.programs.rofi.package;
         pass-wofi = "${pkgs.pass-wofi.override {
           pass = config.programs.password-store.package;
         }}/bin/pass-wofi";
@@ -209,8 +209,8 @@
         ])
         ++
         # Launcher
-        (lib.optionals config.programs.anyrun.enable [
-            "SUPER,d,exec,${anyrun}"
+        (lib.optionals config.programs.rofi.enable [
+            "SUPER,d,exec,${rofi} -show drun"
           ]
           ++ (lib.optionals config.programs.password-store.enable [
             ",Scroll_Lock,exec,${pass-wofi}" # fn+k
