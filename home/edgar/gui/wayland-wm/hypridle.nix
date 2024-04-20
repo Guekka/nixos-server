@@ -27,10 +27,6 @@ in {
 
     listeners = [
       {
-        timeout = 120;
-        onTimeout = hyprlock;
-      }
-      {
         timeout = 300;
         onTimeout = suspendScript.outPath;
       }
