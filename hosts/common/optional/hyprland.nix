@@ -27,6 +27,5 @@
     _JAVA_AWT_WM_NONREPARENTING = "1";
     CLUTTER_BACKEND = "wayland";
     WLR_RENDERER = "vulkan";
-    QT_QPA_PLATFORM = "wayland";
   };
 }
