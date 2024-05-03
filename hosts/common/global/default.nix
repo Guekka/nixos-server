@@ -41,9 +41,6 @@
 
   sops.secrets.shared-borgbackup-passphrase.sopsFile = ../secrets.yaml;
 
-  # Latest Linux kernel
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-
   # Easy access to my nodes
   networking.extraHosts = ''
     horus.bizel.fr horus
