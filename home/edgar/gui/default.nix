@@ -17,6 +17,7 @@
 
   home.packages = with pkgs.stable; [
     anytype
+    pkgs.beeper # evolves fast
     calibre
     keepassxc
     libsForQt5.ark
