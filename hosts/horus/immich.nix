@@ -55,7 +55,7 @@ in {
       REDIS_HOSTNAME = "immich_redis";
     };
     environmentFiles = [
-      config.sops.secrets.immich_server.path
+      config.sops.secrets.immich_postgres.path
     ];
     volumes = [
       "${immichPhotos}:/usr/src/app/upload"
@@ -81,7 +81,7 @@ in {
       REDIS_HOSTNAME = "immich_redis";
     };
     environmentFiles = [
-      config.sops.secrets.immich_server.path
+      config.sops.secrets.immich_postgres.path
     ];
     volumes = [
       "${immichPhotos}:/usr/src/app/upload"
@@ -118,11 +118,13 @@ in {
     ];
   };
 
-  systemd.tmpfiles.rules = [
-    "d ${immichPhotos} 0755 root root"
-    "d ${immichAppdataRoot} 0755 root root"
-    "d ${postgresRoot} 0755 root root"
-  ];
+  users = {
+    groups.immich = {};
+    users.immich = {
+      isSystemUser = true;
+      group = "immich";
+    };
+  };
 
-  sops.secrets.immich_postgres.file = ../secrets.yaml;
+  sops.secrets.immich_postgres.sopsFile = ./secrets.yaml;
 }
