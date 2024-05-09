@@ -15,8 +15,8 @@
     # ./arr/prowlarr.nix
     # ./arr/sonarr.nix
     ./calibre-server.nix
-    ./cozy-cloud.nix
     ./grocy.nix
+    ./immich.nix
     ./hardware-configuration.nix
     ./immich.nix
     ./mattermost.nix
@@ -29,7 +29,6 @@
     ./paperless.nix
     ./plausible.nix
     # ./plex.nix
-    ./photoprism.nix
     ./postgresql.nix
     # ./qbittorrent.nix # needs to change the docker image to aarm64
     ./rss.nix
