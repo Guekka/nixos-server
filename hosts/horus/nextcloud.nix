@@ -16,7 +16,7 @@ in {
 
     extraAppsEnable = true;
     extraApps = with pkgs.nextcloud28Packages.apps; {
-      inherit bookmarks calendar contacts cospend forms polls tasks;
+      inherit bookmarks calendar contacts cospend deck forms polls tasks;
     };
 
     config = {
