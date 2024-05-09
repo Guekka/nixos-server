@@ -1,7 +1,6 @@
 {pkgs, ...}: {
   programs.vscode = {
     enable = true;
-    package = pkgs.vscodium;
     enableExtensionUpdateCheck = false;
     enableUpdateCheck = false;
     # i love immutability, but sometimes I want a one-time extension
