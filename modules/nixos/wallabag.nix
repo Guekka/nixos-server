@@ -220,7 +220,8 @@ in {
       serviceConfig =
         {
           User = cfg.user;
-          Type = "oneshot";
+          Restart = "always";
+          RuntimeMaxSec = "10m"; # wallabag stops working every now and then. This "fixes" it
         }
         // wallabagServiceConfig;
       preStart = ''
