@@ -12,8 +12,6 @@
     ./basic-binds.nix
   ];
 
-  # TODO: checkout wl-clipboard-history
-
   wayland.windowManager.hyprland = {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
@@ -145,6 +143,7 @@
         ",XF86AudioMicMute,exec,${pactl} set-source-mute @DEFAULT_SOURCE@ toggle"
       ];
       bind = let
+        cliphist = "${pkgs.cliphist}/bin/cliphist";
         hyprlock = lib.getExe config.programs.hyprlock.package;
         playerctl = "${config.services.playerctld.package}/bin/playerctl";
         playerctld = "${config.services.playerctld.package}/bin/playerctld";
@@ -153,6 +152,7 @@
         pass-wofi = "${pkgs.pass-wofi.override {
           pass = config.programs.password-store.package;
         }}/bin/pass-wofi";
+        wl-copy = "${pkgs.wl-clipboard}/bin/wl-copy";
 
         grimblast = "${pkgs.grimblast}/bin/grimblast";
         # TODO tly = "${pkgs.tly}/bin/tly";
@@ -210,8 +210,13 @@
         ++
         # Launcher
         (lib.optionals config.programs.rofi.enable [
-            "SUPER,d,exec,${rofi} -show drun"
+            "SUPER,x,exec,${rofi} -show drun -sidebar-mode"
+            "SUPERSHIFT,x,exec,${rofi} -show run"
+            "SUPER,tab,exec,${rofi} -show window"
           ]
+          ++ (lib.optionals config.services.cliphist.enable [
+            "SUPER, C, exec, ${cliphist} list | ${rofi} -dmenu | ${cliphist} decode | ${wl-copy}" # Clipboard manager
+          ])
           ++ (lib.optionals config.programs.password-store.enable [
             ",Scroll_Lock,exec,${pass-wofi}" # fn+k
             ",XF86Calculator,exec,${pass-wofi}" # fn+f12
