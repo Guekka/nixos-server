@@ -174,11 +174,11 @@
           "SUPER,v,exec,${editor}"
           "SUPER,b,exec,${browser}"
           # Screenshotting
-          ",Print,exec,${grimblast} --notify copy area"
-          "SHIFT,Print,exec,${grimblast} --notify copy active"
-          "CONTROL,Print,exec,${grimblast} --notify copy screen"
-          "SUPER,Print,exec,${grimblast} --notify copy window"
-          "ALT,Print,exec,${grimblast} --notify copy output"
+          ",Print,exec,${grimblast} --notify --freeze copy area"
+          "SHIFT,Print,exec,${grimblast} --notify --freeze copy active"
+          "CONTROL,Print,exec,${grimblast} --notify --freeze copy screen"
+          "SUPER,Print,exec,${grimblast} --notify --freeze copy window"
+          "ALT,Print,exec,${grimblast} --notify --freeze copy output"
           # Tally counter
           # TODO "SUPER,z,exec,${notify-send} -t 1000 $(${tly} time) && ${tly} add && ${gtk-play} -i dialog-information" # Add new entry
           # TODO "SUPERCONTROL,z,exec,${notify-send} -t 1000 $(${tly} time) && ${tly} undo && ${gtk-play} -i dialog-warning" # Undo last entry
@@ -210,12 +210,12 @@
         ++
         # Launcher
         (lib.optionals config.programs.rofi.enable [
-            "SUPER,x,exec,${rofi} -show drun -sidebar-mode"
+            "SUPER,d,exec,${rofi} -show drun -sidebar-mode"
             "SUPERSHIFT,x,exec,${rofi} -show run"
             "SUPER,tab,exec,${rofi} -show window"
           ]
           ++ (lib.optionals config.services.cliphist.enable [
-            "SUPER, C, exec, ${cliphist} list | ${rofi} -dmenu | ${cliphist} decode | ${wl-copy}" # Clipboard manager
+            "SUPER, c, exec, ${cliphist} list | ${rofi} -dmenu | ${cliphist} decode | ${wl-copy}" # Clipboard manager
           ])
           ++ (lib.optionals config.programs.password-store.enable [
             ",Scroll_Lock,exec,${pass-wofi}" # fn+k
