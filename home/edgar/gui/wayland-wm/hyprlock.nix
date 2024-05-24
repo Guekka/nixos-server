@@ -1,6 +1,6 @@
-{inputs, ...}: {
+{
   imports = [
-    inputs.hyprlock.homeManagerModules.hyprlock
+    #inputs.hyprlock.homeManagerModules.hyprlock
   ];
 
   programs.hyprlock = {

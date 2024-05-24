@@ -17,6 +17,8 @@ in {
     inputs.hypridle.homeManagerModules.hypridle
   ];
 
+  disabledModules = ["services/hypridle.nix"];
+
   # screen idle
   services.hypridle = let
     hyprlock = lib.getExe config.programs.hyprlock.package;
