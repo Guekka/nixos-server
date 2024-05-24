@@ -23,8 +23,8 @@ in {
 
   home-manager.users.edgar = import home/${config.networking.hostName}.nix;
 
+  security.pam.services.hyprlock = {};
   security.pam.services.swaylock = {};
-
   # I've locked myself out of my computer too many times when the password file doesn't exist
   # So create a default one
   system.activationScripts.createDefaultPasswordFile = ''
