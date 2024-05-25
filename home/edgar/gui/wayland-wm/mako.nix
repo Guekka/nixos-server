@@ -1,11 +1,11 @@
 {config, ...}: let
-  inherit (config.colorScheme) colors kind;
+  inherit (config.colorScheme) palette variant;
 in {
   services.mako = {
     enable = true;
 
     iconPath =
-      if kind == "dark"
+      if variant == "dark"
       then "${config.gtk.iconTheme.package}/share/icons/Papirus-Dark"
       else "${config.gtk.iconTheme.package}/share/icons/Papirus-Light";
     font = "${config.fontProfiles.regular.family} 12";
@@ -15,9 +15,9 @@ in {
     height = 150;
     borderSize = 2;
     defaultTimeout = 12000;
-    backgroundColor = "#${colors.base00}dd";
-    borderColor = "#${colors.base03}dd";
-    textColor = "#${colors.base05}dd";
+    backgroundColor = "#${palette.base00}dd";
+    borderColor = "#${palette.base03}dd";
+    textColor = "#${palette.base05}dd";
     layer = "overlay";
   };
 }

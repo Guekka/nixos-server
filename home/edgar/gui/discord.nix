@@ -10,7 +10,7 @@
   # TODO: investigate DISCORD_USER_DATA_DIR
 
   # based on <https://github.com/Marcus-Arcadius/nixdots/blob/main/modules/home/programs/discocss/default.nix>
-  xdg.configFile."Vencord/settings/quickCss.css".text = with config.colorscheme.colors; ''
+  xdg.configFile."Vencord/settings/quickCss.css".text = with config.colorscheme.palette; ''
     /**
      * @name Discord base 16 Nix theme
      * @author sioodmy

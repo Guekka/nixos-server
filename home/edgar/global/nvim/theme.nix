@@ -1,5 +1,5 @@
 scheme: let
-  c = scheme.colors;
+  c = scheme.palette;
 in
   /*
   vim

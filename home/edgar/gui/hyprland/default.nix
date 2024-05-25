@@ -22,8 +22,8 @@
         gaps_out = 10;
         border_size = 3;
         cursor_inactive_timeout = 30;
-        "col.active_border" = "0xff${config.colorscheme.colors.base0C}";
-        "col.inactive_border" = "0xff${config.colorscheme.colors.base02}";
+        "col.active_border" = "0xff${config.colorscheme.palette.base0C}";
+        "col.inactive_border" = "0xff${config.colorscheme.palette.base02}";
         layout = "dwindle";
       };
       input = {
@@ -41,8 +41,8 @@
       };
 
       group = {
-        "col.border_active" = "0xff${config.colorscheme.colors.base0B}";
-        "col.border_inactive" = "0xff${config.colorscheme.colors.base04}";
+        "col.border_active" = "0xff${config.colorscheme.palette.base0B}";
+        "col.border_inactive" = "0xff${config.colorscheme.palette.base04}";
       };
 
       dwindle = {
