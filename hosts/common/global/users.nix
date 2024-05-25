@@ -10,9 +10,28 @@
       edgar = {
         isNormalUser = true;
         shell = pkgs.fish;
-        extraGroups = ["wheel"];
         openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFQ4dwdR5kG7RApFSuqiy11IoRG0pECnMLbiLLfttpwJ beelink"];
         hashedPasswordFile = config.sops.secrets.edgar-password.path;
+
+        extraGroups = let
+          ifTheyExist = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
+        in
+          [
+            "wheel"
+            "video"
+            "audio"
+          ]
+          ++ ifTheyExist [
+            "network"
+            "wireshark"
+            "i2c"
+            "mysql"
+            "docker"
+            "podman"
+            "git"
+            "libvirtd"
+            "deluge"
+          ];
       };
       root = {
         # so, this may look like a security issue. I'm publicly showing the hash of my password. However:
