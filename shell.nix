@@ -7,13 +7,12 @@
     inherit pkgs inputs;
     modules = [
       {
-        packages = with pkgs; [home-manager git sops];
+        packages = with pkgs; [home-manager git sops statix];
         pre-commit.hooks = {
           shellcheck.enable = true; # shell static analysis
           alejandra.enable = true; # nix format
           deadnix.enable = true; # nix dead code remover
-          # disabled for now, as it crashes for no reason
-          statix.enable = false; # nix static analysis
+          statix.enable = true; # nix static analysis
         };
       }
     ];

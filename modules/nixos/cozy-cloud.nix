@@ -81,7 +81,7 @@ in {
   config = mkIf cfg.enable {
     assertions = [
       {
-        assertion = config.services.couchdb.enable == true;
+        assertion = config.services.couchdb.enable;
         message = "CouchDB is required for Cozy to work.";
       }
     ];
@@ -142,10 +142,10 @@ in {
 
     environment.etc."cozy/cozy-admin-passphrase".source = cfg.settings.adminPasswordFile;
     environment.etc."cozy/cozy.json".text = builtins.toJSON {
-      host = cfg.settings.host;
-      port = cfg.settings.port;
+      inherit (cfg.settings) host;
+      inherit (cfg.settings) port;
       admin = {
-        host = cfg.settings.host;
+        inherit (cfg.settings) host;
         port = cfg.settings.adminPort;
       };
       couchdb = {

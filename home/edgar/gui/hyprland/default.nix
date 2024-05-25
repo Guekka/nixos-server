@@ -233,7 +233,8 @@
             then "${resolution},${position},1"
             else "disable"
           }"
-        ) (config.monitors)
+        )
+        config.monitors
         ++ [",preferred,auto,1"];
 
       workspace = map (
