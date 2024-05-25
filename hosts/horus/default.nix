@@ -15,6 +15,7 @@
     # ./arr/prowlarr.nix
     # ./arr/sonarr.nix
     ./calibre-server.nix
+    ./firefly.nix
     ./grocy.nix
     ./immich.nix
     ./hardware-configuration.nix
