@@ -4,7 +4,7 @@
 in {
   services.paperless = {
     enable = true;
-    extraConfig = {
+    settings = {
       PAPERLESS_OCR_LANGUAGE = "fra+eng";
       PAPERLESS_OCR_USER_ARGS = ''
         {

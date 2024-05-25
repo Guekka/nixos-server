@@ -30,7 +30,7 @@ in {
       adminpassFile = config.sops.secrets.nextcloud-pass.path;
     };
 
-    extraOptions = {
+    settings = {
       # Further forces Nextcloud to use HTTPS
       overwriteProtocol = "https";
     };
