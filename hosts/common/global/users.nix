@@ -2,9 +2,7 @@
   pkgs,
   config,
   ...
-}: let
-  passwordFile = "/persist/passwords/edgar";
-in {
+}: {
   programs.fish.enable = true;
   users = {
     mutableUsers = false;
@@ -14,31 +12,29 @@ in {
         shell = pkgs.fish;
         extraGroups = ["wheel"];
         openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFQ4dwdR5kG7RApFSuqiy11IoRG0pECnMLbiLLfttpwJ beelink"];
-
-        initialHashedPassword = "$6$HKQ5ZEb2wSnYtBGo$/Y4Fh7xHbeQ9p9VL6zyXkk1CCyN/XADveDddYtWr8KHP5vF/bWT9/Xs4cBBhrstp8s6Q.ak5GbOPd2yni/pYJ0";
-        hashedPasswordFile = passwordFile;
+        hashedPasswordFile = config.sops.secrets.edgar-password.path;
+      };
+      root = {
+        # so, this may look like a security issue. I'm publicly showing the hash of my password. However:
+        # 1. this password is very robust
+        # 2. it is not used anywhere else
+        # 3. it only works if you have stolen my computer
+        # considering the odds of someone stealing my computer AND knowing how to crack this, I feel safe enough to put it here
+        hashedPassword = "$6$pOQ6iRJO9Fq.FMVq$qFoIq4gCC/KPO.o4CAXqSafv4drCKJJFTr6tW98sBUi1QWYxDFwQlwQHO.m3p2tMfGwSPsbDeiEQQDtHFVn8Y.";
       };
     };
+  };
+
+  sops.secrets.edgar-password = {
+    sopsFile = ../secrets.yaml;
+    neededForUsers = true;
   };
 
   home-manager.users.edgar = import home/${config.networking.hostName}.nix;
 
   security.pam.services.hyprlock = {};
   security.pam.services.swaylock = {};
-  # I've locked myself out of my computer too many times when the password file doesn't exist
-  # So create a default one
-  system.activationScripts.createDefaultPasswordFile = ''
-    mkdir -p /persist/passwords
-    # only create the file if it doesn't exist. Password is "hunter2"
-    if [ ! -f ${passwordFile} ]; then
-      echo "${passwordFile} doesn't exist, creating it. Password is \"hunter2\""
-      echo '$6$bH8SwzNFISaaeQ6g$anQ2PpZy1l8Mkr/TeDgLnOqchTnR9yHA1Pfh0o1HP8KFk4B4Ei6mhGRmyV/0fa.k9jkBJf2sz97OUOhNLdMPn/' > ${passwordFile}
-      # what if the update users script runs before this one? Let's change the password in case
-      yes hunter2 | passwd edgar
-    fi
-  '';
 
-  # Home secrets. I guess the proper way would be to use the home manager module
   # But it seems too tedious
   sops.secrets.atuin_key = {
     sopsFile = ../secrets.yaml;
