@@ -6,7 +6,6 @@ in {
     (pluginify idea-ultimate)
 
     pkgs.stable.qtcreator
-    pkgs.ida-free
     pkgs.stable.staruml
   ];
 }
