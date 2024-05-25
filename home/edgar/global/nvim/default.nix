@@ -11,7 +11,6 @@ in {
     ./ui.nix
     ./copilot.nix
   ];
-  home.sessionVariables.EDITOR = "nvim";
 
   programs.neovim = {
     enable = true;

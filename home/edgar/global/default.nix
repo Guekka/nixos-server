@@ -19,7 +19,7 @@
       ./font.nix
       ./fzf.nix
       ./git.nix
-      ./helix.nix
+      ./helix
       ./jq.nix
       ./kitty.nix
       ./mime.nix
