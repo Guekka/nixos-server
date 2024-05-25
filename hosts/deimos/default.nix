@@ -27,7 +27,7 @@
     exitNodeAllowLanAccess = true;
   };
 
-  time.timeZone = "Europe/Amsterdam";
+  time.timeZone = "Europe/London";
 
   # Lid settings
   services.logind = {
