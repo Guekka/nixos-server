@@ -41,6 +41,9 @@
 
   sops.secrets.shared-borgbackup-passphrase.sopsFile = ../secrets.yaml;
 
+  # run external binaries. Does it work?
+  programs.nix-ld.enable = true;
+
   # Easy access to my nodes
   networking.extraHosts = ''
     horus.bizel.fr horus
