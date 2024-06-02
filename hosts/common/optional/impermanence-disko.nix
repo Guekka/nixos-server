@@ -84,6 +84,9 @@
 
   # always persist these
   environment.persistence."/persist" = {
+    directories = [
+      "/var/lib/nixos"
+    ];
     files = [
       "/etc/machine-id"
     ];
