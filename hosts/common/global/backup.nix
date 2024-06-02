@@ -23,6 +23,7 @@
       "/home/*/Android"
       "/home/*/Downloads"
       "/home/*/Games"
+      "/home/*/Nextcloud"
       "/home/*/Unity/Hub"
       "swapfile"
     ];
