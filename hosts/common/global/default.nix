@@ -10,6 +10,7 @@
     ./nfs.nix
     ./nix.nix
     ./nixpkgs.nix
+    ./nh.nix
     ./ntfs.nix
     ./oomd.nix
     ./openssh.nix

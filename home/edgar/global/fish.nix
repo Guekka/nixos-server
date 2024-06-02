@@ -24,8 +24,6 @@
       mv = "mv -i";
 
       mkdir = "mkdir -p";
-
-      rebuild = "sudo nixos-rebuild switch --flake ~/nixos#$(hostname)";
     };
 
     shellAliases = {
