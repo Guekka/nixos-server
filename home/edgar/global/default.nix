@@ -24,7 +24,6 @@
       ./kitty.nix
       ./mime.nix
       ./nix-index.nix
-      ./nvim
       ./rclone.nix
       ./starship.nix
       ./xdg.nix
