@@ -8,6 +8,7 @@
     ../common/optional/podman.nix
     ../common/optional/samba-client.nix
     ./acme.nix
+    ./actualbudget.nix
     # ./arr/bazarr.nix
     # ./arr/lidarr.nix
     # ./arr/radarr.nix
