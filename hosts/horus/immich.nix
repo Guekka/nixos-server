@@ -1,8 +1,10 @@
 {config, ...}: let
   immichHost = "immich.bizel.fr";
 
-  immichRoot = "/shared/edgar/immich";
+  immichRoot = "/var/lib/immich";
   immichPhotos = "${immichRoot}/photos";
+  # The original photos are accessible at /shared/edgar/immich/library
+  immichLibrary = "/shared/edgar/immich/library";
   immichAppdataRoot = "${immichRoot}/appdata";
   immichVersion = "release";
 
@@ -59,6 +61,7 @@ in {
     ];
     volumes = [
       "${immichPhotos}:/usr/src/app/upload"
+      "${immichLibrary}:/usr/src/app/upload/library"
       "/etc/localtime:/etc/localtime:ro"
     ];
   };
@@ -85,6 +88,7 @@ in {
     ];
     volumes = [
       "${immichPhotos}:/usr/src/app/upload"
+      "${immichLibrary}:/usr/src/app/upload/library"
       "/etc/localtime:/etc/localtime:ro"
     ];
   };
@@ -118,6 +122,15 @@ in {
     ];
   };
 
+  environment.persistence."/persist".directories = [
+    {
+      directory = immichRoot;
+      user = "immich";
+      group = "immich";
+      mode = "0750";
+    }
+  ];
+
   users = {
     groups.immich = {};
     users.immich = {
@@ -125,6 +138,11 @@ in {
       group = "immich";
     };
   };
+
+  # Normal users should not be able to modify the immich library directly
+  systemd.tmpfiles.rules = [
+    "d ${immichLibrary} 0755 immich immich"
+  ];
 
   sops.secrets.immich_postgres.sopsFile = ./secrets.yaml;
 }
