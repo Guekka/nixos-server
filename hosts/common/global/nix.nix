@@ -23,6 +23,8 @@
         "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
       ];
       flake-registry = ""; # Disable global flake registry
+
+      use-xdg-base-directories = true;
     };
 
     # Add each flake input as a registry

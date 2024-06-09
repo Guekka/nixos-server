@@ -18,6 +18,7 @@
     ./systemd-boot.nix
     ./tailscale.nix
     ./users.nix
+    ./xdg.nix
   ];
 
   # azerty
@@ -42,8 +43,11 @@
 
   sops.secrets.shared-borgbackup-passphrase.sopsFile = ../secrets.yaml;
 
-  # run external binaries. Does it work?
+  # run external binaries
   programs.nix-ld.enable = true;
+
+  # reisub
+  boot.kernel.sysctl."kernel.sysrq" = 502;
 
   # Easy access to my nodes
   networking.extraHosts = ''

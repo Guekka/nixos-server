@@ -10,6 +10,7 @@
       inputs.nix-colors.homeManagerModules.default
 
       ./atuin.nix
+      ./bash.nix
       ./bat.nix
       ./bottom.nix
       ./calendar.nix
