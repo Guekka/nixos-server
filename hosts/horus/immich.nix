@@ -2,7 +2,7 @@
   immichHost = "immich.bizel.fr";
 
   immichRoot = "/var/lib/immich";
-  immichPhotos = "${immichRoot}/photos";
+  immichPhotosWithoutLibrary = "${immichRoot}/photos";
   # The original photos are accessible at /shared/edgar/immich/library
   immichLibrary = "/shared/edgar/immich/library";
   immichAppdataRoot = "${immichRoot}/appdata";
@@ -63,7 +63,7 @@ in {
         config.sops.secrets.immich_postgres.path
       ];
       volumes = [
-        "${immichPhotos}:/usr/src/app/upload"
+        "${immichPhotosWithoutLibrary}:/usr/src/app/upload"
         "${immichLibrary}:/usr/src/app/upload/library"
         "/etc/localtime:/etc/localtime:ro"
       ];
@@ -90,7 +90,7 @@ in {
         config.sops.secrets.immich_postgres.path
       ];
       volumes = [
-        "${immichPhotos}:/usr/src/app/upload"
+        "${immichPhotosWithoutLibrary}:/usr/src/app/upload"
         "${immichLibrary}:/usr/src/app/upload/library"
         "/etc/localtime:/etc/localtime:ro"
       ];
@@ -159,6 +159,13 @@ in {
       group = "immich";
       mode = "0750";
     }
+  ];
+
+  services.borgmatic.settings.location.exclude_patterns = [
+    # The immich database is dumped, no need to backup the live data
+    immichAppdataRoot
+    # Expensive to compute, but can be regenerated
+    immichPhotosWithoutLibrary
   ];
 
   users = {
