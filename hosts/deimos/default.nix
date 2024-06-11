@@ -35,6 +35,15 @@
     lidSwitchExternalPower = "suspend";
   };
 
+  # Battery actions
+  services.upower = {
+    enable = true;
+    percentageAction = 10;
+    percentageCritical = 10;
+    percentageLow = 15;
+    criticalPowerAction = "Hibernate";
+  };
+
   # brightness control
   programs.light.enable = true;
 
