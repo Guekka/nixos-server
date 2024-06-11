@@ -59,6 +59,16 @@
       {
         name = "repository";
       }
+      {
+        name = "spot";
+        frequency = "1 week";
+        count_tolerance_percentage = 10;
+        data_sample_percentage = 10;
+        data_tolerance_percentage = 0.5;
+        xxh64sum_command = pkgs.writeShellScript "xxhash64" ''
+          exec ${pkgs.xxHash}/bin/xxhsum -H64 "$1"
+        '';
+      }
     ];
 
     ssh_command = "${pkgs.openssh}/bin/ssh -oBatchMode=yes -i ${config.sops.secrets.guekka-backup-domino-ssh.path}";
