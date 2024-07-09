@@ -9,18 +9,12 @@
     ../common/optional/samba-client.nix
     ./acme.nix
     ./actualbudget.nix
-    # ./arr/bazarr.nix
-    # ./arr/lidarr.nix
-    # ./arr/radarr.nix
-    # ./arr/readarr.nix
-    # ./arr/prowlarr.nix
-    # ./arr/sonarr.nix
     ./calibre-server.nix
-    ./firefly.nix
     ./grocy.nix
     ./immich.nix
     ./hardware-configuration.nix
     ./immich.nix
+    ./jitsi.nix
     ./mattermost.nix
     ./microbin.nix
     ./navidrome.nix
