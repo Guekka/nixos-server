@@ -148,7 +148,7 @@
         playerctl = "${config.services.playerctld.package}/bin/playerctl";
         playerctld = "${config.services.playerctld.package}/bin/playerctld";
         makoctl = "${config.services.mako.package}/bin/makoctl";
-        rofi = lib.getExe config.programs.rofi.package;
+        rofi = lib.getExe config.programs.rofi.finalPackage;
         pass-wofi = "${pkgs.pass-wofi.override {
           pass = config.programs.password-store.package;
         }}/bin/pass-wofi";
@@ -210,7 +210,7 @@
         ++
         # Launcher
         (lib.optionals config.programs.rofi.enable [
-            "SUPER,d,exec,${rofi} -show drun -sidebar-mode"
+            "SUPER,d,exec,${rofi} -show combi -sidebar-mode"
             "SUPERSHIFT,x,exec,${rofi} -show run"
             "SUPER,tab,exec,${rofi} -show window"
           ]
