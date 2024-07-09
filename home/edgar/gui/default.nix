@@ -21,7 +21,7 @@
     calibre
     keepassxc
     libsForQt5.ark
-    pkgs.obsidian # TODO: move to stable when 24.05 releases
+    obsidian
     plex-media-player
     qbittorrent
     vlc
