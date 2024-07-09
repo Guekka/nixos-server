@@ -49,6 +49,9 @@
   # reisub
   boot.kernel.sysctl."kernel.sysrq" = 502;
 
+  # Read the doc before updating
+  system.stateVersion = "24.11";
+
   # Easy access to my nodes
   networking.extraHosts = ''
     horus.bizel.fr horus
