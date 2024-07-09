@@ -1,6 +1,5 @@
 {
   config,
-  inputs,
   lib,
   pkgs,
   ...
@@ -13,25 +12,23 @@
     fi
   '';
 in {
-  imports = [
-    inputs.hypridle.homeManagerModules.hypridle
-  ];
-
-  disabledModules = ["services/hypridle.nix"];
-
   # screen idle
   services.hypridle = let
     hyprlock = lib.getExe config.programs.hyprlock.package;
   in {
     enable = true;
-    beforeSleepCmd = "${pkgs.systemd}/bin/loginctl lock-session";
-    lockCmd = hyprlock;
+    settings = {
+      general = {
+        before_sleep_cmd = "${pkgs.systemd}/bin/loginctl lock-session";
+        lock_cmd = hyprlock;
+      };
 
-    listeners = [
-      {
-        timeout = 300;
-        onTimeout = suspendScript.outPath;
-      }
-    ];
+      listener = [
+        {
+          timeout = 300;
+          on-timeout = suspendScript.outPath;
+        }
+      ];
+    };
   };
 }

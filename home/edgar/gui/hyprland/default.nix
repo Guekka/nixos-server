@@ -1,7 +1,6 @@
 {
   lib,
   config,
-  inputs,
   pkgs,
   ...
 }: {
@@ -14,14 +13,12 @@
 
   wayland.windowManager.hyprland = {
     enable = true;
-    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
 
     settings = {
       general = {
         gaps_in = 5;
         gaps_out = 10;
         border_size = 3;
-        cursor_inactive_timeout = 30;
         "col.active_border" = "0xff${config.colorscheme.palette.base0C}";
         "col.inactive_border" = "0xff${config.colorscheme.palette.base02}";
         layout = "dwindle";
