@@ -49,7 +49,7 @@
   home.packages = with pkgs.stable; [
     alejandra
     comma
-    pkgs.csvlens # TODO: move to stable after NixOS 24.05
+    csvlens
     duf
     du-dust
     fd
@@ -61,7 +61,7 @@
     ripgrep
     rnr
     sshfs
-    pkgs.tcount
+    pkgs.tcount # custom package
     unsilence
   ];
 }

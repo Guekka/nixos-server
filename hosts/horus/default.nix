@@ -10,6 +10,7 @@
     ./acme.nix
     ./actualbudget.nix
     ./calibre-server.nix
+    ./fail2ban.nix
     ./grocy.nix
     ./immich.nix
     ./hardware-configuration.nix
