@@ -18,6 +18,8 @@
 
   environment.systemPackages = [
     pkgs.xdg-utils # xdg-open
+    pkgs.qt5.qtwayland
+    pkgs.qt6.qtwayland
   ];
 
   # Mostly from <https://www.reddit.com/r/NixOS/comments/137j18j/comment/ju6h25k/>
@@ -31,7 +33,7 @@
     }
     // lib.mkIf (config.hardware.nvidia.package != null) {
       LIBVA_DRIVER_NAME = "nvidia";
-      GBM_BACKEND = "nvidia-drm";
+      GBM_BACKEND = "nvidia";
       __GLX_VENDOR_LIBRARY_NAME = "nvidia";
       NVD_BACKEND = "direct";
     };
