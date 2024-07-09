@@ -10,7 +10,6 @@
     ../common/optional/noisetorch.nix
     ../common/optional/openocd.nix
     ../common/optional/pipewire.nix
-    ../common/optional/samba-client.nix
     ../common/optional/steam.nix
     ../common/optional/wireless.nix
     ./hardware-configuration.nix
