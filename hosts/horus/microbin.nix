@@ -7,6 +7,7 @@
       MICROBIN_QR = true;
       MICROBIN_PUBLIC_PATH = "https://sp.bizel.fr";
       MICROBIN_EDITABLE = true;
+      MICROBIN_PRIVATE = true;
     };
   };
 
