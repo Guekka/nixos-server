@@ -6,7 +6,7 @@
   # The original photos are accessible at /shared/edgar/immich/library
   immichLibrary = "/shared/edgar/immich/library";
   immichAppdataRoot = "${immichRoot}/appdata";
-  immichVersion = "release";
+  immichVersion = "v1.107.2";
 
   postgresRoot = "${immichAppdataRoot}/pgsql";
   postgresUser = "immich";
@@ -51,34 +51,6 @@ in {
         # to be inconsistent.
         "--dns=10.88.0.1"
       ];
-      cmd = ["start.sh" "immich"];
-      environment = {
-        IMMICH_VERSION = immichVersion;
-        DB_HOSTNAME = "immich_postgres";
-        DB_USERNAME = postgresUser;
-        DB_DATABASE_NAME = postgresDb;
-        REDIS_HOSTNAME = "immich_redis";
-      };
-      environmentFiles = [
-        config.sops.secrets.immich_postgres.path
-      ];
-      volumes = [
-        "${immichPhotosWithoutLibrary}:/usr/src/app/upload"
-        "${immichLibrary}:/usr/src/app/upload/library"
-        "/etc/localtime:/etc/localtime:ro"
-      ];
-    };
-
-    immich_microservices = {
-      image = "ghcr.io/immich-app/immich-server:${immichVersion}";
-      extraOptions = [
-        "--pull=newer"
-        # Force DNS resolution to only be the podman dnsname name server; by default podman provides a resolv.conf
-        # that includes both this server and the upstream system server, causing resolutions of other pod names
-        # to be inconsistent.
-        "--dns=10.88.0.1"
-      ];
-      cmd = ["start.sh" "microservices"];
       environment = {
         IMMICH_VERSION = immichVersion;
         DB_HOSTNAME = "immich_postgres";
@@ -138,6 +110,9 @@ in {
         SCHEDULE = "@hourly";
         POSTGRES_EXTRA_OPTS = "--clean --if-exists";
         BACKUP_DIR = "/db_dumps";
+        BACKUP_KEEP_DAYS = "2";
+        BACKUP_KEEP_WEEKS = "1";
+        BACKUP_KEEP_MONTHS = "1";
       };
       volumes = [
         "${immichDatabaseDumps}:/db_dumps"
@@ -161,11 +136,11 @@ in {
     }
   ];
 
-  services.borgmatic.settings.location.exclude_patterns = [
+  services.borgmatic.configurations.default.exclude_patterns = [
     # The immich database is dumped, no need to backup the live data
-    immichAppdataRoot
+    "/persist/${immichAppdataRoot}"
     # Expensive to compute, but can be regenerated
-    immichPhotosWithoutLibrary
+    "/persist/${immichPhotosWithoutLibrary}"
   ];
 
   users = {
