@@ -133,6 +133,8 @@ in {
       };
   };
 
+  programs.ssh.knownHosts."domino.zdimension.fr".publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAptqquuh/mkY/06LvfG4za2T3jAoenVR5vJnVOeVaeL";
+
   sops.secrets.guekka-backup-domino-ssh.sopsFile = ../secrets.yaml;
 
   systemd.timers.borgmatic = {
