@@ -1,6 +1,5 @@
 {pkgs, ...}: {
   imports = [
-    ./cursor.nix
     ./dev.nix
     ./discord.nix
     ./file-manager.nix
@@ -10,7 +9,6 @@
     # currently broken    ./image-sieve.nix
     ./ledger.nix
     ./nextcloud-client.nix
-    ./qt.nix
     ./vscode.nix
     ./zathura.nix
   ];

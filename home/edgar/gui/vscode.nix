@@ -41,7 +41,6 @@
 
       # Font
       "editor.fontLigatures" = true;
-      "editor.fontFamily" = "Fira Code";
 
       "editor.unicodeHighlight.nonBasicASCII" = false;
 
@@ -64,7 +63,6 @@
         "markdown" = true;
       };
 
-      "workbench.colorTheme" = "Solarized Light";
       "workbench.iconTheme" = "material-icon-theme";
 
       "nix.enableLanguageServer" = true;

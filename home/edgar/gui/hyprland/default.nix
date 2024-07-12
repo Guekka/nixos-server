@@ -19,8 +19,6 @@
         gaps_in = 5;
         gaps_out = 10;
         border_size = 3;
-        "col.active_border" = "0xff${config.colorscheme.palette.base0C}";
-        "col.inactive_border" = "0xff${config.colorscheme.palette.base02}";
         layout = "dwindle";
       };
       input = {
@@ -35,11 +33,6 @@
       gestures = {
         workspace_swipe = true;
         workspace_swipe_fingers = 3;
-      };
-
-      group = {
-        "col.border_active" = "0xff${config.colorscheme.palette.base0B}";
-        "col.border_inactive" = "0xff${config.colorscheme.palette.base04}";
       };
 
       dwindle = {
@@ -71,8 +64,6 @@
         drop_shadow = true;
         shadow_range = 12;
         shadow_offset = "3 3";
-        "col.shadow" = "0x44000000";
-        "col.shadow_inactive" = "0x66000000";
       };
       animations = {
         enabled = true;

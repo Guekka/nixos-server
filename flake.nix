@@ -27,7 +27,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-colors.url = "github:misterio77/nix-colors";
+    stylix = {
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+      # I prefer this version
+      inputs.base16-fish.url = "github:diniamo/base16-fish/white-param-color";
+    };
   };
 
   # what will be produced (i.e. the build)

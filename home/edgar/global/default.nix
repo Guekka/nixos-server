@@ -1,14 +1,11 @@
 {
   config,
-  inputs,
   pkgs,
   outputs,
   ...
 }: {
   imports =
     [
-      inputs.nix-colors.homeManagerModules.default
-
       ./atuin.nix
       ./bash.nix
       ./bat.nix
@@ -17,7 +14,6 @@
       ./direnv.nix
       ./eza.nix
       ./fish.nix
-      ./font.nix
       ./fzf.nix
       ./git.nix
       ./helix
@@ -27,13 +23,12 @@
       ./nix-index.nix
       ./rclone.nix
       ./starship.nix
+      ./stylix.nix
       ./xdg.nix
       ./yazi.nix
       ./zoxide.nix
     ]
     ++ (builtins.attrValues outputs.homeManagerModules);
-
-  colorScheme = inputs.nix-colors.colorSchemes.selenized-light;
 
   home = {
     username = "edgar";
