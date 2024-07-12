@@ -72,4 +72,10 @@
     path = "/home/edgar/secrets/nextcloud_pass";
     owner = "edgar";
   };
+
+  sops.secrets.wakatime_cfg = {
+    sopsFile = ../secrets.yaml;
+    path = "/home/edgar/.wakatime.cfg";
+    owner = "edgar";
+  };
 }
