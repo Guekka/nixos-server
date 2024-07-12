@@ -34,6 +34,11 @@
       # I prefer this version
       inputs.base16-fish.url = "github:diniamo/base16-fish/white-param-color";
     };
+
+    wakatime-lsp = {
+      url = "github:mrnossiom/wakatime-lsp";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   # what will be produced (i.e. the build)
