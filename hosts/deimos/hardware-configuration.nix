@@ -1,4 +1,8 @@
-{inputs, ...}: {
+{
+  config,
+  inputs,
+  ...
+}: {
   imports = [
     inputs.hardware.nixosModules.lenovo-ideapad-15arh05
     inputs.nixpkgs.nixosModules.notDetected
@@ -40,6 +44,8 @@
 
     # supposed to help with wayland compositor
     modesetting.enable = true;
+
+    package = config.boot.kernelPackages.nvidiaPackages.beta;
   };
 
   nixpkgs.hostPlatform = "x86_64-linux";
