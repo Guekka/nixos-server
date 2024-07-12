@@ -12,9 +12,23 @@
   xdg = {
     portal = {
       enable = true;
-      extraPortals = [pkgs.xdg-desktop-portal-kde];
+      extraPortals = [pkgs.xdg-desktop-portal-termfilechooser];
+      config = {
+        "hyprland" = {
+          default = ["hyprland" "gtk"];
+          "org.freedesktop.impl.portal.FileChooser" = [
+            "termfilechooser"
+          ];
+        };
+      };
     };
   };
+
+  # termfile chooser config
+  environment.etc."xdg/xdg-desktop-portal-termfilechooser/config".text = ''
+    [filechooser]
+    cmd=${pkgs.xdg-desktop-portal-termfilechooser}/share/xdg-desktop-portal-termfilechooser/yazi-wrapper.sh
+  '';
 
   environment.systemPackages = [
     pkgs.xdg-utils # xdg-open

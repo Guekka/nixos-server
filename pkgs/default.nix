@@ -5,4 +5,5 @@
   scenedetect = pkgs.stable.callPackage ./scenedetect {};
   image-sieve = pkgs.stable.callPackage ./image-sieve {};
   tcount = pkgs.stable.callPackage ./tcount {};
+  xdg-desktop-portal-termfilechooser = pkgs.stable.callPackage ./xdg-desktop-portal-termfilechooser {};
 }
