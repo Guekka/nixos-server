@@ -13,6 +13,10 @@
     portal = {
       enable = true;
       extraPortals = [pkgs.xdg-desktop-portal-termfilechooser];
+
+      gtkUsePortal = true;
+      xdgOpenUsePortal = true;
+
       config = {
         "hyprland" = {
           default = ["hyprland" "gtk"];
