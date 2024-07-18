@@ -1,55 +1,23 @@
 {pkgs, ...}: {
-  home.packages = [pkgs.awatcher pkgs.activitywatch];
-  systemd.user.targets.activitywatch = {
-    Unit = {
-      Description = "ActivityWatch server";
-      Requires = ["default.target"];
-      After = ["default.target"];
+  services.activitywatch = {
+    enable = true;
+    package = pkgs.aw-server-rust;
+    watchers = {
+      awatcher.package = pkgs.awatcher;
     };
-
-    Install.WantedBy = ["default.target"];
   };
-  systemd.user.services = let
-    baseSettings = {
-      Restart = "always";
 
-      # Some sandboxing.
-      LockPersonality = true;
-      NoNewPrivileges = true;
-      RestrictNamespaces = true;
-      RuntimeMaxSec = "10m"; # very unstable
-    };
+  # from <https://github.com/jordanisaacs/dotfiles/blob/20d6ff59e1a468b9ce5d78fcf169b31c977bd1b9/modules/users/applications/activitywatch.nix#L4>
+  # awatcher should start and stop depending on WM session target
+  # starting activitywatch should only start awatcher if the WM is active
+  systemd.user.services.activitywatch-watcher-awatcher = let
+    target = "hyprland-session.target";
   in {
-    activitywatch = {
-      Unit = {
-        Description = "ActivityWatch time tracker server";
-        Documentation = ["https://docs.activitywatch.net"];
-        BindsTo = ["activitywatch.target"];
-      };
-
-      Service =
-        {
-          ExecStart = "${pkgs.aw-server-rust}/bin/aw-server";
-        }
-        // baseSettings;
-
-      Install.WantedBy = ["activitywatch.target"];
+    Unit = {
+      After = [target];
+      Requisite = [target];
+      PartOf = [target];
     };
-
-    awatcher = {
-      Unit = {
-        Description = "awatcher";
-        After = ["activitywatch.service"];
-        BindsTo = ["activitywatch.target"];
-      };
-
-      Service =
-        {
-          ExecStart = "${pkgs.awatcher}/bin/awatcher";
-        }
-        // baseSettings;
-
-      Install.WantedBy = ["activitywatch.target"];
-    };
+    Install = {WantedBy = [target];};
   };
 }

@@ -1,5 +1,4 @@
 {pkgs}: {
-  awatcher = pkgs.callPackage ./awatcher {};
   clight-gui = pkgs.stable.callPackage ./clight-gui {};
   cozy-stack = pkgs.stable.callPackage ./cozy-stack {};
   scenedetect = pkgs.stable.callPackage ./scenedetect {};
