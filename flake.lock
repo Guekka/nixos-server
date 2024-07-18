@@ -684,6 +684,7 @@
         "nixpkgs-stable": "nixpkgs-stable_2",
         "sops-nix": "sops-nix",
         "stylix": "stylix",
+        "umu-launcher": "umu-launcher",
         "wakatime-lsp": "wakatime-lsp"
       }
     },
@@ -807,6 +808,30 @@
         "owner": "nix-systems",
         "repo": "default",
         "type": "github"
+      }
+    },
+    "umu-launcher": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "dir": "packaging/nix",
+        "lastModified": 1721286359,
+        "narHash": "sha256-BZ1xG8TM+bi6GTjtZXEnOZZ+jNGO682AAzl+e/JTPG4=",
+        "ref": "refs/heads/main",
+        "rev": "9cbd15d69ddc140834b242f286f6350ebba6091d",
+        "revCount": 675,
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/Open-Wine-Components/umu-launcher/?dir=packaging/nix"
+      },
+      "original": {
+        "dir": "packaging/nix",
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/Open-Wine-Components/umu-launcher/?dir=packaging/nix"
       }
     },
     "wakatime-lsp": {

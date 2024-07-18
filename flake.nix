@@ -39,6 +39,11 @@
       url = "github:mrnossiom/wakatime-lsp";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    umu-launcher = {
+      url = "git+https://github.com/Open-Wine-Components/umu-launcher/?dir=packaging\/nix&submodules=1";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   # what will be produced (i.e. the build)
