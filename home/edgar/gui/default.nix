@@ -21,6 +21,7 @@
     libsForQt5.ark
     obsidian
     plex-media-player
+    pkgs.plex-desktop # TODO: move to stable when 24.11
     qbittorrent
     vlc
     wl-clipboard
