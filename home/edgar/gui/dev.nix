@@ -7,5 +7,8 @@ in {
 
     pkgs.stable.qtcreator
     pkgs.stable.staruml
+
+    pkgs.stable.gcc # always have a C compiler ready
+    pkgs.stable.python3 # and a Python interpreter
   ];
 }
