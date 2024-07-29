@@ -1,4 +1,5 @@
 {
+  lib,
   inputs,
   pkgs,
   ...
@@ -9,7 +10,6 @@
   stylix = {
     enable = true;
     autoEnable = true;
-    # default example
     image = ./background.webp;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/selenized-light.yaml";
 
@@ -30,6 +30,15 @@
       sizes = {
         desktop = 12;
       };
+    };
+  };
+
+  specialisation = {
+    light.configuration = {
+      stylix.base16Scheme = lib.mkForce "${pkgs.base16-schemes}/share/themes/selenized-light.yaml";
+    };
+    dark.configuration = {
+      stylix.base16Scheme = lib.mkForce "${pkgs.base16-schemes}/share/themes/selenized-dark.yaml";
     };
   };
 }
