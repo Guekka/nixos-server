@@ -17,12 +17,9 @@ in {
       # ACTUAL_UPLOAD_SYNC_ENCRYPTED_FILE_SYNC_SIZE_LIMIT_MB = 50;
       # ACTUAL_UPLOAD_FILE_SIZE_LIMIT_MB = 20;
     };
-    image = "ghcr.io/actualbudget/actual-server:latest";
+    image = "ghcr.io/actualbudget/actual-server:24.8.0";
     ports = ["${toString port}:5006"];
     volumes = ["${dataDir}/:/data"];
-    extraOptions = [
-      "--pull=always"
-    ];
   };
 
   services.nginx.virtualHosts."actual.bizel.fr" = {
