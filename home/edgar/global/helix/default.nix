@@ -4,8 +4,20 @@
   pkgs,
   ...
 }: {
-  programs.helix = {
+  programs.helix = let
+    copilot = pkgs.writeShellScriptBin "copilot" ''
+      exec ${pkgs.nodejs}/bin/node ${pkgs.vimPlugins.copilot-vim}/dist/language-server.js "''$@"
+    '';
+    helix-copilot = pkgs.writeShellApplication {
+      name = "hx";
+      runtimeInputs = [copilot];
+      text = ''
+        exec ${pkgs.helix-latest}/bin/hx -a "''$@"
+      '';
+    };
+  in {
     enable = true;
+    package = helix-copilot;
     defaultEditor = true;
     settings = {
       editor = {
@@ -16,6 +28,17 @@
           normal = "block";
           insert = "bar";
           select = "underline";
+        };
+      };
+
+      keys = {
+        insert = {
+          "C-w" = "copilot_apply_completion";
+          "C-e" = "copilot_show_completion";
+        };
+
+        normal = {
+          "C-e" = "copilot_toggle_auto_render";
         };
       };
     };

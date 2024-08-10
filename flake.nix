@@ -27,6 +27,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    helix = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:AlexanderDickie/helix/copilot"; ## copilot support
+    };
+
     stylix = {
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";

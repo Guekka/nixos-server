@@ -17,6 +17,8 @@
         ];
     };
 
+    helix-latest = inputs.helix.packages.${prev.system}.helix;
+
     # some tweaks to staruml
     staruml = prev.staruml.overrideAttrs (_old: {
       postFixup = let
