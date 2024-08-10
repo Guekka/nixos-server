@@ -46,6 +46,7 @@
 
   baseConfig = {
     inherit exclude_patterns;
+    exclude_if_present = [".nobackup" "CACHEDIR.tag"];
 
     compression = "auto,zstd,10";
     relocated_repo_access_is_ok = true;
