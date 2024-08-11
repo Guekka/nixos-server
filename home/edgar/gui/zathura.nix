@@ -4,6 +4,7 @@
     options = {
       selection-clipboard = "clipboard";
       recolor = true;
+      recolor-keephue = true;
     };
     extraConfig = ''
       # Smooth scroll
