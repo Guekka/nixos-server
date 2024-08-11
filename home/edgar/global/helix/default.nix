@@ -21,6 +21,14 @@
     defaultEditor = true;
     settings = {
       editor = {
+        auto-save = {
+          focus-lost = true;
+          after-delay = {
+            enable = true;
+            timeout = 500;
+          };
+        };
+        bufferline = "multiple";
         color-modes = true;
         line-number = "relative";
         indent-guides.render = true;
@@ -29,6 +37,8 @@
           insert = "bar";
           select = "underline";
         };
+        soft-wrap.enable = true;
+        text-width = 110;
       };
 
       keys = {
@@ -47,8 +57,7 @@
       language = [
         {
           name = "bash";
-          language-servers = ["bash-language-server" "wakatime"];
-          auto-format = true;
+          language-servers = ["bash-language-server" "wakatime" "vale"];
           formatter = {
             command = "${pkgs.shfmt}/bin/shfmt";
             args = ["-i" "2" "-"];
@@ -56,31 +65,39 @@
         }
         {
           name = "markdown";
-          language-servers = ["markdown-oxide" "wakatime"];
+          language-servers = ["markdown-oxide" "wakatime" "vale"];
         }
         {
           name = "typst";
-          language-servers = ["tinymist" "wakatime"];
+          language-servers = ["tinymist" "wakatime" "vale"];
+          auto-format = false; # see https://github.com/helix-editor/helix/issues/11237
         }
         {
           name = "rust";
-          language-servers = ["rust-analyzer" "wakatime"];
+          language-servers = ["rust-analyzer" "wakatime" "vale"];
         }
         {
           name = "cpp";
-          language-servers = ["rust-analyzer" "wakatime"];
+          language-servers = ["rust-analyzer" "wakatime" "vale"];
         }
         {
           name = "nix";
-          language-servers = ["nil" "wakatime"];
+          language-servers = ["nil" "wakatime" "vale"];
+          auto-format = false; # see https://github.com/helix-editor/helix/issues/11237
         }
         {
           name = "typescript";
-          language-servers = ["typescript-language-server" "wakatime"];
+          language-servers = ["typescript-language-server" "wakatime" "vale"];
         }
       ];
       language-server = {
-        tinymist.command = lib.getExe pkgs.tinymist;
+        tinymist = {
+          command = lib.getExe pkgs.tinymist;
+          config = {
+            formatterMode = "typstyle";
+            exportPdf = "onSave";
+          };
+        };
 
         bash-language-server = {
           command = "${pkgs.nodePackages.bash-language-server}/bin/bash-language-server";
@@ -105,6 +122,10 @@
 
         typescript-language-server = {
           command = lib.getExe pkgs.nodePackages.typescript-language-server;
+        };
+
+        vale = {
+          command = lib.getExe pkgs.vale-ls;
         };
 
         vscode-css-language-server = {
