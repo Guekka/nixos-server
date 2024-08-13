@@ -14,7 +14,8 @@
       enable = true;
       extraPortals = [pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-termfilechooser];
 
-      gtkUsePortal = true;
+      # Apparently, this can cause issues and was removed in NixOS 24.11. TODO: add it on a per-service basis
+      # gtkUsePortal = true;
       xdgOpenUsePortal = true;
 
       config = {
