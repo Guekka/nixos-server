@@ -37,6 +37,9 @@
           insert = "bar";
           select = "underline";
         };
+        lsp = {
+          display-inlay-hints = true;
+        };
         soft-wrap.enable = true;
         text-width = 110;
       };
@@ -75,6 +78,7 @@
         {
           name = "rust";
           language-servers = ["rust-analyzer" "wakatime" "vale"];
+          auto-format = false; # see
         }
         {
           name = "cpp";
@@ -90,6 +94,7 @@
           language-servers = ["typescript-language-server" "wakatime" "vale"];
         }
       ];
+
       language-server = {
         tinymist = {
           command = lib.getExe pkgs.tinymist;
