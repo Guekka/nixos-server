@@ -356,6 +356,29 @@ in {
           in "${python} ${script}";
           return-type = "json";
         };
+        "hyprland/workspaces" = {
+          format-window-separator = "";
+          active-only = false;
+          all-outputs = false;
+          show-special = true;
+          window-rewrite-default = "";
+          format = "{name}{windows}";
+          "window-rewrite" = {
+            "title<.*youtube.*>" = " ";
+            "class<firefox>" = " ";
+            "class<firefox> title<.*github.*>" = " ";
+            "warp" = " ";
+            "kitty" = " ";
+            "codium-url-handler" = " 󰨞";
+            "Discord" = " 󰙯";
+            "class<Spotify>" = " 󰓇";
+            "matlab" = "󰆧";
+            "Super Productivity" = " 󰨟";
+            "Beeper" = " 💬";
+            "LM Studio" = " ";
+            "KeepassXC" = " ";
+          };
+        };
       };
     };
   };
