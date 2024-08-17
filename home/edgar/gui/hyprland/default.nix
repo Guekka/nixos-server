@@ -102,8 +102,6 @@
 
         # jetbrains. See https://github.com/hyprwm/Hyprland/issues/3450
         # -- Fix odd behaviors in IntelliJ IDEs --
-        #! Fix focus issues when dialogs are opened or closed
-        "windowdance,class:^(jetbrains-.*)$,floating:1"
         #! Fix splash screen showing in weird places and prevent annoying focus takeovers
         "center,class:^(jetbrains-.*)$,title:^(splash)$,floating:1"
         "nofocus,class:^(jetbrains-.*)$,title:^(splash)$,floating:1"
