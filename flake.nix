@@ -45,6 +45,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    xdp-termfilepickers = {
+      url = "github:Guekka/xdg-desktop-portal-termfilepickers";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     umu-launcher = {
       url = "git+https://github.com/Open-Wine-Components/umu-launcher/?dir=packaging\/nix&submodules=1";
       inputs.nixpkgs.follows = "nixpkgs";

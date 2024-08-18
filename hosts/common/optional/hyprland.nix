@@ -1,5 +1,6 @@
 {
   config,
+  inputs,
   lib,
   pkgs,
   ...
@@ -12,28 +13,29 @@
   xdg = {
     portal = {
       enable = true;
-      extraPortals = [pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-termfilechooser];
+      extraPortals = [pkgs.xdg-desktop-portal-gtk];
 
       # Apparently, this can cause issues and was removed in NixOS 24.11. TODO: add it on a per-service basis
       # gtkUsePortal = true;
       xdgOpenUsePortal = true;
-
-      config = {
-        "hyprland" = {
-          default = ["hyprland" "gtk"];
-          "org.freedesktop.impl.portal.FileChooser" = [
-            "termfilechooser"
-          ];
-        };
-      };
     };
   };
 
-  # termfile chooser config
-  environment.etc."xdg/xdg-desktop-portal-termfilechooser/config".text = ''
-    [filechooser]
-    cmd=${pkgs.xdg-desktop-portal-termfilechooser}/share/xdg-desktop-portal-termfilechooser/yazi-wrapper.sh
-  '';
+  imports = [inputs.xdp-termfilepickers.nixosModules.default];
+
+  services.xdg-desktop-portal-termfilepickers = let
+    termfilepickers = inputs.xdp-termfilepickers.packages.${pkgs.system}.default;
+  in {
+    enable = true;
+    package = termfilepickers;
+    desktopEnvironments = ["hyprland"];
+    config = {
+      save_file_script_path = "${termfilepickers}/share/wrappers/yazi-save-file.nu";
+      open_file_script_path = "${termfilepickers}/share/wrappers/yazi-open-file.nu";
+      save_files_script_path = "${termfilepickers}/share/wrappers/yazi-save-file.nu";
+      terminal_command = lib.getExe pkgs.kitty;
+    };
+  };
 
   environment.systemPackages = [
     pkgs.xdg-utils # xdg-open
