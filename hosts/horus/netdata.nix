@@ -8,11 +8,11 @@
     forceSSL = true;
     locations."^~ /" = {
       proxyPass = "http://127.0.0.1:19999";
-      basicAuthFile = config.sops.secrets.netdataPassword.path;
+      basicAuthFile = config.sops.secrets.netdata-password.path;
     };
   };
 
-  sops.secrets.netdataPassword = {
+  sops.secrets.netdata-password = {
     sopsFile = ./secrets.yaml;
     owner = config.services.netdata.user;
     inherit (config.services.netdata) group;
