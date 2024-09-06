@@ -1,4 +1,4 @@
-{...}: {
+{pkgs, ...}: {
   imports = [
     ../common/global
     ../common/optional/android-connect.nix
@@ -39,6 +39,11 @@
 
   sops.secrets.hestia-borgbackup-passphrase.sopsFile = ./secrets.yaml;
 
-  hardware.openrazer.enable = true;
-  hardware.openrazer.users = ["edgar"];
+  services.udev.packages = [
+    pkgs.qmk
+  ];
+
+  environment.systemPackages = [
+    pkgs.qmk
+  ];
 }
