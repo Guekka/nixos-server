@@ -1,6 +1,7 @@
 let
   dataDir = "/var/lib/actualbudget";
   port = 3750;
+  version = "24.9.0";
 in {
   users.users.actualbudget = {
     group = "actualbudget";
@@ -17,7 +18,7 @@ in {
       # ACTUAL_UPLOAD_SYNC_ENCRYPTED_FILE_SYNC_SIZE_LIMIT_MB = 50;
       # ACTUAL_UPLOAD_FILE_SIZE_LIMIT_MB = 20;
     };
-    image = "ghcr.io/actualbudget/actual-server:24.8.0";
+    image = "ghcr.io/actualbudget/actual-server:${version}";
     ports = ["${toString port}:5006"];
     volumes = ["${dataDir}/:/data"];
   };
