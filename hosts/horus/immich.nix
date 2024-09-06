@@ -6,7 +6,7 @@
   # The original photos are accessible at /shared/edgar/immich/library
   immichLibrary = "/shared/edgar/immich/library";
   immichAppdataRoot = "${immichRoot}/appdata";
-  immichVersion = "v1.111.0";
+  immichVersion = "v1.113.0";
 
   postgresRoot = "${immichAppdataRoot}/pgsql";
   postgresUser = "immich";
@@ -110,6 +110,7 @@ in {
         SCHEDULE = "@hourly";
         POSTGRES_EXTRA_OPTS = "--clean --if-exists";
         BACKUP_DIR = "/db_dumps";
+        BACKUP_KEEP_MINS = "240";
         BACKUP_KEEP_DAYS = "2";
         BACKUP_KEEP_WEEKS = "1";
         BACKUP_KEEP_MONTHS = "1";
