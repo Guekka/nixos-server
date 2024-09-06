@@ -14,8 +14,8 @@
 
   sops.secrets.netdata-password = {
     sopsFile = ./secrets.yaml;
-    owner = config.services.netdata.user;
-    inherit (config.services.netdata) group;
+    owner = "nginx";
+    group = "nginx";
   };
 
   environment.persistence."/persist" = {
