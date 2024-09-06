@@ -1,6 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
 {pkgs, ...}: {
   imports = [
     ../common/global
@@ -15,22 +12,16 @@
     ./immich.nix
     ./hardware-configuration.nix
     ./immich.nix
-    ./jitsi.nix
-    ./mattermost.nix
     ./microbin.nix
-    ./navidrome.nix
     ./netdata.nix
     ./nextcloud.nix
     ./nfs.nix
     ./nginx.nix
     ./paperless.nix
     ./plausible.nix
-    # ./plex.nix
     ./postgresql.nix
-    # ./qbittorrent.nix # needs to change the docker image to aarm64
     ./rss.nix
     ./tandoor.nix
-    ./uptime-kuma.nix
     ./wallabag.nix
     ./web-server.nix
     ./wiki-js.nix
