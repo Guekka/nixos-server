@@ -9,6 +9,10 @@
     };
   };
 
+  services.nginx.virtualHosts.${config.services.grocy.hostName} = {
+    useACMEHost = "bizel.fr";
+  };
+
   environment.persistence."/persist" = {
     directories = [config.services.grocy.dataDir];
   };
