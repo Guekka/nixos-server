@@ -27,12 +27,12 @@
     exitNodeAllowLanAccess = true;
   };
 
-  time.timeZone = "Europe/London";
+  time.timeZone = "Europe/Amsterdam";
 
   # Lid settings
   services.logind = {
     lidSwitch = "suspend";
-    lidSwitchExternalPower = "suspend";
+    lidSwitchExternalPower = "ignore";
   };
 
   # Battery actions
