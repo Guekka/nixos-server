@@ -3,19 +3,26 @@
   inputs,
   pkgs,
   ...
-}: {
-  programs.helix = let
-    copilot = pkgs.writeShellScriptBin "copilot" ''
-      exec ${pkgs.nodejs}/bin/node ${pkgs.vimPlugins.copilot-vim}/dist/language-server.js "''$@"
+}: let
+  copilot = pkgs.writeShellScriptBin "copilot" ''
+    exec ${pkgs.nodejs}/bin/node ${pkgs.vimPlugins.copilot-vim}/dist/language-server.js "''$@"
+  '';
+  helix-copilot = pkgs.writeShellApplication {
+    name = "hx";
+    runtimeInputs = [copilot];
+    text = ''
+      exec ${pkgs.helix-latest}/bin/hx -a "''$@"
     '';
-    helix-copilot = pkgs.writeShellApplication {
-      name = "hx";
-      runtimeInputs = [copilot];
-      text = ''
-        exec ${pkgs.helix-latest}/bin/hx -a "''$@"
-      '';
-    };
-  in {
+  };
+  helix-single = pkgs.writeShellApplication {
+    name = "hxs";
+    text = ''
+      exec ${pkgs.helix-latest}/bin/hx "''$@"
+    '';
+  };
+in {
+  home.packages = [helix-single];
+  programs.helix = {
     enable = true;
     package = helix-copilot;
     defaultEditor = true;
