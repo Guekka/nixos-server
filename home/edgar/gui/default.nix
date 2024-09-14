@@ -22,6 +22,7 @@
     obsidian
     plex-media-player
     pkgs.plex-desktop # TODO: move to stable when 24.11
+    ripdrag
     qbittorrent
     vlc
     wl-clipboard
