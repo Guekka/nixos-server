@@ -45,6 +45,7 @@
     alejandra
     comma
     csvlens
+    dua
     duf
     du-dust
     fd
