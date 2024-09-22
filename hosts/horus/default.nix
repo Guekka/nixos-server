@@ -11,6 +11,7 @@
     ./grocy.nix
     ./immich.nix
     ./hardware-configuration.nix
+    ./hedgedoc.nix
     ./immich.nix
     ./microbin.nix
     ./netdata.nix

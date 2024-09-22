@@ -56,4 +56,6 @@
     192.168.1.44 hestia
     192.168.1.72 deimos
   '';
+
+  programs.dconf.enable = true; # required for some HM modules
 }
