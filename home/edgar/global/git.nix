@@ -37,6 +37,11 @@
 
     # some come from https://jvns.ca/blog/2024/02/16/popular-git-config-options/
     extraConfig = {
+      core = {
+        autocrlf = "input";
+        eol = "lf";
+      };
+
       diff = {
         algorithm = "histogram";
       };
