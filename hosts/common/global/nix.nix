@@ -25,6 +25,10 @@
       flake-registry = ""; # Disable global flake registry
 
       use-xdg-base-directories = true;
+
+      # Avoid disk full issues
+      max-free = lib.mkDefault (3000 * 1024 * 1024);
+      min-free = lib.mkDefault (512 * 1024 * 1024);
     };
 
     # Add each flake input as a registry
