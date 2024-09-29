@@ -44,9 +44,11 @@
 
   home.packages = with pkgs.stable; [
     alejandra
+    choose
     comma
     csvlens
     dua
+    doggo
     duf
     du-dust
     fd
@@ -57,8 +59,8 @@
     p7zip
     ripgrep
     rnr
+    sd
     sshfs
-    pkgs.tcount # custom package
     unsilence
   ];
 }
