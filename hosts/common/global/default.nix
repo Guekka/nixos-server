@@ -7,6 +7,7 @@
     ./backup.nix
     ./home-manager.nix
     ./mosh.nix
+    ./networking.nix
     ./nfs.nix
     ./nix.nix
     ./nixpkgs.nix
@@ -28,10 +29,6 @@
 
   # gvfs needed for almost all file explorers
   services.gvfs.enable = true;
-
-  # fix hanging at rebuild and wait-online service failing
-  # See nixpkgs#180175
-  systemd.services.NetworkManager-wait-online.enable = false;
 
   sops.secrets.shared-borgbackup-passphrase.sopsFile = ../secrets.yaml;
 
