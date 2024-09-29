@@ -102,13 +102,21 @@
       enable = true;
     };
 
+    # this should be in delta section, but home-manager does not use the config if enable is false
+    iniContent.delta = {
+      light = true;
+      syntax-theme = "Solarized (light)";
+    };
+
     signing = {
       key = "key::ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAuFlK3yFkBbd1o5UKajdGLUYnERF0YFpVOIUfYvlesy id_commit_signing";
       signByDefault = true;
     };
   };
 
-  home.packages = [
-    pkgs.git-absorb
+  home.packages = with pkgs.stable; [
+    git-absorb
+    # in particular, for lazygit
+    delta
   ];
 }

@@ -19,6 +19,7 @@
       ./helix
       ./jq.nix
       ./kitty.nix
+      ./lazygit.nix
       ./mime.nix
       ./nix-index.nix
       ./rclone.nix
