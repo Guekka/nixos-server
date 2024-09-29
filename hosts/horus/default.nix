@@ -3,6 +3,7 @@
     ../common/global
     ../common/optional/impermanence-disko.nix
     ../common/optional/podman.nix
+    ../common/optional/postgresql.nix
     ../common/optional/samba-client.nix
     ./acme.nix
     ./actualbudget.nix
@@ -20,7 +21,6 @@
     ./nginx.nix
     ./paperless.nix
     ./plausible.nix
-    ./postgresql.nix
     ./rss.nix
     ./tandoor.nix
     ./wallabag.nix
