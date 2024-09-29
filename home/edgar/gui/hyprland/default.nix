@@ -221,7 +221,10 @@
           }"
         )
         config.monitors
-        ++ [",preferred,auto,1"];
+        ++ [
+          ",preferred,auto,1"
+          "FALLBACK,1920x1080@60,auto,1"
+        ];
 
       workspace = map (
         m: "${m.name},${m.workspace}"
