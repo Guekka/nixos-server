@@ -9,6 +9,7 @@
     "**/*.pyc"
     "/home/*/.direnv"
     "/home/*/.cache"
+    "/home/*/.config/.android"
     "/home/*/.config/Code"
     "/home/*/.config/heroic"
     "/home/*/.config/Beeper"
@@ -51,9 +52,9 @@
     compression = "auto,zstd,10";
     relocated_repo_access_is_ok = true;
 
-    keep_daily = 7;
-    keep_weekly = 4;
-    keep_monthly = 6;
+    keep_daily = 3;
+    keep_weekly = 2;
+    keep_monthly = 3;
     keep_yearly = 1;
 
     checks = [
@@ -140,7 +141,6 @@ in {
 
   systemd.timers.borgmatic = {
     enable = true;
-    description = "borgmatic backup";
     wantedBy = ["timers.target"];
     timerConfig = {
       Unit = "borgmatic.service";
