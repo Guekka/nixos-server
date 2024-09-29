@@ -47,6 +47,7 @@
     choose
     comma
     csvlens
+    cyme
     dua
     doggo
     duf
@@ -62,5 +63,6 @@
     sd
     sshfs
     unsilence
+    xcp
   ];
 }
