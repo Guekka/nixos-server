@@ -97,6 +97,10 @@ in {
           auto-format = false; # see https://github.com/helix-editor/helix/issues/11237
         }
         {
+          name = "python";
+          language-servers = ["pyright" "ruff" "wakatime"];
+        }
+        {
           name = "typescript";
           language-servers = ["typescript-language-server" "wakatime" "vale"];
         }
@@ -130,6 +134,23 @@ in {
 
         rust-analyzer = {
           command = lib.getExe pkgs.rust-analyzer;
+        };
+
+        pylsp = {
+          command = lib.getExe pkgs.python3Packages.python-lsp-server;
+        };
+
+        pyright = {
+          command = lib.getExe' pkgs.pyright "pyright-langserver";
+          args = ["--stdio"];
+          config = {
+            python.analysis.typeCheckingMode = "basic";
+          };
+        };
+
+        ruff = {
+          command = lib.getExe pkgs.ruff;
+          args = ["server"];
         };
 
         typescript-language-server = {
