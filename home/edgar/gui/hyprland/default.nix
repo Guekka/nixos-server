@@ -15,6 +15,10 @@
     enable = true;
 
     settings = {
+      env = [
+        "NIXOS_OZONE_WL,1"
+      ];
+
       general = {
         gaps_in = 5;
         gaps_out = 10;
