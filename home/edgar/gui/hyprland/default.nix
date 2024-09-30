@@ -142,6 +142,7 @@
         pass-wofi = "${pkgs.pass-wofi.override {
           pass = config.programs.password-store.package;
         }}/bin/pass-wofi";
+        systemctl = "${pkgs.systemd}/bin/systemctl";
         wl-copy = "${pkgs.wl-clipboard}/bin/wl-copy";
 
         grimblast = "${pkgs.grimblast}/bin/grimblast";
@@ -169,6 +170,9 @@
           "CONTROL,Print,exec,${grimblast} --notify --freeze copy screen"
           "SUPER,Print,exec,${grimblast} --notify --freeze copy window"
           "ALT,Print,exec,${grimblast} --notify --freeze copy output"
+          # Power button
+          ",xf86poweroff,exec,${systemctl} suspend"
+          "SUPER,xf86poweroff,exec,${systemctl} poweroff"
           # Tally counter
           # TODO "SUPER,z,exec,${notify-send} -t 1000 $(${tly} time) && ${tly} add && ${gtk-play} -i dialog-information" # Add new entry
           # TODO "SUPERCONTROL,z,exec,${notify-send} -t 1000 $(${tly} time) && ${tly} undo && ${gtk-play} -i dialog-warning" # Undo last entry
