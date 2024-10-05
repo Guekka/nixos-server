@@ -6,7 +6,7 @@
   # The original photos are accessible at /shared/edgar/immich/library
   immichLibrary = "/shared/edgar/immich/library";
   immichAppdataRoot = "${immichRoot}/appdata";
-  immichVersion = "v1.113.0";
+  immichVersion = "v1.117.0";
 
   postgresRoot = "${immichAppdataRoot}/pgsql";
   postgresUser = "immich";
