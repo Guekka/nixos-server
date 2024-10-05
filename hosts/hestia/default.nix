@@ -14,7 +14,6 @@
     ../common/optional/obs-virtual-camera.nix
     ../common/optional/openocd.nix
     ../common/optional/pipewire.nix
-    ../common/optional/samba-client.nix
     ../common/optional/shutdown-schedule.nix
     ../common/optional/steam.nix
     ../common/optional/thunar.nix

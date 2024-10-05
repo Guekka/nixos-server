@@ -4,7 +4,6 @@
     ../common/optional/impermanence-disko.nix
     ../common/optional/podman.nix
     ../common/optional/postgresql.nix
-    ../common/optional/samba-client.nix
     ./acme.nix
     ./actualbudget.nix
     ./calibre-server.nix
