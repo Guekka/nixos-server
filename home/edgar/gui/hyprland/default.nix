@@ -27,6 +27,7 @@
       };
       input = {
         kb_layout = "fr,us";
+        kb_options = "numpad:mac"; # make numpad always work as numbers
         numlock_by_default = true;
         touchpad = {
           disable_while_typing = false;
