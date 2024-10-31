@@ -8,7 +8,7 @@
     settings = {
       trusted-users = ["root" "@wheel"];
       auto-optimise-store = lib.mkDefault true;
-      experimental-features = ["nix-command" "flakes" "repl-flake" "ca-derivations"];
+      experimental-features = ["nix-command" "flakes" "ca-derivations"];
       warn-dirty = false;
       builders-use-substitutes = true;
 
