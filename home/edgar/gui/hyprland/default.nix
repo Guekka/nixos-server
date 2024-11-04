@@ -105,19 +105,11 @@
       windowrulev2 = [
         "workspace 3, class:^(org.keepassxc.KeePassXC)$"
 
-        # jetbrains. See https://github.com/hyprwm/Hyprland/issues/3450
-        # -- Fix odd behaviors in IntelliJ IDEs --
-        #! Fix splash screen showing in weird places and prevent annoying focus takeovers
-        "center,class:^(jetbrains-.*)$,title:^(splash)$,floating:1"
-        "nofocus,class:^(jetbrains-.*)$,title:^(splash)$,floating:1"
-        "noborder,class:^(jetbrains-.*)$,title:^(splash)$,floating:1"
+        # Ignore maximize requests from apps. You'll probably like this.
+        "suppressevent maximize, class:.*"
 
-        #! Center popups/find windows
-        "center,class:^(jetbrains-.*)$,title:^( )$,floating:1"
-        "stayfocused,class:^(jetbrains-.*)$,title:^( )$,floating:1"
-        "noborder,class:^(jetbrains-.*)$,title:^( )$,floating:1"
-        #! Disable window flicker when autocomplete or tooltips appear
-        "nofocus,class:^(jetbrains-.*)$,title:^(win.*)$,floating:1"
+        # Fix some dragging issues with XWayland
+        "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
       ];
       binde = let
         brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
