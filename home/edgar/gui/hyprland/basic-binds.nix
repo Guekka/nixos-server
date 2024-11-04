@@ -28,9 +28,27 @@
     "0" = "agrave";
   };
 
+  numpad = {
+    "1" = "KP_1";
+    "2" = "KP_2";
+    "3" = "KP_3";
+    "4" = "KP_4";
+    "5" = "KP_5";
+    "6" = "KP_6";
+    "7" = "KP_7";
+    "8" = "KP_8";
+    "9" = "KP_9";
+    "0" = "KP_0";
+  };
+
   toAzerty = n:
     if (builtins.elem n (lib.attrNames azerty))
     then azerty.${n}
+    else n;
+
+  toNumpad = n:
+    if (builtins.elem n (lib.attrNames numpad))
+    then numpad.${n}
     else n;
 in {
   wayland.windowManager.hyprland.settings = {
@@ -71,10 +89,18 @@ in {
           n: "SUPER,${toAzerty n},workspace,name:${n}"
         )
         workspaces)
+      ++ (map (
+          n: "SUPER,${toNumpad n},workspace,name:${n}"
+        )
+        workspaces)
       ++
       # Move window to workspace
       (map (
           n: "SUPERSHIFT,${toAzerty n},movetoworkspacesilent,name:${n}"
+        )
+        workspaces)
+      ++ (map (
+          n: "SUPERSHIFT,${toNumpad n},movetoworkspacesilent,name:${n}"
         )
         workspaces)
       ++
