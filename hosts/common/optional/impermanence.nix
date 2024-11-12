@@ -46,7 +46,7 @@ in {
     };
   };
 
-  # source: https://mt-caret.github.io/blog/posts/2020-06-29-optin-state.html
+  # source: https://mt-caret.github.io/blog/2020-06-29-optin-state.html
   # and: https://discourse.nixos.org/t/impermanence-vs-systemd-initrd-w-tpm-unlocking/25167/3
   boot.initrd.systemd.enable = lib.mkDefault true;
   boot.initrd.systemd.services.rollback = {
