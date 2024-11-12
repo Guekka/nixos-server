@@ -6,7 +6,7 @@
   # The original photos are accessible at /shared/edgar/immich/library
   immichLibrary = "/shared/edgar/immich/library";
   immichAppdataRoot = "${immichRoot}/appdata";
-  immichVersion = "v1.120.1";
+  immichVersion = "v1.120.2";
 
   postgresRoot = "${immichAppdataRoot}/pgsql";
   postgresUser = "immich";
@@ -43,7 +43,7 @@ in {
   virtualisation.oci-containers.containers = {
     immich_server = {
       image = "ghcr.io/immich-app/immich-server:${immichVersion}";
-      ports = ["127.0.0.1:2283:3001"];
+      ports = ["127.0.0.1:2283:2283"];
       extraOptions = [
         "--pull=newer"
         # Force DNS resolution to only be the podman dnsname name server; by default podman provides a resolv.conf
