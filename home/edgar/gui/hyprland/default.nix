@@ -44,6 +44,7 @@
         split_width_multiplier = 1.35;
         no_gaps_when_only = 1;
         special_scale_factor = 0.9;
+        preserve_split = true;
       };
 
       misc = {
@@ -166,6 +167,8 @@
           # Power button
           ",xf86poweroff,exec,${systemctl} suspend"
           "SUPER,xf86poweroff,exec,${systemctl} poweroff"
+          # Tiling
+          "SUPER,a,layoutmsg,togglesplit"
           # Tally counter
           # TODO "SUPER,z,exec,${notify-send} -t 1000 $(${tly} time) && ${tly} add && ${gtk-play} -i dialog-information" # Add new entry
           # TODO "SUPERCONTROL,z,exec,${notify-send} -t 1000 $(${tly} time) && ${tly} undo && ${gtk-play} -i dialog-warning" # Undo last entry
