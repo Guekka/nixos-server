@@ -21,7 +21,7 @@
     };
   };
 
-  imports = [inputs.xdp-termfilepickers.nixosModules.default];
+  imports = [inputs.xdp-termfilepickers.nixosModules.default ./fcitx.nix];
 
   services.xdg-desktop-portal-termfilepickers = let
     termfilepickers = inputs.xdp-termfilepickers.packages.${pkgs.system}.default;
