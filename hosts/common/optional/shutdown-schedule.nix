@@ -13,7 +13,7 @@
     wantedBy = ["multi-user.target"];
     serviceConfig = {
       Type = "oneshot";
-      ExecStart = "${pkgs.libnotify}/bin/notify-send 'Shutdown warning' 'The system will be shut down in 15 minutes";
+      ExecStart = "${pkgs.libnotify}/bin/notify-send 'Shutdown warning' 'The system will be shut down in 15 minutes'";
     };
   };
 
