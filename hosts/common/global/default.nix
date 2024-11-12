@@ -44,6 +44,17 @@
     enableNg = true;
   };
 
+  # startup screen change
+  boot.plymouth.enable = true;
+  boot.kernelParams = [
+    "plymouth.use-simpledrm"
+    "quiet"
+    "splash"
+
+    # in case of failure
+    "boot.shell_on_fail"
+  ];
+
   # Read the doc before updating
   system.stateVersion = "24.11";
 
