@@ -7,7 +7,7 @@
 in {
   services.nextcloud = {
     enable = true;
-    package = pkgs.nextcloud28;
+    package = pkgs.nextcloud30;
 
     hostName = "nc.bizel.fr";
     home = appDir;
@@ -15,7 +15,7 @@ in {
     https = true;
 
     extraAppsEnable = true;
-    extraApps = with pkgs.nextcloud28Packages.apps; {
+    extraApps = with pkgs.nextcloud30Packages.apps; {
       inherit bookmarks calendar contacts cospend deck forms polls tasks;
     };
 
