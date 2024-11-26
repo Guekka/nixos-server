@@ -98,12 +98,14 @@
       horus = mkNixos "horus" "aarch64-linux";
       hestia = mkNixos "hestia" "x86_64-linux";
       deimos = mkNixos "deimos" "x86_64-linux";
+      pluto = mkNixos "pluto" "x86_64-linux";
     };
 
     homeConfigurations = {
       "edgar@horus" = mkHome "horus" "aarch64-linux";
       "edgar@hestia" = mkHome "hestia" "x86_64-linux";
       "edgar@deimos" = mkHome "deimos" "x86_64-linux";
+      "edgar@pluto" = mkHome "pluto" "x86_64-linux";
     };
   };
 }
