@@ -1,13 +1,15 @@
 {pkgs, ...}: {
   imports = [
+    ./hardware-configuration.nix
     ../common/global
-    ../common/optional/impermanence-disko.nix
+    ../common/optional/impermanence-disko-zfs.nix
     ../common/optional/podman.nix
     ../common/optional/postgresql.nix
   ];
 
   networking = {
     hostName = "pluto";
+    hostId = "e847bfff";
     interfaces.enp6s18.useDHCP = true;
   };
 
