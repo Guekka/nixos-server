@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  home.packages = [pkgs.stable.trashy];
+  home.packages = [pkgs.trashy];
 
   programs.fish.shellAbbrs = {
     tp = "trash put";

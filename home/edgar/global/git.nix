@@ -119,7 +119,7 @@
     };
   };
 
-  home.packages = with pkgs.stable; [
+  home.packages = with pkgs; [
     git-absorb
     # in particular, for lazygit
     delta

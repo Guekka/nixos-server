@@ -86,13 +86,6 @@ in {
           baseConfig
           // {
             repositories = [
-              # TODO: investigate why the NAS crashes
-              /*
-              {
-                label = "samba-${config.networking.hostName}";
-                path = "/samba/borg/${config.networking.hostName}";
-              }
-              */
               {
                 label = "ssh-${config.networking.hostName}";
                 path = "ssh://guekka-backup@domino.zdimension.fr/./${config.networking.hostName}";
@@ -114,13 +107,6 @@ in {
           baseConfig
           // {
             repositories = [
-              # TODO: investigate why the NAS crashes
-              /*
-              {
-                label = "samba-shared";
-                path = "/samba/borg/shared";
-              }
-              */
               {
                 label = "ssh-shared";
                 path = "ssh://guekka-backup@domino.zdimension.fr/./shared";

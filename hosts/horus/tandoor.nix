@@ -5,7 +5,7 @@
 }: {
   services.tandoor-recipes = {
     enable = true;
-    package = pkgs.stable.tandoor-recipes; # unstable doesn't build
+    package = pkgs.tandoor-recipes; # unstable doesn't build
     port = 7453;
     #address = "tandoor.bizel.fr";
   };

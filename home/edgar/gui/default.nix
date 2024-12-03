@@ -13,15 +13,15 @@
     ./zathura.nix
   ];
 
-  home.packages = with pkgs.stable; [
+  home.packages = with pkgs; [
     anytype
-    pkgs.beeper # evolves fast
+    beeper
     calibre
     keepassxc
     libsForQt5.ark
     obsidian
     plex-media-player
-    pkgs.plex-desktop # TODO: move to stable when 24.11
+    plex-desktop
     ripdrag
     qbittorrent
     vlc

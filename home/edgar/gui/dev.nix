@@ -1,14 +1,16 @@
 {pkgs, ...}: let
-  pluginify = ide: pkgs.jetbrains.plugins.addPlugins ide ["github-copilot"];
+  pluginify = ide: pkgs.unstable.jetbrains.plugins.addPlugins ide ["github-copilot"];
 in {
-  home.packages = with pkgs.jetbrains; [
+  # jetbrains fails to build on 24.11
+  home.packages = with pkgs.unstable.jetbrains;
+  with pkgs; [
     (pluginify clion)
     (pluginify idea-ultimate)
 
-    pkgs.stable.qtcreator
-    pkgs.stable.staruml
+    qtcreator
+    staruml
 
-    pkgs.stable.gcc # always have a C compiler ready
-    pkgs.stable.python3 # and a Python interpreter
+    gcc # always have a C compiler ready
+    python3 # and a Python interpreter
   ];
 }

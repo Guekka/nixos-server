@@ -42,7 +42,6 @@
 
       dwindle = {
         split_width_multiplier = 1.35;
-        no_gaps_when_only = 1;
         special_scale_factor = 0.9;
         preserve_split = true;
       };
@@ -67,9 +66,10 @@
           new_optimizations = true;
           ignore_opacity = true;
         };
-        drop_shadow = true;
-        shadow_range = 12;
-        shadow_offset = "3 3";
+        shadow = {
+          range = 12;
+          offset = "3 3";
+        };
       };
       animations = {
         enabled = true;
@@ -111,6 +111,12 @@
 
         # Fix some dragging issues with XWayland
         "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
+
+        # No gaps when only
+        "bordersize 0, floating:0, onworkspace:w[tv1]"
+        "rounding 0, floating:0, onworkspace:w[tv1]"
+        "bordersize 0, floating:0, onworkspace:f[1]"
+        "rounding 0, floating:0, onworkspace:f[1]"
       ];
       binde = let
         brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
@@ -230,9 +236,16 @@
           "FALLBACK,1920x1080@60,auto,1"
         ];
 
-      workspace = map (
-        m: "${m.name},${m.workspace}"
-      ) (lib.filter (m: m.enabled && m.workspace != null) config.monitors);
+      workspace =
+        map (
+          m: "${m.name},${m.workspace}"
+        ) (lib.filter (m: m.enabled && m.workspace != null) config.monitors)
+        ++
+        # no gaps when only
+        [
+          "w[tv1], gapsout:0, gapsin:0"
+          "f[1], gapsout:0, gapsin:0"
+        ];
     };
 
     # This is order sensitive, so it has to come here.

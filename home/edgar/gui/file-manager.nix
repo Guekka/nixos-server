@@ -1,5 +1,5 @@
 {pkgs, ...}: {
   home.packages = [
-    pkgs.stable.cinnamon.nemo-with-extensions
+    pkgs.nemo-with-extensions
   ];
 }
