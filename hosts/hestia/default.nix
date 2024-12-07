@@ -35,6 +35,11 @@
 
   time.timeZone = "Europe/Amsterdam";
 
+  boot.kernelParams = [
+    # in case of failure
+    "boot.shell_on_fail"
+  ];
+
   sops.secrets.hestia-borgbackup-passphrase.sopsFile = ./secrets.yaml;
 
   services.udev.packages = [

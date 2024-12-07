@@ -50,9 +50,6 @@
     "plymouth.use-simpledrm"
     "quiet"
     "splash"
-
-    # in case of failure
-    "boot.shell_on_fail"
   ];
 
   # Read the doc before updating
