@@ -13,7 +13,7 @@
   };
 
   sops.secrets.netdata-password = {
-    sopsFile = ./secrets.yaml;
+    sopsFile = ../secrets.yaml;
     owner = "nginx";
     group = "nginx";
   };

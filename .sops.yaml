@@ -2,7 +2,7 @@ keys:
   - &deimos age1npfazzgfgqfehghc4wszgqjl337ghae0xv352jaxy092s9ewzglsfmkxu7
   - &horus age1dt24qetqhy2ng53fyj69yq9hg8rdsg4ep0lvvhdg69xw9v4l0asqj6xzkh
   - &hestia age1anhvzwlgkpe985jkk863v0p8tv6rrweeg7k6k6kfwz708j3tte5suvphdn
-  - &pluto age1anhvzwlgkpe985jkk863v0p8tv6rrweeg7k6k6kfwz708j3tte5suvphdn
+  - &pluto age13rj9vasaft00te0v2crx7l2n33pmkn6nr53qmuueph2amgpshaws7e2zmz
 creation_rules:
   - path_regex: hosts/deimos/secrets.yaml$
     key_groups:

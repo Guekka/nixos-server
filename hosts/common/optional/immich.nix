@@ -157,5 +157,5 @@ in {
     "d ${immichLibrary} 0755 immich immich"
   ];
 
-  sops.secrets.immich_postgres.sopsFile = ./secrets.yaml;
+  sops.secrets.immich_postgres.sopsFile = ../secrets.yaml;
 }

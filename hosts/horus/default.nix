@@ -4,20 +4,19 @@
     ../common/optional/impermanence-disko.nix
     ../common/optional/podman.nix
     ../common/optional/postgresql.nix
-    ./acme.nix
+    ../common/optional/acme.nix
+    ../common/optional/fail2ban.nix
+    ../common/optional/immich.nix
+    ../common/optional/netdata.nix
+    ../common/optional/nfs.nix
+    ../common/optional/nginx.nix
     ./actualbudget.nix
     ./calibre-server.nix
-    ./fail2ban.nix
     ./grocy.nix
-    ./immich.nix
     ./hardware-configuration.nix
     ./hedgedoc.nix
-    ./immich.nix
     ./microbin.nix
-    ./netdata.nix
     ./nextcloud.nix
-    ./nfs.nix
-    ./nginx.nix
     ./paperless.nix
     ./plausible.nix
     ./rss.nix

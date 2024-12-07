@@ -17,7 +17,7 @@
   };
 
   sops.secrets.ovhDns = {
-    sopsFile = ./secrets.yaml;
+    sopsFile = ../secrets.yaml;
   };
 
   users.users.nginx.extraGroups = ["acme"];

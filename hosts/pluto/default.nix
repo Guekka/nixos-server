@@ -1,10 +1,17 @@
 {pkgs, ...}: {
   imports = [
-    ./hardware-configuration.nix
     ../common/global
+    ../common/optional/acme.nix
+    ../common/optional/fail2ban.nix
+    ../common/optional/immich.nix
     ../common/optional/impermanence-disko-zfs.nix
+    ../common/optional/netdata.nix
+    ../common/optional/nfs.nix
+    ../common/optional/nginx.nix
     ../common/optional/podman.nix
     ../common/optional/postgresql.nix
+
+    ./hardware-configuration.nix
   ];
 
   networking = {
