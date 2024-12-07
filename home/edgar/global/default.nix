@@ -53,6 +53,7 @@
     doggo
     duf
     du-dust
+    dysk
     fd
     ffmpeg
     hexyl
