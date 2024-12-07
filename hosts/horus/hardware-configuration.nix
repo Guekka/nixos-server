@@ -14,7 +14,6 @@
   ];
 
   nixpkgs.hostPlatform = "aarch64-linux";
-  hardware.cpu.amd.updateMicrocode = true;
 
   hardware.enableAllFirmware = true;
 }
