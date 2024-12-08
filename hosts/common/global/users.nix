@@ -35,11 +35,11 @@
       };
       root = {
         # so, this may look like a security issue. I'm publicly showing the hash of my password. However:
-        # 1. this password is very robust
+        # 1. this password is extremely robust (~2000 bits of entropy)
         # 2. it is not used anywhere else
-        # 3. it only works if you have stolen my computer
+        # 3. it cannot be used to login over ssh
         # considering the odds of someone stealing my computer AND knowing how to crack this, I feel safe enough to put it here
-        hashedPassword = "$6$pOQ6iRJO9Fq.FMVq$qFoIq4gCC/KPO.o4CAXqSafv4drCKJJFTr6tW98sBUi1QWYxDFwQlwQHO.m3p2tMfGwSPsbDeiEQQDtHFVn8Y.";
+        hashedPassword = "$6$3Wb/r3HjvDIFx0zA$FVqsrOpvnkkXDox8.CfNM1WhbJje4/Cji49igfegKrrooavDaCzYFZkthVBmfOo/Iqi6jhhgCmKpUqiKRQh/./";
       };
     };
   };
