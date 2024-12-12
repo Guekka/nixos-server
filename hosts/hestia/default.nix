@@ -14,6 +14,7 @@
     ../common/optional/obs-virtual-camera.nix
     ../common/optional/openocd.nix
     ../common/optional/pipewire.nix
+    ../common/optional/postgresql.nix
     ../common/optional/shutdown-schedule.nix
     ../common/optional/steam.nix
     ../common/optional/thunar.nix
@@ -49,4 +50,11 @@
   environment.systemPackages = [
     pkgs.qmk
   ];
+
+  # FIXME tmp
+  services.postgresql.authentication = ''
+    local all all trust
+    host all all 127.0.0.1/32 trust
+    host all all ::1/128 trust
+  '';
 }

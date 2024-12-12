@@ -57,6 +57,7 @@
     fd
     ffmpeg
     hexyl
+    imagemagickBig
     nix-init
     kondo
     p7zip

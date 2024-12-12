@@ -4,7 +4,7 @@
     ../common/optional/acme.nix
     ../common/optional/fail2ban.nix
     ../common/optional/immich.nix
-    ../common/optional/impermanence-disko-zfs.nix
+    ../common/optional/impermanence-disko-2.nix
     ../common/optional/netdata.nix
     ../common/optional/nfs.nix
     ../common/optional/nginx.nix
