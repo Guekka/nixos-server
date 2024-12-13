@@ -56,7 +56,9 @@
     dysk
     fd
     ffmpeg
+    ghostscript # for imagemagick
     hexyl
+    imagemagickBig
     nix-init
     kondo
     p7zip
