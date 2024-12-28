@@ -6,9 +6,9 @@
 
     certs."bizel.fr" = {
       domain = "*.bizel.fr";
-      dnsProvider = "ovh";
+      dnsProvider = "cloudflare";
       dnsPropagationCheck = true;
-      credentialsFile = config.sops.secrets.ovhDns.path;
+      credentialsFile = config.sops.secrets.cloudflare-lego-token.path;
     };
   };
 
@@ -16,7 +16,7 @@
     "/persist".directories = ["/var/lib/acme"];
   };
 
-  sops.secrets.ovhDns = {
+  sops.secrets.cloudflare-lego-token = {
     sopsFile = ../secrets.yaml;
   };
 
