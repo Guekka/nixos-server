@@ -15,6 +15,8 @@
     ./hardware-configuration.nix
   ];
 
+  services.qemuGuest.enable = true;
+
   networking = {
     hostName = "pluto";
     hostId = "e847bfff";
