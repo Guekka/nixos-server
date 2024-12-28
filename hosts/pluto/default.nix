@@ -2,6 +2,7 @@
   imports = [
     ../common/global
     ../common/optional/acme.nix
+    ../common/optional/cloudflared.nix
     ../common/optional/fail2ban.nix
     ../common/optional/immich.nix
     ../common/optional/impermanence-disko-2.nix
