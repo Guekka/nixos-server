@@ -20,6 +20,7 @@
     keepassxc
     libsForQt5.ark
     obsidian
+    overskride # bluetooth manager
     plex-media-player
     plex-desktop
     ripdrag
