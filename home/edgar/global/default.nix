@@ -25,7 +25,7 @@
       ./rclone.nix
       ./starship.nix
       ./stylix.nix
-      ./trashy.nix
+      ./trash.nix
       ./xdg.nix
       ./yazi.nix
       ./zoxide.nix
