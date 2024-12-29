@@ -1,8 +1,7 @@
 {pkgs, ...}: let
-  pluginify = ide: pkgs.unstable.jetbrains.plugins.addPlugins ide ["github-copilot"];
+  pluginify = ide: pkgs.jetbrains.plugins.addPlugins ide ["github-copilot"];
 in {
-  # jetbrains fails to build on 24.11
-  home.packages = with pkgs.unstable.jetbrains;
+  home.packages = with pkgs.jetbrains;
   with pkgs; [
     (pluginify clion)
     (pluginify idea-ultimate)
