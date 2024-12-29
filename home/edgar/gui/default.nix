@@ -6,7 +6,6 @@
     ./firefox.nix
     ./gtk.nix
     ./hyprland
-    # currently broken    ./image-sieve.nix
     ./ledger.nix
     ./nextcloud-client.nix
     ./vscode.nix
@@ -14,14 +13,12 @@
   ];
 
   home.packages = with pkgs; [
-    anytype
     beeper
     calibre
     keepassxc
     libsForQt5.ark
     obsidian
     overskride # bluetooth manager
-    plex-media-player
     plex-desktop
     ripdrag
     qbittorrent

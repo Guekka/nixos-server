@@ -60,7 +60,6 @@
     hexyl
     imagemagickBig
     nix-init
-    kondo
     p7zip
     ripgrep
     rnr
