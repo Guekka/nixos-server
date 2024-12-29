@@ -6,7 +6,6 @@
     ../common/optional/postgresql.nix
     ../common/optional/acme.nix
     ../common/optional/fail2ban.nix
-    ../common/optional/immich.nix
     ../common/optional/netdata.nix
     ../common/optional/nfs.nix
     ../common/optional/nginx.nix
