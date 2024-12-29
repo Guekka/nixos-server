@@ -7,6 +7,9 @@
   exclude_patterns = [
     "**/.git"
     "**/*.pyc"
+    # freedesktop trash
+    "**/.Trash"
+    "**/.Trash-?"
     "/home/*/.direnv"
     "/home/*/.cache"
     "/home/*/.config/.android"
