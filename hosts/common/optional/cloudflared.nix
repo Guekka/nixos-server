@@ -6,12 +6,17 @@
         credentialsFile = config.sops.secrets.cloudflare.path;
         default = "http_status:404";
         ingress = {
-          "*.bizel.fr".service = "http://localhost:80";
+          "*.bizel.fr" = {
+            service = "http://localhost:80";
+            originRequest.originServerName = "*.bizel.fr";
+          };
         };
-        originRequest.noTLSVerify = true;
       };
     };
   };
+
+  boot.kernel.sysctl."net.core.rmem_max" = 7500000;
+  boot.kernel.sysctl."net.core.wmem_max" = 7500000;
 
   sops.secrets.cloudflare = {
     owner = "cloudflared";
