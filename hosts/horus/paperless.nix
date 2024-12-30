@@ -18,6 +18,8 @@ in {
       PAPERLESS_DBUSER = "paperless";
       PAPERLESS_CONSUMER_RECURSIVE = true;
       PAPERLESS_CONSUMER_SUBDIRS_AS_TAGS = true;
+      PAPERLESS_FILENAME_FORMAT = "{{ owner_username }}/{{ document_type }}/{{ correspondent }}/{{ created_year }} - {{ title }}";
+      PAPERLESS_FILENAME_FORMAT_REMOVE_NONE = true;
     };
     inherit port;
     passwordFile = config.sops.secrets.paperless.path;
