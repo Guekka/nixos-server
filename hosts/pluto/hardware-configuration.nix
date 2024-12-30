@@ -4,6 +4,7 @@
 {
   lib,
   modulesPath,
+  pkgs,
   ...
 }: {
   imports = [
@@ -21,6 +22,14 @@
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp6s18.useDHCP = lib.mkDefault true;
+
+  # intel iGPU
+  hardware.graphics = {
+    enable = true;
+    extraPackages = [
+      pkgs.intel-media-driver
+    ];
+  };
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 }
