@@ -4,6 +4,9 @@
   ...
 }: {
   home.packages = with pkgs; [exiftool mediainfo mpv]; # yazi uses these for preview
+
+  stylix.targets.yazi.enable = true; # status bar unreadable
+
   programs.yazi = {
     enable = true;
     package = pkgs.unstable.yazi;
@@ -12,15 +15,35 @@
     enableFishIntegration = true;
 
     plugins = {
+      augment-command = "${inputs.yazi-augment-command}";
       chmod = "${inputs.yazi-plugins}/chmod.yazi";
       compress = "${inputs.yazi-compress}";
       git = "${inputs.yazi-plugins}/git.yazi";
       hexyl = "${inputs.yazi-hexyl}";
       max-preview = "${inputs.yazi-plugins}/max-preview.yazi";
+      what-size = "${inputs.yazi-what-size}";
     };
+
+    initLua = ''
+      -- Custom configuration for augment-command
+      require("augment-command"):setup({
+        smart_paste = true,
+        smart_tab_create = true,
+      })
+    '';
 
     keymap = {
       manager.prepend_keymap = [
+        {
+          on = "p";
+          run = "plugin augment-command --args='paste'";
+          desc = "Smart paste yanked files";
+        }
+        {
+          on = "t";
+          run = "plugin augment-command --args='tab_create --current'";
+          desc = "Create a new tab with smart directory";
+        }
         {
           on = ["c" "a"];
           run = "plugin compress";
@@ -35,6 +58,11 @@
           on = ["T"];
           run = "plugin max-preview";
           desc = "Maximize or restore preview";
+        }
+        {
+          on = ["." "s"];
+          run = "plugin what-size --args='--clipboard'";
+          desc = "Calc size of selection or cwd";
         }
       ];
     };

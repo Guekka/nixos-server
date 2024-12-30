@@ -66,6 +66,16 @@
       url = "github:Reledia/hexyl.yazi";
       flake = false;
     };
+
+    yazi-augment-command = {
+      url = "github:hankertrix/augment-command.yazi";
+      flake = false;
+    };
+
+    yazi-what-size = {
+      url = "github:pirafrank/what-size.yazi";
+      flake = false;
+    };
   };
 
   # what will be produced (i.e. the build)

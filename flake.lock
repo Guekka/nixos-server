@@ -599,9 +599,11 @@
         "umu-launcher": "umu-launcher",
         "wakatime-lsp": "wakatime-lsp",
         "xdp-termfilepickers": "xdp-termfilepickers",
+        "yazi-augment-command": "yazi-augment-command",
         "yazi-compress": "yazi-compress",
         "yazi-hexyl": "yazi-hexyl",
-        "yazi-plugins": "yazi-plugins"
+        "yazi-plugins": "yazi-plugins",
+        "yazi-what-size": "yazi-what-size"
       }
     },
     "rust-overlay": {
@@ -867,6 +869,22 @@
         "type": "github"
       }
     },
+    "yazi-augment-command": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1735390899,
+        "narHash": "sha256-PsQXhWLNMV83ud7D9TIsMmSrkOdbNGTPzPv0fh08fCI=",
+        "owner": "hankertrix",
+        "repo": "augment-command.yazi",
+        "rev": "b923e7e4a94c95802805c01757775cbb9c3173df",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hankertrix",
+        "repo": "augment-command.yazi",
+        "type": "github"
+      }
+    },
     "yazi-compress": {
       "flake": false,
       "locked": {
@@ -912,6 +930,22 @@
       "original": {
         "owner": "yazi-rs",
         "repo": "plugins",
+        "type": "github"
+      }
+    },
+    "yazi-what-size": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1735555221,
+        "narHash": "sha256-SDObD22u2XYF2BYKsdw9ZM+yJLH9xYTwSFRWIwMCi08=",
+        "owner": "pirafrank",
+        "repo": "what-size.yazi",
+        "rev": "b23e3a4cf44ce12b81fa6be640524acbd40ad9d3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "pirafrank",
+        "repo": "what-size.yazi",
         "type": "github"
       }
     }
