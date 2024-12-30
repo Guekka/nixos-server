@@ -60,6 +60,7 @@
     hexyl
     imagemagickBig
     nix-init
+    ouch
     p7zip
     ripgrep
     rnr
