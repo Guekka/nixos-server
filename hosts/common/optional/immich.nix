@@ -1,4 +1,8 @@
-{config, ...}: {
+{
+  config,
+  lib,
+  ...
+}: {
   services.nginx.virtualHosts."immich.bizel.fr" = {
     extraConfig = ''
       ## Per https://immich.app/docs/administration/reverse-proxy...
@@ -14,6 +18,12 @@
 
   services.immich = {
     enable = true;
+  };
+
+  # reduce hardening to allow hardware acceleration
+  systemd.services.immich-server.serviceConfig = {
+    PrivateDevices = lib.mkForce false;
+    DeviceAllow = "/dev/dri/renderD128 rwm";
   };
 
   environment.persistence."/persist".directories = [
