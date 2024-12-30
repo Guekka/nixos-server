@@ -598,7 +598,10 @@
         "stylix": "stylix",
         "umu-launcher": "umu-launcher",
         "wakatime-lsp": "wakatime-lsp",
-        "xdp-termfilepickers": "xdp-termfilepickers"
+        "xdp-termfilepickers": "xdp-termfilepickers",
+        "yazi-compress": "yazi-compress",
+        "yazi-hexyl": "yazi-hexyl",
+        "yazi-plugins": "yazi-plugins"
       }
     },
     "rust-overlay": {
@@ -861,6 +864,54 @@
       "original": {
         "owner": "Guekka",
         "repo": "xdg-desktop-portal-termfilepickers",
+        "type": "github"
+      }
+    },
+    "yazi-compress": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1727430331,
+        "narHash": "sha256-a7GoaCLaJ6g9Jef2wFoyJtBA6lhxhS4DKROBdFUwJao=",
+        "owner": "v3natio",
+        "repo": "compress.yazi",
+        "rev": "35dee794dcbd6bdab39f1f7f5ffd5472322df91f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "v3natio",
+        "repo": "compress.yazi",
+        "type": "github"
+      }
+    },
+    "yazi-hexyl": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1733538669,
+        "narHash": "sha256-nsnnL3GluKk/p1dQZTZ/RwQPlAmTBu9mQzHz1g7K0Ww=",
+        "owner": "Reledia",
+        "repo": "hexyl.yazi",
+        "rev": "39d3d4e23ad7cec8888f648ddf55af4386950ce7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Reledia",
+        "repo": "hexyl.yazi",
+        "type": "github"
+      }
+    },
+    "yazi-plugins": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1735034015,
+        "narHash": "sha256-X3R5bsnzGv1TVXOKdhAyspDMguVAyc9tvCxJlypUUAA=",
+        "owner": "yazi-rs",
+        "repo": "plugins",
+        "rev": "71c4fc2e6fa1d6f70c85bf525842d6888d1ffa46",
+        "type": "github"
+      },
+      "original": {
+        "owner": "yazi-rs",
+        "repo": "plugins",
         "type": "github"
       }
     }

@@ -51,6 +51,21 @@
       url = "git+https://github.com/Open-Wine-Components/umu-launcher/?dir=packaging\/nix&submodules=1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    yazi-plugins = {
+      url = "github:yazi-rs/plugins";
+      flake = false;
+    };
+
+    yazi-compress = {
+      url = "github:v3natio/compress.yazi";
+      flake = false;
+    };
+
+    yazi-hexyl = {
+      url = "github:Reledia/hexyl.yazi";
+      flake = false;
+    };
   };
 
   # what will be produced (i.e. the build)
