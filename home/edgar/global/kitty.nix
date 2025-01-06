@@ -13,6 +13,9 @@
       window_padding_width = 15;
       # TODO investigate shell integration
     };
+    keybindings = {
+      "f1" = "new_tab_with_cwd";
+    };
   };
 
   home.persistence."/persist/nobackup/home/edgar".directories = [
