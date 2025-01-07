@@ -1,5 +1,6 @@
 {pkgs, ...}: {
   imports = [
+    ./calibre.nix
     ./dev.nix
     ./discord.nix
     ./file-manager.nix
@@ -14,7 +15,6 @@
 
   home.packages = with pkgs; [
     beeper
-    calibre
     keepassxc
     libsForQt5.ark
     obsidian
