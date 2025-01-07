@@ -61,7 +61,7 @@
     imagemagickBig
     nix-init
     ouch
-    p7zip
+    p7zip-rar
     ripgrep
     rnr
     sd
