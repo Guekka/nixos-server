@@ -76,6 +76,11 @@
       url = "github:pirafrank/what-size.yazi";
       flake = false;
     };
+
+    yazi-mount = {
+      url = "github:SL-RU/mount.yazi";
+      flake = false;
+    };
   };
 
   # what will be produced (i.e. the build)

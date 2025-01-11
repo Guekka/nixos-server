@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: {
-  home.packages = with pkgs; [exiftool mediainfo mpv]; # yazi uses these for preview
+  home.packages = with pkgs; [exiftool mediainfo mmtui mpv]; # yazi uses these
 
   stylix.targets.yazi.enable = true; # status bar unreadable
 
@@ -21,6 +21,7 @@
       git = "${inputs.yazi-plugins}/git.yazi";
       hexyl = "${inputs.yazi-hexyl}";
       max-preview = "${inputs.yazi-plugins}/max-preview.yazi";
+      mount = "${inputs.yazi-mount}";
       what-size = "${inputs.yazi-what-size}";
     };
 
@@ -53,6 +54,11 @@
           on = ["c" "m"];
           run = "plugin chmod";
           desc = "Change file permissions";
+        }
+        {
+          on = ["M"];
+          run = "plugin mount";
+          desc = "Mount manager";
         }
         {
           on = ["T"];

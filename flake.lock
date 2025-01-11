@@ -602,6 +602,7 @@
         "yazi-augment-command": "yazi-augment-command",
         "yazi-compress": "yazi-compress",
         "yazi-hexyl": "yazi-hexyl",
+        "yazi-mount": "yazi-mount",
         "yazi-plugins": "yazi-plugins",
         "yazi-what-size": "yazi-what-size"
       }
@@ -914,6 +915,22 @@
       "original": {
         "owner": "Reledia",
         "repo": "hexyl.yazi",
+        "type": "github"
+      }
+    },
+    "yazi-mount": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1735679771,
+        "narHash": "sha256-ds+6aYcZm/O437FXE0/79TCnlx0ivNvM5O7C9T9ajBQ=",
+        "owner": "SL-RU",
+        "repo": "mount.yazi",
+        "rev": "e494101cb8a35cfb13f5c42670cdd28ede850216",
+        "type": "github"
+      },
+      "original": {
+        "owner": "SL-RU",
+        "repo": "mount.yazi",
         "type": "github"
       }
     },
