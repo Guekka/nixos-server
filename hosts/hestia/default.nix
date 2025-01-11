@@ -1,22 +1,16 @@
 {pkgs, ...}: {
   imports = [
     ../common/global
-    ../common/optional/android-connect.nix
     ../common/optional/bluetooth.nix
     ../common/optional/brightness.nix
-    ../common/optional/docker.nix
     ../common/optional/gamescope.nix
     ../common/optional/hyprland.nix
     ../common/optional/impermanence/impermanence.nix
     ../common/optional/ledger.nix
-    ../common/optional/nfs-client.nix
-    ../common/optional/noisetorch.nix
     ../common/optional/obs-virtual-camera.nix
-    ../common/optional/openocd.nix
     ../common/optional/pipewire.nix
     ../common/optional/shutdown-schedule.nix
     ../common/optional/steam.nix
-    ../common/optional/thunar.nix
     ./hardware-configuration.nix
   ];
 
