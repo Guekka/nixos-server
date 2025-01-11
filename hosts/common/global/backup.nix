@@ -1,6 +1,5 @@
 {
   config,
-  lib,
   pkgs,
   ...
 }: let
@@ -83,45 +82,24 @@
 in {
   services.borgmatic = {
     enable = true;
-    configurations =
-      {
-        "default" =
-          baseConfig
-          // {
-            repositories = [
-              {
-                label = "ssh-${config.networking.hostName}";
-                path = "ssh://guekka-backup@domino.zdimension.fr/./${config.networking.hostName}";
-              }
-            ];
-            source_directories = [
-              "/persist"
-              "/home"
-            ];
+    configurations = {
+      "default" =
+        baseConfig
+        // {
+          repositories = [
+            {
+              label = "ssh-${config.networking.hostName}";
+              path = "ssh://guekka-backup@domino.zdimension.fr/./${config.networking.hostName}";
+            }
+          ];
+          source_directories = [
+            "/persist"
+            "/home"
+          ];
 
-            encryption_passcommand = "${pkgs.coreutils}/bin/cat ${config.sops.secrets."${config.networking.hostName}-borgbackup-passphrase".path}";
-          };
-      }
-      //
-      # TODO: maybe move this to a separate file
-      lib.optionalAttrs (config.networking.hostName == "horus")
-      {
-        "shared" =
-          baseConfig
-          // {
-            repositories = [
-              {
-                label = "ssh-shared";
-                path = "ssh://guekka-backup@domino.zdimension.fr/./shared";
-              }
-            ];
-            source_directories = [
-              "/shared"
-            ];
-
-            encryption_passcommand = "${pkgs.coreutils}/bin/cat ${config.sops.secrets.shared-borgbackup-passphrase.path}";
-          };
-      };
+          encryption_passcommand = "${pkgs.coreutils}/bin/cat ${config.sops.secrets."${config.networking.hostName}-borgbackup-passphrase".path}";
+        };
+    };
   };
 
   programs.ssh.knownHosts."domino.zdimension.fr".publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAptqquuh/mkY/06LvfG4za2T3jAoenVR5vJnVOeVaeL";

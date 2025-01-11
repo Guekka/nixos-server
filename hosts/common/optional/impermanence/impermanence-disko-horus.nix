@@ -1,14 +1,6 @@
-# TODO: this file should replace impermanence.nix
-# But it involves repartiotioning the disk, so it's only used for new hosts
-{
-  lib,
-  inputs,
-  ...
-}: {
-  imports = [
-    inputs.disko.nixosModules.default
-    inputs.impermanence.nixosModule
-  ];
+# TODO: merge this with impermanence.nix
+{lib, ...}: {
+  imports = [./impermanence-common.nix];
 
   disko.devices = {
     # tmpfs on root
@@ -81,19 +73,4 @@
 
   fileSystems."/persist".neededForBoot = true;
   fileSystems."/var/log".neededForBoot = true;
-
-  # always persist these
-  environment.persistence."/persist" = {
-    directories = [
-      "/var/lib/nixos"
-    ];
-    files = [
-      "/etc/machine-id"
-    ];
-  };
-
-  security.sudo.extraConfig = ''
-    # rollback results in sudo lectures after each reboot
-    Defaults lecture = never
-  '';
 }

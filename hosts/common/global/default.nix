@@ -55,6 +55,8 @@
   # Read the doc before updating
   system.stateVersion = "24.11";
 
+  # For home manager
+  programs.fuse.userAllowOther = true;
 
   # Easy access to my nodes
   networking.extraHosts = ''

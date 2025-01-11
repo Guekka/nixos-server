@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   imports = [
     ../common/global
-    ../common/optional/impermanence-disko.nix
+    ../common/optional/impermanence/impermanence-disko-horus.nix
     ../common/optional/podman.nix
     ../common/optional/postgresql.nix
     ../common/optional/acme.nix

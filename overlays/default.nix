@@ -3,11 +3,13 @@
   additions = final: _prev:
     import ../pkgs {pkgs = final;};
 
-  modifications = final: prev: {
+  modifications = final: prev: let
     unstable = import inputs.nixpkgs-unstable {
       inherit (final) system;
       config.allowUnfree = true;
     };
+  in {
+    inherit unstable;
 
     # required for some games
     steam = prev.steam.override {
@@ -37,5 +39,8 @@
     });
 
     helix-latest = inputs.helix.packages.${prev.system}.helix;
+
+    # btrfs-progs 6.12 for recursive subvolume deletion
+    inherit (unstable) btrfs-progs;
   };
 }

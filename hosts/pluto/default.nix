@@ -4,8 +4,9 @@
     ../common/optional/acme.nix
     ../common/optional/cloudflared.nix
     ../common/optional/fail2ban.nix
+    ../common/optional/home-assistant
     ../common/optional/immich.nix
-    ../common/optional/impermanence-disko-2.nix
+    ../common/optional/impermanence/impermanence.nix
     ../common/optional/netdata.nix
     ../common/optional/nfs.nix
     ../common/optional/nginx.nix
@@ -14,6 +15,8 @@
 
     ./hardware-configuration.nix
   ];
+
+  disko.devices.disk.main.device = "scsi-0QEMU_QEMU_HARDDISK_drive-scsi0";
 
   services.qemuGuest.enable = true;
 

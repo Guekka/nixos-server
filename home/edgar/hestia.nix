@@ -1,5 +1,6 @@
 {pkgs, ...}: {
   imports = [
+    ./impermanence.nix
     ./optional/activitywatch.nix
 
     ./gaming

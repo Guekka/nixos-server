@@ -7,7 +7,7 @@
     ../common/optional/docker.nix
     ../common/optional/gamescope.nix
     ../common/optional/hyprland.nix
-    ../common/optional/impermanence.nix
+    ../common/optional/impermanence/impermanence.nix
     ../common/optional/ledger.nix
     ../common/optional/nfs-client.nix
     ../common/optional/noisetorch.nix
@@ -19,6 +19,8 @@
     ../common/optional/thunar.nix
     ./hardware-configuration.nix
   ];
+
+  disko.devices.disk.main.device = "/dev/disk/by-id/nvme-WD_BLACK_SN850X_2000GB_24204D801353";
 
   networking = {
     hostName = "hestia";

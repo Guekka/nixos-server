@@ -4,7 +4,7 @@
     ../common/optional/bluetooth.nix
     ../common/optional/docker.nix
     ../common/optional/hyprland.nix
-    ../common/optional/impermanence.nix
+    ../common/optional/impermanence/impermanence-old.nix
     ../common/optional/ledger.nix
     ../common/optional/nfs-client.nix
     ../common/optional/noisetorch.nix

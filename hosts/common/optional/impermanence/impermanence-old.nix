@@ -1,15 +1,14 @@
 {
   config,
   lib,
-  inputs,
+  pkgs,
   ...
 }: let
   hostname = config.networking.hostName;
   disk = "/dev/disk/by-label/${hostname}";
+  rollback-script = pkgs.writeShellScript "btrfs-rollback-script" (builtins.readFile ./btrfs-rollback-script.sh);
 in {
-  imports = [
-    inputs.impermanence.nixosModule
-  ];
+  imports = [./impermanence-common.nix];
 
   # We're making the assumption the disk has a label
   fileSystems = {
@@ -66,40 +65,6 @@ in {
     ];
     unitConfig.DefaultDependencies = "no";
     serviceConfig.Type = "oneshot";
-    script = ''
-      mkdir -p /mnt
-
-      mount -o subvol=/ ${disk} /mnt
-
-      btrfs subvolume list -o /mnt/root |
-      cut -f9 -d' ' |
-      while read subvolume; do
-        echo "deleting /$subvolume subvolume..."
-        btrfs subvolume delete "/mnt/$subvolume"
-      done &&
-      echo "deleting /root subvolume..." &&
-      btrfs subvolume delete /mnt/root
-
-      echo "restoring blank /root subvolume..."
-      btrfs subvolume snapshot /mnt/root-blank /mnt/root
-
-      umount /mnt
-    '';
+    script = "${rollback-script} ${disk}";
   };
-
-  # always persist these
-  environment.persistence."/persist" = {
-    directories = [
-      "/etc/nixos"
-      "/var/lib/nixos"
-    ];
-    files = [
-      "/etc/machine-id"
-    ];
-  };
-
-  security.sudo.extraConfig = ''
-    # rollback results in sudo lectures after each reboot
-    Defaults lecture = never
-  '';
 }
