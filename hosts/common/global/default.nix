@@ -55,10 +55,6 @@
   # Read the doc before updating
   system.stateVersion = "24.11";
 
-  services.logind.extraConfig = ''
-    # don’t shutdown when power button is short-pressed
-    HandlePowerKey=ignore
-  '';
 
   # Easy access to my nodes
   networking.extraHosts = ''
