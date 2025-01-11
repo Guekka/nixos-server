@@ -1,23 +1,20 @@
 {
-  lib,
-  pkgs,
-  ...
-}: let
-  library = "/shared/edgar/books";
-in {
   services = {
-    calibre-server = {
-      enable = true;
-      libraries = [library];
-    };
     calibre-web = {
       enable = true;
       options = {
         enableBookUploading = true;
         enableBookConversion = true;
-        calibreLibrary = library;
+        enableKepubify = true;
+
+        calibreLibrary = "/shared/edgar/books";
       };
     };
+  };
+
+  # TODO upstream
+  systemd.services.calibre-web.environment = {
+    CACHE_DIR = "/var/lib/calibre-web/cache";
   };
 
   services.nginx.virtualHosts."calibre.bizel.fr" = {
@@ -25,20 +22,25 @@ in {
     forceSSL = true;
     locations."^~ /" = {
       proxyPass = "http://[::1]:8083";
+      extraConfig = ''
+        # fix kobo sync
+        proxy_busy_buffers_size   1024k;
+        proxy_buffers   4 512k;
+        proxy_buffer_size   1024k;
+
+        # allow large books
+        client_body_in_file_only clean;
+        client_body_buffer_size 32K;
+
+        client_max_body_size 300M;
+
+        sendfile on;
+        send_timeout 300s;
+      '';
     };
   };
-
-  # TODO: upstream that
-  systemd.services.calibre-server.serviceConfig.ExecStart = lib.mkForce "${pkgs.calibre}/bin/calibre-server ${library} --enable-auth";
-
   environment.persistence."/persist" = {
     directories = [
-      {
-        directory = "/var/lib/calibre-server";
-        mode = "0750";
-        user = "calibre-server";
-        group = "calibre-server";
-      }
       {
         directory = "/var/lib/calibre-web";
         mode = "0750";
