@@ -53,6 +53,9 @@ in {
     ];
   };
 
+  # Give access to paperless files for external storage
+  users.users.nextcloud.extraGroups = ["paperless"];
+
   # Ensure that postgres is running before running the setup
   systemd.services."nextcloud-setup" = {
     requires = ["postgresql.service"];
