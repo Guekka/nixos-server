@@ -1,7 +1,7 @@
 let
   dataDir = "/var/lib/actualbudget";
   port = 3750;
-  version = "24.11.0";
+  version = "25.1.0";
 in {
   users.users.actualbudget = {
     group = "actualbudget";
@@ -11,13 +11,6 @@ in {
 
   virtualisation.oci-containers.containers.actualbudget = {
     autoStart = true;
-    environment = {
-      # See all options and more details at
-      # https://actualbudget.github.io/docs/Installing/Configuration
-      # ACTUAL_UPLOAD_FILE_SYNC_SIZE_LIMIT_MB = 20;
-      # ACTUAL_UPLOAD_SYNC_ENCRYPTED_FILE_SYNC_SIZE_LIMIT_MB = 50;
-      # ACTUAL_UPLOAD_FILE_SIZE_LIMIT_MB = 20;
-    };
     image = "ghcr.io/actualbudget/actual-server:${version}";
     ports = ["${toString port}:5006"];
     volumes = ["${dataDir}/:/data"];
