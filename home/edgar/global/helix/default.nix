@@ -98,7 +98,13 @@ in {
         }
         {
           name = "python";
+          language-id = "python";
           language-servers = ["pyright" "ruff" "wakatime"];
+          formatter = {
+            command = lib.getExe pkgs.ruff;
+            args = ["format" "-"];
+          };
+          roots = ["pyproject.toml" "setup.py" "poetry.lock" ".git" ".jj" ".venv/"];
         }
         {
           name = "typescript";
@@ -144,7 +150,8 @@ in {
           command = lib.getExe' pkgs.pyright "pyright-langserver";
           args = ["--stdio"];
           config = {
-            python.analysis.typeCheckingMode = "basic";
+            python.analysis.ignore = ["/"]; # rely on ruff
+            python.analysis.typeCheckingMode = "strict";
           };
         };
 
