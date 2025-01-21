@@ -51,10 +51,12 @@
         ".cache/mozilla"
         ".cache/nix"
         ".cache/nix-index"
+        ".cache/uv"
 
         # .config
         ".config/calibre"
         ".config/fish"
+        ".config/java"
         # TOOD: use a secret instead
         ".config/immich-go"
         ".config/keepassxc"
@@ -67,9 +69,12 @@
         ".local/share/atuin"
         ".local/share/direnv"
         ".local/share/fish"
+        ".local/share/khal"
         ".local/share/lutris"
         ".local/share/plex"
+        ".config/qBittorrent"
         (withSymlink ".local/share/Steam")
+        (withSymlink ".local/share/umu")
         ".local/share/zoxide"
 
         # .local/state
