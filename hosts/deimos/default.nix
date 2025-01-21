@@ -6,7 +6,6 @@
     ../common/optional/hyprland.nix
     ../common/optional/impermanence/impermanence-old.nix
     ../common/optional/ledger.nix
-    ../common/optional/nfs-client.nix
     ../common/optional/noisetorch.nix
     ../common/optional/openocd.nix
     ../common/optional/pipewire.nix
