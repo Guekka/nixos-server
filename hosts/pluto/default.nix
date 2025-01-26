@@ -12,6 +12,7 @@
     ../common/optional/nginx.nix
     ../common/optional/podman.nix
     ../common/optional/postgresql.nix
+    ../common/optional/weather-risks.nix
 
     ./hardware-configuration.nix
   ];

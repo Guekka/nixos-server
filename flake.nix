@@ -76,6 +76,12 @@
       url = "github:SL-RU/mount.yazi";
       flake = false;
     };
+
+    # temporary for school project
+    weather-risks = {
+      url = "github:Guekka/weather_risks";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   # what will be produced (i.e. the build)
