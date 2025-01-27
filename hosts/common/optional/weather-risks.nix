@@ -20,6 +20,7 @@ in {
     environment = {
       WEATHER_RISKS_PORT = toString port;
       WEATHER_RISKS_RELOAD = "false";
+      XDG_CACHE_HOME = "${directory}/cache";
     };
   };
 
@@ -42,7 +43,10 @@ in {
   users.groups.weather-risks = {};
 
   services.nginx.virtualHosts."weather-risks.bizel.fr" = {
-    locations."/".proxyPass = "http://localhost:${toString port}";
+    locations."/" = {
+      proxyPass = "http://localhost:${toString port}";
+      proxyWebsockets = true;
+    };
     useACMEHost = "bizel.fr";
   };
 }
