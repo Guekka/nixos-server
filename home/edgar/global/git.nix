@@ -38,6 +38,38 @@
     # some come from https://jvns.ca/blog/2024/02/16/popular-git-config-options/
     extraConfig = {
       core = {
+        attributesfile =
+          toString
+          (pkgs.writeTextFile {
+            name = ".gitattributes";
+            text = ''
+              *.java merge=mergiraf
+              *.rs merge=mergiraf
+              *.go merge=mergiraf
+              *.js merge=mergiraf
+              *.jsx merge=mergiraf
+              *.json merge=mergiraf
+              *.yml merge=mergiraf
+              *.yaml merge=mergiraf
+              *.toml merge=mergiraf
+              *.html merge=mergiraf
+              *.htm merge=mergiraf
+              *.xhtml merge=mergiraf
+              *.xml merge=mergiraf
+              *.c merge=mergiraf
+              *.cc merge=mergiraf
+              *.h merge=mergiraf
+              *.cpp merge=mergiraf
+              *.hpp merge=mergiraf
+              *.cs merge=mergiraf
+              *.dart merge=mergiraf
+              *.scala merge=mergiraf
+              *.sbt merge=mergiraf
+              *.ts merge=mergiraf
+              *.py merge=mergiraf
+            '';
+          });
+
         autocrlf = "input";
         eol = "lf";
       };
@@ -67,6 +99,11 @@
       merge = {
         # https://ductile.systems/zdiff3/
         conflictStyle = "zdiff3";
+
+        mergiraf = {
+          name = "mergiraf";
+          driver = "mergiraf merge --git %O %A %B -s %S -x %X -y %Y -p %P";
+        };
       };
 
       pull = {
@@ -119,9 +156,12 @@
     };
   };
 
-  home.packages = with pkgs; [
-    git-absorb
+  home.packages = [
+    pkgs.git-absorb
     # in particular, for lazygit
-    delta
+    pkgs.delta
+    # have to try that someday
+    pkgs.jujutsu
+    pkgs.mergiraf
   ];
 }
