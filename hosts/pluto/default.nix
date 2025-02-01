@@ -4,7 +4,6 @@
     ../common/optional/acme.nix
     ../common/optional/cloudflared.nix
     ../common/optional/fail2ban.nix
-    ../common/optional/home-assistant
     ../common/optional/immich.nix
     ../common/optional/impermanence/impermanence.nix
     ../common/optional/netdata.nix
