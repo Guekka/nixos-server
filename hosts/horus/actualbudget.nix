@@ -22,7 +22,7 @@ in {
     useACMEHost = "bizel.fr";
   };
 
-  environment.persistence."/persist".directories = [
+  environment.persistence."/persist/backup".directories = [
     {
       directory = dataDir;
       user = "actualbudget";

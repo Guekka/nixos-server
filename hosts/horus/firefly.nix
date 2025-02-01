@@ -30,7 +30,7 @@
     sopsFile = ../secrets.yaml;
   };
 
-  environment.persistence."/persist" = {
+  environment.persistence."/persist/backup" = {
     directories = [config.services.firefly-iii.dataDir];
   };
 }

@@ -1,7 +1,7 @@
 {
   networking.networkmanager.enable = true;
 
-  environment.persistence."/persist" = {
+  environment.persistence."/persist/backup" = {
     directories = ["/etc/NetworkManager/system-connections"];
   };
 }

@@ -18,7 +18,7 @@
     };
   };
 
-  environment.persistence."/persist".directories = [
+  environment.persistence."/persist/backup".directories = [
     {
       directory = "/var/lib/private/tandoor-recipes";
       user = "tandoor_recipes";

@@ -13,7 +13,7 @@
   };
 
   environment.persistence = {
-    "/persist".directories = ["/var/lib/acme"];
+    "/persist/backup".directories = ["/var/lib/acme"];
   };
 
   sops.secrets.cloudflare-lego-token = {

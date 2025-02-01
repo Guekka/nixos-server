@@ -16,6 +16,6 @@
   };
 
   environment.persistence = {
-    "/persist".directories = ["/var/www/files"];
+    "/persist/backup".directories = ["/var/www/files"];
   };
 }

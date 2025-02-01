@@ -18,7 +18,7 @@
     enableACME = lib.mkForce false;
   };
 
-  environment.persistence."/persist" = {
+  environment.persistence."/persist/backup" = {
     directories = [config.services.grocy.dataDir];
   };
 }

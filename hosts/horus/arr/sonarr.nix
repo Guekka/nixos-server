@@ -11,7 +11,7 @@
     };
   };
 
-  environment.persistence."/persist" = {
+  environment.persistence."/persist/backup" = {
     directories = [
       {
         directory = "/var/lib/sonarr";

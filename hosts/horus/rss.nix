@@ -15,7 +15,7 @@ in {
     locations."/".proxyPass = "http://${host}";
   };
 
-  environment.persistence."/persist" = {
+  environment.persistence."/persist/backup" = {
     directories = [
       {
         directory = "/var/lib/private/miniflux";

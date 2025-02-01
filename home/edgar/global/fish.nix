@@ -42,4 +42,14 @@
       set fish_cursor_visual      block
     '';
   };
+
+  home.persistence = {
+    "/persist/backup/home/edgar".directories = [
+      ".config/fish"
+    ];
+
+    "/persist/nobackup/home/edgar".directories = [
+      ".local/share/fish"
+    ];
+  };
 }

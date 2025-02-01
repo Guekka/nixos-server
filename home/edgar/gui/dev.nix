@@ -12,4 +12,14 @@ in {
     gcc # always have a C compiler ready
     python3 # and a Python interpreter
   ];
+
+  home.persistence."/persist/nobackup/home/edgar" = {
+    directories = [
+      ".cache/JetBrains"
+      ".config/JetBrains"
+      ".local/share/JetBrains"
+
+      ".config/github-copilot"
+    ];
+  };
 }

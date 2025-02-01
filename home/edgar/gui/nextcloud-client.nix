@@ -4,7 +4,19 @@
     startInBackground = true;
   };
 
-  home.packages = [
-    config.services.nextcloud-client.package
-  ];
+  home = {
+    packages = [
+      config.services.nextcloud-client.package
+    ];
+
+    persistence = {
+      "/persist/backup/home/edgar".directories = [
+        ".config/Nextcloud"
+      ];
+
+      "/persist/nobackup/home/edgar".directories = [
+        "Nextcloud"
+      ];
+    };
+  };
 }

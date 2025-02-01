@@ -1,5 +1,5 @@
 {
   hardware.bluetooth.enable = true;
 
-  environment.persistence."/persist".directories = ["/var/lib/bluetooth"];
+  environment.persistence."/persist/backup".directories = ["/var/lib/bluetooth"];
 }

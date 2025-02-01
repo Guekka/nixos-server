@@ -20,4 +20,8 @@
     };
     Install = {WantedBy = [target];};
   };
+
+  home.persistence."/persist/backup/home/edgar".directories = [
+    ".local/share/activitywatch"
+  ];
 }

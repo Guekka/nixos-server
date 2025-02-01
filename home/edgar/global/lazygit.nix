@@ -11,4 +11,10 @@
       };
     };
   };
+
+  home = {
+    persistence."/persist/backup/home/edgar".directories = [
+      ".local/state/lazygit"
+    ];
+  };
 }

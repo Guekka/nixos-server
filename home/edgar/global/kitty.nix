@@ -14,4 +14,8 @@
       # TODO investigate shell integration
     };
   };
+
+  home.persistence."/persist/nobackup/home/edgar".directories = [
+    ".cache/kitty"
+  ];
 }

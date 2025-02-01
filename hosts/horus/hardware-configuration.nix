@@ -8,7 +8,7 @@
   swapDevices = [
     {
       # on /persist since / is tmpfs. It woudln't make sense to have a swapfile in tmpfs
-      device = "/persist/swapfile";
+      device = "/persist/nobackup/swapfile";
       size = 8192;
     }
   ];

@@ -11,7 +11,7 @@
 
   swapDevices = [
     {
-      device = "/persist/swapfile";
+      device = "/persist/nobackup/swapfile";
       size = 16384;
     }
   ];

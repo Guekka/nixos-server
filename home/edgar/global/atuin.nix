@@ -13,4 +13,8 @@
       inline_height = 20;
     };
   };
+
+  home.persistence."/persist/nobackup/home/edgar".directories = [
+    ".local/share/atuin"
+  ];
 }

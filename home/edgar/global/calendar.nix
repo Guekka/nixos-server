@@ -39,4 +39,8 @@
       datetimeformat = "%d/%m/%Y %H:%M";
     };
   };
+
+  home.persistence."/persist/nobackup/home/edgar".directories = [
+    ".local/share/khal"
+  ];
 }

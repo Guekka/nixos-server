@@ -67,7 +67,7 @@ in {
     useACMEHost = "bizel.fr";
   };
 
-  environment.persistence."/persist" = {
+  environment.persistence."/persist/backup" = {
     directories = [
       {
         directory = appDir;

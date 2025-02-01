@@ -3,48 +3,35 @@
   pkgs,
   ...
 }: let
+  # TODO: update exclude patterns
   exclude_patterns = [
     "**/.git"
     "**/*.pyc"
     # freedesktop trash
     "**/.Trash"
     "**/.Trash-?"
-    "/home/*/.direnv"
-    "/home/*/.cache"
-    "/home/*/.config/.android"
-    "/home/*/.config/Code"
-    "/home/*/.config/heroic"
-    "/home/*/.config/Beeper"
-    "/home/*/.config/chromium"
-    "/home/*/.config/discord"
-    "/home/*/.config/obsidian"
-    "/home/*/.config/Ledger Live"
-    "/home/*/.config/VSCodium"
-    "/home/*/.config/vesktop"
-    "/home/*/.local/share/Trash"
-    "/home/*/.local/share/lutris"
-    "/home/*/.local/share/containers"
-    "/home/*/.local/share/JetBrains"
-    "/home/*/.local/share/pnpm"
-    "/home/*/.local/share/proton"
-    "/home/*/.local/share/Steam"
-    "/home/*/.npm"
-    "/home/*/.m2"
-    "/home/*/.gradle"
-    "/home/*/.opam"
-    "/home/*/.clangd"
-    "/home/*/.mozilla/firefox/*/storage"
-    "/home/*/.vcpkg"
-    "/home/*/.vscode"
-    "/home/*/Android"
-    # all my code is in VCS
-    "/home/*/code"
-    "/home/*/Downloads"
-    "/home/*/Games"
-    "/home/*/Nextcloud"
-    "/home/*/Unity/Hub"
-    "/persist/var/lib/containers"
-    "/persist/swapfile"
+    "/persist/backup/home/*/.config/.android"
+    "/persist/backup/home/*/.config/Code"
+    "/persist/backup/home/*/.config/heroic"
+    "/persist/backup/home/*/.config/chromium"
+    "/persist/backup/home/*/.config/obsidian"
+    "/persist/backup/home/*/.config/VSCodium"
+    "/persist/backup/home/*/.config/vesktop"
+    "/persist/backup/home/*/.local/share/Trash"
+    "/persist/backup/home/*/.local/share/containers"
+    "/persist/backup/home/*/.local/share/JetBrains"
+    "/persist/backup/home/*/.local/share/pnpm"
+    "/persist/backup/home/*/.local/share/proton"
+    "/persist/backup/home/*/.npm"
+    "/persist/backup/home/*/.m2"
+    "/persist/backup/home/*/.gradle"
+    "/persist/backup/home/*/.opam"
+    "/persist/backup/home/*/.clangd"
+    "/persist/backup/home/*/.mozilla/firefox/*/storage"
+    "/persist/backup/home/*/.vcpkg"
+    "/persist/backup/home/*/.vscode"
+    "/persist/backup/home/*/Android"
+    "/persist/backup/home/*/Unity/Hub"
   ];
 
   baseConfig = {
@@ -93,8 +80,7 @@ in {
             }
           ];
           source_directories = [
-            "/persist"
-            "/home"
+            "/persist/backup"
           ];
 
           encryption_passcommand = "${pkgs.coreutils}/bin/cat ${config.sops.secrets."${config.networking.hostName}-borgbackup-passphrase".path}";

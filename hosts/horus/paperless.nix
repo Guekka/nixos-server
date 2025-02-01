@@ -52,7 +52,7 @@ in {
     locations."/".proxyPass = "http://localhost:${toString port}";
   };
 
-  environment.persistence."/persist" = {
+  environment.persistence."/persist/backup" = {
     directories = [
       {
         directory = config.services.paperless.dataDir;

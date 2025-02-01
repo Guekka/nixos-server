@@ -26,7 +26,7 @@
     DeviceAllow = "/dev/dri/renderD128 rwm";
   };
 
-  environment.persistence."/persist".directories = [
+  environment.persistence."/persist/backup".directories = [
     {
       directory = config.services.immich.mediaLocation;
       user = "immich";
@@ -39,9 +39,9 @@
   /*
   services.borgmatic.configurations.default.exclude_patterns = [
     # The immich database is dumped, no need to backup the live data
-    "/persist/${immichAppdataRoot}"
+    "/persist/backup/${immichAppdataRoot}"
     # Expensive to compute, but can be regenerated
-    "/persist/${immichPhotosWithoutLibrary}"
+    "/persist/backup/${immichPhotosWithoutLibrary}"
   ];
   */
 }

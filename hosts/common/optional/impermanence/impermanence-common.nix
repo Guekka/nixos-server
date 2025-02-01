@@ -19,7 +19,7 @@ in {
   ];
 
   # always persist these
-  environment.persistence."/persist" = {
+  environment.persistence."/persist/backup" = {
     directories = [
       "/etc/nixos"
       "/var/lib/nixos"

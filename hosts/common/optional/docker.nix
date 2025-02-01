@@ -6,7 +6,7 @@
   };
 
   environment.persistence = {
-    "/persist".directories = [
+    "/persist/nobackup".directories = [
       "/var/lib/containers"
     ];
   };

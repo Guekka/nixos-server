@@ -10,6 +10,6 @@
   sops.secrets.tailscale_key.sopsFile = ../secrets.yaml;
 
   environment.persistence = {
-    "/persist".directories = ["/var/lib/tailscale"];
+    "/persist/backup".directories = ["/var/lib/tailscale"];
   };
 }
