@@ -21,11 +21,7 @@
     interfaces.eno1.useDHCP = true;
   };
 
-  services.tailscaleAutoconnect = {
-    advertiseExitNode = false;
-    exitNode = "horus";
-    exitNodeAllowLanAccess = true;
-  };
+  services.tailscale.extraUpFlags = ["--exit-node" "horus" "--exit-node-allow-lan-access"];
 
   time.timeZone = "Europe/Amsterdam";
 
