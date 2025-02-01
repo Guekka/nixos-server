@@ -28,7 +28,7 @@
 
     helix = {
       inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:AlexanderDickie/helix/copilot"; ## copilot support
+      url = "github:Guekka/helix/copilot"; ## fork with copilot support
     };
 
     stylix = {
