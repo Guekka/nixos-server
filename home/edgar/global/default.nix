@@ -6,6 +6,8 @@
 }: {
   imports =
     [
+      ./impermanence.nix
+
       ./atuin.nix
       ./bash.nix
       ./bat.nix
