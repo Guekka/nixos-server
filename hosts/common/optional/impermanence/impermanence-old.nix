@@ -18,12 +18,6 @@ in {
       options = ["subvol=root" "compress=zstd"];
     };
 
-    "/home" = lib.mkDefault {
-      device = disk;
-      fsType = "btrfs";
-      options = ["subvol=home" "compress=zstd"];
-    };
-
     "/nix" = {
       device = disk;
       fsType = "btrfs";
