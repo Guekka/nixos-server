@@ -7,11 +7,17 @@
   copilot = pkgs.writeShellScriptBin "copilot" ''
     exec ${pkgs.nodejs}/bin/node ${pkgs.vimPlugins.copilot-vim}/dist/language-server.js "''$@"
   '';
-  helix-copilot = pkgs.writeShellApplication {
-    name = "hx";
-    runtimeInputs = [copilot];
-    text = ''
-      exec ${pkgs.helix-latest}/bin/hx -a "''$@"
+  helix-copilot = pkgs.symlinkJoin {
+    name = "helix";
+    paths = [
+      inputs.helix.packages.${pkgs.system}.helix
+    ];
+    buildInputs = [pkgs.makeWrapper];
+    runtimeInputs = [
+      copilot
+    ];
+    postBuild = ''
+      wrapProgram $out/bin/hx --add-flags "-a"
     '';
   };
   helix-single = pkgs.writeShellApplication {
@@ -21,12 +27,16 @@
     '';
   };
 in {
+  stylix.targets.helix.enable = false;
+
   home.packages = [helix-single];
   programs.helix = {
     enable = true;
     package = helix-copilot;
     defaultEditor = true;
     settings = {
+      theme = "solarized_light";
+
       editor = {
         auto-save = {
           focus-lost = true;
