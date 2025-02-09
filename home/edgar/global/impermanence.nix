@@ -40,6 +40,7 @@ in {
       ".config/immich-go"
       ".config/keepassxc"
       ".config/qBittorrent"
+      ".config/qmk"
     ];
 
     files = [
@@ -54,7 +55,7 @@ in {
       [
         # Root dirs
         (withSymlink "Games")
-        (withSymlink "code")
+        "code"
         "Downloads"
 
         # .cache
