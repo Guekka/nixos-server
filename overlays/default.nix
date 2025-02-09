@@ -42,5 +42,14 @@
 
     # btrfs-progs 6.12 for recursive subvolume deletion
     inherit (unstable) btrfs-progs;
+
+    python3 = prev.python3.override {
+      packageOverrides = _python-self: python-super: {
+        # flaky tests
+        aiocache = python-super.aiocache.overridePythonAttrs (_old: {
+          doCheck = false;
+        });
+      };
+    };
   };
 }
