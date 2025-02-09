@@ -10,7 +10,7 @@
     };
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:guekka/home-manager/release-24.11"; # has backport for unstable yazi
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -79,7 +79,7 @@
 
     # temporary for school project
     weather-risks = {
-      url = "github:Guekka/weather_risks";
+      url = "git+ssh://git@github.com/guekka/weather_risks.git";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
