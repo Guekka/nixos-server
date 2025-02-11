@@ -4,14 +4,17 @@ in {
   services.headscale = {
     enable = true;
     inherit port;
-    server_url = "https://headscale.bizel.fr:${toString port}";
+    settings = {
+      server_url = "https://headscale.bizel.fr:${toString port}";
+      dns.base_domain = "guekka.fr";
+    };
   };
 
   environment.persistence."/persist/backup" = {
     directories = [
       {
         directory = "/var/lib/headscale";
-        owner = "headscale";
+        user = "headscale";
         group = "headscale";
         mode = "0700";
       }
