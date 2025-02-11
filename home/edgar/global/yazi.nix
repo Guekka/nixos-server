@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: {
-  home.packages = with pkgs; [exiftool mediainfo mmtui mpv]; # yazi uses these
+  home.packages = with pkgs; [exiftool mediainfo mmtui mpv ripdrag]; # yazi uses these
 
   stylix.targets.yazi.enable = true; # status bar unreadable
 
@@ -69,6 +69,11 @@
           on = ["." "s"];
           run = "plugin what-size --args='--clipboard'";
           desc = "Calc size of selection or cwd";
+        }
+        {
+          on = "C-n";
+          run = ''shell -- ripdrag -xna "$1"'';
+          desc = "ripdrag";
         }
       ];
     };
