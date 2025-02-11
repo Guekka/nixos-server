@@ -40,6 +40,8 @@
 
     helix-latest = inputs.helix.packages.${prev.system}.helix;
 
+    inherit (inputs.winapps.packages.${prev.system}) winapps;
+
     # btrfs-progs 6.12 for recursive subvolume deletion
     inherit (unstable) btrfs-progs;
 

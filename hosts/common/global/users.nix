@@ -54,7 +54,7 @@
   security.pam.services.hyprlock = {};
   security.pam.services.swaylock = {};
 
-  # But it seems too tedious
+  # There's a HM module for sops-nix, but it does not seem practical. TODO investigate it
   sops.secrets.atuin_key = {
     sopsFile = ../secrets.yaml;
     path = "/home/edgar/secrets/atuin_key";
@@ -76,6 +76,12 @@
   sops.secrets.wakatime_cfg = {
     sopsFile = ../secrets.yaml;
     path = "/home/edgar/.wakatime.cfg";
+    owner = "edgar";
+  };
+
+  sops.secrets.winapps-config = {
+    sopsFile = ../secrets.yaml;
+    path = "/home/edgar/.config/winapps/winapps.conf";
     owner = "edgar";
   };
 }

@@ -24,6 +24,7 @@
     ripdrag
     qbittorrent
     vlc
+    winapps
     wl-clipboard
   ];
 }

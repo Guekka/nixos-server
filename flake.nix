@@ -42,6 +42,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    winapps = {
+      url = "github:winapps-org/winapps";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     xdp-termfilepickers = {
       url = "github:Guekka/xdg-desktop-portal-termfilepickers";
       inputs.nixpkgs.follows = "nixpkgs";
