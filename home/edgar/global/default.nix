@@ -20,6 +20,7 @@
       ./git.nix
       ./helix
       ./jq.nix
+      ./jujutsu.nix
       ./kitty.nix
       ./lazygit.nix
       ./mime.nix

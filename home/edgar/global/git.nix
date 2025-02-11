@@ -160,8 +160,6 @@
     pkgs.git-absorb
     # in particular, for lazygit
     pkgs.delta
-    # have to try that someday
-    pkgs.jujutsu
     pkgs.mergiraf
   ];
 }
