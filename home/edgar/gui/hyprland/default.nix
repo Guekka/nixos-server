@@ -117,6 +117,11 @@
         "rounding 0, floating:0, onworkspace:w[tv1]"
         "bordersize 0, floating:0, onworkspace:f[1]"
         "rounding 0, floating:0, onworkspace:f[1]"
+
+        # keep focus on albert
+        "stayfocused, class:(albert)"
+        "float, class:(albert)"
+        "center, class:(albert)"
       ];
       binde = let
         brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
@@ -142,6 +147,7 @@
         pass-wofi = "${pkgs.pass-wofi.override {
           pass = config.programs.password-store.package;
         }}/bin/pass-wofi";
+        socat = lib.getExe pkgs.socat;
         systemctl = "${pkgs.systemd}/bin/systemctl";
         wl-copy = "${pkgs.wl-clipboard}/bin/wl-copy";
 
@@ -206,10 +212,13 @@
         ++
         # Launcher
         (lib.optionals config.programs.rofi.enable [
-            "SUPER,d,exec,${rofi} -show combi -sidebar-mode"
             "SUPERSHIFT,x,exec,${rofi} -show run"
             "SUPER,tab,exec,${rofi} -show window"
           ]
+          ++ (lib.optionals config.services.albert.enable [
+            # <https://albertlauncher.github.io/gettingstarted/faq/#how-to-make-hotkeys-work-on-wayland>
+            "SUPER,d,exec,echo -n toggle | ${socat} - ~/.cache/albert/ipc_socket"
+          ])
           ++ (lib.optionals config.services.cliphist.enable [
             "SUPER, c, exec, ${cliphist} list | ${rofi} -dmenu | ${cliphist} decode | ${wl-copy}" # Clipboard manager
           ])

@@ -1,5 +1,6 @@
 {
   imports = [
+    ./albert
     ./cliphist.nix
     ./hypridle.nix
     ./hyprlock.nix
