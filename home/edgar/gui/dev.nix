@@ -7,7 +7,6 @@ in {
     (pluginify idea-ultimate)
 
     qtcreator
-    staruml
 
     gcc # always have a C compiler ready
     python3 # and a Python interpreter
