@@ -81,7 +81,9 @@
 
   sops.secrets.winapps-config = {
     sopsFile = ../secrets.yaml;
-    path = "/home/edgar/.config/winapps/winapps.conf";
+    # it is not possible to put it directly into .config, as sops would create the parent dir
+    # with root ownership
+    path = "/home/edgar/secrets/winapps.conf";
     owner = "edgar";
   };
 }
