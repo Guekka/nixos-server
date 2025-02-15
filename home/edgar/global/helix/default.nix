@@ -90,12 +90,12 @@ in {
         {
           name = "typst";
           language-servers = ["tinymist" "wakatime" "vale"];
-          auto-format = false; # see https://github.com/helix-editor/helix/issues/11237
+          auto-format = true;
         }
         {
           name = "rust";
           language-servers = ["rust-analyzer" "wakatime" "vale"];
-          auto-format = false; # see
+          auto-format = true;
         }
         {
           name = "cpp";
@@ -104,7 +104,7 @@ in {
         {
           name = "nix";
           language-servers = ["nil" "wakatime" "vale"];
-          auto-format = false; # see https://github.com/helix-editor/helix/issues/11237
+          auto-format = true;
         }
         {
           name = "python";
