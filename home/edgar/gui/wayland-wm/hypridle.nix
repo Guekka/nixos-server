@@ -15,12 +15,14 @@ in {
   # screen idle
   services.hypridle = let
     hyprlock = lib.getExe config.programs.hyprlock.package;
+    lock_cmd = "pidof hyprlock || ${hyprlock}";
   in {
     enable = true;
     settings = {
       general = {
-        before_sleep_cmd = "${pkgs.systemd}/bin/loginctl lock-session";
-        lock_cmd = hyprlock;
+        # after resume (instead of before sleep) seems to prevent hyprlock crashing
+        after_sleep_cmd = "${pkgs.systemd}/bin/loginctl lock-session";
+        inherit lock_cmd;
       };
 
       listener = [
