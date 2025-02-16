@@ -1,9 +1,12 @@
 {pkgs, ...}: {
+  home.sessionVariables.AW_SYNC_DIR = "~/Nextcloud/edgar/activitywatch";
+
   services.activitywatch = {
     enable = true;
     package = pkgs.aw-server-rust;
     watchers = {
       awatcher.package = pkgs.awatcher;
+      aw-sync.package = pkgs.aw-server-rust;
     };
   };
 
