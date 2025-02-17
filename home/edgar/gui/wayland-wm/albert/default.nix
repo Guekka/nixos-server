@@ -6,7 +6,12 @@
   home = {
     # used by plugins
     sessionVariables."GOLDENDICT_FORCE_WAYLAND" = "1";
-    packages = [pkgs.goldendict-ng];
+    packages = [pkgs.goldendict-ng pkgs.libnotify];
+
+    persistence."/persist/nobackup/home/edgar".directories = [
+      ".cache/albert"
+      ".local/share/albert"
+    ];
   };
 
   services.albert.enable = true;
