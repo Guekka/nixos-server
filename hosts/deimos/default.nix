@@ -2,7 +2,6 @@
   imports = [
     ../common/global
     ../common/optional/bluetooth.nix
-    ../common/optional/docker.nix
     ../common/optional/hyprland.nix
     ../common/optional/impermanence/impermanence-old.nix
     ../common/optional/ledger.nix
