@@ -39,26 +39,10 @@ in {
     };
   };
 
-  # source: https://mt-caret.github.io/blog/2020-06-29-optin-state.html
-  # and: https://discourse.nixos.org/t/impermanence-vs-systemd-initrd-w-tpm-unlocking/25167/3
-  boot.initrd.systemd.enable = lib.mkDefault true;
-  boot.initrd.systemd.services.rollback = {
-    wantedBy = [
-      "initrd.target"
-    ];
-    requires = [
-      # wait for device to be found
-      "dev-disk-by\\x2dlabel-${hostname}.device"
-    ];
-    after = [
-      "dev-disk-by\\x2dlabel-${hostname}.device"
-      "systemd-cryptsetup@enc.service"
-    ];
-    before = [
-      "sysroot.mount"
-    ];
-    unitConfig.DefaultDependencies = "no";
-    serviceConfig.Type = "oneshot";
-    script = "${rollback-script} ${disk}";
+  boot.initrd = {
+    enable = true;
+    supportedFilesystems = ["btrfs"];
+
+    postResumeCommands = lib.mkAfter ''echo "Executing rollback script" && ${rollback-script} ${disk}'';
   };
 }
