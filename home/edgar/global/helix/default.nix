@@ -69,6 +69,7 @@ in {
 
         normal = {
           "C-e" = "copilot_toggle_auto_render";
+          "=" = ":format"; # = is range-selection by default
         };
       };
     };
@@ -126,8 +127,9 @@ in {
         tinymist = {
           command = lib.getExe pkgs.tinymist;
           config = {
-            formatterMode = "typstyle";
+            formatterMode = "typstfmt";
             exportPdf = "onSave";
+            formatterPrintWidth = 100;
           };
         };
 
