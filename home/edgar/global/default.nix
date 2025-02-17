@@ -62,6 +62,7 @@
     ghostscript # for imagemagick
     hexyl
     imagemagickBig
+    intentrace
     nix-init
     ouch
     p7zip-rar
