@@ -33,7 +33,10 @@
   programs.nix-ld.enable = true;
 
   # See <https://github.com/kachick/dotfiles/issues/959>
+  # In my case, the new kernel wasn't enough. aw-server is refusing to freeze
+  # And I can't investigate right now
   boot.kernelPackages = pkgs.linuxPackages_6_12;
+  systemd.services.systemd-suspend.environment.SYSTEMD_SLEEP_FREEZE_USER_SESSIONS = "false";
 
   # reisub
   boot.kernel.sysctl."kernel.sysrq" = 502;
