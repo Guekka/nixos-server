@@ -29,6 +29,7 @@ in {
         {
           timeout = 900;
           on-timeout = suspendScript.outPath;
+          on-resume = lock_cmd;
         }
       ];
     };
