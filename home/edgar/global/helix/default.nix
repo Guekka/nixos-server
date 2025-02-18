@@ -60,6 +60,26 @@ in {
         };
         soft-wrap.enable = true;
         text-width = 110;
+
+        statusline = {
+          left = [
+            "mode"
+            "spinner"
+            "version-control"
+            "file-name"
+            "read-only-indicator"
+            "file-modification-indicator"
+          ];
+          center = [];
+          right = [
+            "diagnostics"
+            "selections"
+            "register"
+            "position-percentage"
+            "position"
+            "file-encoding"
+          ];
+        };
       };
 
       keys = {
@@ -72,6 +92,15 @@ in {
           "C-e" = "copilot_toggle_auto_render";
           "=" = ":format"; # = is range-selection by default
         };
+
+        select = {
+          x = [
+            "extend_line_below"
+          ];
+          X = [
+            "extend_line_above"
+          ];
+        };
       };
     };
 
@@ -79,7 +108,7 @@ in {
       language = [
         {
           name = "bash";
-          language-servers = ["bash-language-server" "wakatime" "vale"];
+          language-servers = ["bash-language-server" "wakatime"];
           formatter = {
             command = "${pkgs.shfmt}/bin/shfmt";
             args = ["-i" "2" "-"];
@@ -87,25 +116,25 @@ in {
         }
         {
           name = "markdown";
-          language-servers = ["markdown-oxide" "wakatime" "vale"];
+          language-servers = ["markdown-oxide" "wakatime"];
         }
         {
           name = "typst";
-          language-servers = ["tinymist" "wakatime" "vale"];
+          language-servers = ["tinymist" "wakatime"];
           auto-format = true;
         }
         {
           name = "rust";
-          language-servers = ["rust-analyzer" "wakatime" "vale"];
+          language-servers = ["rust-analyzer" "wakatime"];
           auto-format = true;
         }
         {
           name = "cpp";
-          language-servers = ["rust-analyzer" "wakatime" "vale"];
+          language-servers = ["clangd" "wakatime"];
         }
         {
           name = "nix";
-          language-servers = ["nil" "wakatime" "vale"];
+          language-servers = ["nil" "wakatime"];
           auto-format = true;
         }
         {
@@ -120,7 +149,7 @@ in {
         }
         {
           name = "typescript";
-          language-servers = ["typescript-language-server" "wakatime" "vale"];
+          language-servers = ["typescript-language-server" "wakatime"];
         }
       ];
 
@@ -142,6 +171,7 @@ in {
         clangd = {
           command = "${pkgs.clang-tools}/bin/clangd";
           clangd.fallbackFlags = ["-std=c++2b"];
+          args = ["--compile-commands-dir=build"];
         };
 
         markdown-oxide.command = lib.getExe pkgs.markdown-oxide;
@@ -175,10 +205,6 @@ in {
 
         typescript-language-server = {
           command = lib.getExe pkgs.nodePackages.typescript-language-server;
-        };
-
-        vale = {
-          command = lib.getExe pkgs.vale-ls;
         };
 
         vscode-css-language-server = {
