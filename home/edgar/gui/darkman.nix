@@ -37,4 +37,7 @@
       lng = 2.35;
     };
   };
+
+  # restart darkman after switching to new configuration
+  systemd.user.services.darkman.Unit.X-SwitchMethod = "restart";
 }
