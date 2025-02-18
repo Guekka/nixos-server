@@ -35,9 +35,11 @@
 
   specialisation = {
     light.configuration = {
+      stylix.polarity = "light";
       stylix.base16Scheme = lib.mkForce "${pkgs.base16-schemes}/share/themes/selenized-light.yaml";
     };
     dark.configuration = {
+      stylix.polarity = "dark";
       stylix.base16Scheme = lib.mkForce "${pkgs.base16-schemes}/share/themes/selenized-dark.yaml";
     };
   };

@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   imports = [
     ./calibre.nix
+    ./darkman.nix
     ./dev.nix
     ./discord.nix
     ./file-manager.nix

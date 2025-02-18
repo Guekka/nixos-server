@@ -1,4 +1,5 @@
 {
+  config,
   lib,
   inputs,
   pkgs,
@@ -35,7 +36,7 @@ in {
     package = helix-copilot;
     defaultEditor = true;
     settings = {
-      theme = "solarized_light";
+      theme = "solarized_${config.stylix.polarity}";
 
       editor = {
         auto-save = {
