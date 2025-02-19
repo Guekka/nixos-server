@@ -11,7 +11,8 @@
     enable = true;
     autoEnable = true;
     image = ./background.webp;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/selenized-light.yaml";
+    base16Scheme = lib.mkDefault "${pkgs.base16-schemes}/share/themes/selenized-light.yaml";
+    polarity = lib.mkDefault "light";
 
     cursor = {
       name = "Capitaine Cursors (Nord)";
@@ -36,11 +37,11 @@
   specialisation = {
     light.configuration = {
       stylix.polarity = "light";
-      stylix.base16Scheme = lib.mkForce "${pkgs.base16-schemes}/share/themes/selenized-light.yaml";
+      stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/selenized-light.yaml";
     };
     dark.configuration = {
       stylix.polarity = "dark";
-      stylix.base16Scheme = lib.mkForce "${pkgs.base16-schemes}/share/themes/selenized-dark.yaml";
+      stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/selenized-dark.yaml";
     };
   };
 }
