@@ -9,6 +9,9 @@ use_non_localized_name=true
 
 [calculator_qalculate]
 enabled=true
+parsing_mode=0
+precision=10
+units_in_global_query=true
 
 [clipboard]
 enabled=true
@@ -40,7 +43,7 @@ enabled=true
 enabled=true
 
 [python.emoji]
-enabled=true
+enabled=false
 global_handler_enabled=false
 
 [python.goldendict]
@@ -62,6 +65,9 @@ enabled=false
 enabled=true
 
 [system]
+command_lock=hyprlock
+command_poweroff=systemctl poweroff
+command_reboot=systemctl reboot
 enabled=true
 
 [timer]
