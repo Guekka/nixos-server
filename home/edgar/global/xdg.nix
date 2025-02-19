@@ -1,8 +1,18 @@
-{lib, ...}: {
+{
+  lib,
+  pkgs,
+  ...
+}: {
   xdg = {
     mime.enable = true;
     mimeApps.enable = true;
     userDirs.enable = true;
+
+    portal = {
+      enable = true;
+      extraPortals = [pkgs.xdg-desktop-portal-gtk];
+      xdgOpenUsePortal = true;
+    };
   };
 
   # Thank you, xdg-ninja. Not thank you, applications that don't respect XDG.
