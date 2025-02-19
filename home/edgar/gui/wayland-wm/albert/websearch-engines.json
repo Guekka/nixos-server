@@ -73,6 +73,14 @@
     },
     {
         "fallback": false,
+        "iconPath": ":default",
+        "id": "88e4329e",
+        "name": "My NixOS",
+        "trigger": "nix",
+        "url": "https://mynixos.com/search?q=%s"
+    },
+    {
+        "fallback": false,
         "iconPath": ":wolfram",
         "id": "653ef86f",
         "name": "Wolfram Alpha",
