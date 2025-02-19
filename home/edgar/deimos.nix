@@ -1,6 +1,7 @@
 {
   imports = [
     ./optional/activitywatch.nix
+    ./optional/eduroam.nix
 
     ./gaming
     ./global
