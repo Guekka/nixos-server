@@ -32,7 +32,7 @@
     };
 
     stylix = {
-      url = "github:danth/stylix/d13ffb381c83b6139b9d67feff7addf18f8408fe"; # TODO: use branch when released
+      url = "github:guekka/stylix/release-24.11"; # fork with qt from unstable
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
