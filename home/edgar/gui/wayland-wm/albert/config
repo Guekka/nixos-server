@@ -65,7 +65,8 @@ enabled=false
 enabled=true
 
 [system]
-command_lock=hyprlock
+command_lock=pidof hyprlock || hyprlock
+command_logout=hyprctl dispatch exit
 command_poweroff=systemctl poweroff
 command_reboot=systemctl reboot
 enabled=true
