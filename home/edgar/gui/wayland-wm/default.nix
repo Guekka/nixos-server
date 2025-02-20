@@ -6,6 +6,7 @@
     ./hyprlock.nix
     ./mako.nix
     ./rofi
+    ./termfilepickers.nix
     ./waybar.nix
   ];
 }
