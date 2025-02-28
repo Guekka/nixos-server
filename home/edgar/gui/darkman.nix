@@ -21,9 +21,15 @@
       done
     '';
 
-    switch-theme-script = theme: ''
-      $(${find-hm-generation})/${theme}/activate
-    '';
+    switch-theme-script = let
+      killall = lib.getExe pkgs.killall;
+      albert = lib.getExe pkgs.albert;
+    in
+      theme: ''
+        $(${find-hm-generation})/${theme}/activate
+        ${killall} -SIGUSR1 .hx-wrapped
+        ${albert} restart
+      '';
   in {
     enable = true;
     darkModeScripts = {
