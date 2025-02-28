@@ -1,4 +1,6 @@
 [General]
+memoryDecay=0.8
+prioritizePerfectMatch=false
 telemetry=true
 
 [applications]
