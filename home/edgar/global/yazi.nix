@@ -5,11 +5,21 @@
 }: {
   home.packages = with pkgs; [exiftool mediainfo mmtui mpv ripdrag]; # yazi uses these
 
-  stylix.targets.yazi.enable = true; # status bar unreadable
+  stylix.targets.yazi.enable = false; # status bar unreadable
 
   programs.yazi = {
     enable = true;
     package = pkgs.unstable.yazi;
+
+    theme.flavor = {
+      light = "flexoki-light";
+      dark = "flexoki-dark";
+    };
+
+    flavors = {
+      flexoki-light = inputs.yazi-flexoki-light;
+      flexoki-dark = inputs.yazi-flexoki-dark;
+    };
 
     enableBashIntegration = true;
     enableFishIntegration = true;
@@ -31,6 +41,12 @@
         smart_paste = true,
         smart_tab_create = true,
       })
+
+      -- Makes yazi update the zoxide database on navigation
+      require("zoxide"):setup
+      {
+        update_db = true,
+      }
     '';
 
     keymap = {

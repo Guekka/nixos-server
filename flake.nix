@@ -82,6 +82,16 @@
       flake = false;
     };
 
+    yazi-flexoki-light = {
+      url = "github:gosxrgxx/flexoki-light.yazi";
+      flake = false;
+    };
+
+    yazi-flexoki-dark = {
+      url = "github:gosxrgxx/flexoki-dark.yazi";
+      flake = false;
+    };
+
     # temporary for school project
     weather-risks = {
       url = "git+ssh://git@github.com/guekka/weather_risks.git";
