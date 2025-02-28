@@ -42,7 +42,6 @@
 
       dwindle = {
         split_width_multiplier = 1.35;
-        special_scale_factor = 0.9;
         preserve_split = true;
       };
 
@@ -95,7 +94,8 @@
       };
 
       exec-once = [
-        "${pkgs.libsForQt5.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1"
+        "${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1"
+        (lib.getExe pkgs.keepassxc)
       ];
 
       windowrule = [
@@ -104,7 +104,7 @@
       ];
 
       windowrulev2 = [
-        "workspace 3, class:^(org.keepassxc.KeePassXC)$"
+        "workspace special:two, class:^(org.keepassxc.KeePassXC)$"
 
         # Ignore maximize requests from apps. You'll probably like this.
         "suppressevent maximize, class:.*"
@@ -139,6 +139,7 @@
       ];
       bind = let
         cliphist = "${pkgs.cliphist}/bin/cliphist";
+        darkman = lib.getExe config.services.darkman.package;
         hyprlock = lib.getExe config.programs.hyprlock.package;
         playerctl = "${config.services.playerctld.package}/bin/playerctl";
         playerctld = "${config.services.playerctld.package}/bin/playerctld";
@@ -208,6 +209,10 @@
         # Notification manager
         (lib.optionals config.services.mako.enable [
           "SUPER,w,exec,${makoctl} dismiss"
+        ])
+        ++ #darkman
+        (lib.optionals config.services.darkman.enable [
+          "SUPERSHIFT,T,exec,${darkman} toggle"
         ])
         ++
         # Launcher
