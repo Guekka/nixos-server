@@ -23,6 +23,7 @@ in {
     directories = [
       "/etc/nixos"
       "/var/lib/nixos"
+      "/var/lib/systemd/rfkill"
     ];
     files = [
       "/etc/machine-id"
