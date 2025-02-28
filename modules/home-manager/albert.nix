@@ -18,19 +18,5 @@ in {
 
   config = lib.mkIf cfg.enable {
     home.packages = [cfg.package];
-
-    systemd.user.services.albert = {
-      Unit = {
-        Description = "Albert application launcher";
-      };
-      Service = {
-        Type = "simple";
-        ExecStart = lib.getExe cfg.package;
-        Restart = "on-failure";
-      };
-      Install = {
-        WantedBy = ["graphical-session.target"];
-      };
-    };
   };
 }
