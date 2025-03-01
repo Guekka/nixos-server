@@ -155,10 +155,10 @@ in {
 
       language-server = {
         tinymist = {
-          command = lib.getExe pkgs.tinymist;
+          command = lib.getExe pkgs.unstable.tinymist;
           config = {
             formatterMode = "typstfmt";
-            exportPdf = "onSave";
+            exportPdf = "onType";
             formatterPrintWidth = 100;
           };
         };
