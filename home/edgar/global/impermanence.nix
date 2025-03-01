@@ -1,4 +1,8 @@
-{inputs, ...}: let
+{
+  inputs,
+  lib,
+  ...
+}: let
   withSymlink = dir: {
     directory = dir;
     method = "symlink";
@@ -55,7 +59,7 @@ in {
       [
         # Root dirs
         (withSymlink "Games")
-        "code"
+        (withSymlink "code")
         "Downloads"
 
         # .cache
@@ -78,4 +82,9 @@ in {
 
     allowOther = true;
   };
+
+  # See <https://github.com/nix-community/impermanence/issues/256>
+  home.activation.fixPathForImpermanence = lib.hm.dag.entryBefore ["cleanEmptyLinkTargets"] ''
+    PATH=$PATH:/run/wrappers/bin
+  '';
 }
