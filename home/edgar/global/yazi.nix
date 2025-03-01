@@ -31,7 +31,7 @@
       git = "${inputs.yazi-plugins}/git.yazi";
       hexyl = "${inputs.yazi-hexyl}";
       max-preview = "${inputs.yazi-plugins}/max-preview.yazi";
-      mount = "${inputs.yazi-mount}";
+      mount = "${inputs.yazi-plugins}/mount.yazi";
       what-size = "${inputs.yazi-what-size}";
     };
 

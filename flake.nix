@@ -77,11 +77,6 @@
       flake = false;
     };
 
-    yazi-mount = {
-      url = "github:SL-RU/mount.yazi";
-      flake = false;
-    };
-
     yazi-flexoki-light = {
       url = "github:gosxrgxx/flexoki-light.yazi";
       flake = false;
