@@ -96,6 +96,7 @@
       exec-once = [
         (lib.getExe pkgs.albert)
         (lib.getExe pkgs.keepassxc)
+        (lib.getExe' pkgs.beeper "beeper")
       ];
 
       windowrule = [
@@ -105,6 +106,7 @@
 
       windowrulev2 = [
         "workspace special:two, class:^(org.keepassxc.KeePassXC)$"
+        "workspace special:two, class:^(Beeper)$"
 
         # Ignore maximize requests from apps. You'll probably like this.
         "suppressevent maximize, class:.*"
