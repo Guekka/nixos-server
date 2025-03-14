@@ -273,4 +273,6 @@
       submap=reset
     '';
   };
+
+  xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-hyprland];
 }
