@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: {
-  home.packages = with pkgs; [exiftool mediainfo mmtui mpv ripdrag]; # yazi uses these
+  home.packages = with pkgs; [exiftool mediainfo mpv ripdrag]; # yazi uses these
 
   stylix.targets.yazi.enable = false; # status bar unreadable
 
