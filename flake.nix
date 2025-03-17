@@ -27,7 +27,7 @@
     };
 
     helix = {
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
       url = "github:Guekka/helix/copilot"; ## fork with copilot support
     };
 
