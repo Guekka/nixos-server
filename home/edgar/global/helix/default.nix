@@ -18,7 +18,7 @@
       copilot
     ];
     postBuild = ''
-      wrapProgram $out/bin/hx --add-flags "-a" --set PATH ${lib.makeBinPath [copilot]}
+      wrapProgram $out/bin/hx --add-flags "-a" --prefix PATH : ${lib.makeBinPath [copilot]}
     '';
   };
   helix-single = pkgs.writeShellApplication {
