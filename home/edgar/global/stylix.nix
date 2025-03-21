@@ -36,10 +36,15 @@
 
   specialisation = {
     light.configuration = {
+      # nh integration
+      xdg.dataFile."home-manager/specialisation".text = "light";
+
       stylix.polarity = "light";
       stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/selenized-light.yaml";
     };
     dark.configuration = {
+      xdg.dataFile."home-manager/specialisation".text = "dark";
+
       stylix.polarity = "dark";
       stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/selenized-dark.yaml";
     };
