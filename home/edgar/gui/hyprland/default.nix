@@ -96,7 +96,7 @@
       exec-once = [
         (lib.getExe pkgs.albert)
         (lib.getExe pkgs.keepassxc)
-        (lib.getExe' pkgs.beeper "beeper")
+        (lib.getExe pkgs.beepertexts)
       ];
 
       windowrule = [

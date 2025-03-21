@@ -1,4 +1,5 @@
 {pkgs}: {
+  beepertexts = pkgs.callPackage ./beeper-beta.nix {};
   clight-gui = pkgs.callPackage ./clight-gui {};
   cozy-stack = pkgs.callPackage ./cozy-stack {};
   rembg = pkgs.callPackage ./rembg {};
