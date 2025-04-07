@@ -26,8 +26,10 @@
         layout = "dwindle";
       };
       input = {
-        kb_layout = "fr,us";
-        kb_options = "numpad:mac"; # make numpad always work as numbers
+        kb_layout = "fr";
+
+        # make numpad always work as numbers
+        kb_options = "numpad:mac,grp:win_space_toggle";
         numlock_by_default = true;
         touchpad = {
           disable_while_typing = false;
@@ -35,6 +37,11 @@
         };
       };
 
+      device = {
+        name = "thomas-haukland-cheapino2-keyboard";
+        kb_layout = "fr";
+        kb_variant = "ergol";
+      };
       gestures = {
         workspace_swipe = true;
         workspace_swipe_fingers = 3;
