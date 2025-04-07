@@ -17,6 +17,9 @@
     };
   };
 
+  # <https://github.com/NixOS/nixpkgs/issues/19629>
+  services.xserver.exportConfiguration = true;
+
   imports = [./fcitx.nix];
 
   environment.systemPackages = [
