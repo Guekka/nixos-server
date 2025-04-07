@@ -7,18 +7,6 @@
     directory = dir;
     method = "symlink";
   };
-  #
-  # TODO: write this function to split electron app into correct XDG dirs
-  electronApp =
-    /*
-     let
-      electronCacheDirs = ["Cache" "CachedData" "CachedExtensions" "Code Cache" "DawnCache" "GPUCache"];
-      electronStateDirs = ["Cookies" "IndexedDB" "LocalStorage" "Session Storage"];
-    in
-    */
-    app: [
-      (withSymlink ".config/${app}")
-    ];
 in {
   imports = [
     inputs.impermanence.homeManagerModules.impermanence
@@ -55,31 +43,27 @@ in {
   };
 
   home.persistence."/persist/nobackup/home/edgar" = {
-    directories =
-      [
-        # Root dirs
-        (withSymlink "Games")
-        (withSymlink "code")
-        "Downloads"
+    directories = [
+      # Root dirs
+      (withSymlink "Games")
+      (withSymlink "code")
+      "Downloads"
 
-        # .cache
-        ".cache/fontconfig"
-        # contains last opened database. This is not cache, imo
-        ".cache/keepassxc"
-        ".cache/mesa_shader_cache"
-        ".cache/mesa_shader_cache_db"
-        ".cache/nix"
-        ".cache/nix-index"
-        ".cache/uv"
+      # .cache
+      ".cache/fontconfig"
+      # contains last opened database. This is not cache, imo
+      ".cache/keepassxc"
+      (withSymlink ".cache/mesa_shader_cache")
+      (withSymlink ".cache/mesa_shader_cache_db")
+      ".cache/nix"
+      ".cache/nix-index"
+      ".cache/uv"
 
-        # local/share
-        ".local/share/plex"
-        (withSymlink ".local/share/Steam")
-        (withSymlink ".local/share/umu")
-      ]
-      ++ (electronApp "Beeper")
-      ++ (electronApp "Ledger Live");
-
+      # local/share
+      ".local/share/plex"
+      (withSymlink ".local/share/Steam")
+      (withSymlink ".local/share/umu")
+    ];
     allowOther = true;
   };
 
