@@ -4,6 +4,7 @@ set -euo pipefail
 sudo mkdir -p /mnt
 sudo mount "$1" /mnt
 
+sudo btrfs subvolume create /mnt/root-blank # is there a better way to do this?
 OLD_TRANSID=$(sudo btrfs subvolume find-new /mnt/root-blank 9999999)
 OLD_TRANSID=${OLD_TRANSID#transid marker was }
 
