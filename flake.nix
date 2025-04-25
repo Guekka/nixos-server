@@ -31,6 +31,11 @@
       url = "github:Guekka/helix/copilot"; ## fork with copilot support
     };
 
+    niri = {
+      url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     stylix = {
       url = "github:guekka/stylix/release-24.11"; # fork with qt from unstable
       inputs.nixpkgs.follows = "nixpkgs";

@@ -55,7 +55,6 @@ in {
     package = pkgs.waybar.overrideAttrs (oa: {
       mesonFlags = (oa.mesonFlags or []) ++ ["-Dexperimental=true"];
     });
-    systemd.enable = true;
     settings = {
       primary = {
         layer = "top";
@@ -74,6 +73,9 @@ in {
           ++ (lib.optionals config.wayland.windowManager.hyprland.enable [
             "hyprland/workspaces"
             "hyprland/submap"
+          ])
+          ++ ((lib.optionals config.programs.niri.enable or false) [
+            "niri/workspaces"
           ])
           ++ [
             "custom/events"
@@ -377,6 +379,13 @@ in {
             "Beeper" = " 💬";
             "LM Studio" = " ";
             "KeepassXC" = " ";
+          };
+        };
+        "niri/workspaces" = {
+          format = "{index} {icon}";
+          "format-icons" = {
+            "active" = "";
+            "default" = "";
           };
         };
       };

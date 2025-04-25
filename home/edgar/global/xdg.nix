@@ -1,16 +1,10 @@
-{
-  lib,
-  pkgs,
-  ...
-}: {
+{lib, ...}: {
   xdg = {
     mime.enable = true;
     mimeApps.enable = true;
     userDirs.enable = true;
 
     portal = {
-      enable = true;
-      extraPortals = [pkgs.xdg-desktop-portal-gtk];
       xdgOpenUsePortal = true;
     };
   };

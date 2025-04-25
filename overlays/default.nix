@@ -3,6 +3,8 @@
   additions = final: _prev:
     import ../pkgs {pkgs = final;};
 
+  inherit (inputs.niri.overlays) niri;
+
   modifications = final: prev: let
     unstable = import inputs.nixpkgs-unstable {
       inherit (final) system;

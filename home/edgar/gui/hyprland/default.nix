@@ -104,6 +104,7 @@
         (lib.getExe pkgs.albert)
         (lib.getExe pkgs.keepassxc)
         (lib.getExe pkgs.beepertexts)
+        (lib.getExe pkgs.waybar)
       ];
 
       windowrule = [
@@ -280,6 +281,11 @@
       submap=reset
     '';
   };
-
-  xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-hyprland];
+  xdg.portal = {
+    enable = true;
+    extraPortals = [
+      pkgs.xdg-desktop-portal-hyprland
+      pkgs.xdg-desktop-portal-gtk
+    ];
+  };
 }

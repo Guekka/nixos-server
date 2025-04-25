@@ -5,6 +5,7 @@ in {
   with pkgs; [
     (pluginify clion)
     (pluginify idea-ultimate)
+    (pluginify rust-rover)
 
     qtcreator
 
@@ -21,4 +22,9 @@ in {
       ".config/github-copilot"
     ];
   };
+
+  home.file."idea.properties".text = ''
+    # See <https://github.com/NixOS/nixpkgs/pull/318358>
+    idea.filewatcher.executable.path = ${pkgs.fsnotifier}/bin/fsnotifier
+  '';
 }
