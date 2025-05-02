@@ -37,7 +37,7 @@
       CLUTTER_BACKEND = "wayland";
       WLR_RENDERER = "vulkan";
     }
-    // lib.mkIf (config.hardware.nvidia.package != null) {
+    // lib.mkIf (builtins.elem "nvidia" config.boot.kernelModules) {
       LIBVA_DRIVER_NAME = "nvidia";
       GBM_BACKEND = "nvidia";
       __GLX_VENDOR_LIBRARY_NAME = "nvidia";
