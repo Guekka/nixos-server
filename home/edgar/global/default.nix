@@ -1,5 +1,6 @@
 {
   config,
+  lib,
   pkgs,
   outputs,
   ...
@@ -10,6 +11,7 @@
 
       ./atuin.nix
       ./bash.nix
+      ./beeper-timestamp-converter.nix
       ./bat.nix
       ./bottom.nix
       ./calendar.nix
@@ -46,32 +48,37 @@
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 
-  home.packages = with pkgs; [
-    alejandra
-    choose
-    comma
-    csvlens
-    cyme
-    dua
-    doggo
-    duf
-    du-dust
-    dysk
-    fd
-    ffmpeg
-    ghostscript # for imagemagick
-    hexyl
-    imagemagickBig
-    intentrace
-    nix-init
-    ouch
-    p7zip-rar
-    rembg
-    ripgrep
-    rnr
-    sd
-    sshfs
-    unsilence
-    xcp
-  ];
+  home.packages = let
+    # I'm not sure this is the proper way to do this, but it works for me
+    ifSupported = package: lib.optionals (builtins.elem pkgs.stdenv.hostPlatform package.meta.platforms) [package];
+  in
+    with pkgs;
+      [
+        alejandra
+        choose
+        comma
+        csvlens
+        cyme
+        dua
+        doggo
+        duf
+        du-dust
+        dysk
+        fd
+        ffmpeg
+        ghostscript # for imagemagick
+        hexyl
+        imagemagickBig
+        nix-init
+        ouch
+        _7zz-rar
+        rembg
+        ripgrep
+        rnr
+        sd
+        sshfs
+        unsilence
+        xcp
+      ]
+      ++ (ifSupported pkgs.intentrace);
 }
