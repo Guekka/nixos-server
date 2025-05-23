@@ -30,7 +30,7 @@
       compress = "${inputs.yazi-compress}";
       git = "${inputs.yazi-plugins}/git.yazi";
       hexyl = "${inputs.yazi-hexyl}";
-      max-preview = "${inputs.yazi-plugins}/max-preview.yazi";
+      toggle-pane = "${inputs.yazi-plugins}/toggle-pane.yazi";
       mount = "${inputs.yazi-plugins}/mount.yazi";
       what-size = "${inputs.yazi-what-size}";
     };
@@ -78,7 +78,7 @@
         }
         {
           on = ["T"];
-          run = "plugin max-preview";
+          run = "plugin toggle-pane max-preview";
           desc = "Maximize or restore preview";
         }
         {
