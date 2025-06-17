@@ -53,12 +53,12 @@
       manager.prepend_keymap = [
         {
           on = "p";
-          run = "plugin augment-command --args='paste'";
+          run = "plugin augment-command -- paste";
           desc = "Smart paste yanked files";
         }
         {
           on = "t";
-          run = "plugin augment-command --args='tab_create --current'";
+          run = "plugin augment-command -- tab_create --current";
           desc = "Create a new tab with smart directory";
         }
         {
