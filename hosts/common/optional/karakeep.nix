@@ -1,5 +1,4 @@
 {
-  inputs,
   pkgs,
   config,
   ...
@@ -8,13 +7,9 @@
   dataDir = "/var/lib/karakeep";
   domain = "bookmarks.bizel.fr";
 in {
-  imports = [
-    "${inputs.nixpkgs-unstable}/nixos/modules/services/web-apps/karakeep.nix"
-  ];
-
   services.karakeep = {
     enable = true;
-    package = pkgs.unstable.karakeep;
+    package = pkgs.karakeep;
     extraEnvironment = {
       PORT = builtins.toString port;
       DATA_DIR = dataDir;
@@ -24,6 +19,8 @@ in {
     };
     environmentFile = config.sops.secrets.karakeep-env.path;
   };
+
+  services.meilisearch.package = pkgs.meilisearch;
 
   sops.secrets.karakeep-env.sopsFile = ../secrets.yaml;
 

@@ -8,7 +8,7 @@
     modules = [
       {
         packages = with pkgs; [home-manager git sops statix];
-        pre-commit.hooks = {
+        git-hooks.hooks = {
           shellcheck.enable = true; # shell static analysis
           alejandra.enable = true; # nix format
           deadnix.enable = true; # nix dead code remover

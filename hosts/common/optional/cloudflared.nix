@@ -20,6 +20,19 @@
     };
   };
 
+  systemd.services.cloudflared-tunnel-5986ed26-feb9-4453-a86c-a2f1cd5cf547.serviceConfig = {
+    User = "cloudflared";
+    Group = "cloudflared";
+  };
+
+  users = {
+    groups.cloudflared = {};
+    users.cloudflared = {
+      isSystemUser = true;
+      group = "cloudflared";
+    };
+  };
+
   boot.kernel.sysctl."net.core.rmem_max" = 7500000;
   boot.kernel.sysctl."net.core.wmem_max" = 7500000;
 

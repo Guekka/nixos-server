@@ -5,7 +5,7 @@
   ...
 }: {
   imports = [
-    inputs.stylix.homeManagerModules.stylix
+    inputs.stylix.homeModules.stylix
   ];
   stylix = {
     enable = true;
@@ -17,12 +17,13 @@
     cursor = {
       name = "Capitaine Cursors (Nord)";
       package = pkgs.capitaine-cursors-themed;
+      size = 24;
     };
 
     fonts = {
       monospace = {
         name = "FiraCode Nerd Font";
-        package = pkgs.nerdfonts.override {fonts = ["FiraCode"];};
+        package = pkgs.nerd-fonts.fira-code;
       };
       sansSerif = {
         name = "Fira Sans";

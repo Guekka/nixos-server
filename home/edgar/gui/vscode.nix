@@ -1,11 +1,11 @@
 {pkgs, ...}: {
   programs.vscode = {
     enable = true;
-    enableExtensionUpdateCheck = false;
+    profiles.default.enableExtensionUpdateCheck = false;
     enableUpdateCheck = false;
     # i love immutability, but sometimes I want a one-time extension
     mutableExtensionsDir = true;
-    extensions = with pkgs.vscode-extensions;
+    profiles.default.extensions = with pkgs.vscode-extensions;
       [
         arrterian.nix-env-selector
         github.copilot
@@ -26,7 +26,7 @@
         }
       ];
 
-    userSettings = {
+    profiles.default.userSettings = {
       "cmake.configureOnOpen" = true;
 
       "editor.formatOnSave" = true;

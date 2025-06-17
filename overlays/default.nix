@@ -10,8 +10,13 @@
       inherit (final) system;
       config.allowUnfree = true;
     };
+    prev-stable = import inputs.nixpkgs-prev-stable {
+      inherit (final) system;
+      config.allowUnfree = true;
+    };
   in {
     inherit unstable;
+    inherit prev-stable;
 
     # required for some games
     steam = prev.steam.override {
