@@ -96,6 +96,7 @@ in {
           # TODO: check if the following modules are useful to me
           # "custom/tailscale-ping"
           # "custom/gamemode"
+          "custom/notifications"
           "battery"
           "tray"
           "privacy"
@@ -190,6 +191,26 @@ in {
             };
           format = "{}";
           on-click = "";
+        };
+        "custom/notification" = {
+          "tooltip" = false;
+          "format" = "{icon}";
+          "format-icons" = {
+            "notification" = "<span foreground='red'><sup></sup></span>";
+            "none" = "";
+            "dnd-notification" = "<span foreground='red'><sup></sup></span>";
+            "dnd-none" = "";
+            "inhibited-notification" = "<span foreground='red'><sup></sup></span>";
+            "inhibited-none" = "";
+            "dnd-inhibited-notification" = "<span foreground='red'><sup></sup></span>";
+            "dnd-inhibited-none" = "";
+          };
+          "return-type" = "json";
+          "exec-if" = "which swaync-client";
+          "exec" = "swaync-client -swb";
+          "on-click" = "swaync-client -t -sw";
+          "on-click-right" = "swaync-client -d -sw";
+          "escape" = true;
         };
         "custom/unread-mail" = {
           interval = 5;

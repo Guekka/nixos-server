@@ -5,8 +5,8 @@
     ./hypridle.nix
     ./hyprlock.nix
     ./hyprpolkit.nix
-    ./mako.nix
     ./rofi
+    ./swaync.nix
     ./termfilepickers.nix
     ./waybar.nix
   ];
