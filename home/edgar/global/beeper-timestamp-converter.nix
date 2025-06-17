@@ -1,9 +1,13 @@
 {pkgs, ...}: let
   # I sometimes paste messages from Beeper into my notes, and the timestamps are in
   # a format like: [12/31/2023, 11:59:59 AM] Message but I want [2023-12-31 11:59]
+  # Also converts timestamps from Element: Fri, Jun 13, 2025, 22:39:16 into [2025-06-13 22:39]
   beeper-timestamp-converter =
     pkgs.writers.writePython3Bin "beeper-timestamp-converter"
-    {libraries = [pkgs.python3Packages.dateutil];} ''
+    {
+      libraries = [pkgs.python3Packages.dateutil];
+      flakeIgnore = ["E501"]; # line too long
+    } ''
       import sys
       from dateutil import parser
       import re
@@ -25,9 +29,14 @@
           return f"[{dt.strftime('%Y-%m-%d %H:%M')}]"
 
 
-      # Match anything that looks like the full timestamp
-      pattern = r"\[\d{1,2}/\d{1,2}/\d{4}, \d{1,2}:\d{2}:\d{2} (AM|PM)\]"
-      text = re.sub(pattern, repl, text)
+      # Beeper format: [12/31/2023, 11:59:59 AM]
+      beeper_pattern = r"\[\d{1,2}/\d{1,2}/\d{4}, \d{1,2}:\d{2}:\d{2} (AM|PM)\]"
+
+      # Element format: [Fri, Jun 13, 2025, 22:39:16]
+      element_pattern = r"[A-Za-z]{3}, [A-Za-z]{3} \d{1,2}, \d{4}, \d{2}:\d{2}:\d{2}"
+
+      text = re.sub(beeper_pattern, repl, text)
+      text = re.sub(element_pattern, repl, text)
 
       with open(file, "w") as f:
           f.write(text)
