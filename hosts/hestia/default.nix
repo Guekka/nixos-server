@@ -4,9 +4,9 @@
     ../common/optional/bluetooth.nix
     ../common/optional/brightness.nix
     ../common/optional/gamescope.nix
-    ../common/optional/hyprland.nix
     ../common/optional/impermanence/impermanence.nix
     ../common/optional/ledger.nix
+    ../common/optional/niri.nix
     ../common/optional/obs-virtual-camera.nix
     ../common/optional/pipewire.nix
     ../common/optional/shutdown-schedule.nix

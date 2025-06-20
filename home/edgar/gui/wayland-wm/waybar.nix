@@ -74,8 +74,9 @@ in {
             "hyprland/workspaces"
             "hyprland/submap"
           ])
-          ++ ((lib.optionals config.programs.niri.enable or false) [
+          ++ (lib.optionals ((config.programs.niri.settings or {}) != null) [
             "niri/workspaces"
+            "niri/window"
           ])
           ++ [
             "custom/events"
@@ -408,6 +409,20 @@ in {
             "active" = "";
             "default" = "";
           };
+        };
+
+        "niri/window" = {
+          "format" = "{title}";
+          rewrite = {
+            # Doesn't work (?)
+            "(.*)Mozilla Firefox" = " $1";
+            "hxtv (.*)" = "> [$1]";
+            "hx (.*)" = "> [$1]";
+            "~" = "> [$1]";
+          };
+          icon = true;
+          separate-outputs = true;
+          max-length = 40;
         };
       };
     };

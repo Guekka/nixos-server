@@ -4,7 +4,6 @@
     ./cliphist.nix
     ./hypridle.nix
     ./hyprlock.nix
-    ./hyprpolkit.nix
     ./rofi
     ./swaync.nix
     ./termfilepickers.nix

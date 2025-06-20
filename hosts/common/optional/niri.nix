@@ -1,10 +1,29 @@
 {
   lib,
   config,
+  pkgs,
+  inputs,
   ...
 }: {
+  imports = [
+    inputs.niri.nixosModules.niri
+    ./fcitx.nix
+  ];
+  #
+  xdg = {
+    portal = {
+      enable = true;
+      extraPortals = [pkgs.xdg-desktop-portal-gtk];
+      xdgOpenUsePortal = true;
+    };
+  };
+
+  # <https://github.com/NixOS/nixpkgs/issues/19629>
+  services.xserver.exportConfiguration = true;
+
   programs.niri = {
     enable = true;
+    package = pkgs.niri-stable;
   };
   programs.xwayland.enable = true;
 

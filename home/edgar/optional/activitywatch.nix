@@ -16,7 +16,7 @@
     # awatcher should start and stop depending on WM session target
     # starting activitywatch should only start awatcher if the WM is active
     activitywatch-watcher-awatcher = let
-      target = "hyprland-session.target";
+      target = "graphical-session.target";
     in {
       Unit = {
         After = [target];

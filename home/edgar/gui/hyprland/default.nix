@@ -7,6 +7,7 @@
   imports = [
     ../wayland-wm
 
+    ./hyprpolkit.nix
     ./tty-init.nix
     ./basic-binds.nix
   ];

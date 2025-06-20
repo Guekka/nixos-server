@@ -7,9 +7,9 @@
     ./file-manager.nix
     ./firefox.nix
     ./gtk.nix
-    ./hyprland
     ./ledger.nix
     ./nextcloud-client.nix
+    ./niri
     ./vscode.nix
     ./zathura.nix
   ];
