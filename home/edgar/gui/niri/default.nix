@@ -1,23 +1,29 @@
 {
   lib,
-  inputs,
   pkgs,
   config,
   ...
 }:
-with lib; let
+with config.lib.stylix.colors; let
+  inherit (lib) mkIf;
+  cfg = config.home-config.desktop.wayland;
+  default-background = base00;
+  default-foreground = base05;
+  light-foreground = base06;
+  light-background = base07;
+
   binds = {
     suffixes,
     prefixes,
     substitutions ? {},
   }: let
-    replacer = replaceStrings (attrNames substitutions) (attrValues substitutions);
+    replacer = replaceStrings (lib.attrNames substitutions) (lib.attrValues substitutions);
     format = prefix: suffix: let
       actual-suffix =
-        if isList suffix.action
+        if lib.isList suffix.action
         then {
-          action = head suffix.action;
-          args = tail suffix.action;
+          action = lib.head suffix.action;
+          args = lib.tail suffix.action;
         }
         else {
           inherit (suffix) action;
@@ -30,15 +36,15 @@ with lib; let
       value.action.${action} = actual-suffix.args;
     };
     pairs = attrs: fn:
-      concatMap (
+      lib.concatMap (
         key:
           fn {
             inherit key;
             action = attrs.${key};
           }
-      ) (attrNames attrs);
+      ) (lib.attrNames attrs);
   in
-    listToAttrs (pairs prefixes (prefix: pairs suffixes (suffix: [(format prefix suffix)])));
+    lib.listToAttrs (pairs prefixes (prefix: pairs suffixes (suffix: [(format prefix suffix)])));
 
   azerty = {
     "1" = "ampersand";
@@ -62,21 +68,20 @@ with lib; let
   brightnessctl = lib.getExe pkgs.brightnessctl;
   wpctl = lib.getExe' pkgs.wireplumber "wpctl";
 
+  playerctl = lib.getExe pkgs.playerctl;
+  swaync-client = "${pkgs.swaynotificationcenter}/bin/swaync-client";
   terminal = config.home.sessionVariables.TERMINAL;
+  browser = lib.getExe pkgs.firefox;
   hyprlock = lib.getExe pkgs.hyprlock;
   darkman = "${pkgs.darkman}/bin/darkman";
+  cliphist = lib.getExe pkgs.cliphist;
 in {
-  imports = [
-    ../wayland-wm
-    inputs.niri.homeModules.niri
-  ];
-
-  programs.niri.enable = true;
   programs.niri.settings = {
     input = {
       keyboard.xkb.layout = "fr,fr";
       focus-follows-mouse.enable = true;
     };
+
     screenshot-path = "~/Pictures/Screenshots/%Y-%m-%dT%H:%M:%S.png";
     binds = with config.lib.niri.actions; let
       sh = spawn "sh" "-c";
@@ -84,22 +89,29 @@ in {
       lib.attrsets.mergeAttrsList [
         {
           # Apps
-          "Mod+T".action = spawn terminal;
+          "Mod+Enter".action = spawn terminal;
           "Mod+D".action = sh "echo -n toggle | ${socat} - ~/.cache/albert/ipc_socket";
-          "Mod+x".action = sh "${killall} -SIGUSR1 .waybar-wrapped";
+          "Mod+X".action = sh "${killall} -SIGUSR1 .waybar-wrapped";
+          "Mod+C".action = sh "${cliphist} list | ${rofi} -dmenu | ${cliphist} decode | ${wl-copy}";
+          "Mod+W".action = sh "${swaync-client} -t";
+          "Mod+B".action = sh browser;
           "Mod+Shift+T".action = sh "${darkman} toggle";
           "Mod+Backspace".action = spawn hyprlock;
         }
         {
           # Functions
+          "XF86AudioPlay".action = sh "${playerctl} play-pause";
           "XF86AudioRaiseVolume".action = sh "${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 0.05+";
           "XF86AudioLowerVolume".action = sh "${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 0.05-";
-          "XF86AudioMute".action = sh "${wpctl} set-mute @DEFAULT_AUDIO_SINK@ toggle";
+          "XF86AudioMute" = mkIf (!cfg.niri.brokenAudioMuteKey) {
+            action = sh "${wpctl} set-mute @DEFAULT_AUDIO_SINK@ toggle";
+          };
 
           "XF86MonBrightnessUp".action = sh "${brightnessctl} set 10%+";
           "XF86MonBrightnessDown".action = sh "${brightnessctl} set 10%-";
 
           "Print".action = screenshot;
+          "Mod+Print".action = screenshot-window;
           "Alt+Print".action = screenshot-window;
         }
         {
@@ -114,17 +126,17 @@ in {
             "Down" = "window-down";
             "Up" = "window-up";
             "Right" = "column-right";
-            "J" = "column-left";
-            "K" = "window-down";
-            "L" = "window-up";
-            "M" = "column-right";
+            "H" = "column-left";
+            "J" = "window-down";
+            "K" = "window-up";
+            "L" = "column-right";
           };
 
           prefixes = {
             "Mod" = "focus";
-            "Mod+Ctrl" = "move";
-            "Mod+Shift" = "focus-monitor";
-            "Mod+Shift+Ctrl" = "move-window-to-monitor";
+            "Mod+Shift" = "move";
+            "Mod+Alt" = "focus-monitor";
+            "Mod+Shift+Alt" = "move-window-to-monitor";
           };
           substitutions = {
             "monitor-column" = "monitor";
@@ -168,7 +180,7 @@ in {
                 "workspace"
                 n
               ];
-            }) (range 1 9)
+            }) (lib.range 1 9)
           );
           prefixes = {
             "Mod" = "focus";
@@ -179,36 +191,32 @@ in {
           # Move columns
           "Mod+Comma".action = consume-window-into-column;
           "Mod+semicolon".action = expel-window-from-column;
-          "Mod+V".action = toggle-column-tabbed-display;
+          "Mod+Space".action = toggle-column-tabbed-display;
           "Mod+C".action = center-column;
 
           # Resize columns
           "Mod+R".action = switch-preset-column-width;
           "Mod+Shift+R".action = switch-preset-window-height;
           "Mod+Ctrl+R".action = reset-window-height;
+          "Mod+Ctrl+F".action = expand-column-to-available-width;
           "Mod+F".action = maximize-column;
           "Mod+Shift+F".action = fullscreen-window;
-          "Mod+Ctrl+F".action = expand-column-to-available-width;
 
           "Mod+KP_Subtract".action = set-column-width "-10%";
           "Mod+KP_Add".action = set-column-width "+10%";
           "Mod+Shift+KP_Subtract".action = set-window-height "-10%";
           "Mod+Shift+KP_Add".action = set-window-height "+10%";
 
+          "Mod+A".action = toggle-overview;
           "Mod+Shift+Escape".action = toggle-keyboard-shortcuts-inhibit;
           "Mod+Shift+E".action = quit;
           "Mod+Shift+P".action = power-off-monitors;
 
           "Mod+Shift+Ctrl+T".action = toggle-debug-tint;
         }
-        {
-          "Mod+Ctrl+F".action = expand-column-to-available-width;
-        }
       ];
-
     layout = {
       gaps = 8;
-
       struts = {
         top = -8; # removes gap
         bottom = -8;
@@ -224,27 +232,24 @@ in {
         {proportion = 1.0 / 2.0;}
         {proportion = 2.0 / 3.0;}
       ];
-
       default-column-width = {
         proportion = 1.0 / 2.0;
       };
-
       border = {
         enable = true;
         width = 6;
         active = {
           gradient = {
-            from = "#AFEEEE";
-            to = "#1E98FF";
+            from = default-foreground;
+            to = light-foreground;
             angle = 45;
             relative-to = "workspace-view";
           };
         };
-
         inactive = {
           gradient = {
-            from = "#585b70";
-            to = "#7f849c";
+            from = default-background;
+            to = light-background;
             angle = 45;
             relative-to = "workspace-view";
           };
@@ -256,6 +261,9 @@ in {
         gaps-between-tabs = 10;
         place-within-column = true;
       };
+    };
+    overview = {
+      backdrop-color = "#000000";
     };
     outputs = builtins.listToAttrs (
       map (m: {
@@ -272,48 +280,46 @@ in {
             inherit x;
             inherit y;
           };
-          scale = m.scale or 1;
+          inherit scale;
         };
       })
       config.monitors
     );
+    window-rules = [
+      {
+        matches = [];
+        geometry-corner-radius = {
+          bottom-left = 12.0;
+          bottom-right = 12.0;
+          top-left = 12.0;
+          top-right = 12.0;
+        };
+        clip-to-geometry = true;
+      }
+      {
+        matches = [
+          {
+            title = "Albert";
+          }
+        ];
+        border.enable = false;
+      }
+    ];
     environment = {
       DISPLAY = ":0";
     };
     spawn-at-startup = let
-      get-wayland-display = "systemctl --user show-environment | awk -F 'WAYLAND_DISPLAY=' '{print $2}' | awk NF";
-      wrapper = name: op:
-        pkgs.writeScript "${name}" ''
-          if [ "$(${get-wayland-display})" ${op} "$WAYLAND_DISPLAY" ]; then
-            exec "$@"
-          fi
-        '';
-
-      only-without-session = wrapper "only-without-session" "!=";
+      withCommand = command-to-run: {
+        command = [
+          command-to-run
+        ];
+      };
     in [
-      {
-        command = [
-          "${only-without-session}"
-          (lib.getExe pkgs.waybar)
-        ];
-      }
-      {
-        command = [
-          "${only-without-session}"
-          (lib.getExe pkgs.albert)
-        ];
-      }
-      {
-        command = [
-          "${only-without-session}"
-          (lib.getExe pkgs.hypridle)
-        ];
-      }
-      {
-        command = [
-          (lib.getExe pkgs.xwayland-satellite)
-        ];
-      }
+      (withCommand (lib.getExe pkgs.albert))
+      (withCommand (lib.getExe pkgs.keepassxc))
+      (withCommand (lib.getExe pkgs.beepertexts))
+      (withCommand (lib.getExe pkgs.xwayland-satellite))
+      (withCommand (lib.getExe pkgs.waybar))
     ];
   };
 }
