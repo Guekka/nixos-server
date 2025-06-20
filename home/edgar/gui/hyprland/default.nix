@@ -23,7 +23,7 @@
         gaps_in = 5;
         gaps_out = 10;
         border_size = 3;
-        layout = "dwindle";
+        layout = "master";
       };
       input = {
         kb_layout = "fr";
@@ -50,6 +50,12 @@
       dwindle = {
         split_width_multiplier = 1.35;
         preserve_split = true;
+      };
+
+      master = {
+        mfact = 0.45;
+        orientation = "center";
+        slave_count_for_center_master = 0;
       };
 
       misc = {
