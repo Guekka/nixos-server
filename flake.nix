@@ -117,6 +117,7 @@
         specialArgs = {inherit (self) inputs outputs;};
         modules = [
           ./hosts/${host}
+          inputs.niri.nixosModules.niri
         ];
       };
 
