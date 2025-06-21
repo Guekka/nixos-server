@@ -11,6 +11,7 @@
     ../common/optional/pipewire.nix
     ../common/optional/shutdown-schedule.nix
     ../common/optional/steam.nix
+    ../common/optional/niri.nix
     ./hardware-configuration.nix
   ];
 

@@ -5,8 +5,6 @@
   ...
 }:
 with config.lib.stylix.colors; let
-  inherit (lib) mkIf;
-  cfg = config.home-config.desktop.wayland;
   default-background = base00;
   default-foreground = base05;
   light-foreground = base06;
@@ -17,7 +15,7 @@ with config.lib.stylix.colors; let
     prefixes,
     substitutions ? {},
   }: let
-    replacer = replaceStrings (lib.attrNames substitutions) (lib.attrValues substitutions);
+    replacer = lib.replaceStrings (lib.attrNames substitutions) (lib.attrValues substitutions);
     format = prefix: suffix: let
       actual-suffix =
         if lib.isList suffix.action
@@ -103,9 +101,7 @@ in {
           "XF86AudioPlay".action = sh "${playerctl} play-pause";
           "XF86AudioRaiseVolume".action = sh "${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 0.05+";
           "XF86AudioLowerVolume".action = sh "${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 0.05-";
-          "XF86AudioMute" = mkIf (!cfg.niri.brokenAudioMuteKey) {
-            action = sh "${wpctl} set-mute @DEFAULT_AUDIO_SINK@ toggle";
-          };
+          "XF86AudioMute".action = sh "${wpctl} set-mute @DEFAULT_AUDIO_SINK@ toggle";
 
           "XF86MonBrightnessUp".action = sh "${brightnessctl} set 10%+";
           "XF86MonBrightnessDown".action = sh "${brightnessctl} set 10%-";
