@@ -13,7 +13,6 @@
       ./bash.nix
       ./beeper-timestamp-converter.nix
       ./bat.nix
-      ./bottom.nix
       ./calendar.nix
       ./direnv.nix
       ./eza.nix
@@ -30,6 +29,7 @@
       ./rclone.nix
       ./starship.nix
       ./stylix.nix
+      ./top.nix
       ./trash.nix
       ./xdg.nix
       ./yazi.nix

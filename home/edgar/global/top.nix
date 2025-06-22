@@ -35,4 +35,8 @@
       };
     };
   };
+
+  programs.btop = {
+    enable = true;
+  };
 }
