@@ -50,7 +50,7 @@
     '';
 
     keymap = {
-      manager.prepend_keymap = [
+      mgr.prepend_keymap = [
         {
           on = "p";
           run = "plugin augment-command -- paste";
@@ -74,7 +74,7 @@
         {
           on = ["M"];
           run = "plugin mount";
-          desc = "Mount manager";
+          desc = "Mount mgr";
         }
         {
           on = ["T"];
@@ -95,7 +95,7 @@
     };
 
     settings = {
-      manager = {
+      mgr = {
         show_hidden = true;
       };
       preview = {
