@@ -326,4 +326,11 @@ in {
       (withCommand (lib.getExe pkgs.waybar))
     ];
   };
+
+  xdg.portal = {
+    enable = true;
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gtk
+    ];
+  };
 }
