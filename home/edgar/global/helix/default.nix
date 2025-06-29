@@ -91,6 +91,15 @@ in {
         normal = {
           "C-e" = "copilot_toggle_auto_render";
           "=" = ":format"; # = is range-selection by default
+          "C-y" = [
+            ":sh rm -f /tmp/unique-file"
+            ":insert-output ${lib.getExe config.programs.yazi.package} %{buffer_name} --chooser-file=/tmp/unique-file"
+            '':insert-output echo "\x1b[?1049h" > /dev/tty''
+            ":open %sh{cat /tmp/unique-file}"
+            ":redraw"
+            ":set mouse false"
+            ":set mouse true"
+          ];
         };
 
         select = {
