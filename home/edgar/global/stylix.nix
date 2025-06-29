@@ -1,4 +1,5 @@
 {
+  config,
   lib,
   inputs,
   pkgs,
@@ -10,7 +11,7 @@
   stylix = {
     enable = true;
     autoEnable = true;
-    image = ./background.webp;
+    image = config.wallpaper;
     base16Scheme = lib.mkDefault "${pkgs.base16-schemes}/share/themes/selenized-light.yaml";
     polarity = lib.mkDefault "light";
 

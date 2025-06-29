@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{
   imports = [
     ./optional/activitywatch.nix
 
@@ -7,27 +7,19 @@
     ./gui
   ];
 
+  wallpaper = ./gui/background21.png;
+
   monitors = [
     {
-      name = "HDMI-A-1";
-      width = 2560;
-      height = 1440;
-      refreshRate = 60.0;
-      x = 0;
-      workspace = "2";
-    }
-    {
-      name = "DP-2";
-      width = 2560;
+      name = "DP-1";
+      width = 3440;
       height = 1440;
       refreshRate = 144.0;
-      x = 2560;
+      x = 0;
       workspace = "1";
       primary = true;
+      vrr = true;
+      hdr = true;
     }
-  ];
-
-  home.packages = [
-    pkgs.lan-mouse
   ];
 }

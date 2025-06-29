@@ -48,10 +48,24 @@ in {
           type = types.nullOr types.str;
           default = null;
         };
+        vrr = mkOption {
+          type = lib.types.bool;
+          default = false;
+        };
+        hdr = mkOption {
+          type = lib.types.bool;
+          default = false;
+        };
       };
     });
     default = [];
   };
+
+  # maybe not the right module, but well
+  options.wallpaper = mkOption {
+    type = types.path;
+  };
+
   config = {
     assertions = [
       {

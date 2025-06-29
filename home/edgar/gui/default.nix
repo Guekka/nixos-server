@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   imports = [
     ./calibre.nix
     ./darkman.nix
@@ -13,6 +17,9 @@
     ./vscode.nix
     ./zathura.nix
   ];
+
+  wallpaper = lib.mkDefault ./background.webp;
+
   home = {
     packages = with pkgs; [
       beepertexts
@@ -20,7 +27,7 @@
       keepassxc
       libsForQt5.ark
       overskride # bluetooth manager
-      plex-desktop
+      pkgs.unstable.plex-desktop
       ripdrag
       qbittorrent
       vlc

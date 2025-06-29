@@ -1,5 +1,6 @@
 {
   lib,
+  inputs,
   pkgs,
   config,
   ...
@@ -74,7 +75,10 @@ with config.lib.stylix.colors; let
   darkman = "${pkgs.darkman}/bin/darkman";
   cliphist = lib.getExe pkgs.cliphist;
 in {
-  imports = [../wayland-wm];
+  imports = [
+    inputs.niri.homeModules.stylix
+    ../wayland-wm
+  ];
 
   programs.niri.settings = {
     input = {
