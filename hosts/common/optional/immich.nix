@@ -8,7 +8,9 @@
       ## Per https://immich.app/docs/administration/reverse-proxy...
       client_max_body_size 50000M;
     '';
+
     useACMEHost = "bizel.fr";
+    forceSSL = true;
 
     locations."/" = {
       proxyPass = "http://${config.services.immich.host}:${toString config.services.immich.port}";
