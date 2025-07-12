@@ -25,6 +25,7 @@
       beeper
       chromium # for the rare occasion a website breaks on firefox
       keepassxc
+      kobo-readstat
       libsForQt5.ark
       overskride # bluetooth manager
       pkgs.unstable.plex-desktop
