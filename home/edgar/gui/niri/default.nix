@@ -321,7 +321,7 @@ in {
     in [
       (withCommand (lib.getExe pkgs.albert))
       (withCommand (lib.getExe pkgs.keepassxc))
-      (withCommand (lib.getExe pkgs.beepertexts))
+      (withCommand (lib.getExe pkgs.beeper))
       (withCommand (lib.getExe pkgs.xwayland-satellite))
       (withCommand (lib.getExe pkgs.waybar))
     ];

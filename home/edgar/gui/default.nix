@@ -22,7 +22,7 @@
 
   home = {
     packages = with pkgs; [
-      beepertexts
+      beeper
       chromium # for the rare occasion a website breaks on firefox
       keepassxc
       libsForQt5.ark
