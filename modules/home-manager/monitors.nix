@@ -63,7 +63,8 @@ in {
 
   # maybe not the right module, but well
   options.wallpaper = mkOption {
-    type = types.path;
+    type = types.nullOr types.path;
+    default = null;
   };
 
   config = {

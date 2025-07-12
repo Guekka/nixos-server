@@ -11,7 +11,7 @@
   stylix = {
     enable = true;
     autoEnable = true;
-    image = config.wallpaper;
+    image = lib.mkIf (config ? wallpaper) config.wallpaper;
     base16Scheme = lib.mkDefault "${pkgs.base16-schemes}/share/themes/selenized-light.yaml";
     polarity = lib.mkDefault "light";
 
