@@ -18,13 +18,6 @@
     inherit unstable;
     inherit prev-stable;
 
-    # required for some games
-    steam = prev.steam.override {
-      extraPkgs = pkgs:
-        with pkgs; [
-          dotnet-runtime
-        ];
-    };
     # some tweaks to staruml
     staruml = prev.staruml.overrideAttrs (_old: {
       postFixup = let
