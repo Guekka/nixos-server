@@ -95,8 +95,12 @@
     };
 
     settings = {
+      tasks = {
+        image_bound = [10000 10000];
+      };
       mgr = {
         show_hidden = true;
+        sort_dir_first = false;
       };
       preview = {
         max_width = 2560;
