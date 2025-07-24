@@ -7,12 +7,6 @@
       port = 4004;
       secretKeybaseFile = config.sops.secrets.plausibleKey.path;
     };
-
-    adminUser = {
-      activate = true;
-      email = "trucmuche909@gmail.com";
-      passwordFile = config.sops.secrets.plausibleAdmin.path;
-    };
   };
 
   services.nginx.virtualHosts."plausible.bizel.fr" = {
