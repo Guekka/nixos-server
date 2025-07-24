@@ -21,7 +21,7 @@
     ./plausible.nix
     ./rss.nix
     ./tandoor.nix
-    ./wallabag.nix
+    #./wallabag.nix
     ./web-server.nix
     ./wiki-js.nix
   ];
