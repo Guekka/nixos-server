@@ -1,6 +1,7 @@
-{
+{config, ...}: {
   services.microbin = {
     enable = true;
+    passwordFile = config.sops.secrets.microbin-admin.path;
     settings = {
       MICROBIN_PORT = 9345;
       MICROBIN_ENABLE_BURN_AFTER = true;
@@ -10,6 +11,8 @@
       MICROBIN_PRIVATE = true;
     };
   };
+
+  sops.secrets.microbin-admin.sopsFile = ./secrets.yaml;
 
   services.nginx.virtualHosts."sp.bizel.fr" = {
     useACMEHost = "bizel.fr";
