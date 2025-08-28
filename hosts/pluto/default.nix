@@ -7,6 +7,7 @@
     ../common/optional/immich.nix
     ../common/optional/impermanence/impermanence.nix
     ../common/optional/karakeep.nix
+    ../common/optional/kavita.nix
     ../common/optional/netdata.nix
     ../common/optional/nfs.nix
     ../common/optional/nginx.nix
