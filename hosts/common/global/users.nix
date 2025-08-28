@@ -17,11 +17,13 @@
           ifTheyExist = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
         in
           [
+            "dialout"
             "wheel"
             "video"
             "audio"
           ]
           ++ ifTheyExist [
+            "gamemode"
             "network"
             "wireshark"
             "i2c"
