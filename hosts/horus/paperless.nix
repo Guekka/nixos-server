@@ -18,6 +18,7 @@ in {
   services.paperless = {
     enable = true;
     settings = {
+      PAPERLESS_URL = "https://${virtualHost}";
       PAPERLESS_OCR_LANGUAGE = "fra+eng";
       PAPERLESS_OCR_USER_ARGS = ''
         {
