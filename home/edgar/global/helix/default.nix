@@ -6,7 +6,7 @@
   ...
 }: let
   copilot = pkgs.writeShellScriptBin "copilot" ''
-    exec ${pkgs.nodejs}/bin/node ${pkgs.vimPlugins.copilot-vim}/dist/language-server.js "''$@"
+    exec ${pkgs.nodejs}/bin/node ${pkgs.unstable.vimPlugins.copilot-vim}/copilot-language-server/dist/language-server.js "''$@"
   '';
   helix-copilot = pkgs.symlinkJoin {
     name = "helix";
