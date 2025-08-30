@@ -13,6 +13,7 @@
     ../common/optional/nginx.nix
     ../common/optional/podman.nix
     ../common/optional/postgresql.nix
+    ../common/optional/stash.nix
 
     ./hardware-configuration.nix
   ];
