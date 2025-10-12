@@ -80,6 +80,7 @@ in {
     ../wayland-wm
   ];
 
+  programs.niri.package = pkgs.unstable.niri;
   programs.niri.settings = {
     input = {
       keyboard.xkb.layout = "fr,fr";

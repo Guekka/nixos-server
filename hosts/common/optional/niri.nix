@@ -23,7 +23,7 @@
 
   programs.niri = {
     enable = true;
-    package = pkgs.niri-stable;
+    package = pkgs.unstable.niri;
   };
   programs.xwayland.enable = true;
 

@@ -10,13 +10,8 @@
       inherit (final) system;
       config.allowUnfree = true;
     };
-    prev-stable = import inputs.nixpkgs-prev-stable {
-      inherit (final) system;
-      config.allowUnfree = true;
-    };
   in {
     inherit unstable;
-    inherit prev-stable;
 
     # some tweaks to staruml
     staruml = prev.staruml.overrideAttrs (_old: {
@@ -41,9 +36,6 @@
     helix-latest = inputs.helix.packages.${prev.system}.helix;
 
     inherit (inputs.winapps.packages.${prev.system}) winapps;
-
-    # btrfs-progs 6.12 for recursive subvolume deletion
-    inherit (unstable) btrfs-progs;
 
     python3 = prev.python3.override {
       packageOverrides = _python-self: python-super: {
