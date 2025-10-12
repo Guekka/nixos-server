@@ -12,7 +12,7 @@
     enable = true;
     package = termfilepickers;
     config = {
-      terminal_command = lib.getExe pkgs.kitty;
+      terminal_command = [(lib.getExe pkgs.kitty)];
     };
   };
 }
