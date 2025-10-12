@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: {
   services.nginx.virtualHosts."immich.bizel.fr" = {
@@ -20,6 +21,7 @@
 
   services.immich = {
     enable = true;
+    package = pkgs.unstable.immich;
   };
 
   # reduce hardening to allow hardware acceleration
