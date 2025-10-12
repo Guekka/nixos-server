@@ -20,8 +20,7 @@ in {
     enable = true;
     settings = {
       general = {
-        # after resume (instead of before sleep) seems to prevent hyprlock crashing
-        after_sleep_cmd = "${pkgs.systemd}/bin/loginctl lock-session";
+        before_sleep_cmd = "${pkgs.systemd}/bin/loginctl lock-session";
         inherit lock_cmd;
       };
 
