@@ -1,7 +1,7 @@
 {pkgs, ...}: let
-  pluginify = ide: pkgs.prev-stable.jetbrains.plugins.addPlugins ide ["github-copilot"];
+  pluginify = ide: pkgs.jetbrains.plugins.addPlugins ide ["github-copilot"];
 in {
-  home.packages = with pkgs.prev-stable.jetbrains;
+  home.packages = with pkgs.jetbrains;
   with pkgs; [
     (pluginify clion)
     (pluginify idea-ultimate)
