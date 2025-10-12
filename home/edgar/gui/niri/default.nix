@@ -96,7 +96,13 @@ in {
         {
           # Apps
           "Mod+Return".action = spawn terminal;
-          "Mod+D".action = sh "echo -n toggle | ${socat} - ~/.cache/albert/ipc_socket";
+          "Mod+D".action = let
+            toggleBody =
+              if ((lib.toInt (lib.versions.minor pkgs.albert.version)) > 28)
+              then ''["toggle"]''
+              else "toggle";
+          in
+            sh ''echo -n '${toggleBody}'| ${socat} - ~/.cache/albert/ipc_socket'';
           "Mod+X".action = sh "${killall} -SIGUSR1 .waybar-wrapped";
           "Mod+C".action = sh "${cliphist} list | ${rofi} -dmenu | ${cliphist} decode | ${wl-copy}";
           "Mod+W".action = sh "${swaync-client} -t";
