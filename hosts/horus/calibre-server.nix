@@ -1,7 +1,13 @@
-{
+{pkgs, ...}: {
   services = {
     calibre-web = {
       enable = true;
+      package = pkgs.unstable.calibre-web.overridePythonAttrs (old: {
+        dependencies =
+          old.dependencies
+          ++ old.optional-dependencies.kobo
+          ++ old.optional-dependencies.metadata;
+      });
       options = {
         enableBookUploading = true;
         enableBookConversion = true;
