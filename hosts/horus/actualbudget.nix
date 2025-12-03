@@ -1,7 +1,7 @@
 let
   dataDir = "/var/lib/actualbudget";
   port = 3750;
-  version = "25.10.0";
+  version = "25.12.0";
 in {
   users.users.actualbudget = {
     group = "actualbudget";
