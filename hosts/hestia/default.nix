@@ -13,6 +13,7 @@
     ../common/optional/ledger.nix
     ../common/optional/niri.nix
     ../common/optional/obs-virtual-camera.nix
+    ../common/optional/ollama.nix
     ../common/optional/pipewire.nix
     ../common/optional/shutdown-schedule.nix
     ../common/optional/steam.nix
