@@ -26,6 +26,7 @@
       ./lazygit.nix
       ./mime.nix
       ./nix-index.nix
+      ./ripgrep.nix
       ./rclone.nix
       ./starship.nix
       ./stylix.nix
@@ -72,8 +73,6 @@
         nix-init
         ouch
         _7zz-rar
-        rembg
-        ripgrep
         rnr
         sd
         sshfs
