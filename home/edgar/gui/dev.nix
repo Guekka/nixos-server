@@ -10,7 +10,8 @@ in {
     qtcreator
 
     gcc # always have a C compiler ready
-    python3 # and a Python interpreter
+    # and a Python interpreter with some default packages
+    (python3.withPackages (ps: [ps.numpy]))
   ];
 
   home.persistence."/persist/nobackup/home/edgar" = {
