@@ -8,6 +8,7 @@
       ];
     };
     gamescopeSession.enable = true;
+    remotePlay.openFirewall = true;
   };
 
   programs.gamemode = {
