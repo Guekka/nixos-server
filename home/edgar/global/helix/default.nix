@@ -192,6 +192,9 @@ in {
 
         rust-analyzer = {
           command = lib.getExe pkgs.rust-analyzer;
+          config = {
+            check.command = "clippy";
+          };
         };
 
         pylsp = {
