@@ -14,6 +14,7 @@
     ../common/optional/podman.nix
     ../common/optional/postgresql.nix
     ../common/optional/stash.nix
+    ../common/optional/yamtrack.nix
 
     ./hardware-configuration.nix
   ];
