@@ -41,12 +41,6 @@
   # reisub
   boot.kernel.sysctl."kernel.sysrq" = 502;
 
-  # use the new switch-to-configuration program instead of the perl script
-  system.switch = {
-    enable = false;
-    enableNg = true;
-  };
-
   # startup screen change
   boot.plymouth.enable = true;
   boot.kernelParams = [

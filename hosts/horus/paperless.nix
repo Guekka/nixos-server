@@ -1,6 +1,5 @@
 {
   config,
-  inputs,
   pkgs,
   ...
 }: let
@@ -16,13 +15,8 @@
   # systemd service has restricted file access, so we need to copy the script to a location where it can be executed
   postConsumeScriptPath = "${config.services.paperless.dataDir}/post-consume.sh";
 in {
-  # use module from unstable
-  disabledModules = ["services/misc/paperless.nix"];
-  imports = ["${inputs.nixpkgs-unstable}/nixos/modules/services/misc/paperless.nix"];
-
   services.paperless = {
     enable = true;
-    package = pkgs.unstable.paperless-ngx;
     settings = {
       PAPERLESS_URL = "https://${virtualHost}";
       PAPERLESS_OCR_LANGUAGE = "fra+eng";

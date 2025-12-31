@@ -63,7 +63,7 @@
         dua
         doggo
         duf
-        du-dust
+        dust
         dysk
         fd
         ffmpeg

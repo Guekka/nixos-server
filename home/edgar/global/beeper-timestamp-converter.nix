@@ -5,7 +5,7 @@
   beeper-timestamp-converter =
     pkgs.writers.writePython3Bin "beeper-timestamp-converter"
     {
-      libraries = [pkgs.python3Packages.dateutil];
+      libraries = [pkgs.python3Packages.python-dateutil];
       flakeIgnore = ["E501"]; # line too long
     } ''
       import sys

@@ -27,6 +27,8 @@
   };
   programs.xwayland.enable = true;
 
+  services.gnome.gnome-keyring.enable = lib.mkForce false;
+
   # Mostly from <https://www.reddit.com/r/NixOS/comments/137j18j/comment/ju6h25k/>
   environment.sessionVariables =
     {

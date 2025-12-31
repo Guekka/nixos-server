@@ -28,11 +28,8 @@
 in {
   programs.rofi = {
     enable = true;
-    package = pkgs.rofi-wayland;
     plugins = [
-      (pkgs.rofi-calc.override {
-        rofi-unwrapped = pkgs.rofi-wayland-unwrapped;
-      })
+      pkgs.rofi-calc
     ];
     terminal = config.home.sessionVariables.TERMINAL;
     extraConfig = let

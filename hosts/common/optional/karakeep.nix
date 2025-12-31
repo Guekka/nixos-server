@@ -20,7 +20,8 @@ in {
     environmentFile = config.sops.secrets.karakeep-env.path;
   };
 
-  services.meilisearch.package = pkgs.meilisearch;
+  # Command to upgrade meilisearch DB
+  # systemd.services.meilisearch.serviceConfig.ExecStart = lib.mkForce "${lib.getExe pkgs.meilisearch} --config-file-path \${RUNTIME_DIRECTORY}/config.toml --experimental-dumpless-upgrade";
 
   sops.secrets.karakeep-env.sopsFile = ../secrets.yaml;
 

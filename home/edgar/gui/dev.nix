@@ -1,10 +1,10 @@
 {pkgs, ...}: let
-  pluginify = ide: pkgs.jetbrains.plugins.addPlugins ide ["github-copilot"];
+  pluginify = ide: pkgs.jetbrains.plugins.addPlugins ide ["17718"];
 in {
   home.packages = with pkgs.jetbrains;
   with pkgs; [
     (pluginify clion)
-    (pluginify idea-ultimate)
+    (pluginify idea)
     (pluginify rust-rover)
 
     qtcreator

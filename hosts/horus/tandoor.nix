@@ -1,13 +1,7 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{config, ...}: {
   services.tandoor-recipes = {
     enable = true;
-    package = pkgs.tandoor-recipes; # unstable doesn't build
     port = 7453;
-    #address = "tandoor.bizel.fr";
   };
 
   services.nginx.virtualHosts."tandoor.bizel.fr" = {

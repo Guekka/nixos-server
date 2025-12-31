@@ -18,11 +18,6 @@
     };
   };
 
-  # TODO upstream
-  systemd.services.calibre-web.environment = {
-    CACHE_DIR = "/var/lib/calibre-web/cache";
-  };
-
   services.nginx.virtualHosts."calibre.bizel.fr" = {
     useACMEHost = "bizel.fr";
     forceSSL = true;

@@ -6,9 +6,9 @@
   programs.lazygit = {
     enable = true;
     settings = {
-      git.paging = {
-        pager = "${lib.getExe pkgs.delta} --paging=never";
-      };
+      git.pagers = [
+        {pager = "${lib.getExe pkgs.delta} --paging=never";}
+      ];
     };
   };
 
