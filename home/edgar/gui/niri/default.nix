@@ -83,7 +83,10 @@ in {
   programs.niri.package = pkgs.unstable.niri;
   programs.niri.settings = {
     input = {
-      keyboard.xkb.layout = "fr,fr";
+      keyboard = {
+        xkb.layout = "fr,fr";
+        numlock = true;
+      };
       focus-follows-mouse.enable = true;
       warp-mouse-to-focus.enable = true;
     };
