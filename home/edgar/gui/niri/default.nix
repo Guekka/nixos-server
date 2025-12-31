@@ -74,10 +74,13 @@ with config.lib.stylix.colors; let
   hyprlock = lib.getExe pkgs.hyprlock;
   darkman = "${pkgs.darkman}/bin/darkman";
   cliphist = lib.getExe pkgs.cliphist;
+  rofi = lib.getExe pkgs.rofi;
+  wl-copy = lib.getExe' pkgs.wl-clipboard "wl-copy";
 in {
   imports = [
     inputs.niri.homeModules.stylix
     ../wayland-wm
+    ./tty-init.nix
   ];
 
   programs.niri.package = pkgs.unstable.niri;
@@ -161,7 +164,7 @@ in {
           };
           prefixes = {
             "Mod" = "focus-column";
-            "Mod+Ctrl" = "move-column-to";
+            "Mod+Shift" = "move-column-to";
           };
         })
         (binds {
@@ -191,7 +194,7 @@ in {
           );
           prefixes = {
             "Mod" = "focus";
-            "Mod+Ctrl" = "move-window-to";
+            "Mod+Shift" = "move-window-to";
           };
         })
         {
@@ -199,7 +202,7 @@ in {
           "Mod+Comma".action = consume-window-into-column;
           "Mod+semicolon".action = expel-window-from-column;
           "Mod+Space".action = toggle-column-tabbed-display;
-          "Mod+C".action = center-column;
+          "Mod+Shift+C".action = center-column;
 
           # Resize columns
           "Mod+R".action = switch-preset-column-width;
@@ -232,7 +235,7 @@ in {
       };
       always-center-single-column = true;
       center-focused-column = "on-overflow";
-      empty-workspace-above-first = true;
+      empty-workspace-above-first = false;
 
       preset-column-widths = [
         {proportion = 1.0 / 3.0;}
@@ -292,7 +295,12 @@ in {
       })
       config.monitors
     );
-    window-rules = [
+
+    window-rules = let
+      albert-matcher = {title = "Albert";};
+      beeper-matcher = {title = "Beeper";};
+      keepass-matcher = {app-id = "org.keepassxc.KeePassXC";};
+    in [
       {
         matches = [];
         geometry-corner-radius = {
@@ -305,17 +313,28 @@ in {
       }
       {
         matches = [
-          {
-            title = "Albert";
-          }
+          albert-matcher
         ];
         border.enable = false;
       }
+      {
+        matches = [
+          beeper-matcher
+          keepass-matcher
+        ];
+        open-on-workspace = "utils";
+      }
     ];
+
+    workspaces = {
+      utils = {};
+    };
+
     environment = {
       DISPLAY = ":0";
       NIXOS_OZONE_WL = "1";
     };
+
     spawn-at-startup = let
       withCommand = command-to-run: {
         command = [
