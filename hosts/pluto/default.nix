@@ -3,6 +3,7 @@
     ../common/global
     ../common/optional/acme.nix
     ../common/optional/cloudflared.nix
+    ../common/optional/dyndns.nix
     ../common/optional/fail2ban.nix
     ../common/optional/immich.nix
     ../common/optional/impermanence/impermanence.nix
@@ -28,6 +29,8 @@
     hostId = "e847bfff";
     interfaces.enp6s18.useDHCP = true;
   };
+
+  services.ddclient.domains = ["pluto.bizel.fr"];
 
   time.timeZone = "Europe/Amsterdam";
 
