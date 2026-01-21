@@ -36,14 +36,5 @@
     helix-latest = inputs.helix.packages.${prev.system}.helix;
 
     inherit (inputs.winapps.packages.${prev.system}) winapps;
-
-    python3 = prev.python3.override {
-      packageOverrides = _python-self: python-super: {
-        # flaky tests
-        aiocache = python-super.aiocache.overridePythonAttrs (_old: {
-          doCheck = false;
-        });
-      };
-    };
   };
 }

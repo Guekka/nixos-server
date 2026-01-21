@@ -144,6 +144,7 @@
       "edgar@hestia" = mkHome "hestia" "x86_64-linux";
       "edgar@deimos" = mkHome "deimos" "x86_64-linux";
       "edgar@pluto" = mkHome "pluto" "x86_64-linux";
+      "edgar@morpheus" = mkHome "morpheus" "x86_64-linux";
     };
   };
 }
