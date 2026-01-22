@@ -3,6 +3,7 @@
     ./android.nix
     ./backup.nix
     ./home-manager.nix
+    ./locate.nix
     ./mosh.nix
     ./networking.nix
     ./nfs.nix
