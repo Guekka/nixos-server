@@ -14,7 +14,7 @@
     };
   };
 
-  home.persistence."/persist/nobackup/home/edgar".directories = [
+  home.persistence."/persist/nobackup".directories = [
     ".local/share/atuin"
   ];
 }

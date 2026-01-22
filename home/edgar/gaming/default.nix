@@ -10,12 +10,13 @@
     ];
 
     persistence = {
-      "/persist/backup/home/edgar".directories = [
+      "/persist/backup".directories = [
         ".config/lutris"
       ];
 
-      "/persist/nobackup/home/edgar".directories = [
+      "/persist/nobackup".directories = [
         ".local/share/lutris"
+        ".cache/lutris"
       ];
     };
   };

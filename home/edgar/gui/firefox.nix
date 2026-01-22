@@ -5,11 +5,11 @@
 
   home = {
     persistence = {
-      "/persist/backup/home/edgar".directories = [
+      "/persist/backup".directories = [
         ".mozilla"
       ];
 
-      "/persist/nobackup/home/edgar".directories = [
+      "/persist/nobackup".directories = [
         ".cache/mozilla"
       ];
     };

@@ -34,7 +34,7 @@
       lib.mkForce "${exe} --sync-dir ${sync_dir}";
   };
 
-  home.persistence."/persist/backup/home/edgar".directories = [
+  home.persistence."/persist/backup".directories = [
     ".local/share/activitywatch"
   ];
 }

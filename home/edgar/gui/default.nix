@@ -36,11 +36,10 @@
       wl-clipboard
     ];
 
-    persistence."/persist/nobackup/home/edgar" = {
+    persistence."/persist/nobackup" = {
       directories = [
         {
           directory = ".config/BeeperTexts";
-          method = "symlink";
         }
       ];
     };

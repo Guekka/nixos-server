@@ -4,7 +4,7 @@
     nix-direnv.enable = true;
   };
 
-  home.persistence."/persist/nobackup/home/edgar".directories = [
+  home.persistence."/persist/nobackup".directories = [
     ".local/share/direnv"
   ];
 }

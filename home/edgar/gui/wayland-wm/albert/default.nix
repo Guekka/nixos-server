@@ -8,7 +8,7 @@
     sessionVariables."GOLDENDICT_FORCE_WAYLAND" = "1";
     packages = [pkgs.goldendict-ng pkgs.libnotify];
 
-    persistence."/persist/nobackup/home/edgar".directories = [
+    persistence."/persist/nobackup".directories = [
       ".cache/albert"
       ".local/share/albert"
     ];

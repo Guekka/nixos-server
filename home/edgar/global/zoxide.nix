@@ -5,7 +5,7 @@
     enableFishIntegration = true;
   };
 
-  home.persistence."/persist/backup/home/edgar".directories = [
+  home.persistence."/persist/backup".directories = [
     ".local/share/zoxide"
   ];
 }

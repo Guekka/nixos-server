@@ -14,7 +14,7 @@ in {
     (python3.withPackages (ps: [ps.numpy]))
   ];
 
-  home.persistence."/persist/nobackup/home/edgar" = {
+  home.persistence."/persist/nobackup" = {
     directories = [
       ".cache/JetBrains"
       ".config/JetBrains"

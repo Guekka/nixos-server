@@ -10,11 +10,11 @@
     ];
 
     persistence = {
-      "/persist/backup/home/edgar".directories = [
+      "/persist/backup".directories = [
         ".config/Nextcloud"
       ];
 
-      "/persist/nobackup/home/edgar".directories = [
+      "/persist/nobackup".directories = [
         "Nextcloud"
       ];
     };

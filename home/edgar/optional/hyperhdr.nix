@@ -24,7 +24,7 @@
     };
   };
 
-  home.persistence."/persist/backup/home/edgar".directories = [
+  home.persistence."/persist/backup".directories = [
     ".hyperhdr"
   ];
 }

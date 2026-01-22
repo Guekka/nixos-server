@@ -13,7 +13,7 @@
   };
 
   home = {
-    persistence."/persist/backup/home/edgar".directories = [
+    persistence."/persist/backup".directories = [
       ".local/state/lazygit"
     ];
   };

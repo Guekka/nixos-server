@@ -1,27 +1,14 @@
-{
-  inputs,
-  lib,
-  ...
-}: let
-  withSymlink = dir: {
-    directory = dir;
-    method = "symlink";
-  };
-in {
-  imports = [
-    inputs.impermanence.homeManagerModules.impermanence
-  ];
-
+{lib, ...}: {
   # TODO move these to their own files
 
-  home.persistence."/persist/backup/home/edgar" = {
+  home.persistence."/persist/backup" = {
     directories = [
       # Root dirs
       "Documents"
       "nixos"
 
       # Hidden root dirs (ever heard of XDG?)
-      (withSymlink ".factorio")
+      ".factorio"
       ".gnupg"
       # TODO: think about declaring known hosts instead
       ".ssh"
@@ -38,33 +25,30 @@ in {
     files = [
       "/.local/share/state/comma-choices"
     ];
-
-    allowOther = true;
   };
 
-  home.persistence."/persist/nobackup/home/edgar" = {
+  home.persistence."/persist/nobackup" = {
     directories = [
       # Root dirs
-      (withSymlink "Games")
-      (withSymlink "code")
+      "Games"
+      "code"
       "Downloads"
 
       # .cache
       ".cache/fontconfig"
       # contains last opened database. This is not cache, imo
       ".cache/keepassxc"
-      (withSymlink ".cache/mesa_shader_cache")
-      (withSymlink ".cache/mesa_shader_cache_db")
+      ".cache/mesa_shader_cache"
+      ".cache/mesa_shader_cache_db"
       ".cache/nix"
       ".cache/nix-index"
       ".cache/uv"
 
       # local/share
       ".local/share/plex"
-      (withSymlink ".local/share/Steam")
-      (withSymlink ".local/share/umu")
+      ".local/share/Steam"
+      ".local/share/umu"
     ];
-    allowOther = true;
   };
 
   # See <https://github.com/nix-community/impermanence/issues/256>

@@ -6,7 +6,7 @@
       pkgs.optipng
     ];
 
-    persistence."/persist/backup/home/edgar".directories = [
+    persistence."/persist/backup".directories = [
       ".config/calibre"
     ];
   };

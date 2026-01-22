@@ -44,11 +44,11 @@
   };
 
   home.persistence = {
-    "/persist/backup/home/edgar".directories = [
+    "/persist/backup".directories = [
       ".config/fish"
     ];
 
-    "/persist/nobackup/home/edgar".directories = [
+    "/persist/nobackup".directories = [
       ".local/share/fish"
     ];
   };

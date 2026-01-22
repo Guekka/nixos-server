@@ -1,11 +1,10 @@
 {pkgs, ...}: {
   home = {
     packages = [pkgs.ledger-live-desktop];
-    persistence."/persist/nobackup/home/edgar" = {
+    persistence."/persist/nobackup" = {
       directories = [
         {
           directory = ".config/Ledger Live";
-          method = "symlink";
         }
       ];
     };
