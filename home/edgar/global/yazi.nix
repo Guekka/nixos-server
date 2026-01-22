@@ -116,4 +116,19 @@
       };
     };
   };
+
+  # not yet integrated in HM
+  xdg.configFile."yazi/vfs.toml".source = (pkgs.formats.toml {}).generate "yazi-vfs" {
+    services = let
+      mkSftp = host: {
+        type = "sftp";
+        inherit host;
+        port = 22;
+        user = "edgar";
+      };
+    in {
+      horus = mkSftp "horus";
+      pluto = mkSftp "pluto";
+    };
+  };
 }
