@@ -335,6 +335,8 @@ in {
       NIXOS_OZONE_WL = "1";
     };
 
+    xwayland-satellite.path = lib.getExe pkgs.unstable.xwayland-satellite;
+
     spawn-at-startup = let
       withCommand = command-to-run: {
         command = [
