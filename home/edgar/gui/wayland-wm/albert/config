@@ -3,6 +3,9 @@ memoryDecay=0.8
 prioritizePerfectMatch=false
 telemetry=true
 
+[application]
+enabled=true
+
 [applications]
 enabled=true
 terminal=kitty
@@ -61,7 +64,7 @@ enabled=true
 enabled=true
 
 [python.unit_converter]
-enabled=false
+enabled=true
 
 [python.wikipedia]
 enabled=true
