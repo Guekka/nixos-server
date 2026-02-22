@@ -1075,11 +1075,11 @@
         "treefmt-nix": "treefmt-nix_2"
       },
       "locked": {
-        "lastModified": 1768203628,
-        "narHash": "sha256-tyiXTkPZFynHdA99rZPHckk9z/+a5NfJvefNr0WT79E=",
+        "lastModified": 1771770964,
+        "narHash": "sha256-NNVfIgtvbgwHP2mD7YJTCx/F8/XXcrlcoDvXBfFUBec=",
         "owner": "Guekka",
         "repo": "xdg-desktop-portal-termfilepickers",
-        "rev": "0e4e1b4e3b1891f4181d6c20d91b4ec2ee3e0628",
+        "rev": "5b526e0e33fd4f4eef4d4c40e9e418a419df0b61",
         "type": "github"
       },
       "original": {
