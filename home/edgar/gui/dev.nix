@@ -12,6 +12,7 @@ in {
     gcc # always have a C compiler ready
     # and a Python interpreter with some default packages
     (python3.withPackages (ps: [ps.numpy]))
+    uv
   ];
 
   home.persistence."/persist/nobackup" = {
