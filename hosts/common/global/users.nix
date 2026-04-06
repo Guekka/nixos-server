@@ -33,6 +33,7 @@
             "git"
             "libvirtd"
             "deluge"
+            "llama-cpp"
           ];
       };
       root = {
