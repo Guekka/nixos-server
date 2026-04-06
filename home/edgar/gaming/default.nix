@@ -12,6 +12,7 @@
     persistence = {
       "/persist/backup".directories = [
         ".config/lutris"
+        ".local/share/Terraria"
       ];
 
       "/persist/nobackup".directories = [
