@@ -1,4 +1,6 @@
 {pkgs, ...}: {
+  boot.kernelModules = ["ntsync"]; # should improve performance
+
   programs.steam = {
     enable = true;
     # required for some games
@@ -29,5 +31,16 @@
         end = "${pkgs.libnotify}/bin/notify-send 'GameMode ended'";
       };
     };
+  };
+
+  programs.alvr = {
+    enable = true;
+    openFirewall = true;
+  };
+
+  services.wivrn = {
+    enable = true;
+    openFirewall = true;
+    steam.importOXRRuntimes = true;
   };
 }
