@@ -62,7 +62,7 @@
     };
 
     yazi-compress = {
-      url = "github:v3natio/compress.yazi";
+      url = "github:KKV9/compress.yazi";
       flake = false;
     };
 
@@ -130,7 +130,10 @@
 
     overlays = import ./overlays {inherit inputs;};
 
-    devShells = forEachPkgs (pkgs: import ./shell.nix {inherit pkgs devenv inputs;});
+    devShells = forEachPkgs (pkgs:
+      import ./shell.nix {
+        inherit pkgs devenv inputs;
+      });
 
     nixosConfigurations = {
       horus = mkNixos "horus" "aarch64-linux";
