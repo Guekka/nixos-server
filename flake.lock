@@ -1140,15 +1140,15 @@
     "yazi-compress": {
       "flake": false,
       "locked": {
-        "lastModified": 1727430331,
-        "narHash": "sha256-a7GoaCLaJ6g9Jef2wFoyJtBA6lhxhS4DKROBdFUwJao=",
-        "owner": "v3natio",
+        "lastModified": 1773608301,
+        "narHash": "sha256-Mby185FCJY6nqHcHDQu+D5SLk+wGcyeUHK8yAvrd4TM=",
+        "owner": "KKV9",
         "repo": "compress.yazi",
-        "rev": "35dee794dcbd6bdab39f1f7f5ffd5472322df91f",
+        "rev": "46a6b9f02ff2f8aced466a1f01a3fe241f1cd45f",
         "type": "github"
       },
       "original": {
-        "owner": "v3natio",
+        "owner": "KKV9",
         "repo": "compress.yazi",
         "type": "github"
       }
