@@ -15,9 +15,11 @@
     ../common/optional/podman.nix
     ../common/optional/postgresql.nix
     ../common/optional/stash.nix
+    ../common/optional/trilium.nix
     ../common/optional/yamtrack.nix
 
     ./hardware-configuration.nix
+    #./pocket-id-sso.nix
   ];
 
   disko.devices.disk.main.device = "scsi-0QEMU_QEMU_HARDDISK_drive-scsi0";

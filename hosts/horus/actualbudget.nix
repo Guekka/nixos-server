@@ -22,6 +22,8 @@ in {
     useACMEHost = "bizel.fr";
   };
 
+  services.pocket-id-sso.protectedVirtualHosts."actual.bizel.fr" = {};
+
   environment.persistence."/persist/backup".directories = [
     {
       directory = dataDir;

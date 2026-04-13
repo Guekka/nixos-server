@@ -53,6 +53,8 @@ in {
     locations."/".proxyPass = "http://localhost:${toString port}";
   };
 
+  services.pocket-id-sso.protectedVirtualHosts."${virtualHost}" = {};
+
   environment.persistence."/persist/backup" = {
     directories = [
       {

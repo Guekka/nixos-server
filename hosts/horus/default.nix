@@ -9,6 +9,7 @@
     ../common/optional/netdata.nix
     ../common/optional/nfs.nix
     ../common/optional/nginx.nix
+    ./pocket-id-sso.nix
     ./actualbudget.nix
     ./calibre-server.nix
     ./grocy.nix
