@@ -140,6 +140,12 @@
 
   services.open-webui.enable = true;
 
+  users.users.llama-cpp = {
+    isSystemUser = true;
+    group = "llama-cpp";
+  };
+  users.groups.llama-cpp = {};
+
   environment.persistence."/persist/nobackup".directories = [
     {
       directory = "/var/lib/private/ollama";
@@ -153,11 +159,6 @@
     }
     {
       directory = "/var/lib/private/llama-cpp";
-      mode = "0700";
-      defaultPerms.mode = "0700";
-    }
-    {
-      directory = "/var/cache/llama-cpp";
       mode = "0700";
       defaultPerms.mode = "0700";
     }

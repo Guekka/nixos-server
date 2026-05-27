@@ -27,6 +27,10 @@
       ];
 
     profiles.default.userSettings = {
+      "chat.tools.terminal.terminalProfile.linux" = {
+        "path" = "bash";
+      };
+
       "cmake.configureOnOpen" = true;
 
       "editor.formatOnSave" = true;
@@ -88,4 +92,8 @@
       "rust-analyzer.checkOnSave" = true;
     };
   };
+
+  home.persistence."/persist/nobackup".directories = [
+    ".config/Code"
+  ];
 }

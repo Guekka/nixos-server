@@ -1,7 +1,7 @@
 let
   dataDir = "/var/lib/actualbudget";
   port = 3750;
-  version = "26.2.0";
+  version = "26.5.2";
 in {
   users.users.actualbudget = {
     group = "actualbudget";
@@ -21,6 +21,8 @@ in {
     forceSSL = true;
     useACMEHost = "bizel.fr";
   };
+
+  # services.pocket-id-sso.protectedVirtualHosts."actual.bizel.fr" = {};
 
   environment.persistence."/persist/backup".directories = [
     {

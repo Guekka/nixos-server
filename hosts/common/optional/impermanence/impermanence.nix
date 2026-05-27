@@ -69,6 +69,17 @@ in {
     enable = true;
     supportedFilesystems = ["btrfs"];
 
-    postResumeCommands = lib.mkAfter ''echo "Executing rollback script" && ${rollback-script} /dev/disk/by-label/${hostname}'';
+    systemd.services.persisted-files = {
+      description = "Hard-link persisted files from /persist";
+      wantedBy = [
+        "initrd.target"
+      ];
+      after = [
+        "sysroot.mount"
+      ];
+      unitConfig.DefaultDependencies = "no";
+      serviceConfig.Type = "oneshot";
+      script = ''echo "Executing rollback script" && ${rollback-script} /dev/disk/by-label/${hostname}'';
+    };
   };
 }

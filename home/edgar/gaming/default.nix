@@ -6,7 +6,7 @@
   home = {
     packages = with pkgs; [
       joystickwake
-      lutris
+      # unstable.lutris
     ];
 
     persistence = {

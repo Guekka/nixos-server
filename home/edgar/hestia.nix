@@ -1,6 +1,6 @@
 {
   imports = [
-    ./optional/activitywatch.nix
+    # ./optional/activitywatch.nix
 
     ./gaming
     ./global
