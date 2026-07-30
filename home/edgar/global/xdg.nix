@@ -1,4 +1,8 @@
-{lib, ...}: {
+{
+  lib,
+  config,
+  ...
+}: {
   xdg = {
     mime.enable = true;
     mimeApps.enable = true;
@@ -11,6 +15,7 @@
 
   # Thank you, xdg-ninja. Not thank you, applications that don't respect XDG.
   home.sessionVariables = {
+    XDG_CONFIG_HOME = "${config.home.homeDirectory}/.config";
     GNUPGHOME = "$XDG_DATA_HOME/gnupg";
     GTK2_RC_FILES = lib.mkForce "$XDG_CONFIG_HOME/gtk-2.0/gtkrc";
     IPYTHONDIR = "$XDG_CONFIG_HOME/ipython";

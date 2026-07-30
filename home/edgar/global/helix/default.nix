@@ -173,7 +173,7 @@ in {
         };
 
         bash-language-server = {
-          command = "${pkgs.nodePackages.bash-language-server}/bin/bash-language-server";
+          command = "${pkgs.bash-language-server}/bin/bash-language-server";
           args = ["start"];
         };
 
@@ -216,11 +216,11 @@ in {
         };
 
         typescript-language-server = {
-          command = lib.getExe pkgs.nodePackages.typescript-language-server;
+          command = lib.getExe pkgs.typescript-language-server;
         };
 
         vscode-css-language-server = {
-          command = "${pkgs.nodePackages.vscode-langservers-extracted}/bin/css-languageserver";
+          command = "${pkgs.vscode-langservers-extracted}/bin/css-languageserver";
           args = ["--stdio"];
         };
 

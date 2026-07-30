@@ -8,7 +8,7 @@
       domain = "*.bizel.fr";
       dnsProvider = "cloudflare";
       dnsPropagationCheck = true;
-      credentialsFile = config.sops.secrets.cloudflare-lego-token.path;
+      credentialFiles = {CLOUDFLARE_API_KEY_FILE = config.sops.secrets.cloudflare-lego-token.path;};
     };
   };
 

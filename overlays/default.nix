@@ -35,15 +35,22 @@
 
     helix-latest = inputs.helix.packages.${prev.system}.helix;
 
-    inherit (inputs.winapps.packages.${prev.system}) winapps;
-
-    python3 = prev.python3.override {
-      packageOverrides = _python-self: python-super: {
-        # flaky tests
-        aiocache = python-super.aiocache.overridePythonAttrs (_old: {
-          doCheck = false;
-        });
+    sweethome3d.application = prev.sweethome3d.application.overrideAttrs (old: {
+      src = prev.fetchFromGitHub {
+        owner = "NaharEmet";
+        repo = "sweethome3d-7.5-wayland-patch";
+        rev = "v7.5-fixed";
+        hash = "sha256-8sLJTtpvzSgWlJNVPnAbyYGRhDyBqGIUR8ptyNG8xp0=";
       };
-    };
+
+      postFixup =
+        (old.postFixup or "")
+        + ''
+          substituteInPlace $out/bin/sweethome3d \
+            --replace \
+              "-Dsun.java2d.opengl=true" \
+              "-Dsun.java2d.opengl=false"
+        '';
+    });
   };
 }

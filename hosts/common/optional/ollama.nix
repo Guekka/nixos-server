@@ -1,16 +1,11 @@
 {
   lib,
-  inputs,
   pkgs,
   ...
 }: {
-  disabledModules = ["services/misc/llama-cpp.nix"];
-  imports = ["${inputs.nixpkgs-unstable}/nixos/modules/services/misc/llama-cpp.nix"];
-
   services.ollama = {
     enable = false;
-    package = pkgs.unstable.ollama;
-    acceleration = "rocm";
+    package = pkgs.unstable.ollama-rocm;
     environmentVariables = {
       # Divide context memory usage by 2
       # Could use q4 but more precision lost
