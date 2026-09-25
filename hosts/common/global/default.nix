@@ -61,7 +61,6 @@
     horus.bizel.fr horus
     192.168.1.44 hestia
     192.168.1.72 deimos
-    192.168.1.91 pluto
   '';
 
   programs.dconf.enable = true; # required for some HM modules
