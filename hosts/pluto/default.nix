@@ -17,6 +17,7 @@
     ../common/optional/postgresql.nix
     ../common/optional/stash.nix
     ../common/optional/trek.nix
+    ../common/optional/trilium.nix
     ../common/optional/yamtrack.nix
 
     ./hardware-configuration.nix
