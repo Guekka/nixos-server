@@ -32,6 +32,7 @@
       pkgs.unstable.plex-desktop
       ripdrag
       qbittorrent
+      sweethome3d.application
       vlc
       wl-clipboard
     ];
