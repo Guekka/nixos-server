@@ -16,8 +16,8 @@
     polarity = lib.mkDefault "light";
 
     cursor = {
-      name = "Capitaine Cursors (Nord)";
-      package = pkgs.capitaine-cursors-themed;
+      name = "Bibata-Modern-Classic";
+      package = pkgs.bibata-cursors;
       size = 24;
     };
 
