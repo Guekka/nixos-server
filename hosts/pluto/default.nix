@@ -3,6 +3,7 @@
     ../common/global
     ../common/optional/acme.nix
     ../common/optional/cloudflared.nix
+    ../common/optional/dawarich.nix
     ../common/optional/dyndns.nix
     ../common/optional/fail2ban.nix
     ../common/optional/immich.nix
