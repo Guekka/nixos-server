@@ -9,7 +9,7 @@
 in {
   services.karakeep = {
     enable = true;
-    package = pkgs.karakeep;
+    package = pkgs.unstable.karakeep; # build failure on 26.05
     extraEnvironment = {
       PORT = builtins.toString port;
       DATA_DIR = dataDir;
