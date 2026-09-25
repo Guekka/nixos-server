@@ -13,7 +13,7 @@
     ./calibre-server.nix
     ./grocy.nix
     ./hardware-configuration.nix
-    ./headscale.nix
+    # ./headscale.nix
     ./hedgedoc.nix
     ./microbin.nix
     ./nextcloud.nix
