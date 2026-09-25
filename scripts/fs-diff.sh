@@ -10,7 +10,7 @@ sed '$d' |
 cut -f17- -d' ' |
 sort |
 uniq |
-while read path; do
+while read -r path; do
   path="/$path"
   if [ -L "$path" ]; then
     : # The path is a symbolic link, so is probably handled by NixOS already

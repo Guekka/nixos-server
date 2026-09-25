@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 DISK=/dev/sda
 
 parted "$DISK" -- mklabel gpt
