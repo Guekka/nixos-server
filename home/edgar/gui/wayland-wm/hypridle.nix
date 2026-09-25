@@ -26,7 +26,7 @@ in {
 
       listener = [
         {
-          timeout = 300;
+          timeout = 600;
           on-timeout = suspendScript.outPath;
           on-resume = lock_cmd;
         }
