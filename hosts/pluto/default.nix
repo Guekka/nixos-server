@@ -6,6 +6,7 @@
     ../common/optional/dawarich.nix
     ../common/optional/dyndns.nix
     ../common/optional/fail2ban.nix
+    ../common/optional/grist.nix
     ../common/optional/immich.nix
     ../common/optional/impermanence/impermanence.nix
     ../common/optional/karakeep.nix
