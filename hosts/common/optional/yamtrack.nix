@@ -30,7 +30,7 @@ in {
     };
   };
 
-  services.redis.enable = true;
+  services.redis.servers."".enable = true;
 
   sops.secrets.yamtrack.sopsFile = ../secrets.yaml;
 

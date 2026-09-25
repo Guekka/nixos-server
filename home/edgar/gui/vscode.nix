@@ -2,7 +2,7 @@
   programs.vscode = {
     enable = true;
     profiles.default.enableExtensionUpdateCheck = false;
-    enableUpdateCheck = false;
+    profiles.default.enableUpdateCheck = false;
     # i love immutability, but sometimes I want a one-time extension
     mutableExtensionsDir = true;
     profiles.default.extensions = with pkgs.vscode-extensions;

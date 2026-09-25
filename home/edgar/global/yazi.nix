@@ -10,6 +10,7 @@
   programs.yazi = {
     enable = true;
     package = pkgs.unstable.yazi;
+    shellWrapperName = "yy"; # keep legacy default (stateVersion < 26.05)
 
     theme.flavor = {
       light = "flexoki-light";
@@ -121,7 +122,7 @@
   xdg.configFile."yazi/vfs.toml".source = (pkgs.formats.toml {}).generate "yazi-vfs" {
     services = let
       mkSftp = host: {
-        type = "sftp";
+        kind = "sftp";
         inherit host;
         port = 22;
         user = "edgar";

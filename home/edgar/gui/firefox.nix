@@ -1,6 +1,7 @@
 {
   programs.firefox = {
     enable = true;
+    configPath = ".mozilla/firefox"; # keep legacy default (stateVersion < 26.05)
   };
 
   home = {

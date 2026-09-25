@@ -24,7 +24,6 @@
     packages = with pkgs; [
       pkgs.unstable.beeper
       chromium # for the rare occasion a website breaks on firefox
-      jitsi-meet-electron
       # gram
       keepassxc
       kobo-readstat

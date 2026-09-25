@@ -7,7 +7,7 @@
 
   modifications = final: prev: let
     unstable = import inputs.nixpkgs-unstable {
-      inherit (final) system;
+      system = final.stdenv.hostPlatform.system;
       config.allowUnfree = true;
     };
   in {
@@ -33,7 +33,7 @@
       '';
     });
 
-    helix-latest = inputs.helix.packages.${prev.system}.helix;
+    helix-latest = inputs.helix.packages.${prev.stdenv.hostPlatform.system}.helix;
 
     sweethome3d.application = prev.sweethome3d.application.overrideAttrs (old: {
       src = prev.fetchFromGitHub {

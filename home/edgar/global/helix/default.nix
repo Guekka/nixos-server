@@ -11,7 +11,7 @@
   helix-copilot = pkgs.symlinkJoin {
     name = "helix";
     paths = [
-      inputs.helix.packages.${pkgs.system}.helix
+      inputs.helix.packages.${pkgs.stdenv.hostPlatform.system}.helix
     ];
     buildInputs = [pkgs.makeWrapper];
     runtimeInputs = [
@@ -224,7 +224,7 @@ in {
           args = ["--stdio"];
         };
 
-        wakatime.command = lib.getExe inputs.wakatime-lsp.packages.${pkgs.system}.default;
+        wakatime.command = lib.getExe inputs.wakatime-lsp.packages.${pkgs.stdenv.hostPlatform.system}.default;
       };
     };
   };

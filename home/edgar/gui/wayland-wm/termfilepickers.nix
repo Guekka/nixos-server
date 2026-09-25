@@ -8,7 +8,7 @@
   imports = [inputs.xdp-termfilepickers.homeManagerModules.default];
 
   services.xdg-desktop-portal-termfilepickers = let
-    termfilepickers = inputs.xdp-termfilepickers.packages.${pkgs.system}.default.override {
+    termfilepickers = inputs.xdp-termfilepickers.packages.${pkgs.stdenv.hostPlatform.system}.default.override {
       customYazi = config.programs.yazi.package;
     };
   in {

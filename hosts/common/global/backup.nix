@@ -57,7 +57,7 @@
         data_sample_percentage = 10;
         data_tolerance_percentage = 0.5;
         xxh64sum_command = pkgs.writeShellScript "xxhash64" ''
-          exec ${pkgs.xxHash}/bin/xxhsum -H64 "$1"
+          exec ${pkgs.xxhash}/bin/xxhsum -H64 "$1"
         '';
       }
     ];

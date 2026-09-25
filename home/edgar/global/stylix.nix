@@ -11,6 +11,8 @@
   stylix = {
     enable = true;
     autoEnable = true;
+    # useGlobalPkgs forbids nixpkgs options in home-manager
+    overlays.enable = false;
     image = lib.mkIf (config ? wallpaper) config.wallpaper;
     base16Scheme = lib.mkDefault "${pkgs.base16-schemes}/share/themes/selenized-light.yaml";
     polarity = lib.mkDefault "light";
