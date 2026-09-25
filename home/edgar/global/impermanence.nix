@@ -14,6 +14,7 @@
       ".ssh"
 
       # .config
+      ".config/fcitx5"
       ".config/java"
       # TOOD: use a secret instead
       ".config/immich-go"
