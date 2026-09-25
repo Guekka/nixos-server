@@ -109,7 +109,7 @@
       plugin = {
         append_previewers = [
           {
-            name = "*";
+            url = "*";
             run = "hexyl";
           }
         ];

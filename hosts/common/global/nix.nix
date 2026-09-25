@@ -14,7 +14,7 @@
 
       substituters = [
         "https://nix-community.cachix.org"
-        "https://cuda-maintainers.cachix.org"
+        "https://cache.nixos-cuda.org"
         "https://anyrun.cachix.org"
       ];
       trusted-public-keys = [
