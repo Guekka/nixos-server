@@ -21,7 +21,7 @@
 
   services.immich = {
     enable = true;
-    package = pkgs.immich;
+    package = pkgs.unstable.immich;
     environment = {
       # Never unload models, it uses less than 1GB of RAM and is much more pleasant to use when searching
       MACHINE_LEARNING_MODEL_TTL = "0";
