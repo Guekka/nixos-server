@@ -12,7 +12,7 @@ in {
 
   virtualisation.oci-containers.containers.yamtrack = {
     # fork with a few more features
-    image = "ghcr.io/dannyvfilms/yamtrack:26.4.2";
+    image = "ghcr.io/dannyvfilms/yamtrack:26.6.18";
     volumes = [
       "${dataDir}:/yamtrack/db"
     ];
