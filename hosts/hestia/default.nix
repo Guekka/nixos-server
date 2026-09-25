@@ -7,6 +7,7 @@
     ../common/global
     ../common/optional/bluetooth.nix
     ../common/optional/brightness.nix
+    ../common/optional/docker.nix
     ../common/optional/gamescope.nix
     ../common/optional/impermanence/impermanence.nix
     ../common/optional/ledger.nix
