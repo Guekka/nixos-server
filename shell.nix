@@ -2,12 +2,19 @@
   devenv,
   pkgs,
   inputs,
+  ...
 }: {
   default = devenv.lib.mkShell {
     inherit pkgs inputs;
     modules = [
       {
-        packages = with pkgs; [home-manager git sops statix];
+        packages = with pkgs; [
+          home-manager
+          git
+          sops
+          statix
+          helix
+        ];
         git-hooks.hooks = {
           shellcheck.enable = true; # shell static analysis
           alejandra.enable = true; # nix format
