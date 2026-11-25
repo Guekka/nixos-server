@@ -13,7 +13,7 @@
           git
           sops
           statix
-          helix
+          ripgrep
         ];
         git-hooks.hooks = {
           shellcheck.enable = true; # shell static analysis
