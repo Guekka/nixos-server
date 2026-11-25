@@ -2,7 +2,7 @@
   imports = [
     ../common/global
     ../common/optional/bluetooth.nix
-    ../common/optional/hyprland.nix
+    ../common/optional/niri.nix
     ../common/optional/impermanence/impermanence-old.nix
     ../common/optional/ledger.nix
     ../common/optional/noisetorch.nix
@@ -37,9 +37,6 @@
     percentageLow = 15;
     criticalPowerAction = "Hibernate";
   };
-
-  # brightness control
-  programs.light.enable = true;
 
   sops.secrets.deimos-borgbackup-passphrase.sopsFile = ./secrets.yaml;
 }

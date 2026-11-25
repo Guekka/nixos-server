@@ -78,7 +78,6 @@ with config.lib.stylix.colors; let
   wl-copy = lib.getExe' pkgs.wl-clipboard "wl-copy";
 in {
   imports = [
-    inputs.niri.homeModules.niri
     inputs.niri.homeModules.stylix
     ../wayland-wm
     ./tty-init.nix

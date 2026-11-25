@@ -1,7 +1,7 @@
 {
   config,
-  lib,
   pkgs,
+  utils,
   ...
 }: let
   hostname = config.networking.hostName;
@@ -43,6 +43,29 @@ in {
     enable = true;
     supportedFilesystems = ["btrfs"];
 
-    postResumeCommands = lib.mkAfter ''echo "Executing rollback script" && ${rollback-script} ${disk}'';
+    systemd.services.persisted-files = {
+      description = "Rollback Btrfs root subvolume";
+      unitConfig.DefaultDependencies = false;
+      requires = [
+        "${utils.escapeSystemdPath disk}.device"
+      ];
+      after = [
+        "${utils.escapeSystemdPath disk}.device"
+        "local-fs-pre.target"
+        "systemd-hibernate-resume.service"
+      ];
+      before = ["sysroot.mount"];
+      requiredBy = ["initrd.target"];
+      serviceConfig = {
+        Type = "oneshot";
+        StandardOutput = "journal+console";
+        StandardError = "journal+console";
+      };
+      script = ''
+        set -eu
+        echo "Executing rollback script"
+        ${rollback-script} ${disk}
+      '';
+    };
   };
 }

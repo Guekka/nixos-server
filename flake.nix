@@ -109,11 +109,24 @@
 
     mkHome = host: system:
       home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.${system};
+        pkgs = import nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+          overlays = builtins.attrValues self.overlays;
+        };
         extraSpecialArgs = {inherit (self) inputs outputs;};
-        modules = [
-          ./home/edgar/${host}.nix
-        ];
+        modules =
+          [
+            ./home/edgar/${host}.nix
+            {
+              # NixOS applies the impermanence mounts; this output manages only user files.
+              myHome.impermanence.enable = nixpkgs.lib.mkForce false;
+            }
+          ]
+          ++ nixpkgs.lib.optionals (builtins.elem host ["deimos" "hestia"]) [
+            inputs.niri.homeModules.niri
+            {programs.niri.enable = true;}
+          ];
       };
   in {
     formatter = forEachPkgs (pkgs: pkgs.alejandra);

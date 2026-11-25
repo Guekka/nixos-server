@@ -26,7 +26,7 @@ in {
         };
         refreshRate = mkOption {
           type = types.float;
-          default = 60;
+          default = 60.0;
         };
         scale = mkOption {
           type = types.float;
