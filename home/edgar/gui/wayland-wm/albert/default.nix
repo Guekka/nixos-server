@@ -7,12 +7,11 @@
     # used by plugins
     sessionVariables."GOLDENDICT_FORCE_WAYLAND" = "1";
     packages = [pkgs.goldendict-ng pkgs.libnotify];
-
-    persistence."/persist/nobackup".directories = [
-      ".cache/albert"
-      ".local/share/albert"
-    ];
   };
+  myHome.impermanence.passthrough."/persist/nobackup".directories = [
+    ".cache/albert"
+    ".local/share/albert"
+  ];
 
   services.albert.enable = true;
 

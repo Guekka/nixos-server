@@ -8,17 +8,16 @@
       joystickwake
       lutris-free
     ];
+  };
+  myHome.impermanence.passthrough = {
+    "/persist/backup".directories = [
+      ".config/lutris"
+      ".local/share/Terraria"
+    ];
 
-    persistence = {
-      "/persist/backup".directories = [
-        ".config/lutris"
-        ".local/share/Terraria"
-      ];
-
-      "/persist/nobackup".directories = [
-        ".local/share/lutris"
-        ".cache/lutris"
-      ];
-    };
+    "/persist/nobackup".directories = [
+      ".local/share/lutris"
+      ".cache/lutris"
+    ];
   };
 }

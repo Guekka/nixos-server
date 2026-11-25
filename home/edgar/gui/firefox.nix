@@ -5,17 +5,16 @@
   };
 
   home = {
-    persistence = {
-      "/persist/backup".directories = [
-        ".mozilla"
-      ];
-
-      "/persist/nobackup".directories = [
-        ".cache/mozilla"
-      ];
-    };
-
     sessionVariables.BROWSER = "firefox";
+  };
+  myHome.impermanence.passthrough = {
+    "/persist/backup".directories = [
+      ".mozilla"
+    ];
+
+    "/persist/nobackup".directories = [
+      ".cache/mozilla"
+    ];
   };
 
   xdg.mimeApps = {

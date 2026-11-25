@@ -4,7 +4,7 @@
     nix-direnv.enable = true;
   };
 
-  home.persistence."/persist/nobackup".directories = [
+  myHome.impermanence.passthrough."/persist/nobackup".directories = [
     ".local/share/direnv"
   ];
 }

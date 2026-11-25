@@ -43,7 +43,7 @@
     '';
   };
 
-  home.persistence = {
+  myHome.impermanence.passthrough = {
     "/persist/backup".directories = [
       ".config/fish"
     ];

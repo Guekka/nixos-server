@@ -24,7 +24,7 @@
     };
   };
 
-  home.persistence."/persist/backup".directories = [
+  myHome.impermanence.passthrough."/persist/backup".directories = [
     ".hyperhdr"
   ];
 }

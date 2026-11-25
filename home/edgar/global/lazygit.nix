@@ -12,8 +12,8 @@
     };
   };
 
-  home = {
-    persistence."/persist/backup".directories = [
+  myHome = {
+    impermanence.passthrough."/persist/backup".directories = [
       ".local/state/lazygit"
     ];
   };

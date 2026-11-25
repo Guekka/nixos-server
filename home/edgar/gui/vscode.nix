@@ -47,7 +47,6 @@
       "editor.fontLigatures" = true;
 
       "editor.unicodeHighlight.nonBasicASCII" = false;
-
       "explorer.confirmDragAndDrop" = false;
 
       "files.eol" = "\n";
@@ -93,7 +92,7 @@
     };
   };
 
-  home.persistence."/persist/nobackup".directories = [
+  myHome.impermanence.passthrough."/persist/nobackup".directories = [
     ".config/Code"
   ];
 }

@@ -8,15 +8,14 @@
     packages = [
       config.services.nextcloud-client.package
     ];
+  };
+  myHome.impermanence.passthrough = {
+    "/persist/backup".directories = [
+      ".config/Nextcloud"
+    ];
 
-    persistence = {
-      "/persist/backup".directories = [
-        ".config/Nextcloud"
-      ];
-
-      "/persist/nobackup".directories = [
-        "Nextcloud"
-      ];
-    };
+    "/persist/nobackup".directories = [
+      "Nextcloud"
+    ];
   };
 }

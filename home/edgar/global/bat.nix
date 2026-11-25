@@ -4,7 +4,7 @@
     extraPackages = with pkgs.bat-extras; [batman batgrep batwatch batpipe prettybat];
   };
 
-  home.persistence."/persist/nobackup".directories = [
+  myHome.impermanence.passthrough."/persist/nobackup".directories = [
     ".cache/bat"
   ];
 }

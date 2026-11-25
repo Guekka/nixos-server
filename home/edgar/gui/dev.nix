@@ -15,7 +15,7 @@ in {
     uv
   ];
 
-  home.persistence."/persist/nobackup" = {
+  myHome.impermanence.passthrough."/persist/nobackup" = {
     directories = [
       ".cache/JetBrains"
       ".config/JetBrains"

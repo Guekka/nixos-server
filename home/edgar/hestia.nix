@@ -7,6 +7,8 @@
     ./gui
   ];
 
+  myHome.impermanence.enable = true;
+
   wallpaper = ./gui/background21.png;
 
   monitors = [

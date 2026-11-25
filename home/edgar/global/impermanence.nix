@@ -1,7 +1,7 @@
 {lib, ...}: {
   # TODO move these to their own files
 
-  home.persistence."/persist/backup" = {
+  myHome.impermanence.passthrough."/persist/backup" = {
     directories = [
       # Root dirs
       "Documents"
@@ -28,7 +28,7 @@
     ];
   };
 
-  home.persistence."/persist/nobackup" = {
+  myHome.impermanence.passthrough."/persist/nobackup" = {
     directories = [
       # Root dirs
       "Games"

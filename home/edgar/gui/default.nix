@@ -35,13 +35,12 @@
       vlc
       wl-clipboard
     ];
-
-    persistence."/persist/nobackup" = {
-      directories = [
-        {
-          directory = ".config/BeeperTexts";
-        }
-      ];
-    };
+  };
+  myHome.impermanence.passthrough."/persist/nobackup" = {
+    directories = [
+      {
+        directory = ".config/BeeperTexts";
+      }
+    ];
   };
 }

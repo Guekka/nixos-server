@@ -5,9 +5,8 @@
       pkgs.mozjpeg # for jpeg transformation
       pkgs.optipng
     ];
-
-    persistence."/persist/backup".directories = [
-      ".config/calibre"
-    ];
   };
+  myHome.impermanence.passthrough."/persist/backup".directories = [
+    ".config/calibre"
+  ];
 }

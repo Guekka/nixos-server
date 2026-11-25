@@ -8,6 +8,8 @@
     ./gui
   ];
 
+  myHome.impermanence.enable = true;
+
   monitors = [
     {
       name = "eDP-1";
