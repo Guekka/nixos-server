@@ -1,4 +1,5 @@
 {
+  config,
   lib,
   pkgs,
   ...
@@ -10,23 +11,39 @@
       head = lib.getExe' pkgs.toybox "head";
       find = lib.getExe' pkgs.toybox "find";
     in ''
-      for line in $(${home-manager} generations | ${grep} -o '/.*')
+      for generation in $(${home-manager} generations | ${grep} -o '/[^[:space:]]*')
       do
-        res=$(${find} $line | ${grep} specialisation | ${head} -1)
-        output=$?
-        if [[ $output -eq 0 ]] && [[ $res != "" ]]; then
-            echo $res
-            exit
+        specialisation="$(${find} "$generation" -type d -name specialisation -print | ${head} -1)"
+        if [[ -n "$specialisation" ]]; then
+          printf '%s\n' "$specialisation"
+          exit 0
         fi
       done
+      echo "Unable to find a Home Manager specialisation directory" >&2
+      exit 1
     '';
 
     switch-theme-script = let
+      cat = lib.getExe' pkgs.coreutils "cat";
       killall = lib.getExe pkgs.killall;
       albert = lib.getExe pkgs.albert;
+      specialisation-marker = "${config.xdg.dataHome}/home-manager/specialisation";
     in
       theme: ''
-        $(${find-hm-generation})/${theme}/activate
+        if [[ -e ${lib.escapeShellArg specialisation-marker} ]]; then
+          current_theme="$(${cat} ${lib.escapeShellArg specialisation-marker})" || exit 1
+          if [[ "$current_theme" == "${theme}" ]]; then
+            exit 0
+          fi
+        fi
+
+        specialisation_dir="$(${find-hm-generation})" || exit 1
+        activation="$specialisation_dir/${theme}/activate"
+        if [[ ! -x "$activation" ]]; then
+          echo "Home Manager ${theme} specialisation activation not found: $activation" >&2
+          exit 1
+        fi
+        "$activation"
         ${killall} -SIGUSR1 .hx-wrapped
         ${albert} restart
       '';
