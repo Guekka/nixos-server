@@ -27,6 +27,7 @@
     "/persist/backup/home/*/.gradle"
     "/persist/backup/home/*/.opam"
     "/persist/backup/home/*/.clangd"
+    "/persist/backup/home/*/.config/mozilla/firefox/*/storage"
     "/persist/backup/home/*/.mozilla/firefox/*/storage"
     "/persist/backup/home/*/.vcpkg"
     "/persist/backup/home/*/.vscode"
