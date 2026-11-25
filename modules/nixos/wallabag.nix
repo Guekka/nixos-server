@@ -37,7 +37,7 @@
       locale = "en";
 
       "env(SECRET_FILE)" = "${cfg.secretPath}";
-      secret = "test";
+      secret = "%env(file:SECRET_FILE)%";
 
       twofactor_auth = true;
       twofactor_sender = "no-reply@${cfg.domain}";
@@ -220,8 +220,7 @@ in {
       serviceConfig =
         {
           User = cfg.user;
-          Restart = "always";
-          RuntimeMaxSec = "10m"; # wallabag stops working every now and then. This "fixes" it
+          Type = "oneshot";
         }
         // wallabagServiceConfig;
       preStart = ''

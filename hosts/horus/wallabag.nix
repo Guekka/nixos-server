@@ -1,5 +1,5 @@
 {
-  pkgs,
+  config,
   outputs,
   ...
 }: {
@@ -8,7 +8,12 @@
   services.wallabag = {
     enable = true;
     domain = "wallabag.bizel.fr";
-    secretPath = pkgs.writeText "test" "test";
+    secretPath = config.sops.secrets.wallabag-secret.path;
+  };
+
+  sops.secrets.wallabag-secret = {
+    sopsFile = ./secrets.yaml;
+    owner = "wallabag";
   };
 
   services.nginx.virtualHosts."wallabag.bizel.fr" = {
