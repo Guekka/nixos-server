@@ -6,9 +6,12 @@
   programs.lazygit = {
     enable = true;
     settings = {
-      git.pagers = [
-        {pager = "${lib.getExe pkgs.delta} --paging=never";}
-      ];
+      git = {
+        pagers = [
+          {pager = "${lib.getExe pkgs.delta} --paging=never";}
+        ];
+        overrideGpg = true;
+      };
     };
   };
 
