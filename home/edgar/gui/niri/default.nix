@@ -78,6 +78,7 @@ with config.lib.stylix.colors; let
   wl-copy = lib.getExe' pkgs.wl-clipboard "wl-copy";
 in {
   imports = [
+    inputs.niri.homeModules.niri
     inputs.niri.homeModules.stylix
     ../wayland-wm
     ./tty-init.nix
@@ -226,12 +227,12 @@ in {
         }
       ];
     layout = {
-      gaps = 8;
+      gaps = 4;
       struts = {
         top = -8; # removes gap
         bottom = -8;
-        left = 64;
-        right = 64;
+        left = 20;
+        right = 20;
       };
       always-center-single-column = true;
       center-focused-column = "on-overflow";
