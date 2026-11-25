@@ -5,7 +5,6 @@ in {
   with pkgs; [
     (pluginify clion)
     (pluginify idea)
-    (pluginify rust-rover)
 
     qtcreator
 
