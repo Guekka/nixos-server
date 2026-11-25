@@ -13,6 +13,7 @@
     ./gtk.nix
     ./ledger.nix
     ./nextcloud-client.nix
+    ./thunderbird.nix
     ./niri
     ./vscode.nix
     ./zathura.nix

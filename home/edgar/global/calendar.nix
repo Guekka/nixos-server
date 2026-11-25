@@ -26,6 +26,14 @@
         userName = "edgar";
         passwordCommand = ["${pkgs.bat}/bin/bat" "-p" "/home/edgar/secrets/nextcloud_pass"];
       };
+
+      thunderbird = {
+        enable = true;
+        # Thunderbird needs the concrete collection URL; vdirsyncer discovers from the DAV root.
+        settings = id: {
+          "calendar.registry.calendar_${id}.uri" = "https://nc.bizel.fr/remote.php/dav/calendars/edgar/personal/";
+        };
+      };
     };
   };
 
