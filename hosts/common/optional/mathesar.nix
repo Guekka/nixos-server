@@ -15,16 +15,15 @@ in {
     image = "docker.io/mathesar/mathesar:${version}";
     environment = {
       DJANGO_SETTINGS_MODULE = "config.settings.production";
-      ALLOWED_HOSTS = "*";
+      ALLOWED_HOSTS = domain;
       DEBUG = "false";
-      SECRET_KEY = config.sops.secrets.mathesar-secret.path;
       DOMAIN_NAME = "https://${domain}";
     };
     environmentFiles = [
       config.sops.secrets.mathesar-env.path
     ];
 
-    ports = ["${toString port}:8000"];
+    ports = ["127.0.0.1:${toString port}:8000"];
     volumes = [
       "${dataDir}/static:/code/static"
       "${dataDir}/media:/code/media"
@@ -44,7 +43,7 @@ in {
   };
 
   services.nginx.virtualHosts.${domain} = {
-    locations."/".proxyPass = "http://localhost:${toString port}";
+    locations."/".proxyPass = "http://127.0.0.1:${toString port}";
     forceSSL = true;
     useACMEHost = "bizel.fr";
   };
