@@ -1,8 +1,20 @@
 {
+  config,
   lib,
   pkgs,
   ...
-}: {
+}: let
+  fzfColors = config.programs.fzf.colors;
+in {
+  # fzf parses FZF_DEFAULT_OPTS after the options file, so keep only non-theme options here.
+  home.sessionVariables = {
+    FZF_DEFAULT_OPTS = lib.mkForce (lib.concatStringsSep " " config.programs.fzf.defaultOptions);
+    FZF_DEFAULT_OPTS_FILE = "${config.xdg.configHome}/fzf/colors";
+  };
+  xdg.configFile."fzf/colors".text = lib.optionalString (fzfColors != {}) ''
+    --color ${lib.concatStringsSep "," (lib.mapAttrsToList (name: value: "${name}:${value}") fzfColors)}
+  '';
+
   programs.fzf = let
     fdCommand = "${lib.getExe pkgs.fd} -H --type f --color=always";
   in {
