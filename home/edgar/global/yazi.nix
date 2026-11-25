@@ -120,9 +120,8 @@
 
   # not yet integrated in HM
   xdg.configFile."yazi/vfs.toml".source = (pkgs.formats.toml {}).generate "yazi-vfs" {
-    services = let
+    sftp = let
       mkSftp = host: {
-        kind = "sftp";
         inherit host;
         port = 22;
         user = "edgar";
