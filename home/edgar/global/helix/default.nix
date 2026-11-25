@@ -124,6 +124,10 @@ in {
           };
         }
         {
+          name = "java";
+          language-servers = ["jdtls"];
+        }
+        {
           name = "markdown";
           language-servers = ["markdown-oxide" "wakatime"];
         }
@@ -182,6 +186,8 @@ in {
           clangd.fallbackFlags = ["-std=c++2b"];
           args = ["--compile-commands-dir=build"];
         };
+
+        jdtls.command = lib.getExe pkgs.jdt-language-server;
 
         markdown-oxide.command = lib.getExe pkgs.markdown-oxide;
 
