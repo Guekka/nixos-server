@@ -18,4 +18,6 @@
       terminal_command = [(lib.getExe pkgs.kitty)];
     };
   };
+
+  systemd.user.services.xdg-desktop-portal-termfilepickers.Unit.X-SwitchMethod = "keep-old";
 }
