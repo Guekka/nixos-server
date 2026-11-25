@@ -300,7 +300,10 @@ in {
     window-rules = let
       albert-matcher = {title = "Albert";};
       beeper-matcher = {title = "Beeper";};
-      keepass-matcher = {app-id = "org.keepassxc.KeePassXC";};
+      keepass-matcher = {
+        app-id = "org.keepassxc.KeePassXC";
+        is-floating = false;
+      };
     in [
       {
         matches = [];
