@@ -82,6 +82,7 @@ in {
     inputs.niri.homeModules.stylix
     ../wayland-wm
     ./tty-init.nix
+    ./ydotool.nix
   ];
 
   programs.niri.package = pkgs.unstable.niri;

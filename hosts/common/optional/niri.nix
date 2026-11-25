@@ -25,6 +25,8 @@
     enable = true;
     package = pkgs.niri;
   };
+  hardware.uinput.enable = true;
+  programs.ydotool.enable = true;
   programs.xwayland.enable = true;
 
   services.gnome.gnome-keyring.enable = lib.mkForce false;
