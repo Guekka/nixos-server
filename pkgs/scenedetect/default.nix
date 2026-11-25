@@ -35,7 +35,7 @@ python3.pkgs.buildPythonApplication rec {
   meta = with lib; {
     description = "Movie_camera: Python and OpenCV-based scene cut/transition detection program & library";
     homepage = "https://github.com/Breakthrough/PySceneDetect";
-    license = licenses.unfree; # FIXME: nix-init did not found a license
+    license = licenses.bsd3;
     maintainers = with maintainers; [];
     mainProgram = "py-scene-detect";
   };
