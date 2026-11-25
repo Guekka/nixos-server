@@ -33,6 +33,18 @@
       '';
     });
 
+    # gs conflicts with ghostscript
+    git-spice = unstable.git-spice.overrideAttrs (_old: {
+      postFixup = ''
+          mv $out/bin/{gs,git-spice}
+
+        installShellCompletion --cmd git-spice \
+        --bash <($out/bin/git-spice shell completion bash) \
+        --zsh <($out/bin/git-spice shell completion zsh) \
+        --fish <($out/bin/git-spice shell completion fish)
+      '';
+    });
+
     helix-latest = inputs.helix.packages.${prev.stdenv.hostPlatform.system}.helix;
 
     sweethome3d.application = prev.sweethome3d.application.overrideAttrs (old: {
