@@ -12,4 +12,6 @@
       "--group-directories-first"
     ];
   };
+
+  home.shellAliases."l" = "eza";
 }
