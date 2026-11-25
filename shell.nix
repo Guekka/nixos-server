@@ -11,6 +11,7 @@
         packages = with pkgs; [
           home-manager
           git
+          nh
           sops
           statix
           ripgrep
