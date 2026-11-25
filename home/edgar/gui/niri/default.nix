@@ -65,6 +65,16 @@ with config.lib.stylix.colors; let
   socat = lib.getExe pkgs.socat;
   killall = "${pkgs.killall}/bin/killall";
   brightnessctl = lib.getExe pkgs.brightnessctl;
+  ddcutil = lib.getExe pkgs.ddcutil;
+  hasInternalPanel = builtins.any (monitor: lib.hasPrefix "eDP-" monitor.name) config.monitors;
+  brightnessUp =
+    if hasInternalPanel
+    then "${brightnessctl} set 10%+"
+    else "${ddcutil} setvcp 10 + 10";
+  brightnessDown =
+    if hasInternalPanel
+    then "${brightnessctl} set 10%-"
+    else "${ddcutil} setvcp 10 - 10";
   wpctl = lib.getExe' pkgs.wireplumber "wpctl";
 
   playerctl = lib.getExe pkgs.playerctl;
@@ -118,8 +128,8 @@ in {
           "XF86AudioLowerVolume".action = sh "${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 0.05-";
           "XF86AudioMute".action = sh "${wpctl} set-mute @DEFAULT_AUDIO_SINK@ toggle";
 
-          "XF86MonBrightnessUp".action = sh "${brightnessctl} set 10%+";
-          "XF86MonBrightnessDown".action = sh "${brightnessctl} set 10%-";
+          "XF86MonBrightnessUp".action = sh brightnessUp;
+          "XF86MonBrightnessDown".action = sh brightnessDown;
 
           "Print".action.screenshot = [];
           "Mod+Print".action.screenshot-window = [];
@@ -287,6 +297,10 @@ in {
             inherit height;
             refresh = refreshRate;
           };
+          variable-refresh-rate =
+            if vrr
+            then "on-demand"
+            else false;
           position = {
             inherit x;
             inherit y;
@@ -330,9 +344,18 @@ in {
       }
     ];
 
-    workspaces = {
-      utils = {};
-    };
+    workspaces =
+      {
+        utils = {};
+      }
+      // builtins.listToAttrs (
+        map
+        (monitor: {
+          name = monitor.workspace;
+          value.open-on-output = monitor.name;
+        })
+        (lib.filter (monitor: monitor.workspace != null) config.monitors)
+      );
 
     environment = {
       DISPLAY = ":0";

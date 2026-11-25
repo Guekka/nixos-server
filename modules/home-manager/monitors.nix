@@ -52,10 +52,6 @@ in {
           type = lib.types.bool;
           default = false;
         };
-        hdr = mkOption {
-          type = lib.types.bool;
-          default = false;
-        };
       };
     });
     default = [];

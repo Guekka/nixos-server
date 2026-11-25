@@ -21,7 +21,6 @@
       workspace = "1";
       primary = true;
       vrr = true;
-      hdr = true;
     }
   ];
 }

@@ -11,6 +11,7 @@
       ${pkgs.systemd}/bin/systemctl suspend
     fi
   '';
+  hasInternalPanel = builtins.any (monitor: lib.hasPrefix "eDP-" monitor.name) config.monitors;
 in {
   # screen idle
   services.hypridle = let
@@ -27,7 +28,10 @@ in {
       listener = [
         {
           timeout = 900;
-          on-timeout = suspendScript.outPath;
+          on-timeout =
+            if hasInternalPanel
+            then suspendScript.outPath
+            else lock_cmd;
           on-resume = lock_cmd;
         }
       ];
