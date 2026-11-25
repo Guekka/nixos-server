@@ -36,6 +36,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    sharry = {
+      url = "github:eikek/sharry";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
     stylix = {
       url = "github:nix-community/stylix/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -131,7 +136,11 @@
   in {
     formatter = forEachPkgs (pkgs: pkgs.alejandra);
 
-    packages = forEachPkgs (pkgs: import ./pkgs {inherit pkgs;});
+    packages = forEachSystem (system:
+      import ./pkgs {
+        pkgs = nixpkgs.legacyPackages.${system};
+        inherit system;
+      });
 
     nixosModules = import ./modules/nixos;
     homeManagerModules = import ./modules/home-manager;

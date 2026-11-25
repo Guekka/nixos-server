@@ -1,7 +1,10 @@
 {inputs, ...}: {
   # my packages
-  additions = final: _prev:
-    import ../pkgs {pkgs = final;};
+  additions = final: prev:
+    import ../pkgs {
+      pkgs = final;
+      system = prev.stdenv.hostPlatform.system;
+    };
 
   inherit (inputs.niri.overlays) niri;
 
