@@ -5,26 +5,27 @@
     profiles.default.enableUpdateCheck = false;
     # i love immutability, but sometimes I want a one-time extension
     mutableExtensionsDir = true;
-    profiles.default.extensions = with pkgs.vscode-extensions;
-      [
-        arrterian.nix-env-selector
-        github.copilot
-        jnoortheen.nix-ide
-        # vscode-extensions.ms-python.python not working currently
-        ms-python.vscode-pylance
-        ms-toolsai.jupyter
-        ms-vscode.makefile-tools
-        rust-lang.rust-analyzer
-        pkief.material-icon-theme
-      ]
-      ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-        {
-          name = "aw-watcher-vscode";
-          publisher = "activitywatch";
-          version = "0.5.0";
-          sha256 = "sha256-OrdIhgNXpEbLXYVJAx/jpt2c6Qa5jf8FNxqrbu5FfFs=";
-        }
-      ];
+    profiles.default.extensions = with pkgs.vscode-extensions; [
+      #   arrterian.nix-env-selector
+      github.copilot
+      github.copilot-chat
+      #   jnoortheen.nix-ide
+      ms-python.python
+      ms-python.vscode-pylance
+      #   ms-toolsai.jupyter
+      #   ms-vscode.makefile-tools
+      #   rust-lang.rust-analyzer
+      pkief.material-icon-theme
+      robocorp.robotframework-lsp
+      # ]
+      # ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+      #   {
+      #     name = "aw-watcher-vscode";
+      #     publisher = "activitywatch";
+      #     version = "0.5.0";
+      #     sha256 = "sha256-OrdIhgNXpEbLXYVJAx/jpt2c6Qa5jf8FNxqrbu5FfFs=";
+      #   }
+    ];
 
     profiles.default.userSettings = {
       "chat.tools.terminal.terminalProfile.linux" = {
@@ -47,6 +48,9 @@
       "editor.fontLigatures" = true;
 
       "editor.unicodeHighlight.nonBasicASCII" = false;
+      # Word wrap
+      "editor.wordWrap" = true;
+
       "explorer.confirmDragAndDrop" = false;
 
       "files.eol" = "\n";
