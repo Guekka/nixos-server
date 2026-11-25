@@ -7,8 +7,15 @@
   hostname = config.networking.hostName;
   disk = "/dev/disk/by-label/${hostname}";
   rollback-script = pkgs.writeShellScript "btrfs-rollback-script" (builtins.readFile ./btrfs-rollback-script.sh);
+  diff-script = pkgs.writeShellScript "btrfs-diff-raw" (builtins.readFile ./btrfs-diff-script.sh);
 in {
   imports = [./impermanence-common.nix];
+
+  environment.systemPackages = [
+    (pkgs.writeShellScriptBin "impermanence-diff" ''
+      exec ${diff-script} "${disk}"
+    '')
+  ];
 
   # We're making the assumption the disk has a label
   fileSystems = {

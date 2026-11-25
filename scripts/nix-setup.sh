@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+set -euo pipefail
+
+: "${BTRFS_LABEL:?Set BTRFS_LABEL to match networking.hostName before running this installer}"
+
 DISK=/dev/sda
 
 parted "$DISK" -- mklabel gpt
@@ -13,7 +17,7 @@ mkswap -L Swap "$DISK"2
 swapon "$DISK"2
 
 parted "$DISK" -- mkpart primary 9GiB 100%
-mkfs.btrfs -L Butter "$DISK"3
+mkfs.btrfs -L "$BTRFS_LABEL" "$DISK"3
 
 mount "$DISK"3 /mnt
 btrfs subvolume create /mnt/root

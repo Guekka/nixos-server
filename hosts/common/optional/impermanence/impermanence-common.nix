@@ -1,21 +1,7 @@
-{
-  config,
-  inputs,
-  pkgs,
-  ...
-}: let
-  hostname = config.networking.hostName;
-  diff-script = pkgs.writeShellScript "btrfs-diff-raw" (builtins.readFile ./btrfs-diff-script.sh);
-in {
+{inputs, ...}: {
   imports = [
     inputs.impermanence.nixosModule
     inputs.disko.nixosModules.default
-  ];
-
-  environment.systemPackages = [
-    (pkgs.writeShellScriptBin "impermanence-diff" ''
-      exec ${diff-script} "/dev/disk/by-label/${hostname}"
-    '')
   ];
 
   # always persist these

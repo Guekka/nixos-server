@@ -1,11 +1,21 @@
 {
   config,
+  pkgs,
   utils,
   ...
 }: let
   hostname = config.networking.hostName;
+  disk = "/dev/disk/by-label/${hostname}";
+  diff-script = pkgs.writeShellScript "btrfs-diff-raw" (builtins.readFile ./btrfs-diff-script.sh);
 in {
   imports = [./impermanence-common.nix];
+
+  environment.systemPackages = [
+    (pkgs.writeShellScriptBin "impermanence-diff" ''
+      exec ${diff-script} "${disk}"
+    '')
+  ];
+
   disko.devices = {
     disk.main = {
       type = "disk";
