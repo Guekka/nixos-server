@@ -39,7 +39,7 @@
     ++ (builtins.attrValues outputs.homeManagerModules);
 
   home = {
-    username = "edgar";
+    username = lib.mkDefault "edgar";
     homeDirectory = "/home/${config.home.username}";
     stateVersion = "22.11";
   };
