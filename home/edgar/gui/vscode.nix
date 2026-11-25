@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   programs.vscode = {
     enable = true;
+    package = pkgs.unstable.vscode;
     profiles.default.enableExtensionUpdateCheck = false;
     profiles.default.enableUpdateCheck = false;
     # i love immutability, but sometimes I want a one-time extension
