@@ -12,12 +12,12 @@ in {
   virtualisation.oci-containers.containers.actualbudget = {
     autoStart = true;
     image = "ghcr.io/actualbudget/actual-server:${version}";
-    ports = ["${toString port}:5006"];
+    ports = ["127.0.0.1:${toString port}:5006"];
     volumes = ["${dataDir}/:/data"];
   };
 
   services.nginx.virtualHosts."actual.bizel.fr" = {
-    locations."/".proxyPass = "http://localhost:${toString port}";
+    locations."/".proxyPass = "http://127.0.0.1:${toString port}";
     forceSSL = true;
     useACMEHost = "bizel.fr";
   };
