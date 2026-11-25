@@ -15,6 +15,49 @@
           echo (fd . $argv -tf -x stat -c '%X %n' | sort -nr | head -n 1 | cut -f 2- -d ' ')
         '';
       };
+
+      # run command in each directory passed as argument in parallel
+      run-all = {
+        body = ''
+          # Usage: run-all <dir1> <dir2> ... -- <command>
+          # Find the separator '--'
+          set sep_idx 0
+          for i in (seq (count $argv))
+            if test "$argv[$i]" = "--"
+              set sep_idx $i
+              break
+            end
+          end
+
+          if test $sep_idx -eq 0
+            echo "Usage: run-all <dir1> <dir2> ... -- <command>" >&2
+            return 1
+          end
+
+          set dirs $argv[1..(math $sep_idx - 1)]
+          set cmd $argv[(math $sep_idx + 1)..-1]
+
+          if test (count $dirs) -eq 0; or test (count $cmd) -eq 0
+            echo "Usage: run-all <dir1> <dir2> ... -- <command>" >&2
+            return 1
+          end
+
+          set pids
+          for dir in $dirs
+            fish -c "cd $(string escape $dir) && $cmd" &
+            set -a pids $last_pid
+          end
+
+          set failed 0
+          for pid in $pids
+            if not wait $pid
+              set failed (math $failed + 1)
+            end
+          end
+
+          return $failed
+        '';
+      };
     };
 
     shellAbbrs = {
