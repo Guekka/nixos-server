@@ -1,3 +1,3 @@
 {config, ...}: {
-  home.sessionVariables.HISTFILE = config.xdg.stateHome;
+  programs.bash.historyFile = "${config.xdg.stateHome}/bash_history";
 }

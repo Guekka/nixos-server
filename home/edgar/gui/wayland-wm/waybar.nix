@@ -117,10 +117,19 @@ in {
           interval = 5;
           return-type = "json";
           exec = jsonOutput "gpu" {
-            text = "$(${cat} /sys/class/drm/card0/device/gpu_busy_percent)";
+            text = ''              $(
+                              for metric in /sys/class/drm/card*/device/gpu_busy_percent; do
+                                if [ -r "$metric" ]; then
+                                  value="$(${cat} "$metric")"
+                                  printf '%s%%' "$value"
+                                  exit 0
+                                fi
+                              done
+                              printf 'n/a'
+                            )'';
             tooltip = "GPU Usage";
           };
-          format = "󰒋  {}%";
+          format = "󰒋  {}";
         };
         memory = {
           format = "󰍛  {}%";

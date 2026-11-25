@@ -25,6 +25,7 @@
 
     files = [
       "/.local/share/state/comma-choices"
+      "/.local/state/bash_history"
     ];
   };
 
