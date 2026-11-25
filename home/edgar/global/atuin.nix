@@ -2,7 +2,7 @@
   programs.atuin = {
     enable = true;
     enableBashIntegration = true;
-    enableFishIntegration = true;
+    enableFishIntegration = false; # TODO
     flags = ["--disable-up-arrow"]; # I prefer fish up arrow
     settings = {
       auto_sync = true;
