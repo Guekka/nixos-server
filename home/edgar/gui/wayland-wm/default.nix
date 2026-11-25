@@ -10,4 +10,5 @@
     ./termfilepickers.nix
     ./waybar.nix
   ];
+  wayland.windowManager.hyprland.configType = "hyprlang";
 }
