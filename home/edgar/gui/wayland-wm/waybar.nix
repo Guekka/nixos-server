@@ -5,6 +5,8 @@
   pkgs,
   ...
 }: let
+  waylandCommands = import ./commands.nix {inherit config lib pkgs;};
+
   # Dependencies
   cat = "${pkgs.coreutils}/bin/cat";
   cut = "${pkgs.coreutils}/bin/cut";
@@ -24,8 +26,6 @@
   gamemoded = "${pkgs.gamemode}/bin/gamemoded";
   systemctl = "${pkgs.systemd}/bin/systemctl";
   journalctl = "${pkgs.systemd}/bin/journalctl";
-  playerctl = "${pkgs.playerctl}/bin/playerctl";
-  playerctld = "${pkgs.playerctl}/bin/playerctld";
   pavucontrol = "${pkgs.pavucontrol}/bin/pavucontrol";
   khal = "${pkgs.khal}/bin/khal";
   python = "${pkgs.python3}/bin/python3";
@@ -318,8 +318,8 @@ in {
           return-type = "json";
           exec = jsonOutput "currentplayer" {
             pre = ''
-              player="$(${playerctl} status -f "{{playerName}}" 2>/dev/null || echo "No player active" | ${cut} -d '.' -f1)"
-              count="$(${playerctl} -l 2>/dev/null | ${wc} -l)"
+              player="$(${waylandCommands.media.playerctl} status -f "{{playerName}}" 2>/dev/null || echo "No player active" | ${cut} -d '.' -f1)"
+              count="$(${waylandCommands.media.playerctl} -l 2>/dev/null | ${wc} -l)"
               if ((count > 1)); then
                 more=" +$((count - 1))"
               else
@@ -342,12 +342,12 @@ in {
             "sublimemusic" = " ";
             "kdeconnect" = "󰄡 ";
           };
-          on-click = "${playerctld} shift";
-          on-click-right = "${playerctld} unshift";
+          on-click = "${waylandCommands.media.shift}";
+          on-click-right = "${waylandCommands.media.unshift}";
         };
         "custom/player" = {
-          exec-if = "${playerctl} status 2>/dev/null";
-          exec = ''${playerctl} metadata --format '{"text": "{{title}} - {{artist}}", "alt": "{{status}}", "tooltip": "{{title}} - {{artist}} ({{album}})"}' 2>/dev/null '';
+          exec-if = "${waylandCommands.media.playerctl} status 2>/dev/null";
+          exec = ''${waylandCommands.media.playerctl} metadata --format '{"text": "{{title}} - {{artist}}", "alt": "{{status}}", "tooltip": "{{title}} - {{artist}} ({{album}})"}' 2>/dev/null '';
           return-type = "json";
           interval = 2;
           max-length = 30;
@@ -357,7 +357,7 @@ in {
             "Paused" = "󰏤 ";
             "Stopped" = "󰓛";
           };
-          on-click = "${playerctl} play-pause";
+          on-click = "${waylandCommands.media.playPause}";
         };
         "custom/events" = {
           tooltip = true;

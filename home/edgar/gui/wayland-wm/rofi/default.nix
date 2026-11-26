@@ -1,8 +1,11 @@
 {
   config,
+  lib,
   pkgs,
   ...
 }: let
+  waylandCommands = import ../commands.nix {inherit config lib pkgs;};
+
   cliphist-rofi-img = pkgs.writeShellScript "cliphist-rofi-img" ''
     tmp_dir="/tmp/cliphist"
     rm -rf "$tmp_dir"
@@ -31,7 +34,7 @@ in {
     plugins = [
       pkgs.rofi-calc
     ];
-    terminal = config.home.sessionVariables.TERMINAL;
+    inherit (waylandCommands) terminal;
     extraConfig = let
       baseModes = "drun,filebrowser,ssh,clipboard:${cliphist-rofi-img}";
     in {

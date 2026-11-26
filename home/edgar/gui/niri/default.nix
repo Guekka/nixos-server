@@ -6,6 +6,8 @@
   ...
 }:
 with config.lib.stylix.colors; let
+  waylandCommands = import ../wayland-wm/commands.nix {inherit config lib pkgs;};
+
   default-background = base00;
   default-foreground = base05;
   light-foreground = base06;
@@ -62,30 +64,9 @@ with config.lib.stylix.colors; let
     if (builtins.elem n (lib.attrNames set))
     then set.${n}
     else n;
-  socat = lib.getExe pkgs.socat;
   killall = "${pkgs.killall}/bin/killall";
-  brightnessctl = lib.getExe pkgs.brightnessctl;
-  ddcutil = lib.getExe pkgs.ddcutil;
-  hasInternalPanel = builtins.any (monitor: lib.hasPrefix "eDP-" monitor.name) config.monitors;
-  brightnessUp =
-    if hasInternalPanel
-    then "${brightnessctl} set 10%+"
-    else "${ddcutil} setvcp 10 + 10";
-  brightnessDown =
-    if hasInternalPanel
-    then "${brightnessctl} set 10%-"
-    else "${ddcutil} setvcp 10 - 10";
-  wpctl = lib.getExe' pkgs.wireplumber "wpctl";
 
-  playerctl = lib.getExe pkgs.playerctl;
   swaync-client = "${pkgs.swaynotificationcenter}/bin/swaync-client";
-  terminal = config.home.sessionVariables.TERMINAL;
-  browser = lib.getExe pkgs.firefox;
-  hyprlock = lib.getExe pkgs.hyprlock;
-  darkman = "${pkgs.darkman}/bin/darkman";
-  cliphist = lib.getExe pkgs.cliphist;
-  rofi = lib.getExe pkgs.rofi;
-  wl-copy = lib.getExe' pkgs.wl-clipboard "wl-copy";
 in {
   imports = [
     inputs.niri.homeModules.stylix
@@ -112,24 +93,24 @@ in {
       lib.attrsets.mergeAttrsList [
         {
           # Apps
-          "Mod+Return".action = spawn terminal;
-          "Mod+D".action = sh ''echo -n '["toggle"]'| ${socat} - ~/.cache/albert/ipc_socket'';
+          "Mod+Return".action = spawn waylandCommands.terminal;
+          "Mod+D".action = sh waylandCommands.albertToggle;
           "Mod+X".action = sh "${killall} -SIGUSR1 .waybar-wrapped";
-          "Mod+C".action = sh "${cliphist} list | ${rofi} -dmenu | ${cliphist} decode | ${wl-copy}";
+          "Mod+C".action = sh waylandCommands.clipboardHistory;
           "Mod+W".action = sh "${swaync-client} -t";
-          "Mod+B".action = sh browser;
-          "Mod+Shift+T".action = sh "${darkman} toggle";
-          "Mod+Backspace".action = spawn hyprlock;
+          "Mod+B".action = sh waylandCommands.browser;
+          "Mod+Shift+T".action = sh waylandCommands.darkmanToggle;
+          "Mod+Backspace".action = spawn waylandCommands.lock;
         }
         {
           # Functions
-          "XF86AudioPlay".action = sh "${playerctl} play-pause";
-          "XF86AudioRaiseVolume".action = sh "${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 0.05+";
-          "XF86AudioLowerVolume".action = sh "${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 0.05-";
-          "XF86AudioMute".action = sh "${wpctl} set-mute @DEFAULT_AUDIO_SINK@ toggle";
+          "XF86AudioPlay".action = sh waylandCommands.media.playPause;
+          "XF86AudioRaiseVolume".action = sh waylandCommands.audio.volumeUp;
+          "XF86AudioLowerVolume".action = sh waylandCommands.audio.volumeDown;
+          "XF86AudioMute".action = sh waylandCommands.audio.muteSink;
 
-          "XF86MonBrightnessUp".action = sh brightnessUp;
-          "XF86MonBrightnessDown".action = sh brightnessDown;
+          "XF86MonBrightnessUp".action = sh waylandCommands.brightness.up;
+          "XF86MonBrightnessDown".action = sh waylandCommands.brightness.down;
 
           "Print".action.screenshot = [];
           "Mod+Print".action.screenshot-window = [];

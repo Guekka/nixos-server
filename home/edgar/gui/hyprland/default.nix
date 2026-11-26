@@ -3,7 +3,9 @@
   config,
   pkgs,
   ...
-}: {
+}: let
+  waylandCommands = import ../wayland-wm/commands.nix {inherit config lib pkgs;};
+in {
   imports = [
     ../wayland-wm
 
@@ -140,34 +142,23 @@
         "float, class:(albert)"
         "center, class:(albert)"
       ];
-      binde = let
-        brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
-        pactl = "${pkgs.pulseaudio}/bin/pactl";
-      in [
+      binde = [
         # Brightness
-        ",XF86MonBrightnessUp,exec,${brightnessctl} set +5%"
-        ",XF86MonBrightnessDown,exec,${brightnessctl} set 5%-"
+        ",XF86MonBrightnessUp,exec,${waylandCommands.brightness.up}"
+        ",XF86MonBrightnessDown,exec,${waylandCommands.brightness.down}"
         # Volume
-        ",XF86AudioRaiseVolume,exec,${pactl} set-sink-volume @DEFAULT_SINK@ +5%"
-        ",XF86AudioLowerVolume,exec,${pactl} set-sink-volume @DEFAULT_SINK@ -5%"
-        ",XF86AudioMute,exec,${pactl} set-sink-mute @DEFAULT_SINK@ toggle"
-        "SHIFT,XF86AudioMute,exec,${pactl} set-source-mute @DEFAULT_SOURCE@ toggle"
-        ",XF86AudioMicMute,exec,${pactl} set-source-mute @DEFAULT_SOURCE@ toggle"
+        ",XF86AudioRaiseVolume,exec,${waylandCommands.audio.volumeUp}"
+        ",XF86AudioLowerVolume,exec,${waylandCommands.audio.volumeDown}"
+        ",XF86AudioMute,exec,${waylandCommands.audio.muteSink}"
+        "SHIFT,XF86AudioMute,exec,${waylandCommands.audio.muteSource}"
+        ",XF86AudioMicMute,exec,${waylandCommands.audio.muteSource}"
       ];
       bind = let
-        cliphist = "${pkgs.cliphist}/bin/cliphist";
-        darkman = lib.getExe config.services.darkman.package;
-        hyprlock = lib.getExe config.programs.hyprlock.package;
-        playerctl = "${config.services.playerctld.package}/bin/playerctl";
-        playerctld = "${config.services.playerctld.package}/bin/playerctld";
         makoctl = "${config.services.mako.package}/bin/makoctl";
-        rofi = lib.getExe config.programs.rofi.finalPackage;
         pass-wofi = "${pkgs.pass-wofi.override {
           pass = config.programs.password-store.package;
         }}/bin/pass-wofi";
-        socat = lib.getExe pkgs.socat;
         systemctl = "${pkgs.systemd}/bin/systemctl";
-        wl-copy = "${pkgs.wl-clipboard}/bin/wl-copy";
 
         grimblast = "${pkgs.grimblast}/bin/grimblast";
         # TODO tly = "${pkgs.tly}/bin/tly";
@@ -178,16 +169,14 @@
         xdg-mime = "${pkgs.xdg-utils}/bin/xdg-mime";
         defaultApp = type: "${gtk-launch} $(${xdg-mime} query default ${type})";
 
-        terminal = config.home.sessionVariables.TERMINAL;
-        browser = defaultApp "x-scheme-handler/https";
         editor = defaultApp "text/plain";
       in
         [
           # Program bindings
-          "SUPER,Return,exec,${terminal}"
+          "SUPER,Return,exec,${waylandCommands.terminal}"
           "SUPER,e,exec,${editor}"
           "SUPER,v,exec,${editor}"
-          "SUPER,b,exec,${browser}"
+          "SUPER,b,exec,${waylandCommands.browser}"
           # Screenshotting
           ",Print,exec,${grimblast} --notify --freeze copy area"
           "SHIFT,Print,exec,${grimblast} --notify --freeze copy active"
@@ -207,20 +196,20 @@
         ]
         ++ (lib.optionals config.services.playerctld.enable [
           # Media control
-          ",XF86AudioNext,exec,${playerctl} next"
-          ",XF86AudioPrev,exec,${playerctl} previous"
-          ",XF86AudioPlay,exec,${playerctl} play-pause"
-          ",XF86AudioStop,exec,${playerctl} stop"
-          "ALT,XF86AudioNext,exec,${playerctld} shift"
-          "ALT,XF86AudioPrev,exec,${playerctld} unshift"
+          ",XF86AudioNext,exec,${waylandCommands.media.next}"
+          ",XF86AudioPrev,exec,${waylandCommands.media.previous}"
+          ",XF86AudioPlay,exec,${waylandCommands.media.playPause}"
+          ",XF86AudioStop,exec,${waylandCommands.media.stop}"
+          "ALT,XF86AudioNext,exec,${waylandCommands.media.shift}"
+          "ALT,XF86AudioPrev,exec,${waylandCommands.media.unshift}"
           "ALT,XF86AudioPlay,exec,systemctl --user restart playerctld"
         ])
         ++
         # Screen lock
         (lib.optionals config.programs.hyprlock.enable [
-          ",XF86Launch5,exec,${hyprlock}"
-          ",XF86Launch4,exec,${hyprlock}"
-          "SUPER,backspace,exec,${hyprlock}"
+          ",XF86Launch5,exec,${waylandCommands.lock}"
+          ",XF86Launch4,exec,${waylandCommands.lock}"
+          "SUPER,backspace,exec,${waylandCommands.lock}"
         ])
         ++
         # Notification manager
@@ -229,20 +218,20 @@
         ])
         ++ #darkman
         (lib.optionals config.services.darkman.enable [
-          "SUPERSHIFT,T,exec,${darkman} toggle"
+          "SUPERSHIFT,T,exec,${waylandCommands.darkmanToggle}"
         ])
         ++
         # Launcher
         (lib.optionals config.programs.rofi.enable [
-            "SUPERSHIFT,x,exec,${rofi} -show run"
-            "SUPER,tab,exec,${rofi} -show window"
+            "SUPERSHIFT,x,exec,${waylandCommands.rofi} -show run"
+            "SUPER,tab,exec,${waylandCommands.rofi} -show window"
           ]
           ++ (lib.optionals config.services.albert.enable [
             # <https://albertlauncher.github.io/gettingstarted/faq/#how-to-make-hotkeys-work-on-wayland>
-            "SUPER,d,exec,echo -n toggle | ${socat} - ~/.cache/albert/ipc_socket"
+            "SUPER,d,exec,${waylandCommands.albertToggle}"
           ])
           ++ (lib.optionals config.services.cliphist.enable [
-            "SUPER, c, exec, ${cliphist} list | ${rofi} -dmenu | ${cliphist} decode | ${wl-copy}" # Clipboard manager
+            "SUPER, c, exec, ${waylandCommands.clipboardHistory}" # Clipboard manager
           ])
           ++ (lib.optionals config.programs.password-store.enable [
             ",Scroll_Lock,exec,${pass-wofi}" # fn+k

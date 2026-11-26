@@ -4,6 +4,8 @@
   pkgs,
   ...
 }: let
+  waylandCommands = import ./commands.nix {inherit config lib pkgs;};
+
   suspendScript = pkgs.writeShellScript "suspend-script" ''
     ${pkgs.pipewire}/bin/pw-cli i all 2>&1 | ${pkgs.ripgrep}/bin/rg running -q
     # only suspend if audio isn't running
@@ -11,12 +13,10 @@
       ${pkgs.systemd}/bin/systemctl suspend
     fi
   '';
-  hasInternalPanel = builtins.any (monitor: lib.hasPrefix "eDP-" monitor.name) config.monitors;
 in {
   # screen idle
   services.hypridle = let
-    hyprlock = lib.getExe config.programs.hyprlock.package;
-    lock_cmd = "pidof hyprlock || ${hyprlock}";
+    lock_cmd = "pidof hyprlock || ${waylandCommands.lock}";
   in {
     enable = true;
     settings = {
@@ -29,7 +29,7 @@ in {
         {
           timeout = 900;
           on-timeout =
-            if hasInternalPanel
+            if waylandCommands.brightness.hasInternalPanel
             then suspendScript.outPath
             else lock_cmd;
           on-resume = lock_cmd;
