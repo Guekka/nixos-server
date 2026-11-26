@@ -4,6 +4,8 @@
     configPath = lib.mkDefault ".mozilla/firefox"; # keep legacy default (stateVersion < 26.05)
   };
 
+  stylix.targets.firefox.profileNames = lib.mkDefault ["default"];
+
   home = {
     sessionVariables.BROWSER = "firefox";
   };
