@@ -1,10 +1,12 @@
 {
   inputs,
+  config,
   lib,
   ...
 }: {
   nix = {
     daemonCPUSchedPolicy = "idle";
+    extraOptions = "!include ${config.sops.templates."nix.conf".path}";
     settings = {
       trusted-users = ["root" "@wheel"];
       auto-optimise-store = lib.mkDefault true;

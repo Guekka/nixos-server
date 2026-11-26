@@ -28,6 +28,14 @@ creation_rules:
       - *horus
       - *hestia
       - *pluto
+  - path_regex: hosts/common/nix-secrets.yaml$
+    key_groups:
+    - age:
+      - *deimos
+      - *horus
+      - *hestia
+      - *pluto
+      - *morpheus
   - path_regex: home/edgar/morpheus-secrets.yaml$
     key_groups:
     - age:

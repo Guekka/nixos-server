@@ -19,7 +19,7 @@ in {
     };
     secrets = {
       "ar-password" = {};
-      "nix-access-tokens" = {};
+      "nix-access-tokens".sopsFile = ../../hosts/common/nix-secrets.yaml;
     };
     templates."nix.conf".content = ''
       access-tokens = ${config.sops.placeholder."nix-access-tokens"}

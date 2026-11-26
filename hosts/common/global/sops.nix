@@ -13,5 +13,15 @@ in {
 
   sops = {
     age.sshKeyPaths = map getKeyPath keys;
+
+    secrets."nix-access-tokens".sopsFile = ../nix-secrets.yaml;
+
+    templates."nix.conf" = {
+      content = ''
+        access-tokens = ${config.sops.placeholder."nix-access-tokens"}
+      '';
+      owner = "edgar";
+      mode = "0400";
+    };
   };
 }
