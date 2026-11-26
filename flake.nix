@@ -128,7 +128,7 @@
               myHome.impermanence.enable = nixpkgs.lib.mkForce false;
             }
           ]
-          ++ nixpkgs.lib.optionals (builtins.elem host ["deimos" "hestia"]) [
+          ++ nixpkgs.lib.optionals (builtins.elem host ["deimos" "hestia" "morpheus"]) [
             inputs.niri.homeModules.niri
             {programs.niri.enable = true;}
           ];
@@ -164,6 +164,7 @@
       "edgar@hestia" = mkHome "hestia" "x86_64-linux";
       "edgar@deimos" = mkHome "deimos" "x86_64-linux";
       "edgar@pluto" = mkHome "pluto" "x86_64-linux";
+      "edgar@morpheus" = mkHome "morpheus" "x86_64-linux";
     };
   };
 }

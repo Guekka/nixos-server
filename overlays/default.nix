@@ -12,6 +12,21 @@
     unstable = import inputs.nixpkgs-unstable {
       system = final.stdenv.hostPlatform.system;
       config.allowUnfree = true;
+      overlays = [
+        (_: unstablePrev: {
+          beeper = unstablePrev.beeper.overrideAttrs (old: {
+            extraInstallCommands = let
+              existingFlags = old.extraInstallCommands or "";
+              waylandImeFlag = "--enable-wayland-ime=true";
+            in
+              assert unstablePrev.lib.hasInfix waylandImeFlag existingFlags;
+                unstablePrev.lib.replaceStrings
+                [waylandImeFlag]
+                ["${waylandImeFlag} --wayland-text-input-version=3"]
+                existingFlags;
+          });
+        })
+      ];
     };
   in {
     inherit unstable;
