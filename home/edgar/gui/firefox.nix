@@ -1,32 +1,14 @@
-{
+{lib, ...}: {
   programs.firefox = {
     enable = true;
-    configPath = ".config/mozilla/firefox";
-    profiles = {
-      default = {
-        id = 1;
-        path = "pw0bxc7h.default";
-        isDefault = true;
-      };
-      default-release = {
-        id = 0;
-        path = "3olwdi2k.default-release";
-        isDefault = false;
-      };
-    };
+    configPath = lib.mkDefault ".mozilla/firefox"; # keep legacy default (stateVersion < 26.05)
   };
-
-  stylix.targets.firefox.profileNames = [
-    "default"
-    "default-release"
-  ];
 
   home = {
     sessionVariables.BROWSER = "firefox";
   };
   myHome.impermanence.passthrough = {
     "/persist/backup".directories = [
-      ".config/mozilla/firefox"
       ".mozilla"
     ];
 

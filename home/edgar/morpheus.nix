@@ -30,6 +30,29 @@ in {
   myHome.nonNixos.enable = true;
   myHome.impermanence.enable = false;
 
+  programs.firefox = {
+    configPath = ".config/mozilla/firefox";
+    profiles = {
+      default = {
+        id = 1;
+        path = "pw0bxc7h.default";
+        isDefault = true;
+      };
+      default-release = {
+        id = 0;
+        path = "3olwdi2k.default-release";
+        isDefault = false;
+      };
+    };
+  };
+  stylix.targets.firefox.profileNames = [
+    "default"
+    "default-release"
+  ];
+  myHome.impermanence.passthrough."/persist/backup".directories = [
+    ".config/mozilla/firefox"
+  ];
+
   sops = {
     defaultSopsFile = ./morpheus-secrets.yaml;
     age = {
