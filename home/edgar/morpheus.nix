@@ -70,9 +70,6 @@ in {
     pkgs.gh
   ];
 
-  services.ssh-agent.enable = true;
-  systemd.user.services.ssh-agent.Unit.X-SwitchMethod = "keep-old";
-
   monitors = [
     {
       name = "eDP-1";

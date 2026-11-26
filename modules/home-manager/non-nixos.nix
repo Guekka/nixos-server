@@ -37,6 +37,9 @@ in {
 
     programs.home-manager.enable = true;
 
+    services.ssh-agent.enable = true;
+    systemd.user.services.ssh-agent.Unit.X-SwitchMethod = "keep-old";
+
     targets.genericLinux = {
       enable = true;
       gpu.enable = true;
