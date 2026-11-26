@@ -53,9 +53,6 @@ in {
       name = requiredMorpheusValue "MORPHEUS_GIT_NAME" morpheusGitName;
       email = requiredMorpheusValue "MORPHEUS_GIT_EMAIL" morpheusGitEmail;
     };
-    url = {
-      "ssh://git@github.com".insteadOf = "https://github.com";
-    };
   };
 
   wallpaper = ./gui/background21.png;
