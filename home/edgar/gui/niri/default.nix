@@ -295,10 +295,6 @@ in {
     window-rules = let
       albert-matcher = {title = "Albert";};
       beeper-matcher = {title = "Beeper";};
-      keepass-matcher = {
-        app-id = "org.keepassxc.KeePassXC";
-        is-floating = false;
-      };
     in [
       {
         matches = [];
@@ -319,7 +315,6 @@ in {
       {
         matches = [
           beeper-matcher
-          keepass-matcher
         ];
         open-on-workspace = "utils";
       }
